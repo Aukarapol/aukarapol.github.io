@@ -11,83 +11,110 @@
         .product-card:hover { transform: translateY(-5px); transition: all 0.3s ease; }
     </style>
 </head>
-<body class="bg-gray-100 flex flex-col min-h-screen">
+<body class="bg-gray-50 flex flex-col min-h-screen">
 
-    <nav class="bg-blue-900 text-white p-4 sticky top-0 z-50">
-        <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-bold italic tracking-tighter">จำหน่ายและรับติดตั้งกล้องวงจรปิดเขื่องใน 📷 Khuang Nai CCTV Pro</h1>
-            <div class="space-x-4 hidden md:block">
-                <a href="index.html#home" class="hover:text-blue-300">หน้าแรก</a>
-				<a href="index.html#product" class="hover:text-blue-300">กล้องวงจรปิดและอุปกรณ์เสริม</a>
-                <a href="index.html#packages" class="hover:text-blue-300">แพ็คเกจ</a>
-                <a href="index.html#services" class="hover:text-blue-300">บริการ</a>
-				<a href="index.html#service" class="hover:text-blue-300">ผลงานติดตั้งของเรา</a>
-                <a href="index.html#contact" class="bg-yellow-500 text-blue-900 px-4 py-2 rounded-full font-bold">ติดต่อสอบถาม</a>
-            </div>
+<nav class="bg-[#fdfbf7]/90 backdrop-blur-md text-gray-700 p-4 sticky top-0 z-50 border-b border-gray-100">
+    <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-xl md:text-2xl font-semibold tracking-tight text-gray-800">
+            <span class="text-[#c27803]">📷</span> Khuang Nai <span class="font-light">CCTV Pro</span>
+        </h1>
+
+        <button id="menu-btn" class="block md:hidden focus:outline-none text-gray-600">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+
+        <div id="menu" class="hidden absolute md:static top-full left-0 w-full md:w-auto bg-[#fdfbf7] md:bg-transparent flex-col md:flex-row md:flex space-y-4 md:space-y-0 md:space-x-8 p-6 md:p-0 shadow-lg md:shadow-none">
+            <a href="index.html" class="text-sm tracking-wide hover:text-[#c27803] transition duration-300">หน้าแรก</a>
+            <a href="product.html" class="text-sm tracking-wide hover:text-[#c27803] transition duration-300">สินค้าและอุปกรณ์</a>
+            <a href="package.html" class="text-sm tracking-wide hover:text-[#c27803] transition duration-300">แพ็คเกจติดตั้ง</a>
+            <a href="index.html" class="text-sm tracking-wide hover:text-[#c27803] transition duration-300">บริการ</a>
+            <a href="service.html" class="text-sm tracking-wide hover:text-[#c27803] transition duration-300">ผลงานของเรา</a>
+            <a href="index.html#contact" class="bg-[#c27803] hover:bg-[#a66602] text-white px-5 py-2 rounded-full text-sm font-medium transition duration-300 text-center shadow-sm">
+                ติดต่อสอบถาม
+            </a>
         </div>
-    </nav>
+    </div>
+</nav>
 
 <br>
-    <div class="max-w-8xl mx-auto bg-white p-8 rounded-lg shadow-sm flex flex-col md:flex-row gap-10">
+<div class="max-w-7xl mx-auto bg-[#fafafa] p-6 md:p-12 rounded-[2rem] shadow-[0_10px_50px_rgba(0,0,0,0.03)] flex flex-col md:flex-row gap-16 items-start">
+    
+    <div class="md:w-5/12 w-full">
+        <div class="group relative cursor-zoom-in bg-white rounded-3xl overflow-hidden mb-6 border border-gray-50 shadow-sm transition-all duration-500 hover:shadow-xl">
+            <img id="mainImage" src="productimage/product01/Tapo_C530WS.jpg" alt="Product" 
+                 class="w-full h-auto min-h-[400px] object-contain p-8 transition-transform duration-700 group-hover:scale-105" 
+                 onclick="openModal(this.src)">
+        </div>
         
-        <div class="md:w-1/2 flex flex-col items-center">
-            <div class="cursor-zoom-in border rounded-lg overflow-hidden mb-8">
-                <img id="mainImage" src="productimage/product01/Tapo_C530WS.jpg" alt="Product" class="w-full h-auto object-contain" onclick="openModal(this.src)">
-            </div>
-            
-            <div class="flex gap-5">
-                <img src="productimage/product01/Tapo_C530WS.jpg" class="w-20 h-20 border p-3 cursor-pointer hover:border-blue-700" onclick="changeImage(this.src)">
-                <img src="productimage/product01/indoorcam.jpg" class="w-20 h-20 border p-3 cursor-pointer hover:border-blue-700" onclick="changeImage(this.src)">
-                <img src="productimage/product01/Tapo_C530WS.jpg" class="w-20 h-20 border p-3 cursor-pointer hover:border-blue-700" onclick="changeImage(this.src)">
-				<img src="productimage/product01/indoorcam.jpg" class="w-20 h-20 border p-3 cursor-pointer hover:border-blue-700" onclick="changeImage(this.src)">
-            </div>
+        <div class="flex gap-4 justify-center overflow-x-auto py-2">
+            <img src="productimage/product01/Tapo_C530WS.jpg" class="w-20 h-20 rounded-2xl border-2 border-[#c27803] p-2 cursor-pointer object-contain bg-white transition-all hover:border-[#c27803]" onclick="changeImage(this.src)">
+            <img src="productimage/product01/indoorcam.jpg" class="w-20 h-20 rounded-2xl border-2 border-transparent p-2 cursor-pointer object-contain bg-white transition-all hover:border-gray-200" onclick="changeImage(this.src)">
+            <img src="productimage/product01/Tapo_C530WS.jpg" class="w-20 h-20 rounded-2xl border-2 border-transparent p-2 cursor-pointer object-contain bg-white transition-all hover:border-gray-200" onclick="changeImage(this.src)">
+            <img src="productimage/product01/indoorcam.jpg" class="w-20 h-20 rounded-2xl border-2 border-transparent p-2 cursor-pointer object-contain bg-white transition-all hover:border-gray-200" onclick="changeImage(this.src)">
         </div>
-
-        <div class="md:w-1/2">
-            <p class="text-blue-600 font-bold tracking-widest text-sm uppercase">SAMSUNG</p>
-            <h1 class="text-2xl font-bold mt-2 text-gray-800">DS-2CD1043G0-I 4MP Fixed Bullet</h1>
-            <p class="text-gray-400 text-sm mt-1">รหัสสินค้า : A0170731</p>
-
-            <div class="mt-6 flex justify-between items-end">
-                <div>
-                    <p class="text-gray-600 font-semibold">ราคาเฉพาะออนไลน์</p>
-                    <p class="text-gray-400 line-through">ราคาหน้าร้าน ฿40,900</p>
-                </div>
-                <div class="text-right">
-                    <span class="bg-red-600 text-white text-xs px-2 py-1 rounded-full">ประหยัด ฿8,500</span>
-                    <p class="text-4xl font-bold text-gray-900 mt-1">฿32,400</p>
-                </div>
-            </div>
-
-            <div class="mt-6 bg-gray-50 p-4 rounded-lg">
-                <ul class="text-sm text-gray-600 space-y-2">
-                    <li>• CPU : Exynos 2500</li>
-                    <li>• RAM : 12GB</li>
-                    <li>• ROM : 256GB</li>
-                    <li>• Display : 6.9" Dynamic AMOLED 2X FHD+</li>
-                    <li>• Back Camera : 12.0MP + 50.0MP</li>
-                    <li>• Front Camera : 10.0MP</li>
-                    <li>• OS : One UI 8.0 (Android 16)</li>
-                    <li>• Battery : 4300mAh</li>
-                    <li>• Display : 6.9" Dynamic AMOLED 2X FHD+</li>
-                    <li>• Front Camera : 10.0MP</li>
-					<li>• Display : 6.9" Dynamic AMOLED 2X FHD+</li>
-                    <li>• Display : 6.9" Dynamic AMOLED 2X FHD+</li>
-				
-                </ul>
-                <a href="#" class="text-blue-500 text-xs mt-2 block underline">ดูรายละเอียดเพิ่มเติม</a>
-            </div>
-
-            <p class="mt-4 text-sm font-semibold">ของแถม : <span class="text-blue-600 font-normal underline">ฟรีของแถม 2 รายการ มูลค่า 580 บาท</span></p>
-
-            <div class="mt-8">
-                <a href="https://line.me/R/ti/p/@ไอดีของคุณ" target="_blank" class="block text-center bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-lg transition duration-300">
-                    ซื้อเลย
-                </a>
-            </div>
-        </div>
-
     </div>
+
+    <div class="md:w-7/12 w-full">
+        <div class="mb-8">
+            <span class="text-[10px] tracking-[0.3em] font-bold text-[#c27803] uppercase">Hikvision Series</span>
+            <h1 class="text-3xl md:text-4xl font-semibold mt-2 text-gray-900 tracking-tight leading-tight">DS-2CD1043G0-I <br><span class="text-gray-400 font-light">4MP Fixed Bullet</span></h1>
+            <div class="flex items-center gap-3 mt-4">
+                <span class="text-[11px] px-3 py-1 bg-gray-100 text-gray-500 rounded-full font-medium">รหัสสินค้า: A0170731</span>
+                <span class="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></span>
+                <span class="text-[11px] text-green-600 font-medium tracking-wide">In Stock</span>
+            </div>
+        </div>
+
+        <div class="mb-10 p-8 rounded-3xl bg-white border border-gray-50 shadow-sm flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
+            <div>
+                <p class="text-xs text-gray-400 uppercase tracking-widest mb-1">Online Exclusive Price</p>
+                <p class="text-4xl font-bold text-gray-900 tracking-tighter">฿32,400</p>
+            </div>
+            <div class="text-left sm:text-right border-l sm:border-l-0 sm:border-r border-gray-100 pl-4 sm:pl-0 sm:pr-4">
+                <p class="text-xs text-gray-400 line-through mb-1">ปกติ ฿40,900</p>
+                <span class="text-[11px] bg-[#c27803]/10 text-[#c27803] px-3 py-1.5 rounded-lg font-bold">
+                    ประหยัดได้ ฿8,500
+                </span>
+            </div>
+        </div>
+
+        <div class="mb-8">
+            <p class="text-sm font-semibold text-gray-800 mb-4">รายละเอียดเบื้องต้น</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-8">
+                <ul class="text-[13px] text-gray-500 space-y-3">
+                    <li class="flex items-center gap-2"><span class="w-1 h-1 bg-gray-300 rounded-full"></span> ความละเอียด 4MP Fixed Lens</li>
+                    <li class="flex items-center gap-2"><span class="w-1 h-1 bg-gray-300 rounded-full"></span> ระยะอินฟราเรดไกลสุด 30 เมตร</li>
+                    <li class="flex items-center gap-2"><span class="w-1 h-1 bg-gray-300 rounded-full"></span> มาตรฐานกันน้ำ กันฝุ่น IP67</li>
+                </ul>
+                <ul class="text-[13px] text-gray-500 space-y-3">
+                    <li class="flex items-center gap-2"><span class="w-1 h-1 bg-gray-300 rounded-full"></span> รองรับเทคโนโลยี H.265+</li>
+                    <li class="flex items-center gap-2"><span class="w-1 h-1 bg-gray-300 rounded-full"></span> ป้องกันแสงสะท้อน WDR</li>
+                    <li class="flex items-center gap-2"><span class="w-1 h-1 bg-gray-300 rounded-full"></span> บันทึกเสียงและภาพคมชัด</li>
+                </ul>
+            </div>
+            <a href="#" class="inline-block text-[#c27803] text-xs font-semibold mt-6 border-b border-[#c27803]/30 hover:border-[#c27803] transition-all pb-0.5 uppercase tracking-widest">Full Specifications</a>
+        </div>
+
+        <div class="flex items-center gap-4 p-4 bg-[#f4f7f5] rounded-2xl border border-[#e8eee9] mb-8">
+            <div class="bg-white p-2 rounded-xl shadow-sm italic font-bold text-[#c27803] text-xs">FREE</div>
+            <p class="text-xs text-gray-600">รับฟรีของแถม <span class="font-bold underline decoration-[#c27803]">2 รายการพิเศษ</span> สำหรับคำสั่งซื้อนี้เท่านั้น</p>
+        </div>
+
+        <div class="flex gap-4">
+<a href="https://line.me/R/ti/p/@ไอดีไลน์ของคุณ" target="_blank" 
+   class="flex-grow text-center bg-[#c27803]/10 hover:bg-[#c27803] text-[#c27803] hover:text-white text-sm font-bold py-4 px-8 rounded-2xl transition-all duration-300 border border-[#c27803]/20 hover:border-[#c27803] uppercase tracking-widest shadow-sm">
+    สั่งซื้อทันที
+</a>
+            <button class="px-5 py-4 bg-white border border-gray-200 rounded-2xl hover:bg-gray-50 transition-all shadow-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>
 	
 <br>
 
@@ -139,15 +166,123 @@
 	
    </script>
 
-    <footer class="bg-blue-900 flex flex-col text-white py-4 text-center text-sm">
-        <p>© 2026 CCTV Professional Service. All rights reserved.</p>
-    </footer>
+<footer class="bg-[#faf9f6] text-gray-700 pt-24 pb-12 border-t border-gray-100">
+    <div class="container mx-auto px-6 max-w-6xl">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-16 mb-20">
+            
+            <div class="md:col-span-5 space-y-8">
+                <h4 class="text-2xl font-semibold tracking-tighter text-gray-900">
+                    <span class="text-[#c27803]">📷</span> Khuang Nai <span class="font-light text-gray-400">CCTV Pro</span>
+                </h4>
+                <p class="text-sm text-gray-400 leading-relaxed font-light max-w-sm italic">
+                    เราเชื่อว่าความปลอดภัยเริ่มต้นจากการออกแบบที่ใส่ใจ บริการติดตั้งกล้องวงจรปิดมาตรฐานสากล สำหรับบ้านและธุรกิจในพื้นที่ จ.อุบลราชธานี และ จ.ยโสธร
+                </p>
+                <div class="inline-flex items-center space-x-2 bg-white px-4 py-2 rounded-full border border-gray-100 shadow-sm">
+                    <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
+                    <span class="text-[10px] uppercase tracking-widest font-bold text-gray-500">Service: Weekend & Holidays</span>
+                </div>
+            </div>
+
+            <div class="md:col-span-3 space-y-6">
+                <h4 class="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-300">Navigation</h4>
+                <ul class="space-y-4 text-sm font-light">
+                    <li><a href="#home" class="text-gray-500 hover:text-[#c27803] transition-colors duration-300">หน้าแรก</a></li>
+                    <li><a href="#packages" class="text-gray-500 hover:text-[#c27803] transition-colors duration-300">แพ็กเกจติดตั้ง</a></li>
+                    <li><a href="#service" class="text-gray-500 hover:text-[#c27803] transition-colors duration-300">ผลงานล่าสุด</a></li>
+                    <li><a href="#contact" class="text-gray-500 hover:text-[#c27803] transition-colors duration-300">ติดต่อเรา</a></li>
+                </ul>
+            </div>
+
+            <div class="md:col-span-4 space-y-6">
+                <h4 class="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-300">Connect with us</h4>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#" class="w-11 h-11 bg-white rounded-2xl flex items-center justify-center text-gray-400 border border-gray-100 hover:border-blue-100 hover:text-blue-500 hover:shadow-lg transition-all duration-500">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+                    </a>
+                    <a href="#" class="w-11 h-11 bg-white rounded-2xl flex items-center justify-center text-gray-400 border border-gray-100 hover:border-green-100 hover:text-green-500 hover:shadow-lg transition-all duration-500">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 10.304c0-5.369-5.383-9.738-12-9.738s-12 4.369-12 9.738c0 4.814 4.269 8.846 10.036 9.608.391.084.922.258 1.057.592.121.303.079.778.039 1.085l-.171 1.047c-.052.312-.252 1.221 1.089.665 1.341-.556 7.235-4.262 9.869-7.3s2.08-5.328 2.08-5.697z"/></svg>
+                    </a>
+                    <a href="#" class="w-11 h-11 bg-white rounded-2xl flex items-center justify-center text-gray-400 border border-gray-100 hover:border-gray-900 hover:text-black hover:shadow-lg transition-all duration-500">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.86-.6-4.12-1.31a6.34 6.34 0 0 1-1.08-.75v7.54c0 3.14-1.61 6.13-4.57 7.23-3.63 1.34-8.03-.43-9.52-4.07-1.47-3.58.46-8.15 4.23-9.37 1.15-.38 2.39-.4 3.56-.15v4.03c-.63-.17-1.3-.23-1.95-.14-1.57.22-2.98 1.51-3.13 3.09-.23 2.16 1.72 4.21 3.88 3.9 1.49-.22 2.68-1.53 2.68-3.03V0h.02z"/></svg>
+                    </a>
+                </div>
+                <p class="text-xs text-gray-400 font-light leading-relaxed italic">
+                    ติดตามโปรโมชั่นและผลงานติดตั้งใหม่ๆ ได้ผ่านช่องทางโซเชียลมีเดียของเรา
+                </p>
+            </div>
+        </div>
+
+        <div class="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-[10px] text-gray-300 uppercase tracking-[0.2em] font-medium">
+                © 2026 Khuang Nai CCTV Pro. All rights reserved.
+            </p>
+            <div class="flex space-x-6 text-[10px] uppercase tracking-widest font-bold text-gray-300">
+                <a href="#" class="hover:text-gray-900 transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-gray-900 transition-colors">Terms of Service</a>
+            </div>
+        </div>
+    </div>
+</footer> 
 	
     <div id="imageModal" class="hidden fixed inset-0 z-[999] bg-black/90 flex justify-center items-center cursor-pointer" onclick="closeModal()">
     <span class="absolute top-5 right-10 text-white text-5xl font-bold">&times;</span>
     
     <img id="modalImg" class="max-w-[90%] max-h-[90%] border-4 border-white shadow-2xl transition-transform duration-300">
     </div>
+
+<script>
+    const btn = document.getElementById('menu-btn');
+    const menu = document.getElementById('menu');
+
+    btn.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+        menu.classList.toggle('flex');
+    });
+
+    // ปิดเมนูเมื่อคลิกลิงก์ (สำหรับมือถือ)
+    const links = menu.querySelectorAll('a');
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth < 768) {
+                menu.classList.add('hidden');
+            }
+        });
+    });
+</script>
+
+<div id="line-popup" class="fixed bottom-6 right-6 z-[60] transform translate-y-20 opacity-0 transition-all duration-700 ease-out">
+    <div class="bg-white rounded-2xl shadow-2xl p-4 flex items-center space-x-4 border border-gray-100 max-w-[280px]">
+        <div class="relative min-w-[50px]">
+            <div class="w-12 h-12 bg-[#fdfbf7] rounded-full flex items-center justify-center text-2xl border border-gray-100">
+                📷
+            </div>
+            <div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></div>
+        </div>
+        
+        <div class="flex-grow">
+            <p class="text-[10px] text-gray-400 uppercase tracking-widest font-bold">แอดมินพร้อมดูแล</p>
+            <p class="text-sm text-gray-700 font-medium">สอบถามโปรโมชั่นวันนี้?</p>
+            <a href="https://line.me/R/ti/p/@yourid" target="_blank" class="text-xs text-[#c27803] font-bold hover:underline mt-1 block">
+                ทักไลน์สอบถามคลิกเลย
+            </a>
+        </div>
+
+        <button onclick="document.getElementById('line-popup').remove()" class="text-gray-300 hover:text-gray-500">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+    </div>
+</div>
+
+<script>
+    // ตั้งเวลาให้เด้งขึ้นมาหลังจากเปิดเว็บ 3 วินาที
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            const popup = document.getElementById('line-popup');
+            popup.classList.remove('translate-y-20', 'opacity-0');
+            popup.classList.add('translate-y-0', 'opacity-100');
+        }, 3000); // 3000 = 3 วินาที (ปรับเปลี่ยนได้ตามชอบ)
+    });
+</script>
 
 </body>
 </html>
