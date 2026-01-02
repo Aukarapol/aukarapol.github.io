@@ -11,401 +11,892 @@
         .product-card:hover { transform: translateY(-5px); transition: all 0.3s ease; }
     </style>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-50">
 
-    <nav class="bg-blue-900 text-white p-4 sticky top-0 z-50">
-        <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-bold italic tracking-tighter">จำหน่ายและรับติดตั้งกล้องวงจรปิดเขื่องใน 📷 Khuang Nai CCTV Pro</h1>
-            <div class="space-x-4 hidden md:block">
-                <a href="index.html#home" class="hover:text-blue-300">หน้าแรก</a>
-				<a href="index.html#product" class="hover:text-blue-300">กล้องวงจรปิดและอุปกรณ์เสริม</a>
-                <a href="index.html#packages" class="hover:text-blue-300">แพ็คเกจ</a>
-                <a href="index.html#services" class="hover:text-blue-300">บริการ</a>
-				<a href="index.html#service" class="hover:text-blue-300">ผลงานติดตั้งของเรา</a>
-                <a href="index.html#contact" class="bg-yellow-500 text-blue-900 px-4 py-2 rounded-full font-bold">ติดต่อสอบถาม</a>
+<nav class="bg-[#fdfbf7]/90 backdrop-blur-md text-gray-700 p-4 sticky top-0 z-50 border-b border-gray-100">
+    <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-xl md:text-2xl font-semibold tracking-tight text-gray-800">
+            <span class="text-[#c27803]">📷</span> Khuang Nai <span class="font-light">CCTV Pro</span>
+        </h1>
+
+        <button id="menu-btn" class="block md:hidden focus:outline-none text-gray-600">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+
+        <div id="menu" class="hidden absolute md:static top-full left-0 w-full md:w-auto bg-[#fdfbf7] md:bg-transparent flex-col md:flex-row md:flex space-y-4 md:space-y-0 md:space-x-8 p-6 md:p-0 shadow-lg md:shadow-none">
+            <a href="index.html" class="text-sm tracking-wide hover:text-[#c27803] transition duration-300">หน้าแรก</a>
+            <a href="product.html" class="text-sm tracking-wide hover:text-[#c27803] transition duration-300">สินค้าและอุปกรณ์</a>
+            <a href="package.html" class="text-sm tracking-wide hover:text-[#c27803] transition duration-300">แพ็คเกจติดตั้ง</a>
+            <a href="index.html" class="text-sm tracking-wide hover:text-[#c27803] transition duration-300">บริการ</a>
+            <a href="service.html" class="text-sm tracking-wide hover:text-[#c27803] transition duration-300">ผลงานของเรา</a>
+            <a href="index.html#contact" class="bg-[#c27803] hover:bg-[#a66602] text-white px-5 py-2 rounded-full text-sm font-medium transition duration-300 text-center shadow-sm">
+                ติดต่อสอบถาม
+            </a>
+        </div>
+    </div>
+</nav>
+
+<header class="relative bg-[#faf9f6] pt-24 pb-16 overflow-hidden border-b border-gray-100">
+    <div class="absolute top-0 right-0 w-64 h-64 bg-[#c27803]/5 rounded-full blur-3xl -mr-20 -mt-20"></div>
+    <div class="absolute bottom-0 left-0 w-48 h-48 bg-gray-100/50 rounded-full blur-2xl -ml-10 -mb-10"></div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-3xl mx-auto text-center">
+            <span class="text-[#c27803] text-[10px] uppercase tracking-[0.4em] font-bold mb-4 block reveal">Product Collections</span>
+            
+            <h1 class="text-4xl md:text-5xl font-semibold tracking-tighter text-gray-900 mb-6 reveal delay-1">
+                แคตตาล็อกสินค้า <span class="font-light text-gray-400">และ</span> อุปกรณ์
+            </h1>
+            
+            <p class="text-gray-500 font-light text-base md:text-lg max-w-xl mx-auto leading-relaxed italic reveal delay-2">
+                สินค้าแท้รับประกันศูนย์ <span class="mx-2 text-gray-200">|</span> 
+                คัดสรรเฉพาะอุปกรณ์มาตรฐานสากล <br class="hidden md:block">
+                เพื่อความปลอดภัยที่คุณวางใจได้ในระยะยาว
+            </p>
+
+            <div class="mt-10 flex justify-center items-center gap-3 reveal delay-3">
+                <div class="w-8 h-[1px] bg-gray-200"></div>
+                <div class="w-1.5 h-1.5 rounded-full bg-[#c27803]/40"></div>
+                <div class="w-8 h-[1px] bg-gray-200"></div>
             </div>
         </div>
-    </nav>
-
-    <header class="bg-blue-800 text-white py-10 shadow-lg">
-        <div class="container mx-auto px-4 text-center">
-            <h1 class="text-3xl font-bold">แคตตาล็อกสินค้าและอุปกรณ์</h1>
-            <p class="mt-2 text-blue-200">สินค้าแท้รับประกันศูนย์ พร้อมบริการติดตั้งมาตรฐาน</p>
-        </div>
-    </header>
+    </div>
+</header>
 
     <main class="container mx-auto px-4 py-10">
         
-        <div class="flex flex-wrap justify-center gap-2 mb-8">
-            <a href="#popular" class="px-6 py-2 bg-yellow-500 text-white rounded-full shadow-md">สินค้ายอดนิยม</a>
-            <a href="#setcamera"class="px-6 py-2 bg-white text-gray-700 rounded-full hover:bg-blue-50 border border-gray-200">SET กล้องวงจรปิด</a>
-            <a href="#bulletcamera"class="px-6 py-2 bg-white text-gray-700 rounded-full hover:bg-blue-50 border border-gray-200">กล้อง Bullet Camera</a>
-            <a href="#domecamera"class="px-6 py-2 bg-white text-gray-700 rounded-full hover:bg-blue-50 border border-gray-200">กล้อง Dome Camera</a>
-			<a href="#ipcamera"class="px-6 py-2 bg-white text-gray-700 rounded-full hover:bg-blue-50 border border-gray-200">กล้อง IP Camera</a>
-			<a href="#smartcamera"class="px-6 py-2 bg-white text-gray-700 rounded-full hover:bg-blue-50 border border-gray-200">กล้องไร้สาย Smart Camera</a>
-			<a href="#microsd"class="px-6 py-2 bg-white text-gray-700 rounded-full hover:bg-blue-50 border border-gray-200">Micro SD Card</a>
-			<a href="#harddisk"class="px-6 py-2 bg-white text-gray-700 rounded-full hover:bg-blue-50 border border-gray-200">Hard Disk</a>
-			<a href="#routers"class="px-6 py-2 bg-white text-gray-700 rounded-full hover:bg-blue-50 border border-gray-200">4G Routers</a>
-			<a href="#simcard"class="px-6 py-2 bg-white text-gray-700 rounded-full hover:bg-blue-50 border border-gray-200">ซิมการ์ดรายปี</a>
-			<a href="#nvr"class="px-6 py-2 bg-white text-gray-700 rounded-full hover:bg-blue-50 border border-gray-200">เครื่องบันทึก DVR / NVR</a>
-			<a href="#accessories"class="px-6 py-2 bg-white text-gray-700 rounded-full hover:bg-blue-50 border border-gray-200">อุปกรณ์เสริมและวัสดุติดตั้ง</a>
-        </div>
+<div class="flex flex-wrap justify-center items-center gap-3 mb-16 max-w-5xl mx-auto reveal delay-3">
+    <a href="#popular" class="px-7 py-2.5 bg-[#c27803] text-white rounded-full shadow-lg shadow-[#c27803]/20 text-[11px] font-bold uppercase tracking-widest transition-all duration-300">
+        สินค้ายอดนิยม
+    </a>
+    
+    <a href="#setcamera" class="px-7 py-2.5 bg-white/50 backdrop-blur-sm text-gray-500 border border-gray-100 rounded-full text-[11px] font-bold uppercase tracking-widest hover:border-[#c27803]/30 hover:text-[#c27803] hover:bg-white transition-all duration-300">
+        SET กล้องวงจรปิด
+    </a>
+    
+    <a href="#bulletcamera" class="px-7 py-2.5 bg-white/50 backdrop-blur-sm text-gray-500 border border-gray-100 rounded-full text-[11px] font-bold uppercase tracking-widest hover:border-[#c27803]/30 hover:text-[#c27803] hover:bg-white transition-all duration-300">
+        กล้อง Bullet
+    </a>
+    
+    <a href="#domecamera" class="px-7 py-2.5 bg-white/50 backdrop-blur-sm text-gray-500 border border-gray-100 rounded-full text-[11px] font-bold uppercase tracking-widest hover:border-[#c27803]/30 hover:text-[#c27803] hover:bg-white transition-all duration-300">
+        กล้อง Dome
+    </a>
 
-        <div id="popular" class="py-16 px-4 bg-white">
-            <div class="flex items-center mb-6">
-                <div class="w-2 h-8 bg-yellow-500 mr-3"></div>
-                <h2 class="text-2xl font-bold text-gray-800">สินค้ายอดนิยม</h2>
+    <a href="#ipcamera" class="px-7 py-2.5 bg-white/50 backdrop-blur-sm text-gray-500 border border-gray-100 rounded-full text-[11px] font-bold uppercase tracking-widest hover:border-[#c27803]/30 hover:text-[#c27803] hover:bg-white transition-all duration-300">
+        IP Camera
+    </a>
+
+    <a href="#smartcamera" class="px-7 py-2.5 bg-white/50 backdrop-blur-sm text-gray-500 border border-gray-100 rounded-full text-[11px] font-bold uppercase tracking-widest hover:border-[#c27803]/30 hover:text-[#c27803] hover:bg-white transition-all duration-300">
+        Smart Camera
+    </a>
+
+    <a href="#microsd" class="px-7 py-2.5 bg-white/50 backdrop-blur-sm text-gray-500 border border-gray-100 rounded-full text-[11px] font-bold uppercase tracking-widest hover:border-[#c27803]/30 hover:text-[#c27803] hover:bg-white transition-all duration-300">
+        SD Card
+    </a>
+
+    <a href="#harddisk" class="px-7 py-2.5 bg-white/50 backdrop-blur-sm text-gray-500 border border-gray-100 rounded-full text-[11px] font-bold uppercase tracking-widest hover:border-[#c27803]/30 hover:text-[#c27803] hover:bg-white transition-all duration-300">
+        Hard Disk
+    </a>
+
+    <a href="#routers" class="px-7 py-2.5 bg-white/50 backdrop-blur-sm text-gray-500 border border-gray-100 rounded-full text-[11px] font-bold uppercase tracking-widest hover:border-[#c27803]/30 hover:text-[#c27803] hover:bg-white transition-all duration-300">
+        4G Routers
+    </a>
+
+    <a href="#simcard" class="px-7 py-2.5 bg-white/50 backdrop-blur-sm text-gray-500 border border-gray-100 rounded-full text-[11px] font-bold uppercase tracking-widest hover:border-[#c27803]/30 hover:text-[#c27803] hover:bg-white transition-all duration-300">
+        ซิมเน็ตรายปี
+    </a>
+
+    <a href="#nvr" class="px-7 py-2.5 bg-white/50 backdrop-blur-sm text-gray-500 border border-gray-100 rounded-full text-[11px] font-bold uppercase tracking-widest hover:border-[#c27803]/30 hover:text-[#c27803] hover:bg-white transition-all duration-300">
+        DVR / NVR
+    </a>
+
+    <a href="#accessories" class="px-7 py-2.5 bg-white/50 backdrop-blur-sm text-gray-500 border border-gray-100 rounded-full text-[11px] font-bold uppercase tracking-widest hover:border-[#c27803]/30 hover:text-[#c27803] hover:bg-white transition-all duration-300">
+        อุปกรณ์เสริม
+    </a>
+</div>
+
+
+<div id="popular" class="py-24 px-4 bg-white reveal">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex items-center space-x-4 mb-12">
+            <div class="flex flex-col">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-[#c27803] font-bold mb-1">Top Selection</span>
+                <h2 class="text-3xl font-semibold tracking-tighter text-gray-900">สินค้ายอดนิยม</h2>
             </div>
+            <div class="h-[1px] flex-grow bg-gray-100"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-			
-                <div class="product-card bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-                    <div class="relative h-48 bg-gray-200">
-                        <img src="productimage/homeimage/Tapo_C530WS.jpg" alt="Camera" class="w-full h-full object-cover">
-                        <span class="absolute top-2 left-2 bg-red-600 text-white text-xs px-2 py-1 rounded">HIKVISION</span>
-                    </div>
-                    <div class="p-4">
-                        <a href="product01.html" target="_blank" class="font-bold text-gray-800 h-12 overflow-hidden">DS-2CD1043G0-I 4MP Fixed Bullet</a>
-                        <p class="text-sm text-gray-500 mt-1">ความละเอียด 4MP, IP67 กันน้ำ, ระยะ IR 30m</p>
-                        <div class="mt-4 flex justify-between items-center">
-                        <span class="text-xl font-bold text-red-600">1,590 บาท</span>
-                        <a href="https://line.me/R/ti/p/@ไอดีไลน์ของคุณ" target="_blank" class="text-sm bg-red-600 text-white px-3 py-1 rounded-lg border border-red-600">ซื้อเลย</a>
-                        </div>
-                    </div>
-                </div>
-				
+            <div class="group bg-white rounded-[2rem] border border-gray-50 p-3 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.04)] hover:-translate-y-2">
                 
-				
+                <div class="relative aspect-square bg-[#faf9f6] rounded-[1.5rem] overflow-hidden">
+                    <img src="productimage/homeimage/Tapo_C530WS.jpg" alt="Camera" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    
+                    <span class="absolute top-4 left-4 bg-white/80 backdrop-blur-md text-gray-500 text-[9px] font-bold tracking-widest px-3 py-1.5 rounded-full border border-gray-100 uppercase">
+                        HIKVISION
+                    </span>
+                </div>
 
-				
-              </div>
-        </div>
-<br>
-        <div id="setcamera" class="py-16 px-4 bg-white">
-            <div class="flex items-center mb-6">
-                <div class="w-2 h-8 bg-blue-900 mr-3"></div>
-                <h2 class="text-2xl font-bold text-gray-800">SET กล้องวงจรปิด</h2>
-            </div>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-			
-                <div class="product-card bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-                    <div class="relative h-48 bg-gray-200">
-                        <img src="productimage/homeimage/Tapo_C530WS.jpg" alt="Camera" class="w-full h-full object-cover">
-                        <span class="absolute top-2 left-2 bg-red-600 text-white text-xs px-2 py-1 rounded">HIKVISION</span>
-                    </div>
-                    <div class="p-4">
-                        <a href="product01.html" target="_blank" class="font-bold text-gray-800 h-12 overflow-hidden">DS-2CD1043G0-I 4MP Fixed Bullet</a>
-                        <p class="text-sm text-gray-500 mt-1">ความละเอียด 4MP, IP67 กันน้ำ, ระยะ IR 30m</p>
-                        <div class="mt-4 flex justify-between items-center">
-                        <span class="text-xl font-bold text-red-600">1,590 บาท</span>
-                        <a href="https://line.me/R/ti/p/@ไอดีไลน์ของคุณ" target="_blank" class="text-sm bg-red-600 text-white px-3 py-1 rounded-lg border border-red-600">ซื้อเลย</a>
+                <div class="p-5">
+                    <a href="product01.html" target="_blank" class="block group-hover:text-[#c27803] transition-colors duration-300">
+                        <h3 class="font-medium text-gray-800 text-base leading-snug h-12 overflow-hidden">
+                            DS-2CD1043G0-I 4MP Fixed Bullet
+                        </h3>
+                    </a>
+                    <p class="text-xs text-gray-400 font-light mt-2 line-clamp-2 italic">
+                        ความละเอียด 4MP, IP67 กันน้ำ, ระยะ IR 30m
+                    </p>
+                    
+                    <div class="mt-6 pt-5 border-t border-gray-50 flex justify-between items-center">
+                        <div class="flex flex-col">
+                            <span class="text-[9px] uppercase tracking-wider text-gray-400 font-bold">Price</span>
+                            <span class="text-lg font-semibold text-gray-900">1,590 <span class="text-[10px] font-light">THB</span></span>
                         </div>
+                        
+                        <a href="https://line.me/R/ti/p/@ไอดีไลน์ของคุณ" target="_blank" class="bg-[#c27803]/5 hover:bg-[#c27803] text-[#c27803] hover:text-white px-5 py-2.5 rounded-xl text-[11px] font-bold uppercase tracking-widest transition-all duration-300 border border-[#c27803]/10">
+                            ซื้อเลย
+                        </a>
                     </div>
                 </div>
-<!-- เพิ่มสินค้าตรงนี้ -->
-
             </div>
-        </div>
-<br>
-        <div id="bulletcamera" class="py-16 px-4 bg-white">
-            <div class="flex items-center mb-6">
-                <div class="w-2 h-8 bg-blue-900 mr-3"></div>
-                <h2 class="text-2xl font-bold text-gray-800">กล้อง Bullet Camera</h2>
-            </div>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 			
-                <div class="product-card bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-                    <div class="relative h-48 bg-gray-200">
-                        <img src="productimage/homeimage/Tapo_C530WS.jpg" alt="Camera" class="w-full h-full object-cover">
-                        <span class="absolute top-2 left-2 bg-red-600 text-white text-xs px-2 py-1 rounded">HIKVISION</span>
-                    </div>
-                    <div class="p-4">
-                        <a href="product01.html" target="_blank" class="font-bold text-gray-800 h-12 overflow-hidden">DS-2CD1043G0-I 4MP Fixed Bullet</a>
-                        <p class="text-sm text-gray-500 mt-1">ความละเอียด 4MP, IP67 กันน้ำ, ระยะ IR 30m</p>
-                        <div class="mt-4 flex justify-between items-center">
-                        <span class="text-xl font-bold text-red-600">1,590 บาท</span>
-                        <a href="https://line.me/R/ti/p/@ไอดีไลน์ของคุณ" target="_blank" class="text-sm bg-red-600 text-white px-3 py-1 rounded-lg border border-red-600">ซื้อเลย</a>
+			 
+			 <div class="group bg-white rounded-[2rem] border border-gray-50 p-3 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.04)] hover:-translate-y-2">
+                
+                <div class="relative aspect-square bg-[#faf9f6] rounded-[1.5rem] overflow-hidden">
+                    <img src="productimage/homeimage/Tapo_C530WS.jpg" alt="Camera" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    
+                    <span class="absolute top-4 left-4 bg-white/80 backdrop-blur-md text-gray-500 text-[9px] font-bold tracking-widest px-3 py-1.5 rounded-full border border-gray-100 uppercase">
+                        HIKVISION
+                    </span>
+                </div>
+
+                <div class="p-5">
+                    <a href="product01.html" target="_blank" class="block group-hover:text-[#c27803] transition-colors duration-300">
+                        <h3 class="font-medium text-gray-800 text-base leading-snug h-12 overflow-hidden">
+                            DS-2CD1043G0-I 4MP Fixed Bullet
+                        </h3>
+                    </a>
+                    <p class="text-xs text-gray-400 font-light mt-2 line-clamp-2 italic">
+                        ความละเอียด 4MP, IP67 กันน้ำ, ระยะ IR 30m
+                    </p>
+                    
+                    <div class="mt-6 pt-5 border-t border-gray-50 flex justify-between items-center">
+                        <div class="flex flex-col">
+                            <span class="text-[9px] uppercase tracking-wider text-gray-400 font-bold">Price</span>
+                            <span class="text-lg font-semibold text-gray-900">1,590 <span class="text-[10px] font-light">THB</span></span>
                         </div>
+                        
+                        <a href="https://line.me/R/ti/p/@ไอดีไลน์ของคุณ" target="_blank" class="bg-[#c27803]/5 hover:bg-[#c27803] text-[#c27803] hover:text-white px-5 py-2.5 rounded-xl text-[11px] font-bold uppercase tracking-widest transition-all duration-300 border border-[#c27803]/10">
+                            ซื้อเลย
+                        </a>
                     </div>
                 </div>
-<!-- เพิ่มสินค้าตรงนี้ -->
-
+            </div>
 
             </div>
-        </div>
+    </div>
+</div>
 
 <br>
-        <div id="domecamera" class="py-16 px-4 bg-white">
-            <div class="flex items-center mb-6">
-                <div class="w-2 h-8 bg-blue-900 mr-3"></div>
-                <h2 class="text-2xl font-bold text-gray-800">กล้อง Dome Camera</h2>
+<div id="setcamera" class="py-24 px-4 bg-white reveal">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex items-center space-x-4 mb-12">
+            <div class="flex flex-col">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-[#c27803] font-bold mb-1">Professional Packages</span>
+                <h2 class="text-3xl font-semibold tracking-tighter text-gray-900">SET กล้องวงจรปิด</h2>
             </div>
+            <div class="h-[1px] flex-grow bg-gray-100"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-			
-                <div class="product-card bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-                    <div class="relative h-48 bg-gray-200">
-                        <img src="productimage/homeimage/Tapo_C530WS.jpg" alt="Camera" class="w-full h-full object-cover">
-                        <span class="absolute top-2 left-2 bg-red-600 text-white text-xs px-2 py-1 rounded">HIKVISION</span>
-                    </div>
-                    <div class="p-4">
-                        <a href="product01.html" target="_blank" class="font-bold text-gray-800 h-12 overflow-hidden">DS-2CD1043G0-I 4MP Fixed Bullet</a>
-                        <p class="text-sm text-gray-500 mt-1">ความละเอียด 4MP, IP67 กันน้ำ, ระยะ IR 30m</p>
-                        <div class="mt-4 flex justify-between items-center">
-                        <span class="text-xl font-bold text-red-600">1,590 บาท</span>
-                        <a href="https://line.me/R/ti/p/@ไอดีไลน์ของคุณ" target="_blank" class="text-sm bg-red-600 text-white px-3 py-1 rounded-lg border border-red-600">ซื้อเลย</a>
+            <div class="group bg-white rounded-[2rem] border border-gray-50 p-3 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.04)] hover:-translate-y-2">
+                
+                <div class="relative aspect-square bg-[#faf9f6] rounded-[1.5rem] overflow-hidden">
+                    <img src="productimage/homeimage/Tapo_C530WS.jpg" alt="Set Camera" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    
+                    <span class="absolute top-4 left-4 bg-white/80 backdrop-blur-md text-gray-500 text-[9px] font-bold tracking-widest px-3 py-1.5 rounded-full border border-gray-100 uppercase">
+                        HIKVISION
+                    </span>
+                </div>
+
+                <div class="p-5">
+                    <a href="product01.html" target="_blank" class="block group-hover:text-[#c27803] transition-colors duration-300">
+                        <h3 class="font-medium text-gray-800 text-base leading-snug h-12 overflow-hidden">
+                            DS-2CD1043G0-I 4MP Fixed Bullet
+                        </h3>
+                    </a>
+                    <p class="text-xs text-gray-400 font-light mt-2 line-clamp-2 italic">
+                        ความละเอียด 4MP, IP67 กันน้ำ, ระยะ IR 30m
+                    </p>
+                    
+                    <div class="mt-6 pt-5 border-t border-gray-50 flex justify-between items-center">
+                        <div class="flex flex-col">
+                            <span class="text-[9px] uppercase tracking-wider text-gray-400 font-bold">Special Price</span>
+                            <span class="text-lg font-semibold text-gray-900">1,590 <span class="text-[10px] font-light">THB</span></span>
                         </div>
+                        
+                        <a href="https://line.me/R/ti/p/@ไอดีไลน์ของคุณ" target="_blank" class="bg-[#c27803]/5 hover:bg-[#c27803] text-[#c27803] hover:text-white px-5 py-2.5 rounded-xl text-[11px] font-bold uppercase tracking-widest transition-all duration-300 border border-[#c27803]/10">
+                            ซื้อเลย
+                        </a>
                     </div>
                 </div>
-<!-- เพิ่มสินค้าตรงนี้ -->
-
+            </div>
 
             </div>
+    </div>
+</div>
+<br>
+
+<div id="bulletcamera" class="py-24 px-4 bg-white reveal">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex items-center space-x-4 mb-12">
+            <div class="flex flex-col">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-[#c27803] font-bold mb-1">Outdoor Surveillance</span>
+                <h2 class="text-3xl font-semibold tracking-tighter text-gray-900">กล้อง Bullet Camera</h2>
+            </div>
+            <div class="h-[1px] flex-grow bg-gray-100"></div>
         </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+            
+            <div class="group bg-white rounded-[2rem] border border-gray-50 p-3 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.04)] hover:-translate-y-2">
+                
+                <div class="relative aspect-square bg-[#faf9f6] rounded-[1.5rem] overflow-hidden">
+                    <img src="productimage/homeimage/Tapo_C530WS.jpg" alt="Bullet Camera" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    
+                    <span class="absolute top-4 left-4 bg-white/80 backdrop-blur-md text-gray-500 text-[9px] font-bold tracking-widest px-3 py-1.5 rounded-full border border-gray-100 uppercase">
+                        HIKVISION
+                    </span>
+                </div>
+
+                <div class="p-5">
+                    <a href="product01.html" target="_blank" class="block group-hover:text-[#c27803] transition-colors duration-300">
+                        <h3 class="font-medium text-gray-800 text-base leading-snug h-12 overflow-hidden">
+                            DS-2CD1043G0-I 4MP Fixed Bullet
+                        </h3>
+                    </a>
+                    <p class="text-xs text-gray-400 font-light mt-2 line-clamp-2 italic">
+                        ความละเอียด 4MP, IP67 กันน้ำ, ระยะ IR 30m
+                    </p>
+                    
+                    <div class="mt-6 pt-5 border-t border-gray-50 flex justify-between items-center">
+                        <div class="flex flex-col">
+                            <span class="text-[9px] uppercase tracking-wider text-gray-400 font-bold">Standard Price</span>
+                            <span class="text-lg font-semibold text-gray-900">1,590 <span class="text-[10px] font-light">THB</span></span>
+                        </div>
+                        
+                        <a href="https://line.me/R/ti/p/@ไอดีไลน์ของคุณ" target="_blank" class="bg-[#c27803]/5 hover:bg-[#c27803] text-[#c27803] hover:text-white px-5 py-2.5 rounded-xl text-[11px] font-bold uppercase tracking-widest transition-all duration-300 border border-[#c27803]/10">
+                            ซื้อเลย
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+    </div>
+</div>
 
 <br>
-        <div id="ipcamera" class="py-16 px-4 bg-white">
-            <div class="flex items-center mb-6">
-                <div class="w-2 h-8 bg-blue-900 mr-3"></div>
-                <h2 class="text-2xl font-bold text-gray-800">กล้อง IP Camera</h2>
+<div id="domecamera" class="py-24 px-4 bg-white reveal">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex items-center space-x-4 mb-12">
+            <div class="flex flex-col">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-[#c27803] font-bold mb-1">Indoor Aesthetics</span>
+                <h2 class="text-3xl font-semibold tracking-tighter text-gray-900">กล้อง Dome Camera</h2>
             </div>
+            <div class="h-[1px] flex-grow bg-gray-100"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-			
-                <div class="product-card bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-                    <div class="relative h-48 bg-gray-200">
-                        <img src="productimage/homeimage/Tapo_C530WS.jpg" alt="Camera" class="w-full h-full object-cover">
-                        <span class="absolute top-2 left-2 bg-red-600 text-white text-xs px-2 py-1 rounded">HIKVISION</span>
-                    </div>
-                    <div class="p-4">
-                        <a href="product01.html" target="_blank" class="font-bold text-gray-800 h-12 overflow-hidden">DS-2CD1043G0-I 4MP Fixed Bullet</a>
-                        <p class="text-sm text-gray-500 mt-1">ความละเอียด 4MP, IP67 กันน้ำ, ระยะ IR 30m</p>
-                        <div class="mt-4 flex justify-between items-center">
-                        <span class="text-xl font-bold text-red-600">1,590 บาท</span>
-                        <a href="https://line.me/R/ti/p/@ไอดีไลน์ของคุณ" target="_blank" class="text-sm bg-red-600 text-white px-3 py-1 rounded-lg border border-red-600">ซื้อเลย</a>
+            <div class="group bg-white rounded-[2rem] border border-gray-50 p-3 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.04)] hover:-translate-y-2">
+                
+                <div class="relative aspect-square bg-[#faf9f6] rounded-[1.5rem] overflow-hidden">
+                    <img src="productimage/homeimage/Tapo_C530WS.jpg" alt="Dome Camera" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    
+                    <span class="absolute top-4 left-4 bg-white/80 backdrop-blur-md text-gray-500 text-[9px] font-bold tracking-widest px-3 py-1.5 rounded-full border border-gray-100 uppercase">
+                        HIKVISION
+                    </span>
+                </div>
+
+                <div class="p-5">
+                    <a href="product01.html" target="_blank" class="block group-hover:text-[#c27803] transition-colors duration-300">
+                        <h3 class="font-medium text-gray-800 text-base leading-snug h-12 overflow-hidden">
+                            DS-2CD1143G0-I 4MP Fixed Dome
+                        </h3>
+                    </a>
+                    <p class="text-xs text-gray-400 font-light mt-2 line-clamp-2 italic">
+                        ดีไซน์กะทัดรัด, ทนทานต่อแรงกระแทก, ภาพคมชัดแม้แสงน้อย
+                    </p>
+                    
+                    <div class="mt-6 pt-5 border-t border-gray-50 flex justify-between items-center">
+                        <div class="flex flex-col">
+                            <span class="text-[9px] uppercase tracking-wider text-gray-400 font-bold">Price</span>
+                            <span class="text-lg font-semibold text-gray-900">1,790 <span class="text-[10px] font-light">THB</span></span>
                         </div>
+                        
+                         <a href="https://line.me/R/ti/p/@ไอดีไลน์ของคุณ" target="_blank" class="bg-[#c27803]/5 hover:bg-[#c27803] text-[#c27803] hover:text-white px-5 py-2.5 rounded-xl text-[11px] font-bold uppercase tracking-widest transition-all duration-300 border border-[#c27803]/10">
+                            ซื้อเลย
+                        </a>
                     </div>
                 </div>
-<!-- เพิ่มสินค้าตรงนี้ -->
-
+            </div>
 
             </div>
+    </div>
+</div>
+
+<br>
+<div id="ipcamera" class="py-24 px-4 bg-white reveal">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex items-center space-x-4 mb-12">
+            <div class="flex flex-col">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-[#c27803] font-bold mb-1">Professional Network</span>
+                <h2 class="text-3xl font-semibold tracking-tighter text-gray-900">กล้อง IP Camera</h2>
+            </div>
+            <div class="h-[1px] flex-grow bg-gray-100"></div>
         </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+            
+            <div class="group bg-white rounded-[2rem] border border-gray-50 p-3 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.04)] hover:-translate-y-2">
+                
+                <div class="relative aspect-square bg-[#faf9f6] rounded-[1.5rem] overflow-hidden">
+                    <img src="productimage/homeimage/Tapo_C530WS.jpg" alt="IP Camera" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    
+                    <span class="absolute top-4 left-4 bg-white/80 backdrop-blur-md text-gray-500 text-[9px] font-bold tracking-widest px-3 py-1.5 rounded-full border border-gray-100 uppercase">
+                        HIKVISION
+                    </span>
+                </div>
+
+                <div class="p-5">
+                    <a href="product01.html" target="_blank" class="block group-hover:text-[#c27803] transition-colors duration-300">
+                        <h3 class="font-medium text-gray-800 text-base leading-snug h-12 overflow-hidden">
+                            DS-2CD1043G0-I 4MP Fixed Bullet IP
+                        </h3>
+                    </a>
+                    <p class="text-xs text-gray-400 font-light mt-2 line-clamp-2 italic">
+                        ความละเอียด 4MP, ระบบ PoE, กันน้ำมาตรฐาน IP67
+                    </p>
+                    
+                    <div class="mt-6 pt-5 border-t border-gray-50 flex justify-between items-center">
+                        <div class="flex flex-col">
+                            <span class="text-[9px] uppercase tracking-wider text-gray-400 font-bold">Standard Price</span>
+                            <span class="text-lg font-semibold text-gray-900">1,590 <span class="text-[10px] font-light">THB</span></span>
+                        </div>
+                        
+                        <a href="https://line.me/R/ti/p/@ไอดีไลน์ของคุณ" target="_blank" class="bg-[#c27803]/5 hover:bg-[#c27803] text-[#c27803] hover:text-white px-5 py-2.5 rounded-xl text-[11px] font-bold uppercase tracking-widest transition-all duration-300 border border-[#c27803]/10">
+                            ซื้อเลย
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+    </div>
+</div>
 		
 <br>
-        <div id="smartcamera" class="py-16 px-4 bg-white">
-            <div class="flex items-center mb-6">
-                <div class="w-2 h-8 bg-blue-900 mr-3"></div>
-                <h2 class="text-2xl font-bold text-gray-800">กล้องไร้สาย Smart Camera</h2>
+<div id="smartcamera" class="py-24 px-4 bg-white reveal">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex items-center space-x-4 mb-12">
+            <div class="flex flex-col">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-[#c27803] font-bold mb-1">Wireless Living</span>
+                <h2 class="text-3xl font-semibold tracking-tighter text-gray-900">กล้องไร้สาย Smart Camera</h2>
             </div>
+            <div class="h-[1px] flex-grow bg-gray-100"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-			
-                <div class="product-card bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-                    <div class="relative h-48 bg-gray-200">
-                        <img src="productimage/homeimage/Tapo_C530WS.jpg" alt="Camera" class="w-full h-full object-cover">
-                        <span class="absolute top-2 left-2 bg-red-600 text-white text-xs px-2 py-1 rounded">HIKVISION</span>
-                    </div>
-                    <div class="p-4">
-                        <a href="product01.html" target="_blank" class="font-bold text-gray-800 h-12 overflow-hidden">DS-2CD1043G0-I 4MP Fixed Bullet</a>
-                        <p class="text-sm text-gray-500 mt-1">ความละเอียด 4MP, IP67 กันน้ำ, ระยะ IR 30m</p>
-                        <div class="mt-4 flex justify-between items-center">
-                        <span class="text-xl font-bold text-red-600">1,590 บาท</span>
-                        <a href="https://line.me/R/ti/p/@ไอดีไลน์ของคุณ" target="_blank" class="text-sm bg-red-600 text-white px-3 py-1 rounded-lg border border-red-600">ซื้อเลย</a>
+            <div class="group bg-white rounded-[2rem] border border-gray-50 p-3 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.04)] hover:-translate-y-2">
+                
+                <div class="relative aspect-square bg-[#faf9f6] rounded-[1.5rem] overflow-hidden">
+                    <img src="productimage/homeimage/Tapo_C530WS.jpg" alt="Smart Camera" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    
+                    <span class="absolute top-4 left-4 bg-white/80 backdrop-blur-md text-gray-500 text-[9px] font-bold tracking-widest px-3 py-1.5 rounded-full border border-gray-100 uppercase">
+                        TAPO SERIES
+                    </span>
+                </div>
+
+                <div class="p-5">
+                    <a href="product01.html" target="_blank" class="block group-hover:text-[#c27803] transition-colors duration-300">
+                        <h3 class="font-medium text-gray-800 text-base leading-snug h-12 overflow-hidden">
+                            Tapo C530WS Smart Outdoor Wi-Fi Camera
+                        </h3>
+                    </a>
+                    <p class="text-xs text-gray-400 font-light mt-2 line-clamp-2 italic">
+                        ความคมชัดสูง, หมุนได้ 360°, สั่งงานผ่านแอปฯ มือถือได้ทุกที่
+                    </p>
+                    
+                    <div class="mt-6 pt-5 border-t border-gray-50 flex justify-between items-center">
+                        <div class="flex flex-col">
+                            <span class="text-[9px] uppercase tracking-wider text-gray-400 font-bold">Best Value</span>
+                            <span class="text-lg font-semibold text-gray-900">1,590 <span class="text-[10px] font-light">THB</span></span>
                         </div>
+                        
+                        <a href="https://line.me/R/ti/p/@ไอดีไลน์ของคุณ" target="_blank" class="bg-[#c27803]/5 hover:bg-[#c27803] text-[#c27803] hover:text-white px-5 py-2.5 rounded-xl text-[11px] font-bold uppercase tracking-widest transition-all duration-300 border border-[#c27803]/10">
+                            สั่งซื้อ
+                        </a>
                     </div>
                 </div>
-<!-- เพิ่มสินค้าตรงนี้ -->
-
+            </div>
 
             </div>
-        </div>		
+    </div>
+</div>	
 
 <br>
-       <div id="microsd" class="py-16 px-4 bg-white">
-            <div class="flex items-center mb-6">
-                <div class="w-2 h-8 bg-blue-900 mr-3"></div>
-                <h2 class="text-2xl font-bold text-gray-800">Micro SD Card สำหรับกล้องวงจรปิด</h2>
+<div id="microsd" class="py-24 px-4 bg-white reveal">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex items-center space-x-4 mb-12">
+            <div class="flex flex-col">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-[#c27803] font-bold mb-1">High-Endurance Storage</span>
+                <h2 class="text-3xl font-semibold tracking-tighter text-gray-900">Micro SD Card สำหรับกล้องวงจรปิด</h2>
             </div>
+            <div class="h-[1px] flex-grow bg-gray-100"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-			
-                <div class="product-card bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-                    <div class="relative h-48 bg-gray-200">
-                        <img src="productimage/homeimage/Tapo_C530WS.jpg" alt="Camera" class="w-full h-full object-cover">
-                        <span class="absolute top-2 left-2 bg-red-600 text-white text-xs px-2 py-1 rounded">HIKVISION</span>
-                    </div>
-                    <div class="p-4">
-                        <a href="product01.html" target="_blank" class="font-bold text-gray-800 h-12 overflow-hidden">DS-2CD1043G0-I 4MP Fixed Bullet</a>
-                        <p class="text-sm text-gray-500 mt-1">ความละเอียด 4MP, IP67 กันน้ำ, ระยะ IR 30m</p>
-                        <div class="mt-4 flex justify-between items-center">
-                        <span class="text-xl font-bold text-red-600">1,590 บาท</span>
-                        <a href="https://line.me/R/ti/p/@ไอดีไลน์ของคุณ" target="_blank" class="text-sm bg-red-600 text-white px-3 py-1 rounded-lg border border-red-600">ซื้อเลย</a>
+            <div class="group bg-white rounded-[2rem] border border-gray-50 p-3 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.04)] hover:-translate-y-2">
+                
+                <div class="relative aspect-square bg-[#faf9f6] rounded-[1.5rem] overflow-hidden">
+                    <img src="productimage/homeimage/Tapo_C530WS.jpg" alt="Micro SD Card" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    
+                    <span class="absolute top-4 left-4 bg-white/80 backdrop-blur-md text-gray-500 text-[9px] font-bold tracking-widest px-3 py-1.5 rounded-full border border-gray-100 uppercase">
+                        High Speed
+                    </span>
+                </div>
+
+                <div class="p-5">
+                    <a href="product01.html" target="_blank" class="block group-hover:text-[#c27803] transition-colors duration-300">
+                        <h3 class="font-medium text-gray-800 text-base leading-snug h-12 overflow-hidden">
+                            Sandisk High Endurance MicroSD Card
+                        </h3>
+                    </a>
+                    <p class="text-xs text-gray-400 font-light mt-2 line-clamp-2 italic">
+                        บันทึกวิดีโอต่อเนื่อง 24 ชม. ทนทานต่ออุณหภูมิและความชื้นสูง
+                    </p>
+                    
+                    <div class="mt-6 pt-5 border-t border-gray-50 flex justify-between items-center">
+                        <div class="flex flex-col">
+                            <span class="text-[9px] uppercase tracking-wider text-gray-400 font-bold">Standard Price</span>
+                            <span class="text-lg font-semibold text-gray-900">350 <span class="text-[10px] font-light">THB</span></span>
                         </div>
+                        
+                        <a href="https://line.me/R/ti/p/@ไอดีไลน์ของคุณ" target="_blank" class="bg-[#c27803]/5 hover:bg-[#c27803] text-[#c27803] hover:text-white px-5 py-2.5 rounded-xl text-[11px] font-bold uppercase tracking-widest transition-all duration-300 border border-[#c27803]/10">
+                            สั่งซื้อ
+                        </a>
                     </div>
                 </div>
-<!-- เพิ่มสินค้าตรงนี้ -->
-
+            </div>
 
             </div>
-        </div>			
+    </div>
+</div>		
 <br>		
 		
-        <div id="harddisk" class="py-16 px-4 bg-white">
-            <div class="flex items-center mb-6">
-                <div class="w-2 h-8 bg-blue-900 mr-3"></div>
-                <h2 class="text-2xl font-bold text-gray-800">Hard Disk สำหรับกล้องวงจรปิด</h2>
+<div id="harddisk" class="py-24 px-4 bg-white reveal">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex items-center space-x-4 mb-12">
+            <div class="flex flex-col">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-[#c27803] font-bold mb-1">Reliable Storage</span>
+                <h2 class="text-3xl font-semibold tracking-tighter text-gray-900">Hard Disk สำหรับกล้องวงจรปิด</h2>
             </div>
+            <div class="h-[1px] flex-grow bg-gray-100"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-			
-                <div class="product-card bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-                    <div class="relative h-48 bg-gray-200">
-                        <img src="productimage/homeimage/Tapo_C530WS.jpg" alt="Camera" class="w-full h-full object-cover">
-                        <span class="absolute top-2 left-2 bg-red-600 text-white text-xs px-2 py-1 rounded">HIKVISION</span>
-                    </div>
-                    <div class="p-4">
-                        <a href="product01.html" target="_blank" class="font-bold text-gray-800 h-12 overflow-hidden">DS-2CD1043G0-I 4MP Fixed Bullet</a>
-                        <p class="text-sm text-gray-500 mt-1">ความละเอียด 4MP, IP67 กันน้ำ, ระยะ IR 30m</p>
-                        <div class="mt-4 flex justify-between items-center">
-                        <span class="text-xl font-bold text-red-600">1,590 บาท</span>
-                        <a href="https://line.me/R/ti/p/@ไอดีไลน์ของคุณ" target="_blank" class="text-sm bg-red-600 text-white px-3 py-1 rounded-lg border border-red-600">ซื้อเลย</a>
+            <div class="group bg-white rounded-[2rem] border border-gray-50 p-3 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.04)] hover:-translate-y-2">
+                
+                <div class="relative aspect-square bg-[#faf9f6] rounded-[1.5rem] overflow-hidden">
+                    <img src="productimage/homeimage/Tapo_C530WS.jpg" alt="Hard Disk" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    
+                    <span class="absolute top-4 left-4 bg-white/80 backdrop-blur-md text-gray-500 text-[9px] font-bold tracking-widest px-3 py-1.5 rounded-full border border-gray-100 uppercase">
+                        Surveillance Grade
+                    </span>
+                </div>
+
+                <div class="p-5">
+                    <a href="product01.html" target="_blank" class="block group-hover:text-[#c27803] transition-colors duration-300">
+                        <h3 class="font-medium text-gray-800 text-base leading-snug h-12 overflow-hidden">
+                            SkyHawk Surveillance Hard Drive 1TB-10TB
+                        </h3>
+                    </a>
+                    <p class="text-xs text-gray-400 font-light mt-2 line-clamp-2 italic">
+                        ออกแบบเพื่อการบันทึกต่อเนื่อง 24/7 รองรับกล้องหลายตัวพร้อมกัน
+                    </p>
+                    
+                    <div class="mt-6 pt-5 border-t border-gray-50 flex justify-between items-center">
+                        <div class="flex flex-col">
+                            <span class="text-[9px] uppercase tracking-wider text-gray-400 font-bold">Price Start</span>
+                            <span class="text-lg font-semibold text-gray-900">1,xxx <span class="text-[10px] font-light">THB</span></span>
                         </div>
+                        
+                        <a href="https://line.me/R/ti/p/@ไอดีไลน์ของคุณ" target="_blank" class="bg-[#c27803]/5 hover:bg-[#c27803] text-[#c27803] hover:text-white px-5 py-2.5 rounded-xl text-[11px] font-bold uppercase tracking-widest transition-all duration-300 border border-[#c27803]/10">
+                            Check Detail
+                        </a>
                     </div>
                 </div>
-<!-- เพิ่มสินค้าตรงนี้ -->
-
+            </div>
 
             </div>
-        </div>	
+    </div>
+</div>
 <br>
-        <div id="routers" class="py-16 px-4 bg-white">
-            <div class="flex items-center mb-6">
-                <div class="w-2 h-8 bg-blue-900 mr-3"></div>
-                <h2 class="text-2xl font-bold text-gray-800">4G Routers</h2>
+<div id="routers" class="py-24 px-4 bg-white reveal">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex items-center space-x-4 mb-12">
+            <div class="flex flex-col">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-[#c27803] font-bold mb-1">High-Speed Network</span>
+                <h2 class="text-3xl font-semibold tracking-tighter text-gray-900">4G Routers</h2>
             </div>
+            <div class="h-[1px] flex-grow bg-gray-100"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-			
-                <div class="product-card bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-                    <div class="relative h-48 bg-gray-200">
-                        <img src="productimage/homeimage/Tapo_C530WS.jpg" alt="Camera" class="w-full h-full object-cover">
-                        <span class="absolute top-2 left-2 bg-red-600 text-white text-xs px-2 py-1 rounded">HIKVISION</span>
-                    </div>
-                    <div class="p-4">
-                        <a href="product01.html" target="_blank" class="font-bold text-gray-800 h-12 overflow-hidden">DS-2CD1043G0-I 4MP Fixed Bullet</a>
-                        <p class="text-sm text-gray-500 mt-1">ความละเอียด 4MP, IP67 กันน้ำ, ระยะ IR 30m</p>
-                        <div class="mt-4 flex justify-between items-center">
-                        <span class="text-xl font-bold text-red-600">1,590 บาท</span>
-                        <a href="https://line.me/R/ti/p/@ไอดีไลน์ของคุณ" target="_blank" class="text-sm bg-red-600 text-white px-3 py-1 rounded-lg border border-red-600">ซื้อเลย</a>
+            <div class="group bg-white rounded-[2rem] border border-gray-50 p-3 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.04)] hover:-translate-y-2">
+                
+                <div class="relative aspect-square bg-[#faf9f6] rounded-[1.5rem] overflow-hidden">
+                    <img src="productimage/homeimage/Tapo_C530WS.jpg" alt="4G Router" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    
+                    <span class="absolute top-4 left-4 bg-white/80 backdrop-blur-md text-gray-500 text-[9px] font-bold tracking-widest px-3 py-1.5 rounded-full border border-gray-100 uppercase">
+                        Enterprise
+                    </span>
+                </div>
+
+                <div class="p-5">
+                    <a href="product01.html" target="_blank" class="block group-hover:text-[#c27803] transition-colors duration-300">
+                        <h3 class="font-medium text-gray-800 text-base leading-snug h-12 overflow-hidden">
+                            4G LTE Wireless Router N300
+                        </h3>
+                    </a>
+                    <p class="text-xs text-gray-400 font-light mt-2 line-clamp-2 italic">
+                        รองรับ SIM ทุกค่าย, กระจายสัญญาณ WiFi แรง, เหมาะสำหรับงานกล้อง
+                    </p>
+                    
+                    <div class="mt-6 pt-5 border-t border-gray-50 flex justify-between items-center">
+                        <div class="flex flex-col">
+                            <span class="text-[9px] uppercase tracking-wider text-gray-400 font-bold">Standard Price</span>
+                            <span class="text-lg font-semibold text-gray-900">1,590 <span class="text-[10px] font-light">THB</span></span>
                         </div>
+                        
+                        <a href="https://line.me/R/ti/p/@ไอดีไลน์ของคุณ" target="_blank" class="bg-[#c27803]/5 hover:bg-[#c27803] text-[#c27803] hover:text-white px-5 py-2.5 rounded-xl text-[11px] font-bold uppercase tracking-widest transition-all duration-300 border border-[#c27803]/10">
+                            สอบถาม
+                        </a>
                     </div>
                 </div>
-<!-- เพิ่มสินค้าตรงนี้ -->
-
+            </div>
 
             </div>
-        </div>	
+    </div>
+</div>
 <br>
 
-        <div id="simcard" class="py-16 px-4 bg-white">
-            <div class="flex items-center mb-6">
-                <div class="w-2 h-8 bg-blue-900 mr-3"></div>
-                <h2 class="text-2xl font-bold text-gray-800">ซิมการ์ดรายปี</h2>
+<div id="simcard" class="py-24 px-4 bg-white reveal">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex items-center space-x-4 mb-12">
+            <div class="flex flex-col">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-[#c27803] font-bold mb-1">Annual Connectivity</span>
+                <h2 class="text-3xl font-semibold tracking-tighter text-gray-900">ซิมการ์ดรายปี</h2>
             </div>
+            <div class="h-[1px] flex-grow bg-gray-100"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-			
-                <div class="product-card bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-                    <div class="relative h-48 bg-gray-200">
-                        <img src="productimage/homeimage/Tapo_C530WS.jpg" alt="Camera" class="w-full h-full object-cover">
-                        <span class="absolute top-2 left-2 bg-red-600 text-white text-xs px-2 py-1 rounded">HIKVISION</span>
-                    </div>
-                    <div class="p-4">
-                        <a href="product01.html" target="_blank" class="font-bold text-gray-800 h-12 overflow-hidden">DS-2CD1043G0-I 4MP Fixed Bullet</a>
-                        <p class="text-sm text-gray-500 mt-1">ความละเอียด 4MP, IP67 กันน้ำ, ระยะ IR 30m</p>
-                        <div class="mt-4 flex justify-between items-center">
-                        <span class="text-xl font-bold text-red-600">1,590 บาท</span>
-                        <a href="https://line.me/R/ti/p/@ไอดีไลน์ของคุณ" target="_blank" class="text-sm bg-red-600 text-white px-3 py-1 rounded-lg border border-red-600">ซื้อเลย</a>
+            <div class="group bg-white rounded-[2rem] border border-gray-50 p-3 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.04)] hover:-translate-y-2">
+                
+                <div class="relative aspect-square bg-[#faf9f6] rounded-[1.5rem] overflow-hidden">
+                    <img src="productimage/homeimage/Tapo_C530WS.jpg" alt="Sim Card" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    
+                    <span class="absolute top-4 left-4 bg-white/80 backdrop-blur-md text-gray-500 text-[9px] font-bold tracking-widest px-3 py-1.5 rounded-full border border-gray-100 uppercase">
+                        High Speed
+                    </span>
+                </div>
+
+                <div class="p-5">
+                    <a href="product01.html" target="_blank" class="block group-hover:text-[#c27803] transition-colors duration-300">
+                        <h3 class="font-medium text-gray-800 text-base leading-snug h-12 overflow-hidden">
+                            ซิมเน็ตรายปี ไม่ลดสปีด สำหรับกล้องวงจรปิด
+                        </h3>
+                    </a>
+                    <p class="text-xs text-gray-400 font-light mt-2 line-clamp-2 italic">
+                        ใช้งานยาวนาน 12 เดือน จ่ายครั้งเดียวจบ รองรับทุกเครือข่าย
+                    </p>
+                    
+                    <div class="mt-6 pt-5 border-t border-gray-50 flex justify-between items-center">
+                        <div class="flex flex-col">
+                            <span class="text-[9px] uppercase tracking-wider text-gray-400 font-bold">Price / Year</span>
+                            <span class="text-lg font-semibold text-gray-900">1,590 <span class="text-[10px] font-light">THB</span></span>
                         </div>
+                        
+                        <a href="https://line.me/R/ti/p/@ไอดีไลน์ของคุณ" target="_blank" class="bg-[#c27803]/5 hover:bg-[#c27803] text-[#c27803] hover:text-white px-5 py-2.5 rounded-xl text-[11px] font-bold uppercase tracking-widest transition-all duration-300 border border-[#c27803]/10">
+                            สอบถาม
+                        </a>
                     </div>
                 </div>
-<!-- เพิ่มสินค้าตรงนี้ -->
-
+            </div>
 
             </div>
-        </div>			
+    </div>
+</div>		
 		
 <br>		
-        <div id="nvr" class="py-16 px-4 bg-white">
-            <div class="flex items-center mb-6">
-                <div class="w-2 h-8 bg-blue-900 mr-3"></div>
-                <h2 class="text-2xl font-bold text-gray-800">เครื่องบันทึก DVR / NVR</h2>
+<div id="nvr" class="py-24 px-4 bg-white reveal">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex items-center space-x-4 mb-12">
+            <div class="flex flex-col">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-[#c27803] font-bold mb-1">Recording System</span>
+                <h2 class="text-3xl font-semibold tracking-tighter text-gray-900">เครื่องบันทึก DVR / NVR</h2>
             </div>
+            <div class="h-[1px] flex-grow bg-gray-100"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-			
-                <div class="product-card bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-                    <div class="relative h-48 bg-gray-200">
-                        <img src="productimage/homeimage/Tapo_C530WS.jpg" alt="Camera" class="w-full h-full object-cover">
-                        <span class="absolute top-2 left-2 bg-red-600 text-white text-xs px-2 py-1 rounded">HIKVISION</span>
-                    </div>
-                    <div class="p-4">
-                        <a href="product01.html" target="_blank" class="font-bold text-gray-800 h-12 overflow-hidden">DS-2CD1043G0-I 4MP Fixed Bullet</a>
-                        <p class="text-sm text-gray-500 mt-1">ความละเอียด 4MP, IP67 กันน้ำ, ระยะ IR 30m</p>
-                        <div class="mt-4 flex justify-between items-center">
-                        <span class="text-xl font-bold text-red-600">1,590 บาท</span>
-                        <a href="https://line.me/R/ti/p/@ไอดีไลน์ของคุณ" target="_blank" class="text-sm bg-red-600 text-white px-3 py-1 rounded-lg border border-red-600">ซื้อเลย</a>
+            <div class="group bg-white rounded-[2rem] border border-gray-50 p-3 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.04)] hover:-translate-y-2">
+                
+                <div class="relative aspect-square bg-[#faf9f6] rounded-[1.5rem] overflow-hidden">
+                    <img src="productimage/homeimage/Tapo_C530WS.jpg" alt="NVR Recorder" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    
+                    <span class="absolute top-4 left-4 bg-white/80 backdrop-blur-md text-gray-500 text-[9px] font-bold tracking-widest px-3 py-1.5 rounded-full border border-gray-100 uppercase">
+                        HIKVISION
+                    </span>
+                </div>
+
+                <div class="p-5">
+                    <a href="product01.html" target="_blank" class="block group-hover:text-[#c27803] transition-colors duration-300">
+                        <h3 class="font-medium text-gray-800 text-base leading-snug h-12 overflow-hidden">
+                            NVR 4-Ch Network Video Recorder
+                        </h3>
+                    </a>
+                    <p class="text-xs text-gray-400 font-light mt-2 line-clamp-2 italic">
+                        รองรับความละเอียดสูงสุด 4K, H.265+, ดูออนไลน์ลื่นไหล
+                    </p>
+                    
+                    <div class="mt-6 pt-5 border-t border-gray-50 flex justify-between items-center">
+                        <div class="flex flex-col">
+                            <span class="text-[9px] uppercase tracking-wider text-gray-400 font-bold">Standard Price</span>
+                            <span class="text-lg font-semibold text-gray-900">2,490 <span class="text-[10px] font-light">THB</span></span>
                         </div>
+                        
+                        <a href="https://line.me/R/ti/p/@ไอดีไลน์ของคุณ" target="_blank" class="bg-[#c27803]/5 hover:bg-[#c27803] text-[#c27803] hover:text-white px-5 py-2.5 rounded-xl text-[11px] font-bold uppercase tracking-widest transition-all duration-300 border border-[#c27803]/10">
+                            ซื้อเลย
+                        </a>
                     </div>
                 </div>
-<!-- เพิ่มสินค้าตรงนี้ -->			
-     
             </div>
-        </div>
+
+            </div>
+    </div>
+</div>
 <br>
 
-        <div id="accessories" class="py-16 px-4 bg-white">
-            <div class="flex items-center mb-6">
-                <div class="w-2 h-8 bg-blue-900 mr-3"></div>
-                <h2 class="text-2xl font-bold text-gray-800">อุปกรณ์เสริมและวัสดุติดตั้ง</h2>
+<div id="accessories" class="py-24 px-4 bg-white reveal">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex items-center space-x-4 mb-12">
+            <div class="flex flex-col">
+                <span class="text-[10px] uppercase tracking-[0.4em] text-[#c27803] font-bold mb-1">Installation & Tools</span>
+                <h2 class="text-3xl font-semibold tracking-tighter text-gray-900">อุปกรณ์เสริมและวัสดุติดตั้ง</h2>
             </div>
+            <div class="h-[1px] flex-grow bg-gray-100"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-               
-                <div class="product-card bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-                    <div class="relative h-48 bg-gray-200">
-                        <img src="productimage/homeimage/Tapo_C530WS.jpg" alt="Camera" class="w-full h-full object-cover">
-                        <span class="absolute top-2 left-2 bg-red-600 text-white text-xs px-2 py-1 rounded">HIKVISION</span>
-                    </div>
-                    <div class="p-4">
-                        <a href="product01.html" target="_blank" class="font-bold text-gray-800 h-12 overflow-hidden">DS-2CD1043G0-I 4MP Fixed Bullet</a>
-                        <p class="text-sm text-gray-500 mt-1">ความละเอียด 4MP, IP67 กันน้ำ, ระยะ IR 30m</p>
-                        <div class="mt-4 flex justify-between items-center">
-                        <span class="text-xl font-bold text-red-600">1,590 บาท</span>
-                        <a href="https://line.me/R/ti/p/@ไอดีไลน์ของคุณ" target="_blank" class="text-sm bg-red-600 text-white px-3 py-1 rounded-lg border border-red-600">ซื้อเลย</a>
+            <div class="group bg-white rounded-[2rem] border border-gray-50 p-3 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.04)] hover:-translate-y-2">
+                
+                <div class="relative aspect-square bg-[#faf9f6] rounded-[1.5rem] overflow-hidden">
+                    <img src="productimage/homeimage/Tapo_C530WS.jpg" alt="Accessories" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    
+                    <span class="absolute top-4 left-4 bg-white/80 backdrop-blur-md text-gray-500 text-[9px] font-bold tracking-widest px-3 py-1.5 rounded-full border border-gray-100 uppercase">
+                        Premium Grade
+                    </span>
+                </div>
+
+                <div class="p-5">
+                    <a href="product01.html" target="_blank" class="block group-hover:text-[#c27803] transition-colors duration-300">
+                        <h3 class="font-medium text-gray-800 text-base leading-snug h-12 overflow-hidden">
+                            สายสัญญาณคุณภาพสูง และอุปกรณ์จัดเก็บ
+                        </h3>
+                    </a>
+                    <p class="text-xs text-gray-400 font-light mt-2 line-clamp-2 italic">
+                        วัสดุมาตรฐานสากล ทนทานต่องานติดตั้งทุกรูปแบบ
+                    </p>
+                    
+                    <div class="mt-6 pt-5 border-t border-gray-50 flex justify-between items-center">
+                        <div class="flex flex-col">
+                            <span class="text-[9px] uppercase tracking-wider text-gray-400 font-bold">Starting At</span>
+                            <span class="text-lg font-semibold text-gray-900">Contact <span class="text-[10px] font-light">US</span></span>
                         </div>
+                        
+                        <a href="https://line.me/R/ti/p/@ไอดีไลน์ของคุณ" target="_blank" class="bg-[#c27803]/5 hover:bg-[#c27803] text-[#c27803] hover:text-white px-5 py-2.5 rounded-xl text-[11px] font-bold uppercase tracking-widest transition-all duration-300 border border-[#c27803]/10">
+                            สอบถาม
+                        </a>
                     </div>
                 </div>
-<!-- เพิ่มสินค้าตรงนี้ -->
-			   
-            </div>		
-			</div>
+            </div>
+
+            </div>
+    </div>
+</div>
+
 <br>
 
-        <div class="bg-white rounded-3xl p-8 text-center shadow-md border border-blue-100">
-            <h3 class="text-xl font-bold text-gray-800 mb-2">หาสินค้ารุ่นอื่นไม่เจอ?</h3>
-            <p class="text-gray-600 mb-6 text-sm">เราสามารถจัดหาอุปกรณ์ตามสเปกที่คุณต้องการได้ทุกแบรนด์ชั้นนำ</p>
-            <a href="tel:080XXXXXXX" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-blue-700">สอบถามราคาโปรโมชั่นล่าสุด</a>
+<div class="max-w-4xl mx-auto px-4 py-12">
+    <div class="bg-[#faf9f6] rounded-[2.5rem] p-10 md:p-16 text-center border border-gray-100 shadow-[0_20px_50px_rgba(0,0,0,0.02)] relative overflow-hidden group">
+        
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-[#c27803]/5 rounded-full blur-3xl transition-transform duration-1000 group-hover:scale-110"></div>
+        <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-[#c27803]/5 rounded-full blur-3xl transition-transform duration-1000 group-hover:scale-110"></div>
+
+        <div class="relative z-10">
+            <span class="text-[10px] uppercase tracking-[0.3em] text-[#c27803] font-bold mb-4 block">Special Request</span>
+            
+            <h3 class="text-2xl md:text-3xl font-semibold text-gray-900 mb-4 tracking-tight">
+                หาสินค้ารุ่นอื่นไม่เจอ?
+            </h3>
+            
+            <p class="text-gray-500 mb-10 text-sm md:text-base font-light max-w-lg mx-auto leading-relaxed">
+                เรามีเครือข่ายพันธมิตรแบรนด์ชั้นนำระดับโลก พร้อมจัดหาสินค้าตามสเปกที่คุณต้องการในราคาพิเศษ
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+<a href="tel:080XXXXXXX" 
+   class="inline-block bg-[#c27803]/5 hover:bg-[#c27803] text-[#c27803] hover:text-white px-10 py-4 rounded-2xl font-bold text-[13px] uppercase tracking-widest border border-[#c27803]/20 hover:border-[#c27803] transition-all duration-300 transform hover:-translate-y-1 shadow-sm shadow-[#c27803]/5">
+    โทรสอบถามราคาล่าสุด
+</a>
+                
+                <a href="https://line.me/R/ti/p/@ไอดีไลน์ของคุณ" target="_blank"
+                   class="inline-block bg-white hover:bg-gray-50 text-gray-700 px-10 py-4 rounded-2xl font-bold text-[13px] uppercase tracking-widest border border-gray-200 transition-all duration-300 shadow-sm">
+                    คุยผ่าน Line
+                </a>
+            </div>
         </div>
+    </div>
+</div>
 
     </main>
 
-    <footer class="bg-blue-900 flex flex-col text-white py-4 text-center text-sm">
-        <p>© 2026 CCTV Professional Service. All rights reserved.</p>
-    </footer>
+<footer class="bg-[#faf9f6] text-gray-700 pt-24 pb-12 border-t border-gray-100">
+    <div class="container mx-auto px-6 max-w-6xl">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-16 mb-20">
+            
+            <div class="md:col-span-5 space-y-8">
+                <h4 class="text-2xl font-semibold tracking-tighter text-gray-900">
+                    <span class="text-[#c27803]">📷</span> Khuang Nai <span class="font-light text-gray-400">CCTV Pro</span>
+                </h4>
+                <p class="text-sm text-gray-400 leading-relaxed font-light max-w-sm italic">
+                    เราเชื่อว่าความปลอดภัยเริ่มต้นจากการออกแบบที่ใส่ใจ บริการติดตั้งกล้องวงจรปิดมาตรฐานสากล สำหรับบ้านและธุรกิจในพื้นที่ จ.อุบลราชธานี และ จ.ยโสธร
+                </p>
+                <div class="inline-flex items-center space-x-2 bg-white px-4 py-2 rounded-full border border-gray-100 shadow-sm">
+                    <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
+                    <span class="text-[10px] uppercase tracking-widest font-bold text-gray-500">Service: Weekend & Holidays</span>
+                </div>
+            </div>
+
+            <div class="md:col-span-3 space-y-6">
+                <h4 class="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-300">Navigation</h4>
+                <ul class="space-y-4 text-sm font-light">
+                    <li><a href="#home" class="text-gray-500 hover:text-[#c27803] transition-colors duration-300">หน้าแรก</a></li>
+                    <li><a href="#packages" class="text-gray-500 hover:text-[#c27803] transition-colors duration-300">แพ็กเกจติดตั้ง</a></li>
+                    <li><a href="#service" class="text-gray-500 hover:text-[#c27803] transition-colors duration-300">ผลงานล่าสุด</a></li>
+                    <li><a href="#contact" class="text-gray-500 hover:text-[#c27803] transition-colors duration-300">ติดต่อเรา</a></li>
+                </ul>
+            </div>
+
+            <div class="md:col-span-4 space-y-6">
+                <h4 class="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-300">Connect with us</h4>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#" class="w-11 h-11 bg-white rounded-2xl flex items-center justify-center text-gray-400 border border-gray-100 hover:border-blue-100 hover:text-blue-500 hover:shadow-lg transition-all duration-500">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+                    </a>
+                    <a href="#" class="w-11 h-11 bg-white rounded-2xl flex items-center justify-center text-gray-400 border border-gray-100 hover:border-green-100 hover:text-green-500 hover:shadow-lg transition-all duration-500">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 10.304c0-5.369-5.383-9.738-12-9.738s-12 4.369-12 9.738c0 4.814 4.269 8.846 10.036 9.608.391.084.922.258 1.057.592.121.303.079.778.039 1.085l-.171 1.047c-.052.312-.252 1.221 1.089.665 1.341-.556 7.235-4.262 9.869-7.3s2.08-5.328 2.08-5.697z"/></svg>
+                    </a>
+                    <a href="#" class="w-11 h-11 bg-white rounded-2xl flex items-center justify-center text-gray-400 border border-gray-100 hover:border-gray-900 hover:text-black hover:shadow-lg transition-all duration-500">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.86-.6-4.12-1.31a6.34 6.34 0 0 1-1.08-.75v7.54c0 3.14-1.61 6.13-4.57 7.23-3.63 1.34-8.03-.43-9.52-4.07-1.47-3.58.46-8.15 4.23-9.37 1.15-.38 2.39-.4 3.56-.15v4.03c-.63-.17-1.3-.23-1.95-.14-1.57.22-2.98 1.51-3.13 3.09-.23 2.16 1.72 4.21 3.88 3.9 1.49-.22 2.68-1.53 2.68-3.03V0h.02z"/></svg>
+                    </a>
+                </div>
+                <p class="text-xs text-gray-400 font-light leading-relaxed italic">
+                    ติดตามโปรโมชั่นและผลงานติดตั้งใหม่ๆ ได้ผ่านช่องทางโซเชียลมีเดียของเรา
+                </p>
+            </div>
+        </div>
+
+        <div class="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-[10px] text-gray-300 uppercase tracking-[0.2em] font-medium">
+                © 2026 Khuang Nai CCTV Pro. All rights reserved.
+            </p>
+            <div class="flex space-x-6 text-[10px] uppercase tracking-widest font-bold text-gray-300">
+                <a href="#" class="hover:text-gray-900 transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-gray-900 transition-colors">Terms of Service</a>
+            </div>
+        </div>
+    </div>
+</footer> 
+
+<script>
+    const btn = document.getElementById('menu-btn');
+    const menu = document.getElementById('menu');
+
+    btn.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+        menu.classList.toggle('flex');
+    });
+
+    // ปิดเมนูเมื่อคลิกลิงก์ (สำหรับมือถือ)
+    const links = menu.querySelectorAll('a');
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth < 768) {
+                menu.classList.add('hidden');
+            }
+        });
+    });
+</script>
+
+<div id="line-popup" class="fixed bottom-6 right-6 z-[60] transform translate-y-20 opacity-0 transition-all duration-700 ease-out">
+    <div class="bg-white rounded-2xl shadow-2xl p-4 flex items-center space-x-4 border border-gray-100 max-w-[280px]">
+        <div class="relative min-w-[50px]">
+            <div class="w-12 h-12 bg-[#fdfbf7] rounded-full flex items-center justify-center text-2xl border border-gray-100">
+                📷
+            </div>
+            <div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></div>
+        </div>
+        
+        <div class="flex-grow">
+            <p class="text-[10px] text-gray-400 uppercase tracking-widest font-bold">แอดมินพร้อมดูแล</p>
+            <p class="text-sm text-gray-700 font-medium">สอบถามโปรโมชั่นวันนี้?</p>
+            <a href="https://line.me/R/ti/p/@yourid" target="_blank" class="text-xs text-[#c27803] font-bold hover:underline mt-1 block">
+                ทักไลน์สอบถามคลิกเลย
+            </a>
+        </div>
+
+        <button onclick="document.getElementById('line-popup').remove()" class="text-gray-300 hover:text-gray-500">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+    </div>
+</div>
+
+<script>
+    // ตั้งเวลาให้เด้งขึ้นมาหลังจากเปิดเว็บ 3 วินาที
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            const popup = document.getElementById('line-popup');
+            popup.classList.remove('translate-y-20', 'opacity-0');
+            popup.classList.add('translate-y-0', 'opacity-100');
+        }, 3000); // 3000 = 3 วินาที (ปรับเปลี่ยนได้ตามชอบ)
+    });
+</script>
 
 </body>
 </html>
