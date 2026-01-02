@@ -18,87 +18,320 @@
 </head>
 <body class="bg-gray-50">
 
-    <nav class="bg-blue-900 text-white p-4 sticky top-0 z-50">
-        <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-bold italic tracking-tighter">จำหน่ายและรับติดตั้งกล้องวงจรปิดเขื่องใน 📷 Khuang Nai CCTV Pro</h1>
-            <div class="space-x-4 hidden md:block">
-                <a href="index.html#home" class="hover:text-blue-300">หน้าแรก</a>
-				<a href="index.html#product" class="hover:text-blue-300">กล้องวงจรปิดและอุปกรณ์เสริม</a>
-                <a href="index.html#packages" class="hover:text-blue-300">แพ็คเกจ</a>
-                <a href="index.html#services" class="hover:text-blue-300">บริการ</a>
-				<a href="index.html#service" class="hover:text-blue-300">ผลงานติดตั้งของเรา</a>
-                <a href="index.html#contact" class="bg-yellow-500 text-blue-900 px-4 py-2 rounded-full font-bold">ติดต่อสอบถาม</a>
+<nav class="bg-[#fdfbf7]/90 backdrop-blur-md text-gray-700 p-4 sticky top-0 z-50 border-b border-gray-100">
+    <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-xl md:text-2xl font-semibold tracking-tight text-gray-800">
+            <span class="text-[#c27803]">📷</span> Khuang Nai <span class="font-light">CCTV Pro</span>
+        </h1>
+
+        <button id="menu-btn" class="block md:hidden focus:outline-none text-gray-600">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+
+        <div id="menu" class="hidden absolute md:static top-full left-0 w-full md:w-auto bg-[#fdfbf7] md:bg-transparent flex-col md:flex-row md:flex space-y-4 md:space-y-0 md:space-x-8 p-6 md:p-0 shadow-lg md:shadow-none">
+            <a href="index.html" class="text-sm tracking-wide hover:text-[#c27803] transition duration-300">หน้าแรก</a>
+            <a href="product.html" class="text-sm tracking-wide hover:text-[#c27803] transition duration-300">สินค้าและอุปกรณ์</a>
+            <a href="package.html" class="text-sm tracking-wide hover:text-[#c27803] transition duration-300">แพ็คเกจติดตั้ง</a>
+            <a href="index.html" class="text-sm tracking-wide hover:text-[#c27803] transition duration-300">บริการ</a>
+            <a href="service.html" class="text-sm tracking-wide hover:text-[#c27803] transition duration-300">ผลงานของเรา</a>
+            <a href="index.html#contact" class="bg-[#c27803] hover:bg-[#a66602] text-white px-5 py-2 rounded-full text-sm font-medium transition duration-300 text-center shadow-sm">
+                ติดต่อสอบถาม
+            </a>
+        </div>
+    </div>
+</nav>
+
+
+<header class="relative pt-24 pb-16 mb-12 overflow-hidden border-b border-gray-50/50">
+    <div class="absolute inset-0 pointer-events-none opacity-40">
+        <div class="absolute top-[-20%] right-[-10%] w-[500px] h-[500px] bg-[#c27803]/10 rounded-full blur-[120px]"></div>
+        <div class="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] bg-blue-50/50 rounded-full blur-[100px]"></div>
+        <div class="absolute inset-0" style="background-image: radial-gradient(#e5e7eb 0.5px, transparent 0.5px); background-size: 30px 30px; mask-image: radial-gradient(ellipse at center, black, transparent 80%);"></div>
+    </div>
+
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="flex flex-col items-center">
+            
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/60 backdrop-blur-md border border-gray-100 shadow-sm mb-8 animate-fade-in">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#c27803] opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-[#c27803]"></span>
+                </span>
+                <span class="text-[10px] uppercase tracking-[0.4em] text-gray-500 font-bold">Project Archive</span>
             </div>
-        </div>
-    </nav>
+            
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight text-center leading-[1.1]">
+                <span class="text-gray-900">อัลบั้ม</span>
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-gray-400 via-gray-500 to-gray-300 font-light italic">
+                    ผลงานติดตั้ง
+                </span>
+            </h1>
+            
+            <div class="max-w-2xl text-center">
+                <p class="text-gray-400 text-sm md:text-lg font-light leading-relaxed">
+                    สะท้อนความไว้วางใจผ่านงานติดตั้งจริง <span class="text-gray-800 font-medium">กว่า 1,000 โครงการ</span> 
+                    ครอบคลุมตั้งแต่บ้านพักส่วนตัวระดับ Luxury ไปจนถึงนิคมอุตสาหกรรม
+                </p>
+            </div>
 
+            <div class="flex gap-12 mt-12 py-6 border-t border-gray-100/80 w-full max-w-lg justify-center">
+                <div class="text-center">
+                    <p class="text-xl font-bold text-gray-900">100%</p>
+                    <p class="text-[9px] uppercase tracking-widest text-gray-400">Quality</p>
+                </div>
+                <div class="w-[1px] h-8 bg-gray-100 my-auto"></div>
+                <div class="text-center">
+                    <p class="text-xl font-bold text-gray-900">24/7</p>
+                    <p class="text-[9px] uppercase tracking-widest text-gray-400">Support</p>
+                </div>
+                <div class="w-[1px] h-8 bg-gray-100 my-auto"></div>
+                <div class="text-center">
+                    <p class="text-xl font-bold text-gray-900">1+ Year</p>
+                    <p class="text-[9px] uppercase tracking-widest text-gray-400">Warranty</p>
+                </div>
+            </div>
 
-    <header class="bg-white shadow-sm py-12 mb-10">
-        <div class="container mx-auto px-4 text-center">
-            <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-2">อัลบั้มผลงานการติดตั้ง</h1>
-            <p class="text-gray-500">รวบรวมภาพงานจริง ทั้งบ้านพักอาศัย ร้านค้า และออฟฟิศ</p>
-            <div class="w-20 h-1 bg-blue-600 mx-auto mt-4"></div>
         </div>
-    </header>
+    </div>
+</header>
 
     <main class="container mx-auto px-4 mb-20">
-        <div class="flex justify-center gap-4 mb-10 overflow-x-auto pb-2">
-            <button class="bg-blue-600 text-white px-6 py-2 rounded-full text-sm font-medium">ทั้งหมด</button>
-            <button class="bg-white text-gray-600 border border-gray-200 px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-50">บ้านพักอาศัย</button>
-            <button class="bg-white text-gray-600 border border-gray-200 px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-50">ออฟฟิศ/ร้านค้า</button>
-            <button class="bg-white text-gray-600 border border-gray-200 px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-50">งานเดินท่อ</button>
-        </div>
+<div class="flex justify-center mb-12">
+    <div class="flex items-center gap-2 p-1.5 bg-gray-50/50 backdrop-blur-md rounded-[2rem] border border-gray-100 overflow-x-auto no-scrollbar">
+        
+<button class="whitespace-nowrap bg-[#c27803]/10 text-[#c27803] px-8 py-2.5 rounded-[1.5rem] text-[13px] font-bold uppercase tracking-[0.15em] shadow-sm border border-[#c27803]/20 transition-all duration-300 transform active:scale-95">
+    ทั้งหมด
+</button>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <button class="whitespace-nowrap bg-transparent text-gray-500 hover:text-gray-900 px-8 py-2.5 rounded-[1.5rem] text-[13px] font-medium uppercase tracking-widest transition-all duration-300 hover:bg-white">
+            บ้านพักอาศัย
+        </button>
+
+        <button class="whitespace-nowrap bg-transparent text-gray-500 hover:text-gray-900 px-8 py-2.5 rounded-[1.5rem] text-[13px] font-medium uppercase tracking-widest transition-all duration-300 hover:bg-white">
+            ออฟฟิศ/ร้านค้า
+        </button>
+
+        <button class="whitespace-nowrap bg-transparent text-gray-500 hover:text-gray-900 px-8 py-2.5 rounded-[1.5rem] text-[13px] font-medium uppercase tracking-widest transition-all duration-300 hover:bg-white">
+            งานเดินท่อ
+        </button>
+        
+    </div>
+</div>
+
+<style>
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+</style>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+    
+    <div class="group bg-white rounded-[2rem] overflow-hidden border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.02)] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+        <div class="h-72 overflow-hidden relative">
+            <div class="absolute inset-0 bg-[#c27803]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
+            <img src="service/homeimage/comingsoon.jpg" alt="ติดตั้งกล้องหน้าบ้าน" 
+                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute top-4 left-4 z-20">
+                <span class="bg-white/90 backdrop-blur-md text-[#c27803] text-[10px] font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-sm">Residential</span>
+            </div>
+        </div>
+        <div class="p-8">
+            <h3 class="text-xl font-semibold text-gray-900 tracking-tight group-hover:text-[#c27803] transition-colors">ติดตั้งกล้อง Bullet 4MP หน้าบ้าน</h3>
+            <p class="text-gray-400 text-[13px] font-light mt-3 leading-relaxed">หมู่บ้านเศรษฐสิริ - เน้นมุมกว้างครอบคลุมประตูรั้วและโรงจอดรถด้วยกล้องคุณภาพสูง</p>
+            <div class="mt-6 flex items-center text-[11px] font-bold text-gray-300 uppercase tracking-[0.2em]">
+                <span class="w-8 h-[1px] bg-gray-100 mr-3"></span>
+                View Project
+            </div>
+        </div>
+    </div>
+
+    <div class="group bg-white rounded-[2rem] overflow-hidden border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.02)] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+        <div class="h-72 overflow-hidden relative">
+            <div class="absolute inset-0 bg-[#c27803]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
+            <img src="service/homeimage/comingsoon.jpg" alt="งานเดินท่อร้อยสาย" 
+                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute top-4 left-4 z-20">
+                <span class="bg-white/90 backdrop-blur-md text-[#c27803] text-[10px] font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-sm">Installation</span>
+            </div>
+        </div>
+        <div class="p-8">
+            <h3 class="text-xl font-semibold text-gray-900 tracking-tight group-hover:text-[#c27803] transition-colors">งานร้อยท่อ PVC ขาว มาตรฐาน</h3>
+            <p class="text-gray-400 text-[13px] font-light mt-3 leading-relaxed">เก็บสายเรียบร้อย ป้องกันหนูกัดสาย และยืดอายุการใช้งานระบบในระยะยาว</p>
+            <div class="mt-6 flex items-center text-[11px] font-bold text-gray-300 uppercase tracking-[0.2em]">
+                <span class="w-8 h-[1px] bg-gray-100 mr-3"></span>
+                View Project
+            </div>
+        </div>
+    </div>
+
+    <div class="group bg-white rounded-[2rem] overflow-hidden border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.02)] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+        <div class="h-72 overflow-hidden relative">
+            <div class="absolute inset-0 bg-[#c27803]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
+            <img src="service/homeimage/comingsoon.jpg" alt="ติดตั้งกล้องในร้านค้า" 
+                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute top-4 left-4 z-20">
+                <span class="bg-white/90 backdrop-blur-md text-[#c27803] text-[10px] font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-sm">Commercial</span>
+            </div>
+        </div>
+        <div class="p-8">
+            <h3 class="text-xl font-semibold text-gray-900 tracking-tight group-hover:text-[#c27803] transition-colors">ระบบกล้อง IP ในคาเฟ่</h3>
+            <p class="text-gray-400 text-[13px] font-light mt-3 leading-relaxed">ใช้กล้องทรงโดม สวยงาม กลมกลืนกับดีไซน์ร้าน ดูออนไลน์ผ่านมือถือได้ทันที</p>
+            <div class="mt-6 flex items-center text-[11px] font-bold text-gray-300 uppercase tracking-[0.2em]">
+                <span class="w-8 h-[1px] bg-gray-100 mr-3"></span>
+                View Project
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="mt-20 text-center bg-[#fafafa] border border-gray-100 rounded-[3rem] p-12 md:p-20 shadow-[0_20px_50px_rgba(0,0,0,0.02)] relative overflow-hidden">
+    
+    <div class="absolute top-0 right-0 w-64 h-64 bg-[#c27803]/5 rounded-full blur-[80px]"></div>
+    
+    <div class="relative z-10">
+        <span class="text-[10px] uppercase tracking-[0.4em] text-[#c27803] font-bold mb-4 block">Free Consultation</span>
+        
+        <h2 class="text-3xl md:text-4xl font-semibold text-gray-900 mb-4 tracking-tight">ชอบผลงานของเรา?</h2>
+        
+        <p class="mb-12 text-gray-500 font-light max-w-xl mx-auto leading-relaxed">
+            ให้เราช่วยดูแลความปลอดภัยของคุณ <br class="hidden md:block"> 
+            <span class="font-medium text-gray-800 underline decoration-[#c27803]/30">ประเมินหน้างานฟรี</span> ไม่มีค่าใช้จ่าย พร้อมให้คำปรึกษาโดยทีมช่างผู้เชี่ยวชาญ
+        </p>
+        
+        <div class="flex flex-col sm:flex-row justify-center gap-6">
+            <a href="tel:080xxxxxxx" 
+               class="bg-white hover:bg-gray-50 text-gray-800 px-10 py-4 rounded-2xl font-bold text-[13px] uppercase tracking-[0.15em] border border-gray-200 shadow-sm transition-all duration-300 transform hover:-translate-y-1">
+                โทรหาเรา
+            </a>
             
-            <div class="gallery-item bg-white rounded-2xl shadow-md overflow-hidden border border-gray-100">
-                <div class="h-64 overflow-hidden bg-gray-200">
-                    <img src="service/homeimage/comingsoon.jpg" alt="ติดตั้งกล้องหน้าบ้าน" class="w-full h-full object-cover">
-                </div>
-                <div class="p-6">
-                    <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">บ้านพักอาศัย</span>
-                    <h3 class="text-lg font-bold text-gray-800 mt-2">ติดตั้งกล้อง Bullet 4MP หน้าบ้าน</h3>
-                    <p class="text-gray-600 text-sm mt-2">หมู่บ้านเศรษฐสิริ - เน้นมุมกว้างครอบคลุมประตูรั้วและโรงจอดรถ</p>
-                </div>
-            </div>
-
-            <div class="gallery-item bg-white rounded-2xl shadow-md overflow-hidden border border-gray-100">
-                <div class="h-64 overflow-hidden bg-gray-200">
-                    <img src="service/homeimage/comingsoon.jpg" alt="งานเดินท่อร้อยสาย" class="w-full h-full object-cover">
-                </div>
-                <div class="p-6">
-                    <span class="text-xs font-bold text-green-600 uppercase tracking-wider">งานเดินท่อ</span>
-                    <h3 class="text-lg font-bold text-gray-800 mt-2">งานร้อยท่อ PVC ขาว มาตรฐาน</h3>
-                    <p class="text-gray-600 text-sm mt-2">เก็บสายเรียบร้อย ป้องกันหนูกัดสาย และยืดอายุการใช้งาน</p>
-                </div>
-            </div>
-
-            <div class="gallery-item bg-white rounded-2xl shadow-md overflow-hidden border border-gray-100">
-                <div class="h-64 overflow-hidden bg-gray-200">
-                    <img src="service/homeimage/comingsoon.jpg" alt="ติดตั้งกล้องในร้านค้า" class="w-full h-full object-cover">
-                </div>
-                <div class="p-6">
-                    <span class="text-xs font-bold text-purple-600 uppercase tracking-wider">ออฟฟิศ/ร้านค้า</span>
-                    <h3 class="text-lg font-bold text-gray-800 mt-2">ระบบกล้อง IP ในคาเฟ่</h3>
-                    <p class="text-gray-600 text-sm mt-2">ใช้กล้องทรงโดม สวยงาม กลมกลืนกับดีไซน์ร้าน ดูออนไลน์ผ่านมือถือได้ทันที</p>
-                </div>
-            </div>
-
-            </div>
-
-        <div class="mt-20 text-center bg-blue-900 text-white rounded-3xl p-10 shadow-xl">
-            <h2 class="text-2xl font-bold mb-4">ชอบผลงานของเรา?</h2>
-            <p class="mb-8 opacity-90">ประเมินหน้างานฟรี ไม่มีค่าใช้จ่าย พร้อมให้คำปรึกษาตลอด 24 ชม.</p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="tel:080xxxxxxx" class="bg-yellow-500 text-blue-900 px-8 py-3 rounded-full font-bold hover:bg-yellow-400 transition">โทรหาเรา</a>
-                <a href="https://line.me" target="_blank" rel="noopener noreferrer" class="bg-green-500 text-white px-8 py-3 rounded-full font-bold hover:bg-green-400 transition">ทัก LINE สอบถาม</a>
-            </div>
+            <a href="https://line.me" target="_blank" rel="noopener noreferrer" 
+               class="bg-[#c27803]/10 hover:bg-[#c27803] text-[#c27803] hover:text-white px-10 py-4 rounded-2xl font-bold text-[13px] uppercase tracking-[0.15em] border border-[#c27803]/20 transition-all duration-300 transform hover:-translate-y-1 shadow-sm">
+                ทัก LINE สอบถาม
+            </a>
         </div>
+        
+        <div class="mt-10 flex items-center justify-center gap-2">
+            <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
+            <p class="text-[11px] text-gray-400 font-medium uppercase tracking-widest">Support 24/7 Available</p>
+        </div>
+    </div>
+</div>
+
     </main>
 
-    <footer class="bg-blue-900 flex flex-col text-white py-4 text-center text-sm">
-        <p>© 2026 CCTV Professional Service. All rights reserved.</p>
-    </footer>
+<footer class="bg-[#faf9f6] text-gray-700 pt-24 pb-12 border-t border-gray-100">
+    <div class="container mx-auto px-6 max-w-6xl">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-16 mb-20">
+            
+            <div class="md:col-span-5 space-y-8">
+                <h4 class="text-2xl font-semibold tracking-tighter text-gray-900">
+                    <span class="text-[#c27803]">📷</span> Khuang Nai <span class="font-light text-gray-400">CCTV Pro</span>
+                </h4>
+                <p class="text-sm text-gray-400 leading-relaxed font-light max-w-sm italic">
+                    เราเชื่อว่าความปลอดภัยเริ่มต้นจากการออกแบบที่ใส่ใจ บริการติดตั้งกล้องวงจรปิดมาตรฐานสากล สำหรับบ้านและธุรกิจในพื้นที่ จ.อุบลราชธานี และ จ.ยโสธร
+                </p>
+                <div class="inline-flex items-center space-x-2 bg-white px-4 py-2 rounded-full border border-gray-100 shadow-sm">
+                    <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
+                    <span class="text-[10px] uppercase tracking-widest font-bold text-gray-500">Service: Weekend & Holidays</span>
+                </div>
+            </div>
+
+            <div class="md:col-span-3 space-y-6">
+                <h4 class="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-300">Navigation</h4>
+                <ul class="space-y-4 text-sm font-light">
+                    <li><a href="#home" class="text-gray-500 hover:text-[#c27803] transition-colors duration-300">หน้าแรก</a></li>
+                    <li><a href="#packages" class="text-gray-500 hover:text-[#c27803] transition-colors duration-300">แพ็กเกจติดตั้ง</a></li>
+                    <li><a href="#service" class="text-gray-500 hover:text-[#c27803] transition-colors duration-300">ผลงานล่าสุด</a></li>
+                    <li><a href="#contact" class="text-gray-500 hover:text-[#c27803] transition-colors duration-300">ติดต่อเรา</a></li>
+                </ul>
+            </div>
+
+            <div class="md:col-span-4 space-y-6">
+                <h4 class="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-300">Connect with us</h4>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#" class="w-11 h-11 bg-white rounded-2xl flex items-center justify-center text-gray-400 border border-gray-100 hover:border-blue-100 hover:text-blue-500 hover:shadow-lg transition-all duration-500">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+                    </a>
+                    <a href="#" class="w-11 h-11 bg-white rounded-2xl flex items-center justify-center text-gray-400 border border-gray-100 hover:border-green-100 hover:text-green-500 hover:shadow-lg transition-all duration-500">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 10.304c0-5.369-5.383-9.738-12-9.738s-12 4.369-12 9.738c0 4.814 4.269 8.846 10.036 9.608.391.084.922.258 1.057.592.121.303.079.778.039 1.085l-.171 1.047c-.052.312-.252 1.221 1.089.665 1.341-.556 7.235-4.262 9.869-7.3s2.08-5.328 2.08-5.697z"/></svg>
+                    </a>
+                    <a href="#" class="w-11 h-11 bg-white rounded-2xl flex items-center justify-center text-gray-400 border border-gray-100 hover:border-gray-900 hover:text-black hover:shadow-lg transition-all duration-500">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.86-.6-4.12-1.31a6.34 6.34 0 0 1-1.08-.75v7.54c0 3.14-1.61 6.13-4.57 7.23-3.63 1.34-8.03-.43-9.52-4.07-1.47-3.58.46-8.15 4.23-9.37 1.15-.38 2.39-.4 3.56-.15v4.03c-.63-.17-1.3-.23-1.95-.14-1.57.22-2.98 1.51-3.13 3.09-.23 2.16 1.72 4.21 3.88 3.9 1.49-.22 2.68-1.53 2.68-3.03V0h.02z"/></svg>
+                    </a>
+                </div>
+                <p class="text-xs text-gray-400 font-light leading-relaxed italic">
+                    ติดตามโปรโมชั่นและผลงานติดตั้งใหม่ๆ ได้ผ่านช่องทางโซเชียลมีเดียของเรา
+                </p>
+            </div>
+        </div>
+
+        <div class="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-[10px] text-gray-300 uppercase tracking-[0.2em] font-medium">
+                © 2026 Khuang Nai CCTV Pro. All rights reserved.
+            </p>
+            <div class="flex space-x-6 text-[10px] uppercase tracking-widest font-bold text-gray-300">
+                <a href="#" class="hover:text-gray-900 transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-gray-900 transition-colors">Terms of Service</a>
+            </div>
+        </div>
+    </div>
+</footer> 	
+
+<script>
+    const btn = document.getElementById('menu-btn');
+    const menu = document.getElementById('menu');
+
+    btn.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+        menu.classList.toggle('flex');
+    });
+
+    // ปิดเมนูเมื่อคลิกลิงก์ (สำหรับมือถือ)
+    const links = menu.querySelectorAll('a');
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth < 768) {
+                menu.classList.add('hidden');
+            }
+        });
+    });
+</script>
+
+<div id="line-popup" class="fixed bottom-6 right-6 z-[60] transform translate-y-20 opacity-0 transition-all duration-700 ease-out">
+    <div class="bg-white rounded-2xl shadow-2xl p-4 flex items-center space-x-4 border border-gray-100 max-w-[280px]">
+        <div class="relative min-w-[50px]">
+            <div class="w-12 h-12 bg-[#fdfbf7] rounded-full flex items-center justify-center text-2xl border border-gray-100">
+                📷
+            </div>
+            <div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></div>
+        </div>
+        
+        <div class="flex-grow">
+            <p class="text-[10px] text-gray-400 uppercase tracking-widest font-bold">แอดมินพร้อมดูแล</p>
+            <p class="text-sm text-gray-700 font-medium">สอบถามโปรโมชั่นวันนี้?</p>
+            <a href="https://line.me/R/ti/p/@yourid" target="_blank" class="text-xs text-[#c27803] font-bold hover:underline mt-1 block">
+                ทักไลน์สอบถามคลิกเลย
+            </a>
+        </div>
+
+        <button onclick="document.getElementById('line-popup').remove()" class="text-gray-300 hover:text-gray-500">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+    </div>
+</div>
+
+<script>
+    // ตั้งเวลาให้เด้งขึ้นมาหลังจากเปิดเว็บ 3 วินาที
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            const popup = document.getElementById('line-popup');
+            popup.classList.remove('translate-y-20', 'opacity-0');
+            popup.classList.add('translate-y-0', 'opacity-100');
+        }, 3000); // 3000 = 3 วินาที (ปรับเปลี่ยนได้ตามชอบ)
+    });
+</script>
 
 </body>
 </html>
