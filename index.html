@@ -12,313 +12,593 @@
 </head>
 <body class="bg-gray-50">
 
-    <nav class="bg-blue-900 text-white p-4 sticky top-0 z-50">
-        <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-bold italic tracking-tighter">จำหน่ายและรับติดตั้งกล้องวงจรปิดเขื่องใน 📷 Khuang Nai CCTV Pro</h1>
-            <div class="space-x-4 hidden md:block">
-                <a href="#home" class="hover:text-blue-300">หน้าแรก</a>
-				<a href="#product" class="hover:text-blue-300">กล้องวงจรปิดและอุปกรณ์เสริม</a>
-                <a href="#packages" class="hover:text-blue-300">แพ็คเกจ</a>
-                <a href="#services" class="hover:text-blue-300">บริการ</a>
-				<a href="#service" class="hover:text-blue-300">ผลงานติดตั้งของเรา</a>
-                <a href="#contact" class="bg-yellow-500 text-blue-900 px-4 py-2 rounded-full font-bold">ติดต่อสอบถาม</a>
-            </div>
-        </div>
-    </nav>
+<nav class="bg-[#fdfbf7]/90 backdrop-blur-md text-gray-700 p-4 sticky top-0 z-50 border-b border-gray-100">
+    <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-xl md:text-2xl font-semibold tracking-tight text-gray-800">
+            <span class="text-[#c27803]">📷</span> Khuang Nai <span class="font-light">CCTV Pro</span>
+        </h1>
 
-    <header id="home" class="bg-blue-800 text-white py-20 px-4 text-center">
-        <div class="container mx-auto">
-            <h2 class="text-4xl md:text-6xl font-bold mb-6">ดูแลความปลอดภัยให้บ้านคุณ <br><span class="text-yellow-400">ตลอด 24 ชั่วโมง</span></h2>
-            <p class="text-xl mb-10 text-blue-100">บริการติดตั้งกล้องวงจรปิด งานเนี๊ยบ ดูออนไลน์ได้ทุกที่ โดยช่างมืออาชีพ</p>
-            <div class="flex flex-col md:flex-row justify-center gap-4">
-                <a href="tel:0972328350" class="bg-yellow-500 hover:bg-yellow-600 text-blue-900 text-lg font-bold py-3 px-8 rounded-lg transition">โทรเลย: 097-232-XXXX</a>
-                <a href="#contact" class="bg-transparent border-2 border-white hover:bg-white hover:text-blue-800 text-lg py-3 px-8 rounded-lg transition">ประเมินหน้างานฟรี</a>
-            </div>
-        </div>
-    </header>
+        <button id="menu-btn" class="block md:hidden focus:outline-none text-gray-600">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
 
-	    <section id="product" class="py-16 px-4 bg-white">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">กล้องวงจรปิดและอุปกรณ์เสริม</h2>
+        <div id="menu" class="hidden absolute md:static top-full left-0 w-full md:w-auto bg-[#fdfbf7] md:bg-transparent flex-col md:flex-row md:flex space-y-4 md:space-y-0 md:space-x-8 p-6 md:p-0 shadow-lg md:shadow-none">
+            <a href="index.html" class="text-sm tracking-wide hover:text-[#c27803] transition duration-300">หน้าแรก</a>
+            <a href="product.html" class="text-sm tracking-wide hover:text-[#c27803] transition duration-300">สินค้าและอุปกรณ์</a>
+            <a href="package.html" class="text-sm tracking-wide hover:text-[#c27803] transition duration-300">แพ็คเกจติดตั้ง</a>
+            <a href="index.html" class="text-sm tracking-wide hover:text-[#c27803] transition duration-300">บริการ</a>
+            <a href="service.html" class="text-sm tracking-wide hover:text-[#c27803] transition duration-300">ผลงานของเรา</a>
+            <a href="#contact" class="bg-[#c27803] hover:bg-[#a66602] text-white px-5 py-2 rounded-full text-sm font-medium transition duration-300 text-center shadow-sm">
+                ติดต่อสอบถาม
+            </a>
+        </div>
+    </div>
+</nav>
+
+<header id="home" class="relative min-h-[90vh] flex items-center bg-[#faf9f6] px-4 overflow-hidden">
+    <div class="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-[#c27803]/5 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] bg-gray-200/20 rounded-full blur-3xl"></div>
+
+    <div class="container mx-auto relative z-10">
+        <div class="max-w-4xl mx-auto text-center">
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                
-                <div class="relative group rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all">
-                    <img src="productimage/homeimage/Tapo_C530WS.jpg" alt="กล้องไร้สาย Smart Camera" class="w-full h-65 object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-75 transition-opacity duration-300"></div>
-                    <div class="absolute bottom-0 left-0 p-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <p class="font-semibold">กล้องไร้สาย Smart Camera</p>
-                        <p class="text-sm opacity-80">มุมมองกว้าง ครอบคลุมพื้นที่</p>
-                    </div>
-                </div>
+            <div class="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-md px-4 py-2 rounded-full border border-gray-100 shadow-sm mb-8">
+                <span class="flex h-2 w-2 relative">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#c27803] opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-[#c27803]"></span>
+                </span>
+                <span class="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-500">24/7 Smart Security Monitoring</span>
+            </div>
 
-                <div class="relative group rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all">
-                    <img src="productimage/homeimage/indoorcam.jpg" alt="กล้องวงจรปิดภายในบ้าน" class="w-full h-45 object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-75 transition-opacity duration-300"></div>
-                    <div class="absolute bottom-0 left-0 p-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <p class="font-semibold">กล้องวงจรปิดภายในบ้าน</p>
-                        <p class="text-sm opacity-80">เพลิดเพลินกับมุมมองภาพของกล้อง Pan/Tilt</p>
-                    </div>
-                </div>
+            <h2 class="text-5xl md:text-7xl font-semibold tracking-tighter text-gray-900 leading-[1.1] mb-8">
+                เปลี่ยนบ้านคุณให้ <br class="hidden md:block">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#c27803] to-[#8a5502]">ปลอดภัยและอัจฉริยะ</span>
+            </h2>
 
-                <div class="relative group rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all">
-                    <img src="productimage/homeimage/camwithsolarpanel.png" alt="กล้องไร้สาย+Solar Panel" class="w-full h-45 object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-75 transition-opacity duration-300"></div>
-                    <div class="absolute bottom-0 left-0 p-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <p class="font-semibold">กล้องไร้สาย+Solar Panel</p>
-                        <p class="text-sm opacity-80">สามารถจ่ายพลังงานสะอาดให้กล้องทำงานได้อย่างต่อเนื่อง</p>
-                    </div>
-                </div>
-                
-                <div class="relative group rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all">
-                    <img src="productimage/homeimage/NVR1016H.jpg" alt="Network Video Recorder" class="w-full h-45 object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-75 transition-opacity duration-300"></div>
-                    <div class="absolute bottom-0 left-0 p-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <p class="font-semibold">Network Video Recorder</p>
-                        <p class="text-sm opacity-80">เล่นไฟล์วิดีโอย้อนหลังจากกล้องวงจรปิดได้</p>
-                    </div>
-                </div>
+            <p class="text-lg md:text-xl text-gray-500 font-light mb-12 max-w-2xl mx-auto leading-relaxed italic">
+                บริการติดตั้งกล้องวงจรปิดคุณภาพสูง งานประณีต เก็บสายมิดชิด <br class="hidden md:block">
+                เข้าถึงความอุ่นใจได้จากทุกที่ ผ่านมือถือของคุณ
+            </p>
 
-                <div class="relative group rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all">
-                    <img src="productimage/homeimage/cctv Hard disk.webp" alt="ฮาร์ดไดรฟ์สำหรับกล้องวงจรปิด" class="w-full h-45 object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-75 transition-opacity duration-300"></div>
-                    <div class="absolute bottom-0 left-0 p-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <p class="font-semibold">ฮาร์ดไดรฟ์สำหรับกล้องวงจรปิด</p>
-                        <p class="text-sm opacity-80">อุปกรณ์จัดเก็บข้อมูลสำหรับกล้องวงจรปิดที่มีประสิทธิภาพสูง</p>
-                    </div>
-                </div>
-				
-				<div class="relative group rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all">
-                    <img src="productimage/homeimage/4G Router.jpg" alt="4G Routers" class="w-full h-48 object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-75 transition-opacity duration-300"></div>
-                    <div class="absolute bottom-0 left-0 p-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <p class="font-semibold">4G Routers</p>
-                        <p class="text-sm opacity-80">เพียงเสียบซิมการ์ดก็สามารถใช้ได้เลย</p>
-                    </div>
-                </div>
-				
-                <div class="relative group rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all">
-                    <img src="productimage/homeimage/cctv SD Card.webp" alt="การ์ด microSD" class="w-full h-48 object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-75 transition-opacity duration-300"></div>
-                    <div class="absolute bottom-0 left-0 p-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <p class="font-semibold">การ์ด microSD</p>
-                        <p class="text-sm opacity-80">มีความทนทานสูง ช่วยให้คุณสามารถบันทึกภาพและบันทึกซ้ำได้</p>
-                    </div>
-                </div>
-				
-				<div class="relative group rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all">
-                    <img src="productimage/homeimage/Yearly Sim.webp" alt="ซิมเน็ตรายปี" class="w-full h-48 object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-75 transition-opacity duration-300"></div>
-                    <div class="absolute bottom-0 left-0 p-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <p class="font-semibold">ซิมเน็ตรายปี</p>
-                        <p class="text-sm opacity-80">จ่ายครั้งเดียว ใช้เน็ตได้นาน 1 ปี</p>
-                    </div>
-                </div>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+                <a href="tel:097-232-XXXX" class="group relative w-full md:w-auto">
+                    <div class="absolute -inset-0.5 bg-gradient-to-r from-[#c27803] to-[#8a5502] rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
+          <button class="relative w-full md:w-auto overflow-hidden bg-white text-[#c27803] border border-[#c27803]/30 text-sm font-bold uppercase tracking-widest py-5 px-10 rounded-[2rem] transition-all duration-500 shadow-[0_10px_30px_-10px_rgba(194,120,3,0.15)] hover:bg-[#c27803] hover:text-white hover:shadow-[0_20px_40px_-10px_rgba(194,120,3,0.4)] group">
+             <span class="absolute inset-0 bg-gradient-to-r from-white/0 via-white/40 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></span>
+    
+             <span class="relative z-10 flex items-center justify-center gap-3">
+        <span class="text-lg">📞</span> โทรปรึกษา: 097-232-XXXX
+           </span>
+           </button>
+                </a>
 
-                </div>
-
-            <div class="text-center mt-12">
-                <a href="product.html" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-colors duration-300">
-                    ดูผลิตภัณฑ์เพิ่มเติม
+                <a href="#contact" class="w-full md:w-auto px-10 py-5 bg-white border border-gray-200 text-gray-800 text-sm font-bold uppercase tracking-widest rounded-2xl hover:bg-gray-50 hover:border-gray-300 transition-all duration-300 shadow-sm">
+                    ประเมินหน้างานฟรี
                 </a>
             </div>
-        </div>
-		
-    </section>
 
-
-
-    <section id="packages" class="py-16 bg-gray-100 px-4">
-        <div class="container mx-auto">
-            <h3 class="text-3xl font-bold text-center mb-12 text-gray-800">แพ็คเกจยอดนิยม</h3>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-200">
-                    <div class="bg-blue-600 text-white p-6 text-center">
-                        <h4 class="text-xl font-bold">ชุดประหยัด 2 กล้อง</h4>
-                        <p class="text-3xl font-bold mt-2">3,xxx.-</p>
-                    </div>
-                    <ul class="p-6 space-y-3 text-gray-600">
-                        <li>✅ กล้อง Smart Camera (3.0MP) TP-LINK TAPO C216</li>
-                        <li>✅ 32GB Micro SD Card SANDISK High Endurance SDSQQNR-032G-GN6IA (100MB/s.)</li>
-                        <li>✅ เชื่อมต่อผ่าน Wi-fi ดูออนไลน์ผ่านมือถือฟรี ผ่านแอป TP-LINK TAPO</li>
-                        <li>✅ รวมค่าติดตั้งและอุปกรณ์เดินท่อ</li>
-						<li>✅ บริการ On-site เซ็ตระบบฟรี</li>
-						<li>✅ รับประกันงานติดตั้ง 1 ปีเต็ม</li>
-                    </ul>
+            <div class="mt-20 flex flex-wrap justify-center gap-8 md:gap-16 opacity-40 grayscale">
+                <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold uppercase tracking-tighter italic text-gray-600">Ultra HD 4K</span>
                 </div>
-			
-                <div class="bg-white rounded-2xl overflow-hidden shadow-2xl border-2 border-yellow-500 transform scale-105">
-                    <div class="bg-yellow-500 text-blue-900 p-6 text-center font-bold">
-                        <p class="uppercase text-sm">แนะนำสำหรับบ้านทั่วไป</p>
-                        <h4 class="text-xl">ชุดมาตรฐาน 3 กล้อง</h4>
-                        <p class="text-3xl mt-2">5,xxx.-</p>
-                    </div>
-                    <ul class="p-6 space-y-3 text-gray-600 font-medium">
-                        <li>✅ Smart Camera (3.0MP+3.0MP) TP-LINK TAPO C246D</li>
-                        <li>✅ 64GB Micro SD Card SANDISK High Endurance SDSQQNR-064G-GN6IA (100MB/s.)</li>
-                        <li>✅ รวมค่าติดตั้งและอุปกรณ์เดินท่อ</li>
-						<li>✅ บริการ On-site เซ็ตระบบฟรี</li>
-						<li>✅ รับประกันงานติดตั้ง 1 ปีเต็ม</li>
-                    </ul>
+                <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold uppercase tracking-tighter italic text-gray-600">AI Detection</span>
                 </div>
-				
-                <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-200">
-                    <div class="bg-blue-600 text-white p-6 text-center">
-                        <h4 class="text-xl font-bold">ชุดจัดเต็ม 4 กล้อง</h4>
-                        <p class="text-3xl font-bold mt-2">9,xxx.-</p>
-                    </div>
-                    <ul class="p-6 space-y-3 text-gray-600">
-					    <li>✅ กล้องไร้สาย Smart Camera (4.0MP) TP-LINK TAPO C520WS Outdoor</li>
-                        <li>✅ 64GB Micro SD Card SANDISK High Endurance SDSQQNR-064G-GN6IA (100MB/s.)</li>
-                        <li>✅ รวมค่าติดตั้งและอุปกรณ์เดินท่อ</li>
-						<li>✅ บริการ On-site เซ็ตระบบฟรี</li>
-						<li>✅ รับประกันงานติดตั้ง 1 ปีเต็ม</li>
-                    </ul>
+                <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold uppercase tracking-tighter italic text-gray-600">Night Vision</span>
                 </div>
-		
             </div>
-			<div class="text-center mt-12">
-                <a href="package.html" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-colors duration-300">
-                    ดูแพ็คเกจเพิ่มเติม
-                </a>
-            </div>
-			
-        </div>
-    </section>
-	
-	
-	    <section id="services" class="py-16 container mx-auto px-4">
-        <h3 class="text-3xl font-bold text-center mb-12 text-gray-800">บริการของเรา</h3>
-        <div class="grid md:grid-cols-3 gap-8">
-		
-              <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-blue-500">
-                 <div class="text-4xl mb-4">🏠</div>
-                 <h4 class="text-xl font-bold mb-2">บ้านพักอาศัย</h4>
-                 <p class="text-gray-600">📢 ไม่ว่าคุณจะอยู่ที่ไหน ก็อุ่นใจได้เสมอ จะเช็กดูเจ้าตัวเล็กตอนหลับ หรือดูแลคุณพ่อคุณแม่ที่อยู่บ้านเพียงลำพัง ก็ทำได้ง่ายๆ ผ่านมือถือ</p>
-				 <p class="text-gray-600">📢 ภาพชัดทั้งกลางวันและกลางคืน มีระบบแจ้งเตือนทันทีเมื่อมีการเคลื่อนไหว</p>
-				 <p class="text-gray-600">📢 ติดตั้งวันนี้ เพื่อความปลอดภัยของ "บ้าน" ที่เป็นมากกว่าแค่ที่อยู่อาศัย</p>
-				 <p class="text-gray-600">📢 เน้นมุมกล้องครอบคลุมทางเข้า-ออก และจุดอับสายตารอบบ้าน</p>
-             </div>
 
-            <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-blue-500">
-                <div class="text-4xl mb-4">🏢</div>
-                <h4 class="text-xl font-bold mb-2">ร้านค้า/ออฟฟิศ</h4>
-                <p class="text-gray-600">📢 จะเข้าร้านสาย หรือออกไปหาซัพพลายเออร์ ก็ไม่เป็นปัญหา เช็กยอดขายหน้าเคาน์เตอร์ ดูการทำงานของพนักงาน หรือดูพฤติกรรมลูกค้าได้แบบ Real-time ผ่านมือถือ</p>
-				<p class="text-gray-600">📢 กล้องภาพชัด เห็นครบทุกมุม (ลดปัญหายักยอก/ของหาย)</p>
-				<p class="text-gray-600">📢 ระบบบันทึกต่อเนื่อง 24 ชม.</p>
-				<p class="text-gray-600">📢 เปลี่ยนกล้องวงจรปิดให้เป็นผู้ช่วยผู้จัดการร้านของคุณ ติดต่อเราวันนี้!</p>
-            </div>
-			
-            <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-blue-500">
-                <div class="text-4xl mb-4">🏭</div>
-                <h4 class="text-xl font-bold mb-2">โรงงาน/คลังสินค้า</h4>
-                <p class="text-gray-600">📢 กล้องทนต่อการทุบทำลาย</p>
-				<p class="text-gray-600">📢 เดินสายไกลได้ทั่วพื้นที่โรงงานโดยสัญญาณไม่ตก</p>
-				<p class="text-gray-600">📢 ระบบจัดการกล้องจำนวนมาก ในหน้าจอเดียว</p>
-				<p class="text-gray-600">📢 บริการตรวจเช็กสภาพกล้องรายปี (Maintenance Service Agreement)</p>
-            </div>
         </div>
-    </section>
-	
+    </div>
+</header>
 
-	
-	    <section id="service" class="py-16 px-4 bg-white">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">ผลงานติดตั้งของเรา</h2>
+<section id="product" class="py-24 px-4 bg-white">
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-20">
+            <span class="text-[#c27803] text-[10px] uppercase tracking-[0.4em] font-bold mb-4 block">Our Collections</span>
+            <h2 class="text-4xl font-semibold tracking-tighter text-gray-900 mb-6">กล้องวงจรปิดและอุปกรณ์เสริม</h2>
+            <div class="w-10 h-0.5 bg-[#c27803]/30 mx-auto"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                
-                <div class="relative group rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all">
-                    <img src="service/homeimage/comingsoon.jpg" alt="CCTV ติดตั้งที่บ้านพักอาศัย" class="w-full h-45 object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-75 transition-opacity duration-300"></div>
-                    <div class="absolute bottom-0 left-0 p-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <p class="font-semibold">ติดตั้งกล้องหน้าบ้าน</p>
-                        <p class="text-sm opacity-80">มุมมองกว้าง ครอบคลุมพื้นที่</p>
+            <div class="group cursor-pointer">
+                <div class="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-[#faf9f6] border border-gray-50 transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-[#c27803]/5">
+                    <img src="productimage/homeimage/Tapo_C530WS.jpg" alt="Smart Camera" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                        <span class="bg-white/90 backdrop-blur-md text-gray-800 text-[10px] uppercase tracking-widest px-5 py-2.5 rounded-full shadow-sm">Explore</span>
                     </div>
                 </div>
+                <div class="mt-6 px-2 text-center">
+                    <h4 class="text-base font-medium text-gray-800">กล้องไร้สาย Smart Camera</h4>
+                    <p class="text-xs text-gray-400 font-light mt-1 italic">มุมมองกว้าง ครอบคลุมพื้นที่</p>
+                </div>
+            </div>
 
-                <div class="relative group rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all">
-                    <img src="service/homeimage/comingsoon.jpg" alt="CCTV ติดตั้งที่ร้านค้า" class="w-full h-45 object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-75 transition-opacity duration-300"></div>
-                    <div class="absolute bottom-0 left-0 p-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <p class="font-semibold">กล้องภายในร้าน</p>
-                        <p class="text-sm opacity-80">ชัดเจนทุกรายละเอียด</p>
+            <div class="group cursor-pointer">
+                <div class="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-[#faf9f6] border border-gray-50 transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-[#c27803]/5">
+                    <img src="productimage/homeimage/Tapo_C530WS.jpg" alt="Indoor Camera" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                        <span class="bg-white/90 backdrop-blur-md text-gray-800 text-[10px] uppercase tracking-widest px-5 py-2.5 rounded-full shadow-sm">Explore</span>
                     </div>
                 </div>
+                <div class="mt-6 px-2 text-center">
+                    <h4 class="text-base font-medium text-gray-800">กล้องภายในบ้าน</h4>
+                    <p class="text-xs text-gray-400 font-light mt-1 italic">ภาพคมชัด พร้อมระบบ Pan/Tilt</p>
+                </div>
+            </div>
 
-                <div class="relative group rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all">
-                    <img src="service/homeimage/comingsoon.jpg" alt="CCTV ติดตั้งที่โรงงาน" class="w-full h-45 object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-75 transition-opacity duration-300"></div>
-                    <div class="absolute bottom-0 left-0 p-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <p class="font-semibold">ระบบกล้อง IP Camera</p>
-                        <p class="text-sm opacity-80">สำหรับคลังสินค้าขนาดใหญ่</p>
+            <div class="group cursor-pointer">
+                <div class="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-[#faf9f6] border border-gray-50 transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-[#c27803]/5">
+                    <img src="productimage/homeimage/Tapo_C530WS.jpg" alt="Solar Camera" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                        <span class="bg-white/90 backdrop-blur-md text-gray-800 text-[10px] uppercase tracking-widest px-5 py-2.5 rounded-full shadow-sm">Explore</span>
                     </div>
                 </div>
-                
-                <div class="relative group rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all">
-                    <img src="service/homeimage/comingsoon.jpg" alt="CCTV มุมสูง" class="w-full h-45 object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-75 transition-opacity duration-300"></div>
-                    <div class="absolute bottom-0 left-0 p-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <p class="font-semibold">กล้องมองมุมสูง</p>
-                        <p class="text-sm opacity-80">ตรวจจับสิ่งผิดปกติ</p>
+                <div class="mt-6 px-2 text-center">
+                    <h4 class="text-base font-medium text-gray-800">กล้องไร้สาย + Solar Panel</h4>
+                    <p class="text-xs text-gray-400 font-light mt-1 italic">พลังงานสะอาด ทำงานต่อเนื่อง</p>
+                </div>
+            </div>
+
+            <div class="group cursor-pointer">
+                <div class="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-[#faf9f6] border border-gray-50 transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-[#c27803]/5">
+                    <img src="productimage/homeimage/Tapo_C530WS.jpg" alt="NVR" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                        <span class="bg-white/90 backdrop-blur-md text-gray-800 text-[10px] uppercase tracking-widest px-5 py-2.5 rounded-full shadow-sm">Explore</span>
                     </div>
                 </div>
+                <div class="mt-6 px-2 text-center">
+                    <h4 class="text-base font-medium text-gray-800">Network Video Recorder</h4>
+                    <p class="text-xs text-gray-400 font-light mt-1 italic">ระบบบันทึกภาพประสิทธิภาพสูง</p>
+                </div>
+            </div>
+            
+            </div>
 
-                <div class="relative group rounded-lg overflow-hidden shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all">
-                    <img src="service/homeimage/comingsoon.jpg" alt="CCTV อินฟราเรด" class="w-full h-45 object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-75 transition-opacity duration-300"></div>
-                    <div class="absolute bottom-0 left-0 p-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <p class="font-semibold">ภาพกลางคืน (อินฟราเรด)</p>
-                        <p class="text-sm opacity-80">ชัดเจนแม้ในที่มืดสนิท</p>
+        <div class="text-center mt-20">
+            <a href="product.html" target="_blank" class="inline-flex items-center justify-center bg-white border border-[#c27803]/20 text-[#c27803] text-[11px] uppercase tracking-[0.3em] font-bold py-5 px-12 rounded-full transition-all duration-500 hover:bg-[#c27803] hover:text-white hover:shadow-xl hover:shadow-[#c27803]/20">
+                View All Products
+            </a>
+        </div>
+    </div>
+</section>
+
+
+
+<section id="packages" class="py-24 bg-white px-4">
+    <div class="container mx-auto max-w-6xl">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6 text-left">
+            <div class="max-w-xl">
+                <span class="text-[#c27803] text-[10px] uppercase tracking-[0.4em] font-bold mb-4 block">Pricing Plans</span>
+                <h3 class="text-4xl font-semibold tracking-tighter text-gray-900">แพ็กเกจติดตั้งที่คุ้มค่า</h3>
+            </div>
+            <p class="text-gray-400 font-light max-w-xs text-sm leading-relaxed border-l border-gray-100 pl-6">
+                รวมค่าติดตั้งและอุปกรณ์ครบชุดแบบ Premium พร้อมดูแลหลังการขายโดยทีมช่างผู้เชี่ยวชาญ
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <div class="group relative bg-[#fdfbf7] rounded-[2.5rem] p-10 hover:bg-white border border-gray-50 hover:border-gray-200 hover:shadow-2xl transition-all duration-500">
+                <div class="mb-10">
+                    <h4 class="text-[10px] uppercase tracking-[0.2em] text-gray-400 mb-2 font-bold">Starter Kit</h4>
+                    <p class="text-2xl font-medium text-gray-800">ชุดประหยัด 2 กล้อง</p>
+                    <div class="mt-6 flex items-baseline">
+                        <span class="text-4xl font-light text-gray-900 tracking-tighter italic">3,xxx</span>
+                        <span class="text-xs text-gray-400 ml-2 font-bold tracking-widest uppercase">thb</span>
                     </div>
                 </div>
-				
-
-                </div>
-
-            <div class="text-center mt-12">
-                <a href="service.html" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-colors duration-300">
-                    ดูผลงานเพิ่มเติม
+                <ul class="space-y-5 mb-12">
+                    <li class="flex items-center text-sm text-gray-500 font-light italic">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#c27803]/30 mr-4"></span> 2 กล้อง Tapo C216 (3.0MP)
+                    </li>
+                    <li class="flex items-center text-sm text-gray-500 font-light italic">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#c27803]/30 mr-4"></span> Micro SD 32GB High Endurance
+                    </li>
+                    <li class="flex items-center text-sm text-gray-500 font-light italic">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#c27803]/30 mr-4"></span> อุปกรณ์เดินท่อและงานติดตั้ง
+                    </li>
+                </ul>
+                <a href="#contact" class="flex items-center justify-center w-full py-4 rounded-2xl text-[11px] uppercase tracking-widest font-bold text-gray-800 border border-gray-200 group-hover:bg-[#c27803] group-hover:text-white group-hover:border-[#c27803] transition-all duration-500 shadow-sm">
+                    Select Plan
                 </a>
             </div>
+
+            <div class="group relative bg-[#fdfbf7] rounded-[2.5rem] p-10 border-2 border-[#c27803]/20 shadow-xl lg:-mt-6 transition-all duration-500 bg-gradient-to-b from-[#fdfbf7] to-white">
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+                    <span class="bg-[#c27803] text-white text-[9px] uppercase tracking-[0.3em] px-4 py-1.5 rounded-full font-bold shadow-lg">Recommend</span>
+                </div>
+                <div class="mb-10">
+                    <h4 class="text-[10px] uppercase tracking-[0.2em] text-[#c27803] mb-2 font-bold">Standard Pro</h4>
+                    <p class="text-2xl font-medium text-gray-800">ชุดมาตรฐาน 3 กล้อง</p>
+                    <div class="mt-6 flex items-baseline">
+                        <span class="text-4xl font-light text-[#c27803] tracking-tighter italic">5,xxx</span>
+                        <span class="text-xs text-gray-400 ml-2 font-bold tracking-widest uppercase">thb</span>
+                    </div>
+                </div>
+                <ul class="space-y-5 mb-12">
+                    <li class="flex items-center text-sm text-gray-600 font-normal italic">
+                        <span class="w-2 h-2 rounded-full bg-[#c27803] mr-4 shadow-sm"></span> 3 กล้อง Tapo C246D (Dual)
+                    </li>
+                    <li class="flex items-center text-sm text-gray-600 font-normal italic">
+                        <span class="w-2 h-2 rounded-full bg-[#c27803] mr-4 shadow-sm"></span> Micro SD 64GB High Endurance
+                    </li>
+                    <li class="flex items-center text-sm text-gray-600 font-normal italic">
+                        <span class="w-2 h-2 rounded-full bg-[#c27803] mr-4 shadow-sm"></span> On-site เซ็ตระบบออนไลน์ฟรี
+                    </li>
+                </ul>
+                <a href="#contact" class="flex items-center justify-center w-full py-4 bg-gray-900 rounded-2xl text-[11px] uppercase tracking-widest font-bold text-white hover:bg-[#c27803] transition-all duration-500 shadow-lg">
+                    Book This Pack
+                </a>
+            </div>
+
+            <div class="group relative bg-[#fdfbf7] rounded-[2.5rem] p-10 hover:bg-white border border-gray-50 hover:border-gray-200 hover:shadow-2xl transition-all duration-500">
+                <div class="mb-10">
+                    <h4 class="text-[10px] uppercase tracking-[0.2em] text-gray-400 mb-2 font-bold">Advanced Kit</h4>
+                    <p class="text-2xl font-medium text-gray-800">ชุดจัดเต็ม 4 กล้อง</p>
+                    <div class="mt-6 flex items-baseline">
+                        <span class="text-4xl font-light text-gray-900 tracking-tighter italic">9,xxx</span>
+                        <span class="text-xs text-gray-400 ml-2 font-bold tracking-widest uppercase">thb</span>
+                    </div>
+                </div>
+                <ul class="space-y-5 mb-12">
+                    <li class="flex items-center text-sm text-gray-500 font-light italic">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#c27803]/30 mr-4"></span> 4 กล้อง Tapo C520WS Outdoor
+                    </li>
+                    <li class="flex items-center text-sm text-gray-500 font-light italic">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#c27803]/30 mr-4"></span> ทนแดด ทนฝน มาตรฐาน IP66
+                    </li>
+                    <li class="flex items-center text-sm text-gray-500 font-light italic">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#c27803]/30 mr-4"></span> งานติดตั้งเก็บสายเข้าท่อร้อยสาย
+                    </li>
+                </ul>
+                <a href="#contact" class="flex items-center justify-center w-full py-4 rounded-2xl text-[11px] uppercase tracking-widest font-bold text-gray-800 border border-gray-200 group-hover:bg-gray-900 group-hover:text-white group-hover:border-gray-900 transition-all duration-500 shadow-sm">
+                    Select Plan
+                </a>
+            </div>
+
         </div>
-    </section>	
+		
+		<div class="text-center mt-24">
+            <a href="package.html" target="_blank" class="inline-flex items-center gap-4 text-[11px] uppercase tracking-[0.3em] font-bold text-gray-900 group">
+                <span class="border-b-2 border-gray-900 pb-1 group-hover:text-[#c27803] group-hover:border-[#c27803] transition-all">Explore More Packages</span>
+                <svg class="w-4 h-4 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            </a>
+        </div>
+		
+    </div>
+</section>
+	
+	
+<section id="services" class="py-24 bg-[#faf9f6] px-4">
+    <div class="container mx-auto max-w-6xl">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+            <div class="max-w-xl">
+                <span class="text-[#c27803] text-xs uppercase tracking-[0.3em] font-bold mb-4 block">Our Expertise</span>
+                <h3 class="text-4xl md:text-5xl font-semibold tracking-tighter text-gray-900 leading-none">
+                    โซลูชันความปลอดภัย <br class="hidden md:block"> ที่ออกแบบมาเพื่อคุณ
+                </h3>
+            </div>
+            <p class="text-gray-500 font-light max-w-xs text-sm leading-relaxed">
+                เราไม่ได้แค่ติดตั้งกล้อง แต่เราออกแบบ "ความอุ่นใจ" ให้เข้ากับไลฟ์สไตล์และธุรกิจของคุณอย่างลงตัว
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+            
+            <div class="md:col-span-8 group relative bg-white rounded-[2.5rem] p-10 overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500">
+                <div class="relative z-10 flex flex-col h-full justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-gray-50 rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-inner">🏠</div>
+                        <h4 class="text-2xl font-semibold text-gray-800 mb-4">Smart Home Security</h4>
+                        <p class="text-gray-500 font-light max-w-sm">ดูแลลูกน้อยและผู้สูงอายุได้จากทุกที่ พร้อมระบบแจ้งเตือนอัจฉริยะผ่าน AI ตรวจจับคนแปลกหน้า</p>
+                    </div>
+                    <div class="mt-8 flex gap-4">
+                        <span class="px-4 py-2 bg-gray-50 rounded-full text-[10px] font-bold uppercase tracking-widest text-gray-400">AI Motion</span>
+                        <span class="px-4 py-2 bg-gray-50 rounded-full text-[10px] font-bold uppercase tracking-widest text-gray-400">Night Vision</span>
+                    </div>
+                </div>
+                <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-[#fdfbf7] rounded-full group-hover:bg-[#f3f0e8] transition-colors duration-500"></div>
+            </div>
+
+ <div class="md:col-span-4 group bg-white rounded-[2.5rem] p-10 overflow-hidden relative border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500">
+    <div class="relative z-10">
+        <div class="w-12 h-12 bg-[#fdfbf7] border border-[#f3f0e8] rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-sm group-hover:scale-110 transition-transform duration-500">
+            🏢
+        </div>
+        <h4 class="text-2xl font-semibold mb-4 text-gray-800">Business Hub</h4>
+        <p class="text-gray-500 font-light text-sm leading-relaxed">
+            เช็กยอดขายและพฤติกรรมลูกค้าได้แบบ Real-time แม้ไม่อยู่ที่ร้าน ช่วยให้คุณบริหารจัดการธุรกิจได้จากทุกมุมโลก
+        </p>
+    </div>
+    
+    <div class="absolute bottom-0 right-0 p-6 opacity-[0.03] group-hover:opacity-10 group-hover:text-[#c27803] transition-all duration-700">
+        <svg class="w-32 h-32" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/>
+        </svg>
+    </div>
+
+    <div class="absolute bottom-0 left-0 w-full h-1.5 bg-gradient-to-r from-transparent via-[#c27803]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+
+            <div class="md:col-span-12 group bg-white rounded-[2.5rem] p-10 border border-gray-100 flex flex-col md:flex-row items-center justify-between gap-8 hover:shadow-xl transition-all duration-500">
+                <div class="flex items-center gap-8">
+                    <div class="w-16 h-16 bg-[#c27803]/10 rounded-3xl flex items-center justify-center text-3xl">🏭</div>
+                    <div>
+                        <h4 class="text-2xl font-semibold text-gray-800">Industrial & Warehouse</h4>
+                        <p class="text-gray-500 font-light mt-1">ระบบโครงสร้างใหญ่พิเศษ ทนทาน และรองรับกล้องจำนวนมาก</p>
+                    </div>
+                </div>
+                <div class="flex -space-x-4">
+                    <div class="w-12 h-12 rounded-full border-4 border-white bg-gray-100 flex items-center justify-center text-[10px] font-bold">NVR</div>
+                    <div class="w-12 h-12 rounded-full border-4 border-white bg-gray-200 flex items-center justify-center text-[10px] font-bold">POE</div>
+                    <div class="w-12 h-12 rounded-full border-4 border-white bg-gray-300 flex items-center justify-center text-[10px] font-bold">IP</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
 	
 
-    <section id="contact" class="py-10 container mx-auto px-4 max-w-4xl">
-        <div class="bg-blue-900 text-white rounded-3xl p-8 md:p-12 shadow-xl">
-            <div class="text-center mb-8">
-                <h3 class="text-3xl font-bold mb-4">สนใจติดตั้ง หรือปรึกษาฟรี</h3>
-                <p>แจ้งเบอร์โทรศัพท์ไว้เพื่อให้ทีมงานติดต่อกลับ หรือติดต่อเราโดยตรงได้ที่</p>
+	
+<section id="service" class="py-24 px-4 bg-[#faf9f6]">
+    <div class="max-w-6xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6">
+            <div class="max-w-xl text-left">
+                <span class="text-[#c27803] text-[10px] uppercase tracking-[0.4em] font-bold mb-4 block">Portfolios</span>
+                <h3 class="text-4xl font-semibold tracking-tighter text-gray-900 leading-none">
+                    ผลงานการติดตั้ง <br>ที่เราภาคภูมิใจ
+                </h3>
             </div>
-            <div class="grid md:grid-cols-2 gap-8 items-center text-center">
-                <div class="space-y-4">
-                    <p class="text-lg">📞 โทร: <span class="text-yellow-400 font-bold">097-232-XXXX</span></p>
-                    <p class="text-lg">💬 Line ID: <span class="text-green-400 font-bold">@KhuangNaiCCTVPro</span></p>
-                    <p class="text-sm opacity-75 italic text-blue-200">*รับติดตั้งเฉพาะวัน เสาร์-อาทิตย์ และวันหยุดนักขัตฤกษ์</p>
+            <p class="text-gray-400 font-light max-w-xs text-sm leading-relaxed border-l border-gray-100 pl-6">
+                คัดสรรเฉพาะงานคุณภาพ เพื่อยืนยันมาตรฐานความปลอดภัยที่เรามอบให้ลูกค้าทุกท่าน
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+            
+            <div class="md:col-span-7 group cursor-pointer">
+                <div class="relative aspect-[16/10] overflow-hidden rounded-[2.5rem] bg-white border border-gray-100 shadow-sm transition-all duration-700 hover:shadow-2xl">
+                    <img src="service/homeimage/comingsoon.jpg" alt="ติดตั้งกล้องหน้าบ้าน" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:rotate-1">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#fdfbf7]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end p-10">
+                        <span class="bg-white/90 backdrop-blur-md text-gray-800 text-[10px] uppercase tracking-[0.2em] font-bold px-6 py-3 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">View Project Details</span>
+                    </div>
                 </div>
-                <div class="bg-white p-4 rounded-xl inline-block mx-auto text-blue-900">
-                    <p class="font-bold mb-2">พื้นที่ให้บริการ</p>
-                    <p class="text-sm">อุบลราชธานี<br>เขื่องใน / ม่วงสามสิบ / คำเขื่อนแก้ว</p>
-	    <section class="py-12 container mx-auto px-4">
-        <div class="max-w-4xl mx-auto overflow-hidden rounded-2xl shadow-lg border border-gray-200">
-        <h3 class="bg-white p-4 text-center font-bold text-gray-800 border-b">ที่ตั้งและพื้นที่ให้บริการของเรา</h3>
-        <div class="aspect-video">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d961.1305055439382!2d104.49226604549158!3d15.510121519994417!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sth!4v1767188456214!5m2!1sen!2sth" 
-			class="w-full h-full border-0" allowfullscreen="" 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade">"></iframe>
-        </div>
-        </div>
-       </section>
+                <div class="mt-8 flex justify-between items-start px-4">
+                    <div>
+                        <h4 class="text-xl font-medium text-gray-800">CCTV สำหรับบ้านพักอาศัย</h4>
+                        <p class="text-sm text-gray-400 font-light mt-1 uppercase tracking-widest">Ubon Ratchathani</p>
+                    </div>
+                    <span class="text-[#c27803] text-xs font-bold">2026</span>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <footer class="bg-blue-900 flex flex-col text-white py-4 text-center text-sm">
-        <p>© 2026 CCTV Professional Service. All rights reserved.</p>
-    </footer>
+            <div class="md:col-span-5 flex flex-col gap-8">
+                <div class="group cursor-pointer">
+                    <div class="relative aspect-[4/3] overflow-hidden rounded-[2.5rem] bg-white border border-gray-100 shadow-sm transition-all duration-700 hover:shadow-xl">
+                        <img src="service/homeimage/comingsoon.jpg" alt="กล้องภายในร้าน" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-[#fdfbf7]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    </div>
+                    <div class="mt-6 px-2">
+                        <h4 class="text-lg font-medium text-gray-800">กล้องภายในร้านค้า</h4>
+                        <p class="text-xs text-gray-400 font-light mt-1 italic">Commercial Shop Space</p>
+                    </div>
+                </div>
+
+                <div class="group cursor-pointer">
+                    <div class="relative aspect-[4/3] overflow-hidden rounded-[2.5rem] bg-white border border-gray-100 shadow-sm transition-all duration-700 hover:shadow-xl">
+                        <img src="service/homeimage/comingsoon.jpg" alt="ระบบกล้อง IP Camera" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-[#fdfbf7]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    </div>
+                    <div class="mt-6 px-2">
+                        <h4 class="text-lg font-medium text-gray-800">ระบบคลังสินค้าขนาดใหญ่</h4>
+                        <p class="text-xs text-gray-400 font-light mt-1 italic">IP Camera System</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="text-center mt-24">
+            <a href="service.html" target="_blank" class="inline-flex items-center gap-4 text-[11px] uppercase tracking-[0.3em] font-bold text-gray-900 group">
+                <span class="border-b-2 border-gray-900 pb-1 group-hover:text-[#c27803] group-hover:border-[#c27803] transition-all">Explore More Works</span>
+                <svg class="w-4 h-4 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            </a>
+        </div>
+    </div>
+</section>
+	
+
+<section id="contact" class="py-24 bg-white">
+    <div class="container mx-auto px-4 max-w-6xl">
+        <div class="bg-[#faf9f6] border border-gray-100 rounded-[3rem] overflow-hidden shadow-sm transition-all duration-500 hover:shadow-xl">
+            <div class="flex flex-col lg:flex-row">
+                
+                <div class="lg:w-1/2 p-10 md:p-20">
+                    <span class="text-[#c27803] text-[10px] uppercase tracking-[0.4em] font-bold mb-6 block">Get in Touch</span>
+                    <h3 class="text-4xl font-semibold tracking-tighter text-gray-900 mb-6 leading-tight">
+                        สนใจติดตั้ง <br>หรือปรึกษาฟรี
+                    </h3>
+                    <p class="text-gray-500 font-light mb-16 max-w-sm leading-relaxed">
+                        เราพร้อมให้คำแนะนำและประเมินหน้างานฟรี เพื่อระบบความปลอดภัยที่ตอบโจทย์คุณที่สุด
+                    </p>
+                    
+                    <div class="space-y-10">
+                        <div class="flex items-center space-x-6 group">
+                            <div class="w-14 h-14 bg-white rounded-2xl shadow-sm border border-gray-100 flex items-center justify-center text-[#c27803] group-hover:bg-[#c27803] group-hover:text-white transition-all duration-500">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                            </div>
+                            <div>
+                                <p class="text-[10px] uppercase tracking-[0.2em] text-gray-400 font-bold mb-1">Call Us</p>
+                                <p class="text-xl font-medium text-gray-800 tracking-tight">097-232-XXXX</p>
+                            </div>
+                        </div>
+
+                        <a href="https://line.me/R/ti/p/@yourid" target="_blank" class="flex items-center space-x-6 group cursor-pointer">
+                            <div class="w-14 h-14 bg-white rounded-2xl shadow-sm border border-gray-100 flex items-center justify-center text-[#06C755] group-hover:bg-[#06C755] group-hover:text-white transition-all duration-500">
+                                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M24 10.304c0-5.369-5.383-9.738-12-9.738s-12 4.369-12 9.738c0 4.814 4.269 8.846 10.036 9.608.391.084.922.258 1.057.592.121.303.079.778.039 1.085l-.171 1.047c-.052.312-.252 1.221 1.089.665 1.341-.556 7.235-4.262 9.869-7.3s2.08-5.328 2.08-5.697z"/></svg>
+                            </div>
+                            <div>
+                                <p class="text-[10px] uppercase tracking-[0.2em] text-gray-400 font-bold mb-1">Line Official</p>
+                                <p class="text-xl font-medium text-gray-800 tracking-tight">@KhuangNaiCCTVPro</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="mt-20 pt-8 border-t border-gray-200/50">
+                        <div class="flex items-start space-x-3 text-gray-400">
+                            <span class="text-[#c27803] text-lg">●</span>
+                            <p class="text-xs font-light italic leading-relaxed">
+                                หมายเหตุ: เพื่อคุณภาพงานติดตั้งที่ประณีตที่สุด <br>
+                                เราเปิดรับคิวเฉพาะวัน เสาร์-อาทิตย์ และวันหยุดนักขัตฤกษ์เท่านั้น
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:w-1/2 p-4 bg-[#f3f0e8]/30">
+                    <div class="h-full rounded-[2.5rem] overflow-hidden flex flex-col bg-white shadow-inner border border-white">
+                        <div class="p-10">
+                            <h4 class="text-[10px] uppercase tracking-[0.2em] font-bold text-gray-400 mb-4 flex items-center">
+                                <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse mr-3"></span> Service Areas
+                            </h4>
+                            <p class="text-lg font-medium text-gray-800">จ.อุบลฯ และ จ.ยโสธร</p>
+                            <p class="text-sm text-gray-400 font-light mt-2 italic">เขื่องใน, ม่วงสามสิบ, คำเขื่อนแก้ว และพื้นที่ใกล้เคียง</p>
+                        </div>
+                        
+                        <div class="flex-grow min-h-[400px] relative filter grayscale contrast-[0.8] opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-1000">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d961.1305055439382!2d104.49226604549158!3d15.510121519994417!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sth!4v1767188456214!5m2!1sen!2sth" 
+                                class="absolute inset-0 w-full h-full border-0" 
+                                allowfullscreen="" 
+                                loading="lazy">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-[#faf9f6] text-gray-700 pt-24 pb-12 border-t border-gray-100">
+    <div class="container mx-auto px-6 max-w-6xl">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-16 mb-20">
+            
+            <div class="md:col-span-5 space-y-8">
+                <h4 class="text-2xl font-semibold tracking-tighter text-gray-900">
+                    <span class="text-[#c27803]">📷</span> Khuang Nai <span class="font-light text-gray-400">CCTV Pro</span>
+                </h4>
+                <p class="text-sm text-gray-400 leading-relaxed font-light max-w-sm italic">
+                    เราเชื่อว่าความปลอดภัยเริ่มต้นจากการออกแบบที่ใส่ใจ บริการติดตั้งกล้องวงจรปิดมาตรฐานสากล สำหรับบ้านและธุรกิจในพื้นที่ จ.อุบลราชธานี และ จ.ยโสธร
+                </p>
+                <div class="inline-flex items-center space-x-2 bg-white px-4 py-2 rounded-full border border-gray-100 shadow-sm">
+                    <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
+                    <span class="text-[10px] uppercase tracking-widest font-bold text-gray-500">Service: Weekend & Holidays</span>
+                </div>
+            </div>
+
+            <div class="md:col-span-3 space-y-6">
+                <h4 class="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-300">Navigation</h4>
+                <ul class="space-y-4 text-sm font-light">
+                    <li><a href="#home" class="text-gray-500 hover:text-[#c27803] transition-colors duration-300">หน้าแรก</a></li>
+                    <li><a href="#packages" class="text-gray-500 hover:text-[#c27803] transition-colors duration-300">แพ็กเกจติดตั้ง</a></li>
+                    <li><a href="#service" class="text-gray-500 hover:text-[#c27803] transition-colors duration-300">ผลงานล่าสุด</a></li>
+                    <li><a href="#contact" class="text-gray-500 hover:text-[#c27803] transition-colors duration-300">ติดต่อเรา</a></li>
+                </ul>
+            </div>
+
+            <div class="md:col-span-4 space-y-6">
+                <h4 class="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-300">Connect with us</h4>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#" class="w-11 h-11 bg-white rounded-2xl flex items-center justify-center text-gray-400 border border-gray-100 hover:border-blue-100 hover:text-blue-500 hover:shadow-lg transition-all duration-500">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+                    </a>
+                    <a href="#" class="w-11 h-11 bg-white rounded-2xl flex items-center justify-center text-gray-400 border border-gray-100 hover:border-green-100 hover:text-green-500 hover:shadow-lg transition-all duration-500">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 10.304c0-5.369-5.383-9.738-12-9.738s-12 4.369-12 9.738c0 4.814 4.269 8.846 10.036 9.608.391.084.922.258 1.057.592.121.303.079.778.039 1.085l-.171 1.047c-.052.312-.252 1.221 1.089.665 1.341-.556 7.235-4.262 9.869-7.3s2.08-5.328 2.08-5.697z"/></svg>
+                    </a>
+                    <a href="#" class="w-11 h-11 bg-white rounded-2xl flex items-center justify-center text-gray-400 border border-gray-100 hover:border-gray-900 hover:text-black hover:shadow-lg transition-all duration-500">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.86-.6-4.12-1.31a6.34 6.34 0 0 1-1.08-.75v7.54c0 3.14-1.61 6.13-4.57 7.23-3.63 1.34-8.03-.43-9.52-4.07-1.47-3.58.46-8.15 4.23-9.37 1.15-.38 2.39-.4 3.56-.15v4.03c-.63-.17-1.3-.23-1.95-.14-1.57.22-2.98 1.51-3.13 3.09-.23 2.16 1.72 4.21 3.88 3.9 1.49-.22 2.68-1.53 2.68-3.03V0h.02z"/></svg>
+                    </a>
+                </div>
+                <p class="text-xs text-gray-400 font-light leading-relaxed italic">
+                    ติดตามโปรโมชั่นและผลงานติดตั้งใหม่ๆ ได้ผ่านช่องทางโซเชียลมีเดียของเรา
+                </p>
+            </div>
+        </div>
+
+        <div class="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-[10px] text-gray-300 uppercase tracking-[0.2em] font-medium">
+                © 2026 Khuang Nai CCTV Pro. All rights reserved.
+            </p>
+            <div class="flex space-x-6 text-[10px] uppercase tracking-widest font-bold text-gray-300">
+                <a href="#" class="hover:text-gray-900 transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-gray-900 transition-colors">Terms of Service</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const btn = document.getElementById('menu-btn');
+    const menu = document.getElementById('menu');
+
+    btn.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+        menu.classList.toggle('flex');
+    });
+
+    // ปิดเมนูเมื่อคลิกลิงก์ (สำหรับมือถือ)
+    const links = menu.querySelectorAll('a');
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth < 768) {
+                menu.classList.add('hidden');
+            }
+        });
+    });
+</script>
+
+<div id="line-popup" class="fixed bottom-6 right-6 z-[60] transform translate-y-20 opacity-0 transition-all duration-700 ease-out">
+    <div class="bg-white rounded-2xl shadow-2xl p-4 flex items-center space-x-4 border border-gray-100 max-w-[280px]">
+        <div class="relative min-w-[50px]">
+            <div class="w-12 h-12 bg-[#fdfbf7] rounded-full flex items-center justify-center text-2xl border border-gray-100">
+                📷
+            </div>
+            <div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></div>
+        </div>
+        
+        <div class="flex-grow">
+            <p class="text-[10px] text-gray-400 uppercase tracking-widest font-bold">แอดมินพร้อมดูแล</p>
+            <p class="text-sm text-gray-700 font-medium">สอบถามโปรโมชั่นวันนี้?</p>
+            <a href="https://line.me/R/ti/p/@yourid" target="_blank" class="text-xs text-[#c27803] font-bold hover:underline mt-1 block">
+                ทักไลน์สอบถามคลิกเลย
+            </a>
+        </div>
+
+        <button onclick="document.getElementById('line-popup').remove()" class="text-gray-300 hover:text-gray-500">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+    </div>
+</div>
+
+<script>
+    // ตั้งเวลาให้เด้งขึ้นมาหลังจากเปิดเว็บ 3 วินาที
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            const popup = document.getElementById('line-popup');
+            popup.classList.remove('translate-y-20', 'opacity-0');
+            popup.classList.add('translate-y-0', 'opacity-100');
+        }, 3000); // 3000 = 3 วินาที (ปรับเปลี่ยนได้ตามชอบ)
+    });
+</script>
 
 </body>
 </html>
