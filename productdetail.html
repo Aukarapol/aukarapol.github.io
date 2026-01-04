@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>รายละเอียดสินค้า - Khuang Nai CCTV Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Kanit', sans-serif; }
+        .product-card:hover { transform: translateY(-5px); transition: all 0.3s ease; }
+    </style>
+</head>
+<body class="bg-gray-50 flex flex-col min-h-screen">
+
+<nav class="bg-[#fdfbf7]/90 backdrop-blur-md text-gray-700 p-4 sticky top-0 z-50 border-b border-gray-100">
+    <div class="container mx-auto flex justify-between items-center">
+	
+<div class="flex items-center group cursor-pointer">
+    <div class="relative flex items-center justify-center w-10 h-10 md:w-12 md:h-12 mr-3">
+        <div class="absolute inset-0 bg-[#c27803]/10 rounded-2xl group-hover:bg-[#c27803] group-hover:rotate-45 transition-all duration-500"></div>
+<span class="relative text-xl group-hover:scale-110 transition-transform duration-300">📷</span>
+    </div>
+    <h1 class="flex flex-col">
+        <span class="text-lg md:text-xl font-bold text-gray-900 tracking-tight leading-none">KHUEANG NAI</span>
+        <span class="text-[9px] md:text-[10px] uppercase tracking-[0.5em] text-gray-400 font-medium">CCTV Solutions</span>
+    </h1>
+</div>
+
+        <button id="menu-btn" class="block md:hidden focus:outline-none text-gray-600">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+
+<div id="menu" class="hidden md:flex items-center space-x-8">
+    
+    <a href="index.html" class="text-sm font-medium tracking-wide text-gray-600 hover:text-[#c27803] transition duration-300">หน้าแรก</a>
+    <a href="product.html" class="text-sm font-medium tracking-wide text-gray-600 hover:text-[#c27803] transition duration-300">สินค้าและอุปกรณ์</a>
+    <a href="package.html" class="text-sm font-medium tracking-wide text-gray-600 hover:text-[#c27803] transition duration-300">แพ็คเกจติดตั้ง</a>
+    <a href="service.html" class="text-sm tracking-wide hover:text-[#c27803] transition duration-300">บริการ</a>
+    <a href="project.html" class="text-sm font-medium tracking-wide text-gray-600 hover:text-[#c27803] transition duration-300">ผลงานของเรา</a>
+    <a href="contact.html" class="flex items-center gap-2 bg-[#fdf2e2] text-[#a66602] px-6 py-2 rounded-2xl text-sm font-bold hover:bg-[#c27803] hover:text-white transition-all duration-300 shadow-sm border border-[#c27803]/10 h-10">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+        </svg>
+        <span class="leading-none">ติดต่อสอบถาม</span>
+    </a>
+</div>
+    </div>
+</nav>
+
+<div class="py-10">
+    <div id="product-detail-container">
+        </div>
+</div>
+
+<div id="imageModal" class="hidden fixed inset-0 z-[999] bg-black/90 flex justify-center items-center cursor-pointer" onclick="closeModal()">
+    <span class="absolute top-5 right-10 text-white text-5xl font-bold">&times;</span>
+    <img id="modalImg" class="max-w-[90%] max-h-[90%] border-4 border-white shadow-2xl transition-transform duration-300">
+</div>
+
+<footer class="bg-[#faf9f6] text-gray-700 pt-24 pb-12 border-t border-gray-100">
+    <div class="container mx-auto px-6 max-w-6xl">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-16 mb-20">
+            
+            <div class="md:col-span-5 space-y-8">
+<div class="flex items-center group cursor-pointer">
+    <div class="relative flex items-center justify-center w-10 h-10 md:w-12 md:h-12 mr-3">
+        <div class="absolute inset-0 bg-[#c27803]/10 rounded-2xl group-hover:bg-[#c27803] group-hover:rotate-45 transition-all duration-500"></div>
+<span class="relative text-xl group-hover:scale-110 transition-transform duration-300">📷</span>
+    </div>
+    <h1 class="flex flex-col">
+        <span class="text-lg md:text-xl font-bold text-gray-900 tracking-tight leading-none">KHUEANG NAI</span>
+        <span class="text-[9px] md:text-[10px] uppercase tracking-[0.5em] text-gray-400 font-medium">CCTV Solutions</span>
+    </h1>
+</div>
+                <p class="text-sm text-gray-400 leading-relaxed font-light max-w-sm italic">
+                    เราเชื่อว่าความปลอดภัยเริ่มต้นจากการออกแบบที่ใส่ใจ บริการติดตั้งกล้องวงจรปิดมาตรฐานสากล สำหรับบ้านและธุรกิจในพื้นที่ จ.อุบลราชธานี และ จ.ยโสธร
+                </p>
+                <div class="inline-flex items-center space-x-2 bg-white px-4 py-2 rounded-full border border-gray-100 shadow-sm">
+                    <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
+                    <span class="text-[10px] uppercase tracking-widest font-bold text-gray-500">Service: Weekend & Holidays</span>
+                </div>
+            </div>
+
+            <div class="md:col-span-3 space-y-6">
+                <h4 class="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-300">Navigation</h4>
+                <ul class="space-y-4 text-sm font-light">
+                    <li><a href="index.html" class="text-gray-500 hover:text-[#c27803] transition-colors duration-300">หน้าแรก</a></li>
+                    <li><a href="package.html" class="text-gray-500 hover:text-[#c27803] transition-colors duration-300">แพ็กเกจติดตั้ง</a></li>
+                    <li><a href="project.html" class="text-gray-500 hover:text-[#c27803] transition-colors duration-300">ผลงานล่าสุด</a></li>
+                    <li><a href="contact.html" class="text-gray-500 hover:text-[#c27803] transition-colors duration-300">ติดต่อเรา</a></li>
+                </ul>
+            </div>
+
+            <div class="md:col-span-4 space-y-6">
+                <h4 class="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-300">Connect with us</h4>
+<div class="flex flex-wrap gap-4">
+    <a href="index.html" class="w-11 h-11 bg-blue-50 rounded-2xl flex items-center justify-center text-[#1877F2] border border-blue-100 shadow-sm hover:bg-[#1877F2] hover:text-white hover:shadow-lg transition-all duration-300">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+    </a>
+
+    <a href="index.html" class="w-11 h-11 bg-red-50 rounded-2xl flex items-center justify-center text-[#E4405F] border border-red-100 shadow-sm hover:bg-gradient-to-tr hover:from-[#f9ce34] hover:via-[#ee2a7b] hover:to-[#6228d7] hover:text-white hover:shadow-lg transition-all duration-300">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+    </a>
+
+    <a href="index.html" class="w-11 h-11 bg-green-50 rounded-2xl flex items-center justify-center text-[#06C755] border border-green-100 shadow-sm hover:bg-[#06C755] hover:text-white hover:shadow-lg transition-all duration-300">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 10.304c0-5.369-5.383-9.738-12-9.738s-12 4.369-12 9.738c0 4.814 4.269 8.846 10.036 9.608.391.084.922.258 1.057.592.121.303.079.778.039 1.085l-.171 1.047c-.052.312-.252 1.221 1.089.665 1.341-.556 7.235-4.262 9.869-7.3s2.08-5.328 2.08-5.697z"/></svg>
+    </a>
+
+    <a href="index.html" class="w-11 h-11 bg-gray-50 rounded-2xl flex items-center justify-center text-black border border-gray-200 shadow-sm hover:bg-black hover:text-white hover:shadow-lg transition-all duration-300">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.86-.6-4.12-1.31a6.34 6.34 0 0 1-1.08-.75v7.54c0 3.14-1.61 6.13-4.57 7.23-3.63 1.34-8.03-.43-9.52-4.07-1.47-3.58.46-8.15 4.23-9.37 1.15-.38 2.39-.4 3.56-.15v4.03c-.63-.17-1.3-.23-1.95-.14-1.57.22-2.98 1.51-3.13 3.09-.23 2.16 1.72 4.21 3.88 3.9 1.49-.22 2.68-1.53 2.68-3.03V0h.02z"/></svg>
+    </a>
+</div>
+                <p class="text-xs text-gray-400 font-light leading-relaxed italic">
+                    ติดตามโปรโมชั่นและผลงานติดตั้งใหม่ๆ ได้ผ่านช่องทางโซเชียลมีเดียของเรา
+                </p>
+            </div>
+        </div>
+
+        <div class="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-[10px] text-gray-300 uppercase tracking-[0.2em] font-medium">
+                © 2026 Khuang Nai CCTV Pro. All rights reserved.
+            </p>
+            <div class="flex space-x-6 text-[10px] uppercase tracking-widest font-bold text-gray-300">
+                <a href="index.html" class="hover:text-gray-900 transition-colors">Privacy Policy</a>
+                <a href="index.html" class="hover:text-gray-900 transition-colors">Terms of Service</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div id="line-popup" class="fixed bottom-6 right-6 z-[60] transform translate-y-20 opacity-0 transition-all duration-700 ease-out">
+    <div class="bg-white rounded-2xl shadow-2xl p-4 flex items-center space-x-4 border border-gray-100 max-w-[280px]">
+        <div class="relative min-w-[50px]">
+            <div class="w-12 h-12 bg-[#fdfbf7] rounded-full flex items-center justify-center text-2xl border border-gray-100">📷</div>
+            <div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></div>
+        </div>
+        <div class="flex-grow">
+            <p class="text-[10px] text-gray-400 uppercase tracking-widest font-bold">แอดมินพร้อมดูแล</p>
+            <p class="text-sm text-gray-700 font-medium">สอบถามโปรโมชั่นวันนี้?</p>
+            <a href="https://line.me/R/ti/p/@yourid" target="_blank" class="text-xs text-[#c27803] font-bold hover:underline">ทักไลน์สอบถามคลิกเลย</a>
+        </div>
+        <button onclick="this.parentElement.parentElement.remove()" class="text-gray-300 hover:text-gray-500">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+    </div>
+</div>
+
+<script src="product.js"></script>
+
+<script>
+    // 1. จัดการเมนู Mobile
+    const btn = document.getElementById('menu-btn');
+    const menu = document.getElementById('menu');
+    btn.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+        menu.classList.toggle('flex');
+    });
+
+    // 2. จัดการ Line Popup
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            const popup = document.getElementById('line-popup');
+            if(popup) popup.classList.remove('translate-y-20', 'opacity-0');
+        }, 3000);
+    });
+
+    // 3. ฟังก์ชัน Modal (ย้ายมาไว้ที่นี่เพื่อความชัวร์ถ้าไม่ใช้ไฟล์ script.js)
+    function openModal(src) {
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImg');
+        modal.classList.remove('hidden');
+        modalImg.src = src;
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('imageModal');
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === "Escape") closeModal();
+    });
+</script>
+
+</body>
+</html>
