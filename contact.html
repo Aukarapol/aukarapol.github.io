@@ -50,7 +50,8 @@
     </div>
 </nav>
 
-<header id="contact-hero" class="relative min-h-[70vh] flex items-center bg-[#faf9f6] px-4 overflow-hidden pt-20">
+<header id="contact-hero" class="relative min-h-[85vh] md:min-h-[70vh] flex items-start md:items-center bg-[#faf9f6] px-4 overflow-hidden pt-32 md:pt-20 pb-24 md:pb-0">
+    
     <div class="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-[#c27803]/5 rounded-full blur-3xl"></div>
     <div class="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] bg-gray-200/20 rounded-full blur-3xl"></div>
 
@@ -65,58 +66,88 @@
                 <span class="text-[10px] uppercase tracking-[0.3em] font-bold text-gray-500">Expert Technical Support</span>
             </div>
 
-            <h2 class="text-5xl md:text-7xl font-semibold tracking-tighter text-gray-900 leading-[1.1] mb-8">
+            <h2 class="text-4xl md:text-7xl font-semibold tracking-tighter text-gray-900 leading-[1.2] md:leading-[1.1] mb-8 px-2">
                 ยินดีให้คำปรึกษา <br class="hidden md:block">
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#c27803] to-[#8a5502]">เรื่องระบบความปลอดภัย</span>
             </h2>
 
-            <p class="text-lg md:text-xl text-gray-500 font-light mb-12 max-w-2xl mx-auto leading-relaxed">
+            <p class="text-base md:text-xl text-gray-500 font-light mb-12 max-w-2xl mx-auto leading-relaxed px-4 md:px-0">
                 สอบถามข้อมูลสินค้า ประเมินหน้างานฟรี หรือขอใบเสนอราคา <br class="hidden md:block">
                 เลือกช่องทางที่คุณสะดวกเพื่อให้เราดูแลคุณได้ทันที
             </p>
 
-            <div class="flex flex-col md:flex-row items-center justify-center gap-6">
-                <a href="tel:097-232-XXXX" class="group relative w-full md:w-auto">
-                    <div class="absolute -inset-0.5 bg-gradient-to-r from-[#c27803] to-[#8a5502] rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
-                    <button class="relative w-full md:w-auto overflow-hidden bg-white text-[#c27803] border border-[#c27803]/30 text-sm font-bold uppercase tracking-widest py-5 px-10 rounded-2xl transition-all duration-500 shadow-sm hover:bg-[#c27803] hover:text-white group">
-                        <span class="relative z-10 flex items-center justify-center gap-3">
-                            <span class="text-lg">📞</span> สายด่วน: 097-232-XXXX
-                        </span>
-                    </button>
-                </a>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6 px-4 md:px-0">
+<a href="tel:097-232-XXXX" class="group relative inline-block w-full md:w-auto">
+    <div class="absolute -inset-1 bg-gradient-to-r from-[#c27803] to-[#ef9f1e] rounded-2xl blur-md opacity-25 group-hover:opacity-50 transition duration-500"></div>
+    
+    <button class="relative w-full md:w-auto overflow-hidden bg-gradient-to-br from-white to-[#faf9f6] text-[#c27803] border border-[#c27803]/20 text-sm font-bold uppercase tracking-[0.15em] py-4 md:py-5 px-10 rounded-2xl transition-all duration-500 shadow-[0_10px_20px_-10px_rgba(194,120,3,0.2)] hover:shadow-[0_20px_40px_-15px_rgba(194,120,3,0.4)] hover:-translate-y-0.5 active:scale-[0.98]">
+        
+        <span class="absolute inset-0 bg-gradient-to-r from-transparent via-[#c27803]/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></span>
+        
+        <span class="relative z-10 flex items-center justify-center gap-3">
+            <svg class="w-5 h-5 transition-transform duration-500 group-hover:rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+            </svg>
+            
+            <span class="tracking-tight md:tracking-widest">สายด่วน: 097-232-XXXX</span>
+        </span>
+    </button>
+</a>
 
-                <a href="https://line.me/R/ti/p/@yourid" target="_blank" class="inline-flex items-center justify-center gap-3 w-full md:w-auto px-10 py-5 bg-[#22c55e] text-white text-sm font-bold uppercase tracking-widest rounded-2xl hover:bg-[#1ba850] transition-all duration-500 shadow-lg shadow-green-200">
-                    <span class="text-lg">💬</span> ทักแชท LINE สอบถาม
-                </a>
+<a href="https://line.me/R/ti/p/@yourid" target="_blank" 
+   class="group relative inline-flex items-center justify-center gap-3 w-full md:w-auto px-10 py-4 md:py-5 bg-gradient-to-br from-[#22c55e] to-[#16a34a] text-white text-sm font-bold uppercase tracking-[0.15em] rounded-2xl transition-all duration-500 hover:shadow-[0_20px_40px_-10px_rgba(34,197,94,0.5)] hover:-translate-y-1 active:scale-[0.98] overflow-hidden">
+    
+    <span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></span>
+
+    <svg class="w-5 h-5 fill-current transition-transform duration-500 group-hover:scale-110 group-hover:rotate-[10deg]" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/00/svg">
+        <path d="M19.365 9.863c.064.433.1.882.1 1.34 0 3.125-2.562 5.674-5.712 5.674-3.15 0-5.712-2.549-5.712-5.674s2.562-5.674 5.712-5.674c1.5 0 2.87.488 3.968 1.31l3.175-1.125-1.543 3.149zm-4.322 1.942l1.012-1.023c.18-.182.18-.478 0-.66l-1.012-1.023c-.18-.182-.472-.182-.652 0l-1.012 1.023c-.18.182-.18.478 0 .66l1.012 1.023c.18.182.472.182.652 0z"/>
+    </svg>
+
+    <span class="relative z-10">ทักแชท LINE สอบถาม</span>
+</a>
             </div>
 
-            <div class="mt-20 flex flex-wrap justify-center gap-8 md:gap-16 opacity-50">
-                <div class="flex items-center gap-2">
-                    <span class="text-lg">🛠️</span>
-                    <span class="text-xs font-bold uppercase tracking-widest text-gray-600">ประเมินฟรี</span>
-                </div>
-                <div class="flex items-center gap-2">
-                    <span class="text-lg">📄</span>
-                    <span class="text-xs font-bold uppercase tracking-widest text-gray-600">ใบเสนอราคารวดเร็ว</span>
-                </div>
-                <div class="flex items-center gap-2">
-                    <span class="text-lg">🏠</span>
-                    <span class="text-xs font-bold uppercase tracking-widest text-gray-600">สำรวจหน้างานจริง</span>
-                </div>
-            </div>
+<div class="mt-12 md:mt-16 mb-20 md:mb-0 flex flex-col md:flex-row justify-center items-center gap-6 md:gap-0 px-6">
+    
+    <div class="group flex items-center gap-4 w-full md:w-auto md:px-12 transition-all duration-300">
+        <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-xl bg-white shadow-sm border border-gray-100 text-[#c27803] group-hover:bg-[#c27803] group-hover:text-white transition-all duration-500">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+            </svg>
+        </div>
+        <span class="text-[11px] md:text-xs font-bold uppercase tracking-[0.15em] text-gray-500 group-hover:text-gray-800 transition-colors whitespace-nowrap">ประเมินหน้างานฟรี</span>
+    </div>
+
+    <div class="hidden md:block h-8 w-[1px] bg-gray-200/60"></div>
+
+    <div class="group flex items-center gap-4 w-full md:w-auto md:px-12 transition-all duration-300">
+        <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-xl bg-white shadow-sm border border-gray-100 text-[#c27803] group-hover:bg-[#c27803] group-hover:text-white transition-all duration-500">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+        </div>
+        <span class="text-[11px] md:text-xs font-bold uppercase tracking-[0.15em] text-gray-500 group-hover:text-gray-800 transition-colors whitespace-nowrap">ใบเสนอราคารวดเร็ว</span>
+    </div>
+
+    <div class="hidden md:block h-8 w-[1px] bg-gray-200/60"></div>
+
+    <div class="group flex items-center gap-4 w-full md:w-auto md:px-12 transition-all duration-300">
+        <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-xl bg-white shadow-sm border border-gray-100 text-[#c27803] group-hover:bg-[#c27803] group-hover:text-white transition-all duration-500">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            </svg>
+        </div>
+        <span class="text-[11px] md:text-xs font-bold uppercase tracking-[0.15em] text-gray-500 group-hover:text-gray-800 transition-colors whitespace-nowrap">สำรวจพื้นที่จริง</span>
+    </div>
+
+</div>
 
         </div>
     </div>
 </header>
 
 
-
-
-
-	
-	
-
-	
 
 	
 
@@ -287,42 +318,55 @@
     });
 </script>
 
-<div id="line-popup" class="fixed bottom-6 right-6 z-[60] transform translate-y-20 opacity-0 transition-all duration-700 ease-out">
-    <div class="bg-white rounded-2xl shadow-2xl p-4 flex items-center space-x-4 border border-gray-100 max-w-[280px]">
-        <div class="relative min-w-[50px]">
-            <div class="w-12 h-12 bg-[#fdfbf7] rounded-full flex items-center justify-center text-2xl border border-gray-100">
-                📷
+<div id="line-popup" class="fixed bottom-6 right-6 z-[60] transform translate-y-20 opacity-0 transition-all duration-1000 ease-out group">
+    <div class="absolute -top-3 -left-3 bg-red-500 text-white text-[10px] px-2 py-0.5 rounded-full shadow-lg z-10 animate-bounce">
+        1
+    </div>
+
+    <div class="bg-white/95 backdrop-blur-md rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.15)] p-2 flex items-center border border-white max-w-[300px] relative overflow-hidden">
+        
+        <div class="relative min-w-[60px] ml-1">
+            <div class="w-14 h-14 bg-gradient-to-br from-[#fdfbf7] to-[#f5eeda] rounded-2xl flex items-center justify-center text-2xl border border-[#c27803]/10 shadow-inner">
+                <span class="transform group-hover:scale-110 transition-transform duration-300">📷</span>
             </div>
-            <div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></div>
+            <div class="absolute -bottom-1 -right-1 flex h-4 w-4">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-4 w-4 bg-green-500 border-2 border-white"></span>
+            </div>
         </div>
         
-        <div class="flex-grow">
-            <p class="text-[10px] text-gray-400 uppercase tracking-widest font-bold">แอดมินพร้อมดูแล</p>
-            <p class="text-sm text-gray-700 font-medium">สอบถามโปรโมชั่นวันนี้?</p>
-            <a href="https://line.me/R/ti/p/@yourid" target="_blank" class="text-xs text-[#c27803] font-bold hover:underline mt-1 block">
-                ทักไลน์สอบถามคลิกเลย
+        <div class="flex-grow pl-3 pr-2 py-2">
+            <div class="flex items-center gap-1.5 mb-0.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#c27803]"></span>
+                <p class="text-[9px] text-[#c27803] uppercase tracking-[0.2em] font-black">Support Online</p>
+            </div>
+            <p class="text-[13px] text-gray-800 font-semibold leading-tight">สนใจติดตั้งกล้องวงจรปิด?</p>
+            <p class="text-[11px] text-gray-500 font-light mb-2">สอบถามโปรฯ รับส่วนลดพิเศษ</p>
+            
+            <a href="https://line.me/R/ti/p/@yourid" target="_blank" 
+               class="inline-flex items-center gap-2 bg-[#06C755] text-white px-4 py-1.5 rounded-full text-[11px] font-bold hover:bg-[#05b34c] transition-all duration-300 shadow-md shadow-green-200">
+                <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M19.365 9.863c.064.433.1.882.1 1.34 0 3.125-2.562 5.674-5.712 5.674-3.15 0-5.712-2.549-5.712-5.674s2.562-5.674 5.712-5.674c1.5 0 2.87.488 3.968 1.31l3.175-1.125-1.543 3.149zm-4.322 1.942l1.012-1.023c.18-.182.18-.478 0-.66l-1.012-1.023c-.18-.182-.472-.182-.652 0l-1.012 1.023c-.18.182-.18.478 0 .66l1.012 1.023c.18.182.472.182.652 0z"/></svg>
+                คุยกับผู้เชี่ยวชาญ
             </a>
         </div>
 
-        <button onclick="document.getElementById('line-popup').remove()" class="text-gray-300 hover:text-gray-500">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"></path></svg>
+        <button onclick="document.getElementById('line-popup').style.display='none'" 
+                class="absolute top-3 right-3 text-gray-300 hover:text-gray-500 transition-colors p-1">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
     </div>
 </div>
 
 <script>
-    // ตั้งเวลาให้เด้งขึ้นมาหลังจากเปิดเว็บ 3 วินาที
-    window.addEventListener('load', function() {
+    // สคริปต์เพื่อให้เด้งขึ้นมาหลังจากโหลดหน้าเว็บ 2 วินาที
+    window.onload = function() {
         setTimeout(function() {
             const popup = document.getElementById('line-popup');
             popup.classList.remove('translate-y-20', 'opacity-0');
             popup.classList.add('translate-y-0', 'opacity-100');
-        }, 3000); // 3000 = 3 วินาที (ปรับเปลี่ยนได้ตามชอบ)
-    });
+        }, 2000);
+    };
 </script>
 
 </body>
-
 </html>
-
-
