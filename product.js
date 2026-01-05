@@ -2,53 +2,84 @@
 const products = [
     {
         id: "P0001",
-        brandSeries: "Hikvision Series",
-        modelName: "DS-2CD1043G0-I",
-        subTitle: "4MP Fixed Bullet",
+        brandSeries: "TP-LINK Tapo Series",
+        modelName: "Tapo C530WS",
+        subTitle: "Outdoor Pan/Tilt Security Wi-Fi Camera",
         sku: "A0170731",
-        price: 3400,
-        originalPrice: 4000,
+        price: 1590,
+        originalPrice: 2000,
         images: [
-            "productimage/product01/Tapo_C530WS.jpg",
-            "productimage/product01/indoorcam.jpg",
-            "productimage/product01/Tapo_C530WS.jpg",
-            "productimage/product01/indoorcam.jpg"
+            "productimage/P0001/Tapo_C530WS01.jpg",
+            "productimage/P0001/Tapo_C530WS02.jpg",
+            "productimage/P0001/Tapo_C530WS03.jpg",
+			"productimage/P0001/Tapo_C530WS04.jpg",
+			"productimage/P0001/Tapo_C530WS05.jpg",
+			"productimage/P0001/Tapo_C530WS06.jpg",
+            "productimage/P0001/Tapo_C530WS07.jpg"
         ],
         features: [
-            "ความละเอียด 4MP Fixed Lens",
-            "ระยะอินฟราเรดไกลสุด 30 เมตร",
-            "มาตรฐานกันน้ำ กันฝุ่น IP67"
+            "Starlight Color Night Vision",
+            "360° All-Round Protection",
+			"Comprehensive AI Detection",
+			"360° All-Round Protection",
+            "3K 5MP Live View"
 
         ],
         lineLink: "https://line.me/R/ti/p/@yourid",
-        specLink: "#"
+        specLink: "https://www.tp-link.com/th/home-networking/cloud-camera/tapo-c530ws/"
     },
     {
         id: "P0002",
-        brandSeries: "Dahua SeriesA",
-        modelName: "DH-IPC-HFW1230SA",
-        subTitle: "2MP Entry IR BulletA",
+        brandSeries: "TP-LINK Tapo Series",
+        modelName: "Tapo C425 V1.2",
+        subTitle: "Smart Wire-Free Security Camera",
         sku: "B0288899A",
-        price: 900,
-        originalPrice: 990,
+        price: 1290,
+        originalPrice: 1590,
         images: [
-            "productimage/product01/indoorcam.jpg",
-            "productimage/product01/indoorcam.jpg",
-			"productimage/product01/indoorcam.jpg",
-            "productimage/product01/indoorcam.jpg",
-			"productimage/product01/indoorcam.jpg",
-            "productimage/product01/indoorcam.jpg",
+            "productimage/P0002/Tapo C425_01.jpg",
+            "productimage/P0002/Tapo C425_02.jpg",
+			"productimage/P0002/Tapo C425_03.jpg",
+            "productimage/P0002/Tapo C425_04.jpg"
+
         ],
         features: [
-            "ความละเอียด 2MP คมชัดสูงA",
-            "ระบบ Smart IR ส่องไกล 30 เมตรA",
-			"ระบบ Smart IR ส่องไกล 30 เมตรA",
-			"ระบบ Smart IR ส่องไกล 30 เมตรA",
-            "ติดตั้งได้ทั้งภายในและภายนอกA"
+            "Wire-Free, Installs Almost Anywhere",
+            "Easily Adjust to the Best Angle",
+			"Power that Lasts",
+			"2K QHD Live View",
+            "Color Night Vision"
 	
         ],
         lineLink: "https://line.me/R/ti/p/@yourid",
-        specLink: "#"
+        specLink: "https://www.tp-link.com/th/home-networking/cloud-camera/tapo-c425/"
+    }
+	
+	,
+    {
+        id: "P0003",
+        brandSeries: "TP-LINK Tapo Series",
+        modelName: "Tapo C645D KIT",
+        subTitle: "Solar-Powered Dual-Lens Pan",
+        sku: "B0288897",
+        price: 1700,
+        originalPrice: 2300,
+        images: [
+            "productimage/P0003/Tapo_C645D_KIT01.jpg",
+            "productimage/P0003/Tapo_C645D_KIT02.jpg",
+			"productimage/P0003/Tapo_C645D_KIT03.jpg"
+
+        ],
+        features: [
+            "Dual 2K Lenses for Wide Coverage and Precise Zoom",
+            "Panoramic Coverage of Two Areas at Once",
+			"Detect People, Vehicles & Pets Without a Subscription",
+			"Synchronized Smart Tracking",
+            "One-Tap Smart Focus"
+	
+        ],
+        lineLink: "https://line.me/R/ti/p/@yourid",
+        specLink: "https://www.tp-link.com/th/home-networking/cloud-camera/tapo-c645d-kit/"
     }
 ];
 
