@@ -2,7 +2,7 @@
 const products = [
     {
         id: "P0001",
-		category: "Computer",
+		category: "CCTV",
         brandSeries: "AMD Tapo Series",
         modelName: "Tapo C530WS",
         subTitle: "กล้อง Wi-Fi ภายนอกอัจฉริยะ สั่งหมุน-ก้มเงยได้",
@@ -33,13 +33,13 @@ const products = [
     },
     {
         id: "P0002",
-		category: "Smartphone",
+		category: "CCTV",
         brandSeries: "TP-LINK Tapo Series",
         modelName: "Tapo C425 V1.2",
         subTitle: "Smart Wire-Free Security Camera",
         sku: "B0288899A",
         price: 1290,
-        originalPrice: 1590,
+        originalPrice: 2000,
 
         images: [
             "productimage/P0002/Tapo C425_01.jpg",
@@ -58,9 +58,8 @@ const products = [
         ],
         lineLink: "order.html?id=P0002",
         specLink: "https://www.tp-link.com/th/home-networking/cloud-camera/tapo-c425/"
-    }
+    },
 	
-	,
     {
         id: "P0003",
 		category: "CCTV",
@@ -68,9 +67,8 @@ const products = [
         modelName: "Tapo C645D KIT",
         subTitle: "Solar-Powered Dual-Lens Pan",
         sku: "B0288897",
-        price: 1700,
-        originalPrice: 2300,
-		category: "CCTV",
+        price: 1390,
+        originalPrice: 2000,
         images: [
             "productimage/P0003/Tapo_C645D_KIT01.jpg",
             "productimage/P0003/Tapo_C645D_KIT02.jpg",
@@ -87,7 +85,244 @@ const products = [
         ],
         lineLink: "order.html?id=P0003",
         specLink: "https://www.tp-link.com/th/home-networking/cloud-camera/tapo-c645d-kit/"
-    }
+    },
+	
+    {
+        id: "P0004",
+		category: "Computer",
+        brandSeries: "DTAC SIM",
+        modelName: "ซิมคงกระพัน 12 เดือน",
+        subTitle: "ซิมคงกระพัน เน็ตและโทรพร้อมใช้",
+        sku: "B0288897",
+        price: 1890,
+        originalPrice: 2000,
+        images: [
+            "productimage/P0004/dtac_12_1.jpg",
+            "productimage/P0004/dtac_12_1.jpg"
+
+        ],
+        features: [
+            "เน็ต 15 Mbps 100 GB",
+            "เน็ตไม่อั้นที่ 128 Kbps",
+			"โทรฟรีในเครือข่ายครั้งละ 30 นาที ตลอด 24 ชั่วโมง",
+			"โทรฟรีนอกเครือข่าย 60 นาทีต่อเดือน",
+            "ส่วนเกินค่าโทร 0.99 บาทต่อนาที (ไม่รวม VAT)"
+	
+        ],
+        lineLink: "order.html?id=P0004",
+        specLink: "https://www.dtac.co.th/prepaid/products/ready-sim.html?srsltid=AfmBOoo-3EEUMrVHh7u6nlT5VZ_iwg90BHiQWhD91zBZwSdpYIt3aiig"
+    },
+    {
+        id: "P0005",
+		category: "Computer",
+        brandSeries: "DTAC SIM",
+        modelName: "ซิมคงกระพัน 6 เดือน",
+        subTitle: "ซิมคงกระพัน เน็ตและโทรพร้อมใช้",
+        sku: "B0288897",
+        price: 1390,
+        originalPrice: 2000,
+        images: [
+            "productimage/P0005/dtac_6_1.jpg",
+            "productimage/P0005/dtac_6_1.jpg"
+
+        ],
+        features: [
+            "เน็ต 15 Mbps 100 GB",
+            "เน็ตไม่อั้นที่ 128 Kbps",
+			"โทรฟรีในเครือข่ายครั้งละ 30 นาที ตลอด 24 ชั่วโมง",
+			"โทรฟรีนอกเครือข่าย 60 นาทีต่อเดือน",
+            "ส่วนเกินค่าโทร 0.99 บาทต่อนาที (ไม่รวม VAT)"
+	
+        ],
+        lineLink: "order.html?id=P0005",
+        specLink: "https://www.dtac.co.th/prepaid/products/ready-sim.html?srsltid=AfmBOoo-3EEUMrVHh7u6nlT5VZ_iwg90BHiQWhD91zBZwSdpYIt3aiig"
+    },
+	
+    {
+        id: "P0006",
+		category: "Computer",
+        brandSeries: "DTAC SIM",
+        modelName: "ซิมคงกระพัน 3 เดือน",
+        subTitle: "ซิมคงกระพัน เน็ตและโทรพร้อมใช้",
+        sku: "B0288897",
+        price: 1190,
+        originalPrice: 2000,
+        images: [
+            "productimage/P0006/dtac_3_1.jpg",
+            "productimage/P0006/dtac_3_1.jpg"
+
+        ],
+        features: [
+            "เน็ต 15 Mbps 100 GB",
+            "เน็ตไม่อั้นที่ 128 Kbps",
+			"โทรฟรีในเครือข่ายครั้งละ 30 นาที ตลอด 24 ชั่วโมง",
+			"โทรฟรีนอกเครือข่าย 60 นาทีต่อเดือน",
+            "ส่วนเกินค่าโทร 0.99 บาทต่อนาที (ไม่รวม VAT)"
+	
+        ],
+        lineLink: "order.html?id=P0006",
+        specLink: "https://www.dtac.co.th/prepaid/products/ready-sim.html?srsltid=AfmBOoo-3EEUMrVHh7u6nlT5VZ_iwg90BHiQWhD91zBZwSdpYIt3aiig"
+    },
+	
+	    {
+        id: "P0007",
+		category: "Smartphone",
+        brandSeries: "Samsung",
+        modelName: "Galaxy S25 Ultra",
+        subTitle: "AI ProVisual Engine ที่ล้ำหน้าที่สุด",
+        sku: "B0288897",
+        price: 28790,
+        originalPrice: 32300,
+        images: [
+            "productimage/P0007/s25ultra_01.jpg",
+            "productimage/P0007/s25ultra_02.jpg",
+			"productimage/P0007/s25ultra_03.jpg",
+
+        ],
+        features: [
+            "ดูล้ำและทนทาน",
+            "ทำสิ่งต่าง ๆ ได้ด้วยแค่กดแล้วพูด",
+			"สตูดิโอเสียงที่อยู่แค่ปลายนิ้วสัมผัส",
+
+	
+        ],
+        lineLink: "order.html?id=P0007",
+        specLink: "https://www.samsung.com/th/smartphones/galaxy-s25-ultra/"
+    },
+	
+	    {
+        id: "P0008",
+		category: "Smartphone",
+        brandSeries: "Samsung",
+        modelName: "Galaxy A36 5G",
+        subTitle: "กล้องที่ดีกว่าเดิมเพื่อความสร้างสรรค์ที่มากกว่า",
+        sku: "B0288897",
+        price: 8900,
+        originalPrice: 11900,
+        images: [
+            "productimage/P0008/a36_01.jpg",
+            "productimage/P0008/a36_02.jpg",
+			"productimage/P0008/a36_03.jpg",
+
+        ],
+        features: [
+            "แชร์ภาพเซลฟีและภาพพอตเทรตที่ดีที่สุดของคุณได้",
+            "ความอัจฉริยะอันยอดเยี่ยม",
+			"ความทนทานอันแข็งแกร่ง",
+			"การปกป้องความเป็นส่วนตัวที่ทันสมัย",
+            "ซูเปอร์ชาร์จให้กับวันของคุณและอีกวันถัดไป"
+	
+        ],
+        lineLink: "order.html?id=P0008",
+        specLink: "https://www.samsung.com/th/smartphones/galaxy-a/galaxy-a36-5g-awesome-lavender-128gb-sm-a366blvsthl/"
+    },
+	
+	    {
+        id: "P0009",
+		category: "Smartphone",
+        brandSeries: "Samsung",
+        modelName: "Galaxy A06 5G",
+        subTitle: "ชิปเซตเร็วแรงใช้งานทุกแอปได้ราบรื่น",
+        sku: "B0288897",
+        price: 3790,
+        originalPrice: 5300,
+        images: [
+            "productimage/P0009/a06_01.jpg",
+            "productimage/P0009/a06_02.jpg"
+
+        ],
+        features: [
+            "เชื่อมต่อได้ทุกแห่งกับ 5G",
+            "สร้างขึ้นมาเพื่อปกป้องรหัสผ่านของคุณ",
+			"ใช้งานได้ยาวนานด้วยการอัปเกรด OS และระบบความปลอดภัย",
+			"เข้าถึงได้อย่างปลอดภัยด้วยปลายนิ้วสัมผัส",
+            "การกันน้ำกันฝุ่นระดับ IP54 พร้อมลุยทุกสถานการณ์"
+	
+        ],
+        lineLink: "order.html?id=P0009",
+        specLink: "https://www.samsung.com/th/smartphones/galaxy-a/galaxy-a06-5g-light-green-128gb-sm-a066blghthl/"
+    },
+	
+	    {
+        id: "P0010",
+		category: "Smartphone",
+        brandSeries: "Samsung",
+        modelName: "Samsung S25 FE",
+        subTitle: "เพรียวบางกว่า เบากว่า และพร้อมที่จะสร้างความประทับใจ",
+        sku: "B0288897",
+        price: 18900,
+        originalPrice: 21900,
+        images: [
+            "productimage/P0010/s25fe_01.jpg",
+            "productimage/P0010/s25fe_02.jpg",
+			"productimage/P0010/s25fe_03.jpg",
+
+        ],
+        features: [
+            "เซลฟี่คมชัดสีสันสดใส ไม่ว่าจะเวลาไหน",
+            "วิดีโอกลางคืนที่ชัดเจนให้ทุกช่วงเวลาคุ้มค่า",
+			"พลังงานแบตเตอรี่พอที่จะให้คุณทำมากขึ้น",
+			"การแสดงผลแบบดื่มด่ำที่คุ้มค่าเพื่อโลกที่ใหญ่กว่า",
+            "ความเร็วในการประมวลผลแบบเทอร์โบชาร์จ ได้เวลาเล่นเกม"
+	
+        ],
+        lineLink: "order.html?id=P0010",
+        specLink: "https://www.samsung.com/th/smartphones/galaxy-s/galaxy-s25-fe-navy-128gb-sm-s731bdbbthl/"
+    },
+	
+	    {
+        id: "P0011",
+		category: "Computer",
+        brandSeries: "TRUE SIM",
+        modelName: "ซิมเทพทรู",
+        subTitle: "ซิมเทพทรู เน็ตและโทรพร้อมใช้",
+        sku: "B0288897",
+        price: 1790,
+        originalPrice: 2000,
+        images: [
+            "productimage/P0011/true_01.jpeg",
+            "productimage/P0011/true_01.jpeg",
+
+        ],
+        features: [
+            "เน็ต 10 Mbps 100 GB",
+            "เน็ตไม่อั้นที่ 128 Kbps",
+			"โทรฟรีในเครือข่ายครั้งละ 30 นาที ตลอด 24 ชั่วโมง",
+			"โทรฟรีนอกเครือข่าย 60 นาทีต่อเดือน",
+            "ส่วนเกินค่าโทร 0.99 บาทต่อนาที (ไม่รวม VAT)"
+	
+        ],
+        lineLink: "order.html?id=P0004",
+        specLink: "https://www.true.th/prepaid"
+    },
+    {
+        id: "P0012",
+		category: "CCTV",
+        brandSeries: "TP-LINK Tapo Series",
+        modelName: "Tapo C545D",
+        subTitle: "Wide-Angle & Telephoto Lens",
+        sku: "B0288899A",
+        price: 1890,
+        originalPrice: 2000,
+
+        images: [
+            "productimage/P0012/Tapo_C545D_01.jpg",
+            "productimage/P0012/Tapo_C545D_02.jpg",
+			"productimage/P0012/Tapo_C545D_03.jpg",
+            "productimage/P0012/Tapo_C545D_04.jpg",
+
+        ],
+        features: [
+            "Wire-Free, Installs Almost Anywhere",
+            "Easily Adjust to the Best Angle",
+			"Power that Lasts",
+			"2K QHD Live View",
+            "Color Night Vision"
+	
+        ],
+        lineLink: "order.html?id=P0002",
+        specLink: "https://www.tp-link.com/th/home-networking/cloud-camera/tapo-c545d/"
+    },
 ];
 
 // 2. ฟังก์ชันหลักสำหรับแสดงผล (Render)
@@ -184,9 +419,13 @@ container.innerHTML = `
                 </div>
 
                 <div class="mb-12 reveal delay-2">
-                    <h3 class="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400 mb-6 flex items-center gap-2">
-                        <span class="w-1 h-1 rounded-full bg-cyan-500"></span> รายละเอียดสินค้า
-                    </h3>
+<h3 class="text-[10px] md:text-[11px] font-black uppercase 
+           tracking-[0.15em] md:tracking-[0.4em] 
+           text-slate-400 mb-4 md:mb-6 
+           flex items-center gap-2">
+    <span class="w-1.5 h-1.5 rounded-full bg-cyan-500 shadow-[0_0_8px_rgba(6,182,212,0.5)]"></span> 
+    รายละเอียดสินค้า
+</h3>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
                         ${product.features.map(f => `
                             <div class="flex items-center gap-3 group">
@@ -200,19 +439,35 @@ container.innerHTML = `
                 </div>
 
                 <div class="flex flex-col sm:flex-row gap-5 mt-auto reveal delay-2">
-                    <a href="order.html?id=${product.id}" 
-                       class="group relative flex-[2] bg-slate-900 text-white py-6 rounded-[2rem] font-black text-xs uppercase tracking-[0.2em] overflow-hidden transition-all duration-500 hover:scale-[1.02] active:scale-[0.98] shadow-2xl shadow-slate-200 hover:shadow-cyan-200 text-center">
-                        <div class="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                        <span class="relative z-10 flex items-center justify-center gap-3">
-                            สั่งซื้อทันที
-                            <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                        </span>
-                    </a>
+<a href="order.html?id=${product.id}" 
+   class="group relative flex-[2] bg-slate-900 text-white 
+          py-4 md:py-6 rounded-2xl md:rounded-[2rem] 
+          font-bold md:font-black text-[13px] md:text-xs uppercase 
+          tracking-normal md:tracking-[0.2em] 
+          overflow-hidden transition-all duration-500 
+          hover:scale-[1.05] active:scale-[0.95] 
+          shadow-xl shadow-slate-200 hover:shadow-cyan-200/40 text-center">
+    
+    <div class="absolute inset-0 bg-gradient-to-r from-cyan-500 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+    
+    <span class="relative z-10 flex items-center justify-center gap-2 md:gap-3">
+        สั่งซื้อทันที
+        <svg class="w-4 h-4 md:w-5 md:h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+        </svg>
+    </span>
+</a>
                     
-                    <a href="${product.specLink}" 
-                       class="flex-1 border-2 border-slate-100 text-slate-500 py-6 rounded-[2rem] font-black text-xs uppercase tracking-[0.2em] text-center hover:border-slate-900 hover:text-slate-900 transition-all duration-300">
-                        รายละเอียด
-                    </a>
+<a href="${product.specLink}" 
+   class="flex-1 border-2 border-slate-100 text-slate-500 
+          py-3.5 md:py-6 rounded-xl md:rounded-[2rem] 
+          font-bold md:font-black text-[13px] md:text-xs uppercase 
+          tracking-normal md:tracking-[0.2em] 
+          text-center transition-all duration-300
+          hover:border-slate-900 hover:text-slate-900 hover:bg-slate-50 active:scale-95">
+    รายละเอียด
+</a>
+
                 </div>
 
                 <div class="mt-8 flex items-center gap-3 text-slate-400 reveal delay-2">
@@ -251,4 +506,3 @@ function initPage() {
 
 // เรียกใช้งานเมื่อหน้าจอโหลดเสร็จ
 window.addEventListener('DOMContentLoaded', initPage);
-
