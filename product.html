@@ -52,12 +52,12 @@
     <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-purple-100/30 rounded-full blur-[100px] -ml-20 -mb-20"></div>
     <div class="container mx-auto px-4 relative z-10 text-center">
         <h1 class="text-5xl md:text-7xl font-black tracking-tighter text-slate-900 mb-8 leading-tight">
-            แคตตาล็อกสินค้า <br>
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-purple-600">นวัตกรรมเพื่อคุณ</span>
+            Smart IT Solutions & Catalog <br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-purple-600">เราคัดสรรนวัตกรรมเพื่อคุณ</span>
         </h1>
         <p class="text-slate-500 font-medium text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
             สินค้าแท้รับประกันศูนย์ คัดสรรอุปกรณ์มาตรฐานสากล <br class="hidden md:block">
-            <span class="text-slate-400 font-light italic">เพื่อระบบความปลอดภัยและเทคโนโลยีที่คุณวางใจได้ในระยะยาว</span>
+            <span class="text-slate-400 font-light italic">ตอบโจทย์ทุกความต้องการ คุ้มค่า คุ้มราคา เลือกซื้อกับเรา "เขื่องใน ไอที เซ็นเตอร์"</span>
         </p>
     </div>
 </header>
@@ -209,7 +209,7 @@
     </div>
 </footer>
 
-<div id="line-popup" class="fixed bottom-8 right-8 z-[60] flex items-end justify-end transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] transform translate-y-0 opacity-100 group">
+<div id="line-popup" class="fixed bottom-8 right-8 z-[60] flex items-end justify-end transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] transform translate-y-10 opacity-0 pointer-events-none group">
     
     <div class="absolute -top-1 -left-1 flex h-6 w-6 z-30">
         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
@@ -249,13 +249,10 @@
             <a href="https://line.me/R/ti/p/@KnITCenter" target="_blank" 
                class="group/btn relative flex items-center justify-center gap-2 bg-[#06C755] text-white px-4 py-2 rounded-xl text-[12px] font-bold overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-[#06C755]/40 active:scale-95">
                 <span class="relative z-10">แชทไลน์กับเจ้าหน้าที่</span>
-                <svg class="w-3 h-3 relative z-10 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                </svg>
             </a>
         </div>
 
-        <button onclick="document.getElementById('line-popup').style.display='none'" 
+        <button onclick="closePopup()" 
                 class="absolute top-3 right-3 p-1 rounded-full text-slate-400 hover:bg-slate-100 hover:text-slate-600 transition-all duration-200">
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
@@ -263,6 +260,36 @@
         </button>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const popup = document.getElementById('line-popup');
+    
+    // 1. รอ 2 วินาทีแล้วเด้งขึ้นมา
+    setTimeout(function() {
+        if(popup) {
+            // ลบสถานะซ่อนออก
+            popup.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+            // ใส่สถานะแสดงผล
+            popup.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+            
+            // 2. แสดงค้างไว้ 3 วินาที (นับต่อจาก 2 วินาทีแรก) แล้วปิดลงเอง
+            setTimeout(function() {
+                closePopup();
+            }, 3000); 
+        }
+    }, 2000);
+});
+
+function closePopup() {
+    const popup = document.getElementById('line-popup');
+    if(popup) {
+        // กลับไปใช้สถานะซ่อน
+        popup.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+        popup.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+    }
+}
+</script>
 
 <script src="product.js"></script> 
 <script>
@@ -310,7 +337,7 @@
     function renderFeatured() {
         const container = document.getElementById('product-featured-container');
         if (!container || typeof products === 'undefined') return;
-        const featuredIds = ["P0001", "P0002", "P0003"]; // ใส่ ID ที่ต้องการโชว์
+        const featuredIds = ["P0001", "P0002","P0008", "P0010","P0004"]; // ใส่ ID ที่ต้องการโชว์
         const filtered = products.filter(p => featuredIds.includes(p.id));
         container.innerHTML = filtered.map(item => createProductCard(item)).join('');
     }
