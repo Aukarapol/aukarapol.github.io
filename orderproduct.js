@@ -33,8 +33,8 @@ const products = {
     "P0006": {
         name: "ซิมคงกระพัน 3 เดือน",
         description: "ซิมคงกระพัน เน็ตและโทรพร้อมใช้",
-        price: "1,190",
-        image: "productimage/P0007/s25ultra_01.jpg"
+        price: "790",
+        image: "productimage/P0006/dtac_3_1.jpg"
     },
     "P0007": {
         name: "Galaxy S25 Ultra",
@@ -49,10 +49,10 @@ const products = {
         image: "productimage/P0008/a36_01.jpg"
     },
     "P0009": {
-        name: "OPPO Reno 15",
-        description: "Solar-Powered Dual-Lens Pan",
-        price: "13,730",
-        image: "productimage/P0009/oppo_01.png"
+        name: "Galaxy A06 5G",
+        description: "ชิปเซตเร็วแรงใช้งานทุกแอปได้ราบรื่น",
+        price: "3,790",
+        image: "productimage/P0009/a06_01.jpg"
     },
     "P0010": {
         name: "Samsung S25 FE",
