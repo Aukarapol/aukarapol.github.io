@@ -8,7 +8,7 @@ const products = [
         subTitle: "กล้อง Wi-Fi ภายนอกอัจฉริยะ สั่งหมุน-ก้มเงยได้",
         sku: "A0170731t",
         price: 1190,
-        originalPrice: 2000,
+        originalPrice: 1500,
 
         images: [
             "productimage/P0001/Tapo_C530WS01.jpg",
@@ -39,7 +39,7 @@ const products = [
         subTitle: "Smart Wire-Free Security Camera",
         sku: "B0288899A",
         price: 1290,
-        originalPrice: 2000,
+        originalPrice: 1700,
 
         images: [
             "productimage/P0002/Tapo C425_01.jpg",
@@ -68,7 +68,7 @@ const products = [
         subTitle: "Solar-Powered Dual-Lens Pan",
         sku: "B0288897",
         price: 1390,
-        originalPrice: 2000,
+        originalPrice: 1800,
         images: [
             "productimage/P0003/Tapo_C645D_KIT01.jpg",
             "productimage/P0003/Tapo_C645D_KIT02.jpg",
@@ -98,7 +98,7 @@ const products = [
         originalPrice: 2000,
         images: [
             "productimage/P0004/dtac_12_1.jpg",
-            "productimage/P0004/dtac_12_1.jpg"
+            
 
         ],
         features: [
@@ -120,10 +120,10 @@ const products = [
         subTitle: "ซิมคงกระพัน เน็ตและโทรพร้อมใช้",
         sku: "B0288897",
         price: 1390,
-        originalPrice: 2000,
+        originalPrice: 1600,
         images: [
             "productimage/P0005/dtac_6_1.jpg",
-            "productimage/P0005/dtac_6_1.jpg"
+            
 
         ],
         features: [
@@ -145,11 +145,11 @@ const products = [
         modelName: "ซิมคงกระพัน 3 เดือน",
         subTitle: "ซิมคงกระพัน เน็ตและโทรพร้อมใช้",
         sku: "B0288897",
-        price: 1190,
-        originalPrice: 2000,
+        price: 790,
+        originalPrice: 1000,
         images: [
             "productimage/P0006/dtac_3_1.jpg",
-            "productimage/P0006/dtac_3_1.jpg"
+            
 
         ],
         features: [
@@ -172,7 +172,7 @@ const products = [
         subTitle: "AI ProVisual Engine ที่ล้ำหน้าที่สุด",
         sku: "B0288897",
         price: 28790,
-        originalPrice: 32300,
+        originalPrice: 32500,
         images: [
             "productimage/P0007/s25ultra_01.jpg",
             "productimage/P0007/s25ultra_02.jpg",
@@ -225,7 +225,7 @@ const products = [
         subTitle: "ชิปเซตเร็วแรงใช้งานทุกแอปได้ราบรื่น",
         sku: "B0288897",
         price: 3790,
-        originalPrice: 5300,
+        originalPrice: 4300,
         images: [
             "productimage/P0009/a06_01.jpg",
             "productimage/P0009/a06_02.jpg"
@@ -278,14 +278,14 @@ const products = [
         subTitle: "ซิมเทพทรู เน็ตและโทรพร้อมใช้",
         sku: "B0288897",
         price: 1790,
-        originalPrice: 2000,
+        originalPrice: 2100,
         images: [
             "productimage/P0011/true_01.jpeg",
-            "productimage/P0011/true_01.jpeg",
+            
 
         ],
         features: [
-            "เน็ต 10 Mbps 100 GB",
+            "เน็ต 20 Mbps 100 GB",
             "เน็ตไม่อั้นที่ 128 Kbps",
 			"โทรฟรีในเครือข่ายครั้งละ 30 นาที ตลอด 24 ชั่วโมง",
 			"โทรฟรีนอกเครือข่าย 60 นาทีต่อเดือน",
@@ -303,7 +303,7 @@ const products = [
         subTitle: "Wide-Angle & Telephoto Lens",
         sku: "B0288899A",
         price: 1890,
-        originalPrice: 2000,
+        originalPrice: 2300,
 
         images: [
             "productimage/P0012/Tapo_C545D_01.jpg",
@@ -470,12 +470,27 @@ container.innerHTML = `
 
                 </div>
 
-                <div class="mt-8 flex items-center gap-3 text-slate-400 reveal delay-2">
-                    <svg class="w-4 h-4 text-cyan-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                    <p class="text-[9px] font-bold uppercase tracking-widest leading-relaxed">
-                        สินค้าของแท้รับประกันศูนย์ 100%
-                    </p>
-                </div>
+<div class="group mt-8 flex items-center gap-3 reveal delay-2 cursor-default">
+    <div class="relative flex items-center justify-center">
+        <div class="absolute inset-0 bg-cyan-400/20 blur-lg rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        
+        <div class="relative transform group-hover:scale-110 group-hover:rotate-[10deg] transition-all duration-500">
+            <svg class="w-6 h-6 text-cyan-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.744c0 5.621 3.12 10.511 7.75 12.912 4.63-2.401 7.75-7.291 7.75-12.912a11.99 11.99 0 00-.598-3.744A11.959 11.959 0 0112 2.714z"></path>
+            </svg>
+        </div>
+    </div>
+
+    <div class="flex flex-col">
+        <p class="text-[10px] md:text-[11px] font-black text-slate-900 uppercase tracking-[0.1em] md:tracking-[0.2em] leading-none mb-1 group-hover:text-cyan-600 transition-colors duration-300">
+            Verified Authentic
+        </p>
+        <div class="h-[1px] w-0 bg-cyan-500/50 group-hover:w-full transition-all duration-700 mb-1"></div>
+        <p class="text-[9px] font-bold text-slate-400 uppercase tracking-tight md:tracking-wider">
+            สินค้าของแท้รับประกันศูนย์ 100%
+        </p>
+    </div>
+</div>
 
             </div>
         </div>
