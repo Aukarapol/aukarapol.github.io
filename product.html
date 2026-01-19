@@ -499,8 +499,70 @@ function toggleSection(sectionId) {
         // เลื่อนกลับไปจุดเริ่มต้นของ Section
         document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
     }
+};
+
+// --- ส่วนที่หายไป: ระบบค้นหาสินค้า ---
+const searchInput = document.getElementById('product-search');
+const searchSection = document.getElementById('search-results-section');
+const searchContainer = document.getElementById('search-results-container');
+const searchCount = document.getElementById('search-count');
+const noResults = document.getElementById('no-results');
+const mainContent = document.querySelector('main');
+const clearBtn = document.getElementById('clear-search');
+
+if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        
+        // แสดง/ซ่อนปุ่มล้างคำค้นหา
+        if (query.length > 0) {
+            clearBtn.classList.remove('hidden');
+        } else {
+            clearBtn.classList.add('hidden');
+        }
+
+        if (query.length > 0) {
+            // ค้นหาจากชื่อรุ่น, แบรนด์ หรือหมวดหมู่
+            const filtered = products.filter(p => 
+                p.modelName.toLowerCase().includes(query) || 
+                (p.brandSeries && p.brandSeries.toLowerCase().includes(query)) ||
+                (p.category && p.category.toLowerCase().includes(query))
+            );
+
+            // ซ่อนเนื้อหาหลักและแสดงส่วนผลการค้นหา
+            mainContent.classList.add('hidden');
+            searchSection.classList.remove('hidden');
+            
+            if (filtered.length > 0) {
+                searchContainer.innerHTML = filtered.map(item => createProductCard(item)).join('');
+                searchCount.innerText = `${filtered.length} รายการ`;
+                noResults.classList.add('hidden');
+                searchContainer.classList.remove('hidden');
+            } else {
+                searchContainer.classList.add('hidden');
+                searchCount.innerText = `0 รายการ`;
+                noResults.classList.remove('hidden');
+            }
+        } else {
+            // ถ้าช่องค้นหาว่าง ให้กลับไปแสดงหน้าปกติ
+            mainContent.classList.remove('hidden');
+            searchSection.classList.add('hidden');
+        }
+    });
+}
+
+// ปุ่มล้างการค้นหา
+if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        clearBtn.classList.add('hidden');
+        mainContent.classList.remove('hidden');
+        searchSection.classList.add('hidden');
+        searchInput.focus();
+    });
 }
 
 </script>
 </body>
 </html>
+
