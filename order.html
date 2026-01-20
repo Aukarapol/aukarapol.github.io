@@ -125,10 +125,17 @@
 				
 				
 <div class="space-y-6 pt-6">
-    <div class="flex items-center gap-2 ml-2">
-        <span class="w-1.5 h-1.5 bg-amber-500 rounded-full animate-pulse"></span>
-        <label class="text-[11px] uppercase tracking-[0.2em] font-black text-slate-400">เลือกช่องทางชำระเงิน</label>
+
+<div class="flex items-center gap-4 ml-2 mb-2">
+    <div class="relative flex items-center justify-center">
+        <span class="absolute w-4 h-4 bg-amber-500/20 rounded-full animate-ping"></span>
+        <span class="relative w-2 h-2 bg-amber-500 rounded-full shadow-[0_0_10px_rgba(245,158,11,0.5)]"></span>
     </div>
+    <div class="flex flex-col border-l-2 border-slate-100 pl-4">
+        <label class="text-[10px] uppercase tracking-[0.3em] font-black text-slate-400 leading-none mb-1">Payment Method</label>
+        <h3 class="text-sm font-black text-slate-800 uppercase tracking-tight">เลือกช่องทางชำระเงิน</h3>
+    </div>
+</div>
     
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <label class="group relative cursor-pointer" onclick="togglePayment('transfer')">
@@ -186,15 +193,22 @@
     
     <div class="flex flex-col md:flex-row md:items-center justify-between gap-8 relative z-10">
         <div class="space-y-3">
-            <div class="inline-flex items-center gap-2 px-3 py-1 bg-amber-100/50 rounded-full border border-amber-200/50">
-                <span class="w-1.5 h-1.5 bg-amber-500 rounded-full animate-pulse"></span>
-                <p class="text-amber-700 text-[10px] font-black uppercase tracking-[0.2em]">Bank Account Details</p>
-            </div>
+		
+<div class="inline-flex items-center gap-2.5 px-3 py-1 bg-white rounded-full border border-slate-200 shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
+    <div class="flex items-center justify-center w-5 h-5 bg-amber-50 rounded-full">
+        <svg class="w-3 h-3 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+        </svg>
+    </div>
+    <p class="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em] flex items-center gap-1.5">
+        Bank Account <span class="text-amber-600">Details</span>
+    </p>
+</div>
             
             <div class="space-y-1">
-                <h4 class="text-xl font-bold text-slate-800 flex items-center gap-2">
+                 <h3 class="text-base font-black text-slate-800 leading-tight mb-1">
                     ธนาคารไทยพาณิชย์ (SCB)
-                </h4>
+                </h3>
                 <div class="flex items-center gap-3">
                     <p class="text-3xl font-black tracking-tight text-slate-900" id="acc-number">123-4-56789-0</p>
                     <button type="button" onclick="copyAcc()" class="p-2 hover:bg-white rounded-xl transition-colors text-slate-400 hover:text-amber-500 shadow-sm border border-transparent hover:border-slate-100">
@@ -264,7 +278,7 @@
                     </div>
                     <div class="flex flex-col">
                         <span class="text-[10px] font-black text-cyan-600 uppercase tracking-widest mb-1">สินค้า Pre-order ใช้เวลาจัดส่ง 3-5 วันทำการ</span>
-                        <h4 class="text-base font-black text-slate-800 leading-tight mb-1">Hikvision ColorVu 4MP</h4>
+                         <h4 class="text-xl font-bold text-slate-800 flex items-center gap-2">Hikvision ColorVu 4MP</h4>
                         <p class="text-xs text-slate-400 font-medium italic">ชุดโปรโมชั่น 4 กล้อง</p>
                         <p class="text-lg font-black text-slate-900 mt-2">฿15,900</p>
                     </div>
@@ -282,6 +296,27 @@
                         </div>
                     </div>
                 </div>
+				
+				<div class="mb-8 p-5 bg-gradient-to-r from-slate-50 to-white rounded-3xl border border-slate-100 flex items-center gap-4 relative overflow-hidden group">
+    <div class="absolute -right-2 -bottom-2 opacity-[0.03] group-hover:scale-110 transition-transform duration-700">
+        <svg class="w-20 h-20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+    </div>
+
+    <div class="w-14 h-14 bg-white rounded-2xl shadow-sm border border-slate-50 flex items-center justify-center p-1 shrink-0">
+        <img src="productimage/dpd.avif" alt="DBD Registered" class="w-full h-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-500">
+    </div>
+
+    <div class="flex flex-col">
+        <div class="flex items-center gap-1.5">
+            <span class="text-[10px] font-black text-slate-900 uppercase tracking-widest">DBD Registered</span>
+            <div class="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
+        </div>
+        <p class="text-[9px] text-slate-400 font-bold uppercase tracking-tight mt-0.5">ทะเบียนพาณิชย์อิเล็กทรอนิกส์</p>
+        <a href="https://edbr.dbd.go.th/" target="_blank" class="text-[10px] text-cyan-600 font-black underline decoration-cyan-100 underline-offset-4 hover:text-purple-600 transition-colors mt-1">
+            คลิกเพื่อตรวจสอบสถานะ
+        </a>
+    </div>
+</div>
 
 <button type="submit" id="submit-btn" form="checkout-form" 
         class="group relative w-full bg-slate-900 text-white 
@@ -304,7 +339,7 @@
                 
                 <div class="mt-8 flex items-center justify-center gap-2 text-slate-400">
                     <svg class="w-3.5 h-3.5 text-cyan-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                    <p class="text-[10px] font-bold uppercase tracking-widest">ทางร้านจะติดต่อกลับและยืนยันคำสั่งซื้อภายใน 24 ชม.
+                    <p class="text-[10px] font-bold uppercase tracking-widest">ทางร้านจะติดต่อกลับเพื่อยืนยันคำสั่งซื้อภายใน 3 ชม.
                 </div>
 				
 
@@ -389,7 +424,7 @@ function previewImage(event) {
 
 // 5. จัดการส่งฟอร์มไปยัง Google Apps Script
 const checkoutForm = document.getElementById('checkout-form');
-const scriptURL = 'https://script.google.com/macros/s/AKfycbzi1QnQxvB-tY3oNItHXGWHI2O-pCiXKQuUFBw7_paI4TuMDnQTHLDtVVtm7CLivmPF/exec';
+const scriptURL = 'https://script.google.com/macros/s/AKfycbyQrs0xx6U7iKdmebH9lQ7ro8_0tOup4E84lW9-WW7NIx21dcCxTd1LVdWfwtJfrKX5/exec';
 
 if (checkoutForm) {
     checkoutForm.onsubmit = async (e) => {
@@ -410,6 +445,7 @@ if (checkoutForm) {
                 phone: checkoutForm.customer_phone.value,
                 address: checkoutForm.delivery_address.value,
                 product: checkoutForm.product.value,
+				remark: checkoutForm.remark.value,
                 price: checkoutForm.price.value,
                 paymentMethod: paymentMethod,
                 slipBase64: base64,
@@ -449,6 +485,41 @@ if (checkoutForm) {
             sendData();
         }
     };
+}
+
+// ฟังก์ชันคัดลอกเลขบัญชี
+function copyAcc() {
+    // ดึงตัวเลขจาก ID 'acc-number' (ใน HTML ของคุณคือ 123-4-56789-0)
+    const accText = document.getElementById('acc-number').innerText;
+    
+    // ใช้ Clipboard API ในการคัดลอก
+    navigator.clipboard.writeText(accText).then(() => {
+        // สร้างการแจ้งเตือนแบบป๊อปอัพ (Optional - เพื่อให้ลูกค้ารู้ว่าคัดลอกแล้ว)
+        alert('คัดลอกเลขบัญชี ' + accText + ' เรียบร้อยแล้ว!');
+    }).catch(err => {
+        console.error('ไม่สามารถคัดลอกได้:', err);
+    });
+}
+
+async function copyAcc() {
+    const accText = document.getElementById('acc-number').innerText;
+    const btn = event.currentTarget; // ดึงปุ่มที่ถูกคลิก
+    const originalSVG = btn.innerHTML; // เก็บไอคอนเดิมไว้
+
+    try {
+        await navigator.clipboard.writeText(accText);
+        
+        // เปลี่ยนเป็นไอคอนติ๊กถูก (Checkmark)
+        btn.innerHTML = `<svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>`;
+        
+        // รอ 2 วินาทีแล้วเปลี่ยนกลับเป็นไอคอนเดิม
+        setTimeout(() => {
+            btn.innerHTML = originalSVG;
+        }, 2000);
+
+    } catch (err) {
+        alert('คัดลอกล้มเหลว กรุณาคัดลอกด้วยตนเอง');
+    }
 }
 </script>
 
