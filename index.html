@@ -7,83 +7,193 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Kanit', sans-serif; background-color: #f8fafc; }
-        .brand-gradient { background: linear-gradient(135deg, #d32f2f 0%, #b71c1c 100%); }
+        /* ปรับพื้นหลังให้เป็นสีเทาอ่อนมาก และสีฟอนต์ให้อ่อนลงไม่ดำสนิท */
+        body { font-family: 'Kanit', sans-serif; background-color: #f1f5f9; color: #334155; }
+        
+        /* เปลี่ยนจากสีแดงเป็นไล่เฉดน้ำเงิน Indigo ให้ดูพรีเมียมและสบายตา */
+        .brand-gradient { background: linear-gradient(135deg, #4f46e5 0%, #3730a3 100%); }
         .hidden-section { display: none; }
-        .seat { width: 44px; height: 44px; border-radius: 10px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; }
-        .seat-available { background-color: #ffffff; border: 2px solid #e2e8f0; color: #64748b; }
-        .seat-selected { background-color: #ef4444; border-color: #b91c1c; color: white !important; transform: scale(1.05); }
+        
+        /* ปรับดีไซน์ที่นั่งให้มีความนุ่มนวลขึ้น */
+        .seat { width: 44px; height: 44px; border-radius: 12px; cursor: pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; }
+        .seat-available { background-color: #ffffff; border: 1.5px solid #e2e8f0; color: #64748b; }
+        .seat-available:hover { border-color: #818cf8; background-color: #f8fafc; transform: translateY(-2px); }
+        
+        /* สีที่นั่งที่เลือกเป็นสีม่วงคราม */
+        .seat-selected { background-color: #6366f1; border-color: #4f46e5; color: white !important; transform: scale(1.1); box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4); }
+        
         .seat-occupied { 
-            background-color: #cbd5e1 !important; 
-            border: 2px solid #94a3b8 !important; 
+            background-color: #e2e8f0 !important; 
+            border: 1.5px solid #cbd5e1 !important; 
             color: #94a3b8 !important; 
             cursor: not-allowed !important; 
-            pointer-events: none !important; 
-            opacity: 0.7;
+            opacity: 0.6;
         }
-        .stepper-active { color: #ef4444; border-bottom: 2px solid #ef4444; font-weight: 600; }
+
+        /* ปรับสี Stepper */
+        .stepper-active { color: #4f46e5; border-bottom: 2px solid #4f46e5; font-weight: 600; }
+        
         .ticket-cut { position: relative; }
-        .ticket-cut::after { content: ''; position: absolute; bottom: -10px; left: 0; right: 0; height: 20px; background-image: radial-gradient(circle, #f8fafc 10px, transparent 11px); background-size: 30px 40px; background-position: -5px -20px; }
+        .ticket-cut::after { 
+            content: ''; position: absolute; bottom: -10px; left: 0; right: 0; height: 20px; 
+            background-image: radial-gradient(circle, #f1f5f9 10px, transparent 11px); 
+            background-size: 30px 40px; background-position: -5px -20px; 
+        }
+        
+        /* สไตล์ input ให้ดูคลีน */
+        select, input { border: 1.5px solid #e2e8f0 !important; }
+        select:focus, input:focus { border-color: #818cf8 !important; outline: none; box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.1); }
     </style>
 </head>
 <body class="pb-10">
 
-    <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <nav class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center gap-2 cursor-pointer" onclick="showSearchPage()">
-                <div class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center text-white font-bold">ส</div>
-                <span class="text-xl font-bold text-gray-800">สงวนชัยอุบล</span>
+            <div class="flex items-center gap-3 cursor-pointer" onclick="showSearchPage()">
+                <div class="w-10 h-10 brand-gradient rounded-xl flex items-center justify-center text-white font-bold shadow-lg shadow-indigo-200">ส</div>
+                <span class="text-xl font-bold tracking-tight text-slate-800">สงวนชัยอุบล</span>
             </div>
-            <div id="stepper" class="flex gap-4 text-[10px] md:text-xs font-medium text-gray-400 uppercase tracking-widest">
-                <span id="step-1-label" class="stepper-active pb-1">1. เที่ยวรถ</span>
-                <span id="step-2-label" class="pb-1">2. ที่นั่ง</span>
+            <div id="stepper" class="flex gap-6 text-[10px] md:text-xs font-semibold text-slate-400 uppercase tracking-widest">
+                <span id="step-1-label" class="stepper-active pb-1">1. เลือกเที่ยวรถ</span>
+                <span id="step-2-label" class="pb-1">2. เลือกที่นั่ง</span>
                 <span id="step-3-label" class="pb-1">3. ชำระเงิน</span>
             </div>
         </div>
     </nav>
 
     <div id="search-page">
-        <div class="brand-gradient h-40 flex items-center justify-center text-white px-4">
+        <div class="brand-gradient h-48 flex items-center justify-center text-white px-4">
             <div class="text-center">
-                <h1 class="text-2xl font-bold mb-1">จองตั๋วออนไลน์</h1>
-                <p class="text-red-100 text-sm">อุบลราชธานี - กรุงเทพฯ - อำนาจเจริญ</p>
+                <h1 class="text-3xl font-bold mb-2 tracking-tight">จองตั๋วออนไลน์</h1>
+                <p class="text-indigo-100 text-sm opacity-90">เดินทางสะดวก ปลอดภัย ไปกับสงวนชัยอุบล</p>
             </div>
         </div>
         <div class="max-w-5xl mx-auto px-4">
-            <div class="bg-white rounded-2xl shadow-xl p-6 -translate-y-10">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                    <div class="space-y-1">
-                        <label class="text-xs text-gray-400">ต้นทาง</label>
-                        <select id="origin" class="w-full p-3 border rounded-xl bg-gray-50 outline-none"><option value="กรุงเทพฯ">กรุงเทพฯ</option><option value="อุบลราชธานี">อุบลราชธานี</option></select>
+            <div class="bg-white rounded-[2rem] shadow-xl shadow-slate-200/60 p-8 -translate-y-12">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <div class="space-y-1.5">
+                        <label class="text-xs font-bold text-slate-500 ml-1">ต้นทาง</label>
+                        <select id="origin" class="w-full p-3.5 border rounded-2xl bg-slate-50 outline-none transition-all">
+                            <option value="กรุงเทพฯ">กรุงเทพฯ</option>
+                            <option value="นครราชสีมา">นครราชสีมา</option>
+                            <option value="อุบลราชธานี">อุบลราชธานี</option>
+							<option value="เชียงใหม่">เชียงใหม่</option>
+                        </select>
                     </div>
-                    <div class="space-y-1">
-                        <label class="text-xs text-gray-400">ปลายทาง</label>
-                        <select id="destination" class="w-full p-3 border rounded-xl bg-gray-50 outline-none"><option value="อุบลราชธานี">อุบลราชธานี</option><option value="กรุงเทพฯ">กรุงเทพฯ</option></select>
+                    <div class="space-y-1.5">
+                        <label class="text-xs font-bold text-slate-500 ml-1">ปลายทาง</label>
+                        <select id="destination" class="w-full p-3.5 border rounded-2xl bg-slate-50 outline-none transition-all">
+                            <option value="นครราชสีมา">นครราชสีมา</option>
+                            <option value="อุบลราชธานี">อุบลราชธานี</option>
+							<option value="เชียงใหม่">เชียงใหม่</option>
+							<option value="กรุงเทพฯ">กรุงเทพฯ</option>
+                        </select>
                     </div>
-                    <div class="space-y-1">
-                        <label class="text-xs text-gray-400">วันที่เดินทาง</label>
-                        <input type="date" id="travel-date" onkeydown="return false" class="w-full p-3 border rounded-xl bg-gray-50 outline-none">
+                    <div class="space-y-1.5">
+                        <label class="text-xs font-bold text-slate-500 ml-1">วันที่เดินทาง</label>
+                        <input type="date" id="travel-date" onkeydown="return false" class="w-full p-3.5 border rounded-2xl bg-slate-50 outline-none transition-all">
                     </div>
-                    <div class="flex items-end"><button onclick="handleSearch()" class="w-full bg-red-600 text-white font-bold py-3 rounded-xl hover:bg-red-700 transition-all">ค้นหา</button></div>
+                    <div class="flex items-end">
+                        <button onclick="handleSearch()" class="w-full bg-indigo-600 text-white font-bold py-3.5 rounded-2xl hover:bg-indigo-700 hover:shadow-lg hover:shadow-indigo-200 transition-all active:scale-[0.98]">ค้นหาเที่ยวรถ</button>
+                    </div>
                 </div>
             </div>
         </div>
-        <main class="max-w-5xl mx-auto px-4 -mt-4"><div id="trip-list" class="space-y-3"></div></main>
+        <main class="max-w-5xl mx-auto px-4 -mt-4">
+    <div id="trip-list" class="space-y-4"></div>
+
+    <div class="mt-12 mb-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <div class="bg-white rounded-[2rem] p-8 shadow-sm border border-slate-100">
+                <h3 class="text-lg font-bold text-slate-800 mb-5 flex items-center gap-2">
+                    <span class="w-8 h-8 brand-gradient rounded-lg flex items-center justify-center text-white text-sm">1</span>
+                    เงื่อนไขการจองและชำระเงิน
+                </h3>
+                <ul class="space-y-4 text-sm text-slate-600">
+                    <li class="flex gap-3">
+                        <svg class="h-5 w-5 text-emerald-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span>เมื่อจองที่นั่งแล้ว กรุณาชำระเงินและแนบหลักฐานการโอนภายใน 30 นาที มิฉะนั้นระบบจะยกเลิกรายการจองโดยอัตโนมัติ</span>
+                    </li>
+                    <li class="flex gap-3">
+                        <svg class="h-5 w-5 text-emerald-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span>ตั๋วออนไลน์ไม่สามารถคืนเงินได้ทุกกรณี แต่สามารถเลื่อนวันเดินทางได้ 1 ครั้ง (แจ้งล่วงหน้าอย่างน้อย 24 ชม.)</span>
+                    </li>
+                    <li class="flex gap-3">
+                        <svg class="h-5 w-5 text-emerald-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span>เด็กที่มีความสูงเกิน 100 ซม. จะต้องจองที่นั่งแยกในราคาปกติ</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bg-white rounded-[2rem] p-8 shadow-sm border border-slate-100">
+                <h3 class="text-lg font-bold text-slate-800 mb-5 flex items-center gap-2">
+                    <span class="w-8 h-8 brand-gradient rounded-lg flex items-center justify-center text-white text-sm">2</span>
+                    รายละเอียดการเดินทาง
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100">
+                        <p class="text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-1">จุดรับตั๋ว</p>
+                        <p class="text-sm font-semibold text-slate-700 font-kanit">เคาน์เตอร์สงวนชัยอุบล ณ สถานีขนส่งต้นทาง</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100">
+                        <p class="text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-1">สัมภาระ</p>
+                        <p class="text-sm font-semibold text-slate-700 font-kanit">ฟรี 20 กก./ท่าน (ไม่เกิน 2 ชิ้น)</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100">
+                        <p class="text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-1">การรายงานตัว</p>
+                        <p class="text-sm font-semibold text-slate-700 font-kanit">กรุณาแสดงตัวก่อนรถออก 30 นาที</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100">
+                        <p class="text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-1">บริการบนรถ</p>
+                        <p class="text-sm font-semibold text-slate-700 font-kanit">น้ำดื่ม และสิ่งอำนวยความสะดวกตามประเภทรถ</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="mt-8 text-center">
+            <p class="text-slate-400 text-xs">มีปัญหาการใช้งานหรือต้องการจองผ่านเจ้าหน้าที่? 
+                <a href="tel:045-xxx-xxxx" class="text-indigo-600 font-bold hover:underline ml-1">โทร. 045-XXX-XXXX</a>
+            </p>
+        </div>
     </div>
+</main>
+    </div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
     <div id="seat-page" class="hidden-section container mx-auto px-4 mt-6">
         <div class="max-w-md mx-auto">
-            <button onclick="showSearchPage()" class="mb-4 text-gray-500 text-sm flex items-center gap-1">← กลับ</button>
-            <div class="bg-white rounded-3xl shadow-lg p-6 border-t-8 border-red-600">
-                <div class="text-center mb-4">
-                    <h3 class="font-bold text-gray-800" id="seat-trip-info">-</h3>
-                    <p class="text-xs text-gray-500" id="seat-date-info">-</p>
+            <button onclick="showSearchPage()" class="mb-4 text-slate-400 text-sm font-medium flex items-center gap-1 hover:text-indigo-600 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg> เปลี่ยนเที่ยวรถ
+            </button>
+            <div class="bg-white rounded-[2.5rem] shadow-xl shadow-slate-200/50 p-8 border-t-[6px] border-indigo-500">
+                <div class="text-center mb-8">
+                    <h3 class="font-bold text-slate-800 text-lg" id="seat-trip-info">-</h3>
+                    <p class="text-xs text-slate-400 mt-1" id="seat-date-info">-</p>
                 </div>
                 
-                <div class="flex justify-center gap-4 mb-6 text-[10px] font-bold uppercase text-gray-400">
-                    <div class="flex items-center gap-1"><div class="w-3 h-3 bg-white border border-gray-300 rounded"></div> ว่าง</div>
-                    <div class="flex items-center gap-1"><div class="w-3 h-3 bg-red-500 rounded"></div> เลือกอยู่</div>
-                    <div class="flex items-center gap-1"><div class="w-3 h-3 bg-gray-300 rounded"></div> จองแล้ว</div>
+                <div class="flex justify-center gap-6 mb-8 text-[11px] font-bold uppercase text-slate-400">
+                    <div class="flex items-center gap-2"><div class="w-4 h-4 bg-white border border-slate-300 rounded-md"></div> ว่าง</div>
+                    <div class="flex items-center gap-2"><div class="w-4 h-4 bg-indigo-500 rounded-md"></div> เลือกอยู่</div>
+                    <div class="flex items-center gap-2"><div class="w-4 h-4 bg-slate-200 rounded-md"></div> จองแล้ว</div>
                 </div>
 
                 <div id="seat-grid" class="space-y-4"></div>
@@ -92,294 +202,88 @@
     </div>
 
     <div id="payment-page" class="hidden-section max-w-2xl mx-auto px-4 mt-6">
-        <button onclick="showSeatPageDirect()" class="mb-4 text-gray-500 text-sm">← แก้ไขที่นั่ง</button>
-        <div class="bg-white rounded-2xl shadow-md p-6 mb-6">
-            <h2 class="font-bold mb-4 uppercase text-xs tracking-wider text-gray-400">ข้อมูลผู้เดินทาง</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <input type="text" id="p-name" placeholder="ชื่อ-นามสกุล" maxlength="50" class="w-full p-3 border rounded-xl" required>
-                <input type="tel" id="p-phone" placeholder="เบอร์โทรศัพท์ (เช่น 0812345678)" pattern="[0-9]{10}" maxlength="10" class="w-full p-3 border rounded-xl" required>
+        <div class="bg-white rounded-3xl shadow-lg p-8 mb-6 border border-slate-50">
+            <h2 class="font-bold mb-6 uppercase text-xs tracking-widest text-indigo-500">ข้อมูลผู้เดินทาง</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <input type="text" id="p-name" placeholder="ชื่อ-นามสกุล" maxlength="50" class="w-full p-3.5 border rounded-2xl bg-slate-50" required>
+                <input type="tel" id="p-phone" placeholder="เบอร์โทรศัพท์ (10 หลัก)" pattern="[0-9]{10}" maxlength="10" class="w-full p-3.5 border rounded-2xl bg-slate-50" required>
             </div>
         </div>
-        <div class="bg-white rounded-2xl shadow-md p-6 border-2 border-red-50 text-center">
-            <h2 class="font-bold mb-4">ชำระเงิน (Thai QR)</h2>
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=SanguanChai" class="mx-auto mb-4 border p-2 rounded-lg">
-            <p class="text-2xl font-bold text-red-600 mb-6 font-mono">฿<span id="final-price">0</span></p>
-            <input type="file" id="slip-upload" accept="image/*" class="mb-6 block w-full text-xs text-gray-400">
-            <button id="btn-submit-payment" onclick="finishBooking()" class="w-full bg-green-600 text-white font-bold py-4 rounded-xl shadow-lg hover:bg-green-700">แจ้งชำระเงิน</button>
+        <div class="bg-white rounded-3xl shadow-xl p-8 border-2 border-indigo-50 text-center">
+            <h2 class="font-bold text-lg mb-6 text-slate-800">ยืนยันการชำระเงิน</h2>
+            <div class="bg-slate-50 inline-block p-4 rounded-2xl mb-6 border border-slate-100">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=SanguanChai" class="mx-auto rounded-lg">
+            </div>
+            <p class="text-3xl font-bold text-indigo-600 mb-6 font-mono">฿<span id="final-price">0</span></p>
+            <div class="max-w-xs mx-auto mb-8">
+                <label class="block text-xs font-bold text-slate-400 uppercase mb-2">อัปโหลดสลิปการโอน</label>
+                <input type="file" id="slip-upload" accept="image/*" class="block w-full text-xs text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-bold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100">
+            </div>
+            <button id="btn-submit-payment" onclick="finishBooking()" class="w-full bg-emerald-500 text-white font-bold py-4 rounded-2xl shadow-lg shadow-emerald-100 hover:bg-emerald-600 transition-all active:scale-95">แจ้งชำระเงินเรียบร้อย</button>
         </div>
     </div>
 
     <div id="success-page" class="hidden-section max-w-md mx-auto px-4 mt-10">
-        <div class="bg-white rounded-3xl shadow-2xl overflow-hidden">
-            <div class="brand-gradient p-8 text-center text-white ticket-cut">
-                <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+        <div class="bg-white rounded-[2.5rem] shadow-2xl overflow-hidden">
+            <div class="brand-gradient p-10 text-center text-white ticket-cut">
+                <div class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 border border-white/30">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
                     </svg>
                 </div>
-                <h2 class="text-2xl font-bold">จองตั๋วสำเร็จ!</h2>
-                <p class="text-red-100 text-sm opacity-80">ขอบคุณที่เลือกสงวนชัยอุบล</p>
+                <h2 class="text-2xl font-bold mb-1">จองตั๋วสำเร็จ!</h2>
+                <p class="text-indigo-100 text-sm opacity-80 font-light">เราได้จัดเตรียมที่นั่งให้ท่านเรียบร้อยแล้ว</p>
             </div>
             
             <div class="p-8 pt-10 space-y-6">
-                <div class="flex justify-between border-b border-dashed pb-4">
-                    <div class="text-xs text-gray-400 uppercase font-bold">ชื่อผู้เดินทาง</div>
-                    <div class="font-bold text-gray-800" id="res-name">-</div>
+                <div class="flex justify-between border-b border-slate-100 pb-4">
+                    <div class="text-[11px] text-slate-400 uppercase font-bold tracking-wider">ผู้เดินทาง</div>
+                    <div class="font-bold text-slate-700" id="res-name">-</div>
                 </div>
-                <div class="grid grid-cols-2 gap-4 border-b border-dashed pb-4">
+                <div class="grid grid-cols-2 gap-4 border-b border-slate-100 pb-4">
                     <div>
-                        <div class="text-xs text-gray-400 uppercase font-bold">เที่ยวรถ</div>
-                        <div class="font-bold text-gray-800 text-sm" id="res-trip">-</div>
+                        <div class="text-[11px] text-slate-400 uppercase font-bold tracking-wider">เที่ยวรถ</div>
+                        <div class="font-bold text-slate-700 text-sm" id="res-trip">-</div>
                     </div>
                     <div class="text-right">
-                        <div class="text-xs text-gray-400 uppercase font-bold">วันที่เดินทาง</div>
-                        <div class="font-bold text-gray-800" id="res-date">-</div>
+                        <div class="text-[11px] text-slate-400 uppercase font-bold tracking-wider">วันที่</div>
+                        <div class="font-bold text-slate-700" id="res-date">-</div>
                     </div>
                 </div>
-                <div class="grid grid-cols-2 gap-4 border-b border-dashed pb-4">
+                <div class="grid grid-cols-2 gap-4 border-b border-slate-100 pb-4">
                     <div>
-                        <div class="text-xs text-gray-400 uppercase font-bold">ที่นั่ง</div>
-                        <div class="font-bold text-red-600 text-xl" id="res-seats">-</div>
+                        <div class="text-[11px] text-slate-400 uppercase font-bold tracking-wider">หมายเลขที่นั่ง</div>
+                        <div class="font-bold text-indigo-600 text-2xl" id="res-seats">-</div>
                     </div>
                     <div class="text-right">
-                        <div class="text-xs text-gray-400 uppercase font-bold">ราคาสุทธิ</div>
-                        <div class="font-bold text-gray-800 text-xl">฿<span id="res-total">0</span></div>
+                        <div class="text-[11px] text-slate-400 uppercase font-bold tracking-wider">ยอดรวม</div>
+                        <div class="font-bold text-slate-800 text-2xl">฿<span id="res-total">0</span></div>
                     </div>
                 </div>
                 
-                <div class="bg-gray-50 p-4 rounded-xl text-center">
-                    <p class="text-[10px] text-gray-400 mb-2 uppercase tracking-widest font-bold">Booking ID</p>
-                    <p class="text-lg font-mono font-bold text-gray-600" id="res-id">SCU-XXXX-XXXX</p>
+                <div class="bg-slate-50 p-4 rounded-2xl text-center border border-slate-100">
+                    <p class="text-[10px] text-slate-400 mb-1 uppercase tracking-[0.2em] font-bold">Booking Reference</p>
+                    <p class="text-lg font-mono font-bold text-indigo-600" id="res-id">SCU-XXXX-XXXX</p>
                 </div>
 
                 <div class="flex gap-3 mt-8">
-                    <button onclick="window.print()" class="flex-1 border-2 border-gray-200 text-gray-600 font-bold py-3 rounded-xl text-sm">บันทึกตั๋ว</button>
-                    <button onclick="location.reload()" class="flex-1 bg-red-600 text-white font-bold py-3 rounded-xl text-sm shadow-lg shadow-red-200">หน้าแรก</button>
+                    <button onclick="window.print()" class="flex-1 border-2 border-slate-200 text-slate-500 font-bold py-3.5 rounded-2xl text-sm hover:bg-slate-50 transition-all">บันทึกรูปตั๋ว</button>
+                    <button onclick="location.reload()" class="flex-1 bg-indigo-600 text-white font-bold py-3.5 rounded-2xl text-sm shadow-lg shadow-indigo-100 hover:bg-indigo-700 transition-all">กลับหน้าแรก</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="summary-bar" class="fixed bottom-0 left-0 right-0 bg-white shadow-[0_-5px_20px_rgba(0,0,0,0.1)] p-5 z-40 transform translate-y-full transition-transform">
+    <div id="summary-bar" class="fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-md shadow-[0_-10px_30px_rgba(0,0,0,0.08)] p-5 z-40 transform translate-y-full transition-all duration-300">
         <div class="max-w-md mx-auto flex justify-between items-center px-4">
-            <div><p class="text-xs text-gray-400 uppercase font-bold">ที่นั่ง <span id="selected-seats-text" class="text-red-600"></span></p><p class="text-2xl font-bold text-gray-800">฿<span id="total-price">0</span></p></div>
-            <button onclick="showPaymentPage()" class="bg-red-600 text-white py-3 px-10 rounded-xl font-bold">ถัดไป</button>
+            <div>
+                <p class="text-[10px] text-slate-400 uppercase font-bold tracking-widest mb-0.5">ที่นั่งที่เลือก <span id="selected-seats-text" class="text-indigo-600"></span></p>
+                <p class="text-2xl font-bold text-slate-800 font-mono">฿<span id="total-price">0</span></p>
+            </div>
+            <button onclick="showPaymentPage()" class="bg-indigo-600 text-white py-3.5 px-10 rounded-2xl font-bold shadow-lg shadow-indigo-200 hover:bg-indigo-700 transition-all active:scale-95">ดำเนินการต่อ</button>
         </div>
     </div>
-
-<script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbys1OiImS7wBHXum1LSDeQKZuHpU2aoMN17ZwVdbtHtTJswtmwAG8mkpm1fX1afop-z/exec"; 
-    
-    const trips = [
-        { id: 101, origin: 'กรุงเทพฯ', destination: 'อุบลราชธานี', time: '20:30', price: 685, type: 'VIP 24' },
-        { id: 102, origin: 'กรุงเทพฯ', destination: 'อุบลราชธานี', time: '21:30', price: 685, type: 'VIP 24' },
-        { id: 201, origin: 'อุบลราชธานี', destination: 'กรุงเทพฯ', time: '18:00', price: 685, type: 'VIP 24' },
-        { id: 202, origin: 'อุบลราชธานี', destination: 'กรุงเทพฯ', time: '19:00', price: 685, type: 'VIP 24' }
-    ];
-    let bookedSeatsStore = []; 
-    let selectedSeats = [];
-    let currentTrip = null;
-
-    function showSearchPage() { hideAllPages(); document.getElementById('search-page').classList.remove('hidden-section'); updateStepper(1); }
-    function hideAllPages() { document.querySelectorAll('[id$="-page"]').forEach(el => el.classList.add('hidden-section')); document.getElementById('summary-bar').classList.add('translate-y-full'); }
-    
-    async function showSeatPage(tripId) { 
-        currentTrip = trips.find(t => t.id === tripId); 
-        selectedSeats = []; 
-        hideAllPages(); 
-        document.getElementById('seat-page').classList.remove('hidden-section');
-        document.getElementById('seat-trip-info').innerText = `${currentTrip.origin} - ${currentTrip.destination} (${currentTrip.time})`;
-        document.getElementById('seat-date-info').innerText = document.getElementById('travel-date').value;
-        await loadBookedSeats();
-        updateSummary(); 
-        updateStepper(2); 
-    }
-
-    function showSeatPageDirect() {
-        hideAllPages();
-        document.getElementById('seat-page').classList.remove('hidden-section');
-        updateSummary();
-        updateStepper(2);
-    }
-
-    async function loadBookedSeats() {
-        const grid = document.getElementById('seat-grid');
-        grid.innerHTML = '<div class="text-center py-10 text-gray-400 animate-pulse">กำลังตรวจสอบที่นั่งล่าสุด...</div>';
-        try {
-            const travelDate = document.getElementById('travel-date').value;
-            const tripDetail = `${currentTrip.origin}-${currentTrip.destination} (${currentTrip.time})`;
-            const res = await fetch(`${SCRIPT_URL}?date=${travelDate}&trip=${encodeURIComponent(tripDetail)}&_t=${Date.now()}`);
-            const data = await res.json();
-            bookedSeatsStore = Array.isArray(data) ? data.map(s => s.toString().trim().toUpperCase()) : [];
-            renderSeats(); 
-        } catch (e) { 
-            grid.innerHTML = '<div class="text-center text-red-500">โหลดข้อมูลไม่สำเร็จ กรุณาลองใหม่</div>';
-        }
-    }
-
-    function renderSeats() {
-        const grid = document.getElementById('seat-grid');
-        grid.innerHTML = '<div class="flex justify-between mb-4 border-b pb-2 text-[10px] text-gray-300 uppercase font-bold"><span>หน้ารถ (FRONT)</span><span>หลังรถ (REAR)</span></div>';
-        for(let i=1; i<=6; i++) {
-            grid.innerHTML += `
-                <div class="flex justify-between items-center mb-4">
-                    ${createSeatHtml(i+'A')}
-                    <div class="w-10"></div>
-                    <div class="flex gap-3">
-                        ${createSeatHtml(i+'B')}
-                        ${createSeatHtml(i+'C')}
-                    </div>
-                </div>`;
-        }
-    }
-
-    function createSeatHtml(id) {
-        const seatId = id.toUpperCase();
-        const isOccupied = bookedSeatsStore.includes(seatId);
-        if (isOccupied) return `<div class="seat seat-occupied">${id}</div>`;
-        const isSelected = selectedSeats.includes(id);
-        return `<div class="seat ${isSelected ? 'seat-selected' : 'seat-available'}" onclick="toggleSeat(this, '${id}')">${id}</div>`;
-    }
-
-    function toggleSeat(el, id) { 
-        if (bookedSeatsStore.includes(id.toUpperCase())) return;
-        if (selectedSeats.includes(id)) { 
-            selectedSeats = selectedSeats.filter(s => s !== id); 
-        } else { 
-            selectedSeats.push(id); 
-        } 
-        renderSeats(); 
-        updateSummary(); 
-    }
-
-    function updateSummary() { 
-        const bar = document.getElementById('summary-bar'); 
-        const text = document.getElementById('selected-seats-text');
-        if (text) text.innerText = selectedSeats.join(', '); 
-        document.getElementById('total-price').innerText = (selectedSeats.length * (currentTrip?.price || 0)).toLocaleString(); 
-        selectedSeats.length > 0 ? bar.classList.remove('translate-y-full') : bar.classList.add('translate-y-full'); 
-    }
-
-    function showPaymentPage() { 
-        if (selectedSeats.length === 0) return alert('กรุณาเลือกที่นั่งก่อนครับ'); 
-        hideAllPages(); 
-        document.getElementById('payment-page').classList.remove('hidden-section'); 
-        document.getElementById('final-price').innerText = (selectedSeats.length * currentTrip.price).toLocaleString(); 
-        updateStepper(3); 
-    }
-
-    async function finishBooking() {
-        const btn = document.getElementById('btn-submit-payment');
-        if (btn.disabled) return;
-
-        const name = document.getElementById('p-name').value.trim();
-        const phone = document.getElementById('p-phone').value.trim();
-        const slipFile = document.getElementById('slip-upload').files[0];
-
-        if (!name || !phone || !slipFile) {
-            alert("กรุณากรอกข้อมูลและแนบสลิปให้ครบถ้วน");
-            return;
-        }
-
-        btn.disabled = true;
-        btn.innerText = "กำลังตรวจสอบที่นั่ง...";
-
-        try {
-            const travelDate = document.getElementById('travel-date').value;
-            const tripDetail = `${currentTrip.origin}-${currentTrip.destination} (${currentTrip.time})`;
-
-            const checkUrl = `${SCRIPT_URL}?date=${travelDate}&trip=${encodeURIComponent(tripDetail)}&_t=${Date.now()}`;
-            const checkRes = await fetch(checkUrl);
-            const latestBooked = await checkRes.json();
-
-            const isAlreadyTaken = selectedSeats.some(s => latestBooked.map(v => v.toString().toUpperCase()).includes(s.toUpperCase()));
-            
-            if (isAlreadyTaken) {
-                alert("ขออภัย! ที่นั่งที่คุณเลือกเพิ่งถูกจองไป ระบบจะอัปเดตสถานะที่นั่งใหม่");
-                await loadBookedSeats();
-                showSeatPageDirect();
-                btn.disabled = false;
-                btn.innerText = "แจ้งชำระเงิน";
-                return;
-            }
-
-            btn.innerText = "กำลังบันทึกข้อมูล...";
-            const reader = new FileReader();
-            reader.onload = async function(e) {
-                const payload = {
-                    travelDate: travelDate,
-                    trip: tripDetail,
-                    seats: selectedSeats.join(','),
-                    name: name,
-                    phone: phone,
-                    total: (selectedSeats.length * currentTrip.price).toLocaleString(),
-                    imageBlob: e.target.result.split(',')[1]
-                };
-
-                const response = await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    body: JSON.stringify(payload)
-                });
-                const result = await response.json();
-
-                if (result.status === "success") {
-                    showSuccessPage(payload);
-                } else {
-                    alert("เกิดข้อผิดพลาด: " + result.message);
-                    btn.disabled = false;
-                    btn.innerText = "แจ้งชำระเงิน";
-                }
-            };
-            reader.readAsDataURL(slipFile);
-
-        } catch (err) {
-            alert("การเชื่อมต่อขัดข้อง กรุณาลองใหม่");
-            btn.disabled = false;
-            btn.innerText = "แจ้งชำระเงิน";
-        }
-    }
-
-    function showSuccessPage(data) {
-        document.getElementById('res-name').innerText = data.name;
-        document.getElementById('res-trip').innerText = data.trip;
-        document.getElementById('res-date').innerText = data.travelDate;
-        document.getElementById('res-seats').innerText = data.seats;
-        document.getElementById('res-total').innerText = data.total;
-        document.getElementById('res-id').innerText = "SCU-" + Math.random().toString(36).substr(2, 9).toUpperCase();
-        
-        hideAllPages();
-        document.getElementById('success-page').classList.remove('hidden-section');
-        updateStepper(4);
-    }
-
-    function updateStepper(step) { 
-        document.querySelectorAll('[id$="-label"]').forEach(el => el.classList.remove('stepper-active')); 
-        if(step < 4) document.getElementById(`step-${step}-label`)?.classList.add('stepper-active');
-    }
-
-    function setupDateLimits() {
-        const dateInput = document.getElementById('travel-date');
-        const now = new Date();
-        dateInput.min = now.toISOString().split('T')[0];
-        dateInput.value = dateInput.min;
-    }
-
-    function handleSearch() {
-        const ori = document.getElementById('origin').value;
-        const dest = document.getElementById('destination').value;
-        const container = document.getElementById('trip-list');
-        const filtered = trips.filter(t => t.origin === ori && t.destination === dest);
-        container.innerHTML = filtered.length ? '' : '<p class="text-center py-10">ไม่พบเที่ยวรถ</p>'; 
-        filtered.forEach(trip => { 
-            container.innerHTML += `<div class="bg-white p-5 rounded-xl border flex justify-between items-center shadow-sm">
-                <div><div class="text-2xl font-bold">${trip.time}</div><div class="text-xs text-blue-500 font-bold">${trip.type}</div></div>
-                <div class="text-right"><div class="text-lg font-bold text-red-600">฿${trip.price}</div>
-                <button onclick="showSeatPage(${trip.id})" class="mt-2 bg-red-600 text-white px-6 py-2 rounded-lg text-sm font-bold">เลือกที่นั่ง</button></div></div>`; 
-        }); 
-    }
-
-    setupDateLimits(); 
-    handleSearch();     
-</script>
+	
+<script src="booking.js"></script>
 </body>
 </html>
