@@ -1,4 +1,4 @@
-   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbys1OiImS7wBHXum1LSDeQKZuHpU2aoMN17ZwVdbtHtTJswtmwAG8mkpm1fX1afop-z/exec"; 
+   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzkBW-2Y8e_tE8b3S2iuDFT4AadO7CNRAtsDUnwQZyg55GkvkxQeaD0ROlXYhXw0Kk2/exec"; 
     
     const trips = [
         { id: 101, origin: 'กรุงเทพฯ', destination: 'อุบลราชธานี', time: '20:30', price: 685, type: 'VIP 24' },
@@ -10,7 +10,7 @@
 		{ id: 203, origin: 'นครราชสีมา', destination: 'กรุงเทพฯ', time: '18:30', price: 385, type: 'VIP 24' },
         { id: 204, origin: 'นครราชสีมา', destination: 'กรุงเทพฯ', time: '19:30', price: 385, type: 'VIP 24' },
 		{ id: 301, origin: 'กรุงเทพฯ', destination: 'เชียงใหม่', time: '07:30', price: 785, type: 'VIP 24' },
-		{ id: 302, origin: 'กรุงเทพฯ', destination: 'เชียงใหม่', time: '08:35', price: 785, type: 'VIP 24' },
+		{ id: 302, origin: 'กรุงเทพฯ', destination: 'เชียงใหม่', time: '08:30', price: 785, type: 'VIP 24' },
         { id: 303, origin: 'เชียงใหม่', destination: 'กรุงเทพฯ', time: '18:00', price: 785, type: 'VIP 24' },
         { id: 304, origin: 'เชียงใหม่', destination: 'กรุงเทพฯ', time: '19:00', price: 785, type: 'VIP 24' }
     ];
@@ -70,6 +70,25 @@
                 </div>`;
         }
     }
+	
+	function backToSeats() {
+    // 1. ซ่อนหน้าปัจจุบัน
+    hideAllPages();
+    
+    // 2. แสดงหน้าเลือกที่นั่ง (ID: seat-page ตามโค้ดเดิมของคุณ)
+    const seatPage = document.getElementById('seat-page');
+    if (seatPage) {
+        seatPage.classList.remove('hidden-section');
+    }
+    
+    // 3. อัปเดตตัวบอกขั้นตอน (Stepper) ให้กลับไปที่ขั้นตอนที่ 2
+    updateStepper(2);
+    
+    // 4. เลื่อนหน้าจอขึ้นไปด้านบนสุดเพื่อให้เห็นข้อมูลชัดเจน
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+
 
     function createSeatHtml(id) {
         const seatId = id.toUpperCase();
@@ -96,6 +115,16 @@
         if (text) text.innerText = selectedSeats.join(', '); 
         document.getElementById('total-price').innerText = (selectedSeats.length * (currentTrip?.price || 0)).toLocaleString(); 
         selectedSeats.length > 0 ? bar.classList.remove('translate-y-full') : bar.classList.add('translate-y-full'); 
+		// เพิ่มการอัปเดตข้อมูลลงในการ์ดสีน้ำเงิน
+    if (currentTrip) {
+        document.getElementById('summary-route').innerText = `${currentTrip.origin} ไป ${currentTrip.destination}`;
+        document.getElementById('summary-type').innerText = currentTrip.type;
+        document.getElementById('summary-date').innerText = document.getElementById('travel-date').value;
+        document.getElementById('summary-seats').innerText = selectedSeats.length > 0 ? selectedSeats.join(', ') : 'ยังไม่ได้เลือก';
+        
+        const total = selectedSeats.length * currentTrip.price;
+        document.getElementById('final-price').innerText = total.toLocaleString();
+    }
     }
 
     function showPaymentPage() { 
@@ -244,6 +273,6 @@ function handleSearch() {
     }); 
 }
 
-    setupDateLimits(); 
 
-    handleSearch();     
+    setupDateLimits(); 
+    handleSearch();
