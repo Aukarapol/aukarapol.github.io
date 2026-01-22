@@ -10,7 +10,7 @@
 		{ id: 203, origin: 'นครราชสีมา', destination: 'กรุงเทพฯ', time: '18:30', price: 385, type: 'VIP 24' },
         { id: 204, origin: 'นครราชสีมา', destination: 'กรุงเทพฯ', time: '19:30', price: 385, type: 'VIP 24' },
 		{ id: 301, origin: 'กรุงเทพฯ', destination: 'เชียงใหม่', time: '07:30', price: 785, type: 'VIP 24' },
-		{ id: 302, origin: 'กรุงเทพฯ', destination: 'เชียงใหม่', time: '08:30', price: 785, type: 'VIP 24' },
+		{ id: 302, origin: 'กรุงเทพฯ', destination: 'เชียงใหม่', time: '08:35', price: 785, type: 'VIP 24' },
         { id: 303, origin: 'เชียงใหม่', destination: 'กรุงเทพฯ', time: '18:00', price: 785, type: 'VIP 24' },
         { id: 304, origin: 'เชียงใหม่', destination: 'กรุงเทพฯ', time: '19:00', price: 785, type: 'VIP 24' }
     ];
@@ -245,4 +245,5 @@ function handleSearch() {
 }
 
     setupDateLimits(); 
+
     handleSearch();     
