@@ -39,6 +39,7 @@
         updateSummary();
         updateStepper(2);
     }
+	
 
     async function loadBookedSeats() {
         const grid = document.getElementById('seat-grid');
