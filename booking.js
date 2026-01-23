@@ -309,31 +309,40 @@ function downloadTicketImage() {
 }
 
 function shareToLine() {
-    // ดึงข้อมูลจากหน้าจอโดยอ้างอิง ID (ตรวจสอบว่า ID ตรงกับใน HTML ของคุณ)
-    const customerName = document.getElementById('display-name')?.innerText || 'ไม่ระบุชื่อ';
-    const route = document.getElementById('display-route')?.innerText || 'ไม่ระบุเที่ยวรถ';
-    const bookingCode = document.getElementById('display-booking-code')?.innerText || 'SCU-XXXXX';
-    const date = document.getElementById('display-date')?.innerText || '';
-    const time = document.getElementById('display-time')?.innerText || '';
+    // 1. ดึงข้อมูลและตรวจสอบ ID ให้ตรงกับหน้าจอ
+    const customerName = document.getElementById('res-name')?.innerText || '';
+    const route        = document.getElementById('res-trip')?.innerText || '';
+    const seat  = document.getElementById('res-seats')?.innerText || '';
+    const date         = document.getElementById('res-date')?.innerText || '';
+    const total         = document.getElementById('res-total')?.innerText || '';
 
+    // 2. จัดรูปแบบข้อความ (ใช้ \n เพื่อขึ้นบรรทัดใหม่)
     const shareText = `🎫 ตั๋วรถสงวนชัยอุบล
 ---------------------------
 ผู้เดินทาง: ${customerName}
 เที่ยวรถ: ${route}
-วันที่: ${date}
-เวลาออก: ${time}
-รหัสการจอง: ${bookingCode}
+ที่นั่ง: ${seat}
+วันที่เดินทาง: ${date}
+ยอดรวม: ${total}
 ---------------------------
 *กรุณาแสดงข้อความนี้หรือรูปตั๋วแก่พนักงานเมื่อขึ้นรถ*`;
 
+    // 3. เริ่มการแชร์
     if (navigator.share) {
         navigator.share({
             title: 'ตั๋วรถสงวนชัยอุบล',
-            text: shareText,
-            // url: window.location.href // เปิดไว้หากต้องการส่ง link เว็บไปด้วย
+            text: shareText
+            // ถ้าจะส่ง URL เว็บไปด้วย ให้เปิดบรรทัดล่างนี้:
+            // url: window.location.href 
         }).then(() => console.log('แชร์สำเร็จ'))
-          .catch((error) => console.log('การแชร์ล้มเหลว', error));
+          .catch((error) => {
+              // กรณีผู้ใช้กดยกเลิกการแชร์ ไม่ต้องแจ้งเป็น Error ก็ได้ครับ
+              if (error.name !== 'AbortError') {
+                  console.error('การแชร์ล้มเหลว:', error);
+              }
+          });
     } else {
+        // สำหรับ Browser ที่ไม่รองรับ Web Share API (เช่น Chrome บน PC)
         const lineUrl = `https://line.me/R/msg/text/?${encodeURIComponent(shareText)}`;
         window.open(lineUrl, '_blank');
     }
