@@ -29,6 +29,8 @@
             cursor: not-allowed !important; 
             opacity: 0.6;
         }
+		
+
 
         /* ปรับสี Stepper */
         .stepper-active { color: #4f46e5; border-bottom: 2px solid #4f46e5; font-weight: 600; }
@@ -168,8 +170,8 @@
         .flatpickr-mobile {
             display: none;
         }
-
-		/* บังคับให้ตัวเลขในวันที่เลือกเป็นสีขาว และมี Z-index ที่ถูกต้อง */
+		
+/* บังคับให้ตัวเลขในวันที่เลือกเป็นสีขาว และมี Z-index ที่ถูกต้อง */
 .flatpickr-day.selected, 
 .flatpickr-day.selected:hover, 
 .flatpickr-day.selected:focus {
@@ -190,14 +192,16 @@
     color: #ffffff !important;
 }
     </style>
-	
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/th.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
 </head>
 <body class="pb-10">
 
-    <nav class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
+<nav class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center gap-3 cursor-pointer" onclick="showSearchPage()">
                 <div class="w-10 h-10 brand-gradient rounded-xl flex items-center justify-center text-white font-bold shadow-lg shadow-indigo-200">ส</div>
@@ -210,6 +214,7 @@
             </div>
         </div>
     </nav>
+
 
     <div id="search-page">
         <div class="brand-gradient h-48 flex items-center justify-center text-white px-4">
@@ -415,7 +420,7 @@
     </div>
 
     <div class="bg-white rounded-3xl shadow-xl p-8 border-2 border-indigo-50 text-center">
-        <h2 class="font-bold text-lg mb-6 text-slate-800">ยืนยันการชำระเงิน</h2>
+        <h2 class="font-bold text-lg mb-6 text-slate-800">ดำเนินการชำระเงิน</h2>
         
         <div class="bg-slate-50 inline-block p-4 rounded-2xl mb-6 border border-slate-100">
             <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=SanguanChai" class="mx-auto rounded-lg" alt="Payment QR Code">
@@ -482,7 +487,7 @@
                 </div>
 
                 <div class="flex gap-3 mt-8">
-                    <button onclick="window.print()" 
+<button onclick="downloadTicketImage()" 
     class="flex-1 relative z-10 border-2 border-slate-200 text-slate-500 font-bold py-3.5 rounded-2xl text-sm hover:bg-slate-50 transition-all cursor-pointer active:bg-slate-100">
     บันทึกรูปตั๋ว
 </button>
@@ -541,4 +546,3 @@ function setupDateLimits() {
 
 </body>
 </html>
-
