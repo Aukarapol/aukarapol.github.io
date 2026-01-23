@@ -308,19 +308,32 @@ function downloadTicketImage() {
     });
 }
 
-// ปรับปรุงให้รับค่า data จากหน้าจองสำเร็จ
-function shareToLine(bookingCode, time, date) {
-    const shareText = `ตั๋วรถสงวนชัยอุบล\nรหัสการจอง: ${bookingCode}\nเดินทางวันที่: ${date}\nเวลา: ${time}\nกรุณาแสดงข้อความนี้หรือรูปตั๋วเมื่อขึ้นรถ`;
+function shareToLine() {
+    // ดึงข้อมูลจากหน้าจอโดยอ้างอิง ID (ตรวจสอบว่า ID ตรงกับใน HTML ของคุณ)
+    const customerName = document.getElementById('display-name')?.innerText || 'ไม่ระบุชื่อ';
+    const route = document.getElementById('display-route')?.innerText || 'ไม่ระบุเที่ยวรถ';
+    const bookingCode = document.getElementById('display-booking-code')?.innerText || 'SCU-XXXXX';
+    const date = document.getElementById('display-date')?.innerText || '';
+    const time = document.getElementById('display-time')?.innerText || '';
+
+    const shareText = `🎫 ตั๋วรถสงวนชัยอุบล
+---------------------------
+ผู้เดินทาง: ${customerName}
+เที่ยวรถ: ${route}
+วันที่: ${date}
+เวลาออก: ${time}
+รหัสการจอง: ${bookingCode}
+---------------------------
+*กรุณาแสดงข้อความนี้หรือรูปตั๋วแก่พนักงานเมื่อขึ้นรถ*`;
 
     if (navigator.share) {
         navigator.share({
             title: 'ตั๋วรถสงวนชัยอุบล',
             text: shareText,
-            url: window.location.href 
+            // url: window.location.href // เปิดไว้หากต้องการส่ง link เว็บไปด้วย
         }).then(() => console.log('แชร์สำเร็จ'))
           .catch((error) => console.log('การแชร์ล้มเหลว', error));
     } else {
-        // สำหรับ PC หรือ Browser ที่ไม่รองรับ Web Share
         const lineUrl = `https://line.me/R/msg/text/?${encodeURIComponent(shareText)}`;
         window.open(lineUrl, '_blank');
     }
