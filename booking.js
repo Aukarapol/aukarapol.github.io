@@ -308,6 +308,24 @@ function downloadTicketImage() {
     });
 }
 
+// ปรับปรุงให้รับค่า data จากหน้าจองสำเร็จ
+function shareToLine(bookingCode, time, date) {
+    const shareText = `ตั๋วรถสงวนชัยอุบล\nรหัสการจอง: ${bookingCode}\nเดินทางวันที่: ${date}\nเวลา: ${time}\nกรุณาแสดงข้อความนี้หรือรูปตั๋วเมื่อขึ้นรถ`;
+
+    if (navigator.share) {
+        navigator.share({
+            title: 'ตั๋วรถสงวนชัยอุบล',
+            text: shareText,
+            url: window.location.href 
+        }).then(() => console.log('แชร์สำเร็จ'))
+          .catch((error) => console.log('การแชร์ล้มเหลว', error));
+    } else {
+        // สำหรับ PC หรือ Browser ที่ไม่รองรับ Web Share
+        const lineUrl = `https://line.me/R/msg/text/?${encodeURIComponent(shareText)}`;
+        window.open(lineUrl, '_blank');
+    }
+}
+
     function showSuccessPage(data) {
         document.getElementById('res-name').innerText = data.name;
         document.getElementById('res-trip').innerText = data.trip;
