@@ -5,14 +5,14 @@
         { id: 102, origin: 'กรุงเทพฯ', destination: 'อุบลราชธานี', time: '21:30', arrival: '05:30', price: 685, type: 'VIP 24', boarding: 'สถานีขนส่งหมอชิต 2',dropoff: 'บขส. อุบลราชธานี',durationHours: 8},
 		{ id: 103, origin: 'อุบลราชธานี', destination: 'กรุงเทพฯ', time: '22:30', arrival: '06:30', price: 685, type: 'VIP 24', boarding: 'บขส. อุบลราชธานี',dropoff: 'สถานีขนส่งหมอชิต 2',durationHours: 8},
 		{ id: 104, origin: 'อุบลราชธานี', destination: 'กรุงเทพฯ', time: '23:30', arrival: '07:30', price: 685, type: 'VIP 24', boarding: 'บขส. อุบลราชธานี',dropoff: 'สถานีขนส่งหมอชิต 2',durationHours: 8},
-        { id: 201, origin: 'กรุงเทพฯ', destination: 'นครราชสีมา', time: '17:00', arrival: '20:00', price: 385, type: 'VIP 24', boarding: 'สถานีขนส่งหมอชิต 2',dropoff: 'บขส. นครราชสีมา',durationHours: 3},
-		{ id: 202, origin: 'กรุงเทพฯ', destination: 'นครราชสีมา', time: '18:00', arrival: '21:00', price: 385, type: 'VIP 24', boarding: 'สถานีขนส่งหมอชิต 2',dropoff: 'บขส. นครราชสีมา',durationHours: 3},
+        { id: 201, origin: 'กรุงเทพฯ', destination: 'นครราชสีมา', time: '17:00', arrival: '20:00', price: 385, type: 'VIP 32', boarding: 'สถานีขนส่งหมอชิต 2',dropoff: 'บขส. นครราชสีมา',durationHours: 3},
+		{ id: 202, origin: 'กรุงเทพฯ', destination: 'นครราชสีมา', time: '18:00', arrival: '21:00', price: 385, type: 'VIP 32', boarding: 'สถานีขนส่งหมอชิต 2',dropoff: 'บขส. นครราชสีมา',durationHours: 3},
 		{ id: 203, origin: 'นครราชสีมา', destination: 'กรุงเทพฯ', time: '19:30', arrival: '22:30', price: 385, type: 'VIP 24', boarding: 'บขส. นครราชสีมา',dropoff: 'สถานีขนส่งหมอชิต 2',durationHours: 3},
         { id: 204, origin: 'นครราชสีมา', destination: 'กรุงเทพฯ', time: '20:30', arrival: '23:30', price: 385, type: 'VIP 24', boarding: 'บขส. นครราชสีมา',dropoff: 'สถานีขนส่งหมอชิต 2',durationHours: 3},
-		{ id: 301, origin: 'กรุงเทพฯ', destination: 'เชียงใหม่', time: '07:30', arrival: '17:30', price: 785, type: 'VIP 24', boarding: 'สถานีขนส่งหมอชิต 2',dropoff: 'บขส. เชียงใหม่',durationHours: 9,},
-		{ id: 302, origin: 'กรุงเทพฯ', destination: 'เชียงใหม่', time: '08:30', arrival: '18:30', price: 785, type: 'VIP 24', boarding: 'สถานีขนส่งหมอชิต 2',dropoff: 'บขส. เชียงใหม่',durationHours: 9,},
-        { id: 303, origin: 'เชียงใหม่', destination: 'กรุงเทพฯ', time: '18:00', arrival: '04:30', price: 785, type: 'VIP 24', boarding: 'บขส. เชียงใหม่',dropoff: 'สถานีขนส่งหมอชิต 2',durationHours: 9,},
-        { id: 304, origin: 'เชียงใหม่', destination: 'กรุงเทพฯ', time: '19:00', arrival: '05:30', price: 785, type: 'VIP 24', boarding: 'บขส. เชียงใหม่',dropoff: 'สถานีขนส่งหมอชิต 2',durationHours: 9,}
+		{ id: 301, origin: 'กรุงเทพฯ', destination: 'เชียงใหม่', time: '07:30', arrival: '17:30', price: 785, type: 'VIP 32', boarding: 'สถานีขนส่งหมอชิต 2',dropoff: 'บขส. เชียงใหม่',durationHours: 9,},
+		{ id: 302, origin: 'กรุงเทพฯ', destination: 'เชียงใหม่', time: '08:30', arrival: '18:30', price: 785, type: 'VIP 32', boarding: 'สถานีขนส่งหมอชิต 2',dropoff: 'บขส. เชียงใหม่',durationHours: 9,},
+        { id: 303, origin: 'เชียงใหม่', destination: 'กรุงเทพฯ', time: '18:00', arrival: '04:30', price: 785, type: 'VIP 32', boarding: 'บขส. เชียงใหม่',dropoff: 'สถานีขนส่งหมอชิต 2',durationHours: 9,},
+        { id: 304, origin: 'เชียงใหม่', destination: 'กรุงเทพฯ', time: '19:00', arrival: '05:30', price: 785, type: 'VIP 32', boarding: 'บขส. เชียงใหม่',dropoff: 'สถานีขนส่งหมอชิต 2',durationHours: 9,}
     ];
     let bookedSeatsStore = []; 
     let selectedSeats = [];
@@ -21,17 +21,21 @@
     function showSearchPage() { hideAllPages(); document.getElementById('search-page').classList.remove('hidden-section'); updateStepper(1); }
     function hideAllPages() { document.querySelectorAll('[id$="-page"]').forEach(el => el.classList.add('hidden-section')); document.getElementById('summary-bar').classList.add('translate-y-full'); }
     
-    async function showSeatPage(tripId) { 
-        currentTrip = trips.find(t => t.id === tripId); 
-        selectedSeats = []; 
-        hideAllPages(); 
-        document.getElementById('seat-page').classList.remove('hidden-section');
-        document.getElementById('seat-trip-info').innerText = `${currentTrip.origin} - ${currentTrip.destination} (${currentTrip.time})`;
-        document.getElementById('seat-date-info').innerText = document.getElementById('travel-date').value;
-        await loadBookedSeats();
-        updateSummary(); 
-        updateStepper(2); 
-    }
+// 3. ปรับฟังก์ชันเปิดหน้าเลือกที่นั่งให้เป็นอันเดียว (เรียกจากปุ่มใน handleSearch)
+async function showSeatPage(tripId) { 
+    currentTrip = trips.find(t => t.id === tripId); 
+    selectedSeats = []; 
+    hideAllPages(); 
+    document.getElementById('seat-page').classList.remove('hidden-section');
+    document.getElementById('seat-trip-info').innerText = `${currentTrip.origin} - ${currentTrip.destination} (${currentTrip.time})`;
+    document.getElementById('seat-date-info').innerText = document.getElementById('travel-date').value;
+    
+    updateSummary(); 
+    updateStepper(2); 
+    
+    // โหลดข้อมูลจาก Google Sheets และวาดที่นั่ง
+    await loadBookedSeats(); 
+}
 
     function showSeatPageDirect() {
         hideAllPages();
@@ -41,36 +45,76 @@
     }
 	
 
-    async function loadBookedSeats() {
-        const grid = document.getElementById('seat-grid');
-        grid.innerHTML = '<div class="text-center py-10 text-gray-400 animate-pulse">กำลังตรวจสอบที่นั่งล่าสุด...</div>';
-        try {
-            const travelDate = document.getElementById('travel-date').value;
-            const tripDetail = `${currentTrip.origin}-${currentTrip.destination} (${currentTrip.time})`;
-            const res = await fetch(`${SCRIPT_URL}?date=${travelDate}&trip=${encodeURIComponent(tripDetail)}&_t=${Date.now()}`);
-            const data = await res.json();
-            bookedSeatsStore = Array.isArray(data) ? data.map(s => s.toString().trim().toUpperCase()) : [];
-            renderSeats(); 
-        } catch (e) { 
-            grid.innerHTML = '<div class="text-center text-red-500">โหลดข้อมูลไม่สำเร็จ กรุณาลองใหม่</div>';
-        }
+// 1. ปรับฟังก์ชันโหลดที่นั่ง ให้ใช้ค่าจาก currentTrip โดยตรง
+async function loadBookedSeats() {
+    const grid = document.getElementById('seat-grid');
+    grid.innerHTML = '<div class="text-center py-10 text-gray-400 animate-pulse">กำลังตรวจสอบที่นั่งล่าสุด...</div>';
+    try {
+        const travelDate = document.getElementById('travel-date').value;
+        const tripDetail = `${currentTrip.origin}-${currentTrip.destination} (${currentTrip.time})`;
+        const res = await fetch(`${SCRIPT_URL}?date=${travelDate}&trip=${encodeURIComponent(tripDetail)}&_t=${Date.now()}`);
+        const data = await res.json();
+        bookedSeatsStore = Array.isArray(data) ? data.map(s => s.toString().trim().toUpperCase()) : [];
+        
+        // แก้จุดนี้: ส่งประเภทรถที่ถูกต้องไปวาด Grid
+        renderSeats(currentTrip.type); 
+    } catch (e) { 
+        grid.innerHTML = '<div class="text-center text-red-500">โหลดข้อมูลไม่สำเร็จ กรุณาลองใหม่</div>';
     }
+}
 
-    function renderSeats() {
-        const grid = document.getElementById('seat-grid');
-        grid.innerHTML = '<div class="flex justify-between mb-4 border-b pb-2 text-[10px] text-gray-300 uppercase font-bold"><span>ประตู (DOOR)</span><span>คนขับ (DRIVER)</span></div>';
-        for(let i=1; i<=8; i++) {
-            grid.innerHTML += `
+// 2. ปรับการเช็คเงื่อนไข String ให้รองรับ 'VIP 24' และ 'VIP 32'
+function renderSeats(busType) {
+    const grid = document.getElementById('seat-grid');
+    grid.innerHTML = '<div class="flex justify-between mb-4 border-b pb-2 text-[10px] text-gray-300 uppercase font-bold"><span>ประตู (DOOR)</span><span>คนขับ (DRIVER)</span></div>';
+
+    let html = '';
+    // เช็คว่าในชื่อประเภทมีคำว่า '24' หรือไม่
+    const isVIP24 = busType && busType.includes('24');
+    
+    if (isVIP24) {
+        for (let i = 1; i <= 8; i++) {
+            html += `
                 <div class="flex justify-between items-center mb-4">
-                    ${createSeatHtml(i+'A')}
-                    <div class="w-10"></div>
+                    <div class="flex">${createSeatHtml(i + 'A')}</div>
+                    <div class="w-10 text-center text-[10px] text-slate-200 opacity-0">.</div>
                     <div class="flex gap-3">
-                        ${createSeatHtml(i+'B')}
-                        ${createSeatHtml(i+'C')}
+                        ${createSeatHtml(i + 'B')}
+                        ${createSeatHtml(i + 'C')}
+                    </div>
+                </div>`;
+        }
+    } else {
+        // สำหรับ 'VIP 32' หรืออื่นๆ
+        for (let i = 1; i <= 8; i++) {
+            html += `
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex gap-3">
+                        ${createSeatHtml(i + 'A')}
+                        ${createSeatHtml(i + 'B')}
+                    </div>
+                    <div class="w-6"></div>
+                    <div class="flex gap-3">
+                        ${createSeatHtml(i + 'C')}
+                        ${createSeatHtml(i + 'D')}
                     </div>
                 </div>`;
         }
     }
+    grid.innerHTML += html;
+}
+
+function selectTrip(tripId) {
+    // สมมติว่าหาข้อมูลจากรายการเที่ยวรถ
+    const trip = trips.find(t => t.id === tripId); 
+    const busType = trip.type; // 'VIP' หรือ 'STD'
+    
+    // แสดงหน้าเลือกที่นั่ง
+    showPage('seat-page');
+    
+    // ส่งประเภทรถไปวาดที่นั่ง
+    renderSeats(busType);
+}
 	
 	function backToSeats() {
     // 1. ซ่อนหน้าปัจจุบัน
@@ -206,6 +250,63 @@
             btn.innerText = "แจ้งชำระเงิน";
         }
     }
+	
+function downloadTicketImage() {
+    // 1. เลือก Element ที่เป็นตัวบัตรตั๋วทั้งหมด
+    const ticketElement = document.querySelector("#success-page > div");
+
+    // 2. ค้นหา Container ที่เก็บปุ่มด้านล่าง
+    // เราจะหา div ที่มีปุ่มอยู่ข้างใน ซึ่งมักจะเป็น div สุดท้ายในส่วนเนื้อหาตั๋ว
+    // (Selector นี้อิงตามโครงสร้าง HTML ล่าสุดที่คุณใช้)
+    const buttonContainer = ticketElement.querySelector('.p-10.pt-12.space-y-6 > div:last-child');
+
+    // 3. เก็บค่า display เดิมและซ่อนปุ่มชั่วคราว
+    let originalDisplay = '';
+    if (buttonContainer) {
+        originalDisplay = buttonContainer.style.display;
+        buttonContainer.style.display = 'none';
+    }
+
+    // --- ส่วนจัดการปุ่มกด (User Feedback) ---
+    const btn = event.currentTarget;
+    const originalText = btn.innerText;
+    btn.innerText = "กำลังบันทึก...";
+    btn.disabled = true;
+
+    // 4. เริ่มการจับภาพ
+    html2canvas(ticketElement, {
+        scale: 3, // เพิ่มความชัดเป็น 3 เท่า (ชัดกริบแม้ซูมดู)
+        useCORS: true, // รองรับรูปภาพจาก Domain อื่น
+        backgroundColor: null, // ให้พื้นหลังโปร่งใส เพื่อให้ได้ไฟล์ PNG ที่สวยงาม
+    }).then(canvas => {
+        // สร้าง Link จำลองเพื่อดาวน์โหลดภาพ
+        const link = document.createElement('a');
+        link.download = 'Ticket-Sanguanchai-' + new Date().getTime() + '.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+
+        // คืนค่าปุ่มกด
+        btn.innerText = originalText;
+        btn.disabled = false;
+
+        // 5. แสดงปุ่มกลับมาเหมือนเดิม
+        if (buttonContainer) {
+            buttonContainer.style.display = originalDisplay;
+        }
+    }).catch(err => {
+        console.error("การบันทึกภาพล้มเหลว:", err);
+        alert("ไม่สามารถบันทึกภาพได้ในขณะนี้ กรุณาลองแคปหน้าจอแทนครับ");
+        
+        // คืนค่าปุ่มกด
+        btn.innerText = originalText;
+        btn.disabled = false;
+
+        // 5. แสดงปุ่มกลับมาเหมือนเดิม (กรณีเกิด Error)
+        if (buttonContainer) {
+            buttonContainer.style.display = originalDisplay;
+        }
+    });
+}
 
     function showSuccessPage(data) {
         document.getElementById('res-name').innerText = data.name;
