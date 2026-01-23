@@ -1,18 +1,18 @@
    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzkBW-2Y8e_tE8b3S2iuDFT4AadO7CNRAtsDUnwQZyg55GkvkxQeaD0ROlXYhXw0Kk2/exec"; 
     
     const trips = [
-        { id: 101, origin: 'กรุงเทพฯ', destination: 'อุบลราชธานี', time: '20:30', price: 685, type: 'VIP 24' },
-        { id: 102, origin: 'กรุงเทพฯ', destination: 'อุบลราชธานี', time: '21:30', price: 685, type: 'VIP 24' },
-		{ id: 103, origin: 'อุบลราชธานี', destination: 'กรุงเทพฯ', time: '22:30', price: 685, type: 'VIP 24' },
-		{ id: 104, origin: 'อุบลราชธานี', destination: 'กรุงเทพฯ', time: '23:30', price: 685, type: 'VIP 24' },
-        { id: 201, origin: 'กรุงเทพฯ', destination: 'นครราชสีมา', time: '18:00', price: 385, type: 'VIP 24' },
-		{ id: 202, origin: 'กรุงเทพฯ', destination: 'นครราชสีมา', time: '17:00', price: 385, type: 'VIP 24' },
-		{ id: 203, origin: 'นครราชสีมา', destination: 'กรุงเทพฯ', time: '18:30', price: 385, type: 'VIP 24' },
-        { id: 204, origin: 'นครราชสีมา', destination: 'กรุงเทพฯ', time: '19:30', price: 385, type: 'VIP 24' },
-		{ id: 301, origin: 'กรุงเทพฯ', destination: 'เชียงใหม่', time: '07:30', price: 785, type: 'VIP 24' },
-		{ id: 302, origin: 'กรุงเทพฯ', destination: 'เชียงใหม่', time: '08:30', price: 785, type: 'VIP 24' },
-        { id: 303, origin: 'เชียงใหม่', destination: 'กรุงเทพฯ', time: '18:00', price: 785, type: 'VIP 24' },
-        { id: 304, origin: 'เชียงใหม่', destination: 'กรุงเทพฯ', time: '19:00', price: 785, type: 'VIP 24' }
+        { id: 101, origin: 'กรุงเทพฯ', destination: 'อุบลราชธานี', time: '20:30', arrival: '04:30', price: 685, type: 'VIP 24', boarding: 'สถานีขนส่งหมอชิต 2',dropoff: 'บขส. อุบลราชธานี',durationHours: 8},
+        { id: 102, origin: 'กรุงเทพฯ', destination: 'อุบลราชธานี', time: '21:30', arrival: '05:30', price: 685, type: 'VIP 24', boarding: 'สถานีขนส่งหมอชิต 2',dropoff: 'บขส. อุบลราชธานี',durationHours: 8},
+		{ id: 103, origin: 'อุบลราชธานี', destination: 'กรุงเทพฯ', time: '22:30', arrival: '06:30', price: 685, type: 'VIP 24', boarding: 'บขส. อุบลราชธานี',dropoff: 'สถานีขนส่งหมอชิต 2',durationHours: 8},
+		{ id: 104, origin: 'อุบลราชธานี', destination: 'กรุงเทพฯ', time: '23:30', arrival: '07:30', price: 685, type: 'VIP 24', boarding: 'บขส. อุบลราชธานี',dropoff: 'สถานีขนส่งหมอชิต 2',durationHours: 8},
+        { id: 201, origin: 'กรุงเทพฯ', destination: 'นครราชสีมา', time: '17:00', arrival: '20:00', price: 385, type: 'VIP 24', boarding: 'สถานีขนส่งหมอชิต 2',dropoff: 'บขส. นครราชสีมา',durationHours: 3},
+		{ id: 202, origin: 'กรุงเทพฯ', destination: 'นครราชสีมา', time: '18:00', arrival: '21:00', price: 385, type: 'VIP 24', boarding: 'สถานีขนส่งหมอชิต 2',dropoff: 'บขส. นครราชสีมา',durationHours: 3},
+		{ id: 203, origin: 'นครราชสีมา', destination: 'กรุงเทพฯ', time: '19:30', arrival: '22:30', price: 385, type: 'VIP 24', boarding: 'บขส. นครราชสีมา',dropoff: 'สถานีขนส่งหมอชิต 2',durationHours: 3},
+        { id: 204, origin: 'นครราชสีมา', destination: 'กรุงเทพฯ', time: '20:30', arrival: '23:30', price: 385, type: 'VIP 24', boarding: 'บขส. นครราชสีมา',dropoff: 'สถานีขนส่งหมอชิต 2',durationHours: 3},
+		{ id: 301, origin: 'กรุงเทพฯ', destination: 'เชียงใหม่', time: '07:30', arrival: '17:30', price: 785, type: 'VIP 24', boarding: 'สถานีขนส่งหมอชิต 2',dropoff: 'บขส. เชียงใหม่',durationHours: 9,},
+		{ id: 302, origin: 'กรุงเทพฯ', destination: 'เชียงใหม่', time: '08:30', arrival: '18:30', price: 785, type: 'VIP 24', boarding: 'สถานีขนส่งหมอชิต 2',dropoff: 'บขส. เชียงใหม่',durationHours: 9,},
+        { id: 303, origin: 'เชียงใหม่', destination: 'กรุงเทพฯ', time: '18:00', arrival: '04:30', price: 785, type: 'VIP 24', boarding: 'บขส. เชียงใหม่',dropoff: 'สถานีขนส่งหมอชิต 2',durationHours: 9,},
+        { id: 304, origin: 'เชียงใหม่', destination: 'กรุงเทพฯ', time: '19:00', arrival: '05:30', price: 785, type: 'VIP 24', boarding: 'บขส. เชียงใหม่',dropoff: 'สถานีขนส่งหมอชิต 2',durationHours: 9,}
     ];
     let bookedSeatsStore = []; 
     let selectedSeats = [];
@@ -230,6 +230,18 @@
         dateInput.min = now.toISOString().split('T')[0];
         dateInput.value = dateInput.min;
     }
+	
+function calculateArrival(startTime, durationHours) {
+    const [hours, minutes] = startTime.split(':').map(Number);
+    let arrivalHours = (hours + durationHours) % 24;
+    // เติมเลข 0 ข้างหน้าถ้าหลักเดียว
+    const formattedHours = arrivalHours.toString().padStart(2, '0');
+    const formattedMinutes = minutes.toString().padStart(2, '0');
+    return `${formattedHours}:${formattedMinutes}`;
+}	
+	
+	
+	
 
 function handleSearch() {
     const ori = document.getElementById('origin').value;
@@ -253,26 +265,72 @@ function handleSearch() {
         // เงื่อนไข: ถ้าจองล่วงหน้าน้อยกว่า 6 ชั่วโมง ให้ปิดปุ่ม
         const isTooLate = diffInHours < 6;
 
-        container.innerHTML += `
-            <div class="bg-white p-5 rounded-xl border flex justify-between items-center shadow-sm ${isTooLate ? 'opacity-60' : ''}">
-                <div>
-                    <div class="text-2xl font-bold">${trip.time}</div>
-                    <div class="text-xs text-blue-500 font-bold">${trip.type}</div>
-                    ${isTooLate ? '<div class="text-[10px] text-red-500 font-bold">ปิดจอง (ต้องจองล่วงหน้าอย่างน้อย 6 ชม.)</div>' : ''}
+// ภายใน handleSearch ตอนที่วนลูป filtered.forEach(trip => { ... })
+
+const arrivalTime = calculateArrival(trip.time, trip.durationHours || 8); // ถ้าไม่ระบุ ให้ Default ที่ 8 ชม.
+const durationText = `ใช้เวลา ${trip.durationHours || 8} ชม.`;
+
+container.innerHTML += `
+    <div class="bg-white p-5 rounded-3xl border border-slate-100 shadow-sm mb-4 ${isTooLate ? 'opacity-60' : ''}">
+        <div class="flex justify-between items-center mb-4 pb-3 border-b border-dashed border-slate-100">
+            <div class="flex items-center gap-2">
+                <span class="bg-indigo-50 text-indigo-600 px-3 py-1 rounded-lg text-[10px] font-bold uppercase">${trip.type}</span>
+                <span class="text-[10px] text-slate-400 font-medium italic">${durationText}</span>
+            </div>
+            <div class="text-xl font-black text-indigo-600">฿${trip.price}</div>
+        </div>
+
+        <div class="flex items-center gap-4">
+            
+            <div class="flex flex-1 gap-3">
+                <div class="flex flex-col items-center py-1">
+                    <div class="w-2.5 h-2.5 rounded-full border-2 border-indigo-500 bg-white shadow-sm"></div>
+                    <div class="w-[2px] flex-1 bg-gradient-to-b from-indigo-500 to-slate-200 my-0.5"></div>
+                    <div class="w-2.5 h-2.5 rounded-full bg-slate-300"></div>
                 </div>
-                <div class="text-right">
-                    <div class="text-lg font-bold text-red-600">฿${trip.price}</div>
-                    <button 
-                        onclick="showSeatPage(${trip.id})" 
-                        ${isTooLate ? 'disabled' : ''} 
-                        class="mt-2 ${isTooLate ? 'bg-gray-400' : 'bg-red-600'} text-white px-6 py-2 rounded-lg text-sm font-bold">
-                        ${isTooLate ? 'ปิดจอง' : 'เลือกที่นั่ง'}
-                    </button>
+
+                <div class="flex-1 flex flex-col gap-3">
+                    <div>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-sm font-black text-slate-800">${trip.time} น.</span>
+                            <span class="text-[9px] px-1.5 bg-slate-100 text-slate-500 rounded font-bold uppercase">ออก</span>
+                        </div>
+                        <div class="text-[11px] text-slate-500 truncate max-w-[140px] md:max-w-none">${trip.boarding || trip.origin}</div>
+                    </div>
+                    
+                    <div>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-sm font-black text-slate-800">${arrivalTime} น.</span>
+                            <span class="text-[9px] px-1.5 bg-indigo-50 text-indigo-500 rounded font-bold uppercase">ถึง</span>
+                        </div>
+                        <div class="text-[11px] text-slate-500 truncate max-w-[140px] md:max-w-none">${trip.dropoff || trip.destination}</div>
+                    </div>
                 </div>
-            </div>`; 
+            </div>
+
+            <div class="flex-shrink-0">
+                <button 
+                    onclick="showSeatPage(${trip.id})" 
+                    ${isTooLate ? 'disabled' : ''} 
+                    class="h-[74px] w-[95px] md:w-[125px] flex flex-col items-center justify-center gap-1 rounded-2xl transition-all active:scale-95 shadow-md ${isTooLate ? 'bg-slate-50 text-slate-400 border border-slate-100' : 'bg-indigo-600 text-white shadow-indigo-100'}">
+                    
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ${isTooLate ? 'hidden' : ''}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                    <span class="text-[11px] font-bold leading-tight text-center">
+                        ${isTooLate ? 'ไม่เปิดจอง' : 'จองที่นั่ง'}
+                    </span>
+                </button>
+            </div>
+        </div>
+
+        ${isTooLate ? '<div class="mt-3 text-center text-[9px] text-red-400 font-medium">● กรุณาจองล่วงหน้าอย่างน้อย 6 ชั่วโมงก่อนเวลาออกเดินทาง</div>' : ''}
+    </div>`;
     }); 
 }
 
 
     setupDateLimits(); 
-    handleSearch();
+    handleSearch();     
+	
+	
