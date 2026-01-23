@@ -168,6 +168,27 @@
         .flatpickr-mobile {
             display: none;
         }
+
+		/* บังคับให้ตัวเลขในวันที่เลือกเป็นสีขาว และมี Z-index ที่ถูกต้อง */
+.flatpickr-day.selected, 
+.flatpickr-day.selected:hover, 
+.flatpickr-day.selected:focus {
+    color: #ffffff !important;
+    background: #4f46e5 !important; /* สี Indigo ของคุณ */
+    border: none !important;
+    font-weight: 600 !important;
+}
+
+/* เพิ่มเติม: ปรับให้เลขวันที่วันนี้ (Today) มีขอบชัดเจนแต่ตัวเลขยังเป็นสีเข้ม */
+.flatpickr-day.today {
+    border-color: #4f46e5 !important;
+    color: #4f46e5 !important;
+}
+
+/* กรณีที่วันนี้ถูกเลือกด้วย ให้เป็นสีขาว */
+.flatpickr-day.today.selected {
+    color: #ffffff !important;
+}
     </style>
 	
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
@@ -520,3 +541,4 @@ function setupDateLimits() {
 
 </body>
 </html>
+
