@@ -66,13 +66,22 @@ async function loadBookedSeats() {
 // 2. ปรับการเช็คเงื่อนไข String ให้รองรับ 'VIP 24' และ 'VIP 32'
 function renderSeats(busType) {
     const grid = document.getElementById('seat-grid');
+    // Debug: ดูว่าค่าที่ส่งมาจริงๆ คืออะไร (กด F12 ดูใน Console)
+    console.log("Current busType:", busType); 
+
     grid.innerHTML = '<div class="flex justify-between mb-4 border-b pb-2 text-[10px] text-gray-300 uppercase font-bold"><span>ประตู (DOOR)</span><span>คนขับ (DRIVER)</span></div>';
 
     let html = '';
-    // เช็คว่าในชื่อประเภทมีคำว่า '24' หรือไม่
-    const isVIP24 = busType && busType.includes('24');
+    
+    // 1. แปลงเป็น String และทำให้เป็นตัวพิมพ์ใหญ่เพื่อลดความผิดพลาดเรื่อง Case sensitive
+    // 2. ใช้ || '' เพื่อกันกรณีค่าเป็น null/undefined
+    const typeStr = String(busType || '').toUpperCase();
+
+    // ปรับ Logic: เช็คให้ชัดเจนทั้งคู่ หรือจะเช็คแค่ 24 เหมือนเดิมก็ได้แต่ปลอดภัยขึ้น
+    const isVIP24 = typeStr.includes('24');
     
     if (isVIP24) {
+        // --- Layout 24 ที่นั่ง (3 แถว: 1+2) ---
         for (let i = 1; i <= 8; i++) {
             html += `
                 <div class="flex justify-between items-center mb-4">
@@ -85,7 +94,8 @@ function renderSeats(busType) {
                 </div>`;
         }
     } else {
-        // สำหรับ 'VIP 32' หรืออื่นๆ
+        // --- Layout 32 ที่นั่ง หรือค่า Default (4 แถว: 2+2) ---
+        // หมายเหตุ: ถ้าต้องการดักว่าต้องเป็น '32' เท่านั้นถึงจะแสดง ให้ใส่ if เพิ่มตรงนี้
         for (let i = 1; i <= 8; i++) {
             html += `
                 <div class="flex justify-between items-center mb-4">
@@ -143,16 +153,23 @@ function selectTrip(tripId) {
         return `<div class="seat ${isSelected ? 'seat-selected' : 'seat-available'}" onclick="toggleSeat(this, '${id}')">${id}</div>`;
     }
 
-    function toggleSeat(el, id) { 
-        if (bookedSeatsStore.includes(id.toUpperCase())) return;
-        if (selectedSeats.includes(id)) { 
-            selectedSeats = selectedSeats.filter(s => s !== id); 
-        } else { 
-            selectedSeats.push(id); 
-        } 
-        renderSeats(); 
-        updateSummary(); 
-    }
+function toggleSeat(el, id) { 
+    if (bookedSeatsStore.includes(id.toUpperCase())) return;
+    
+    if (selectedSeats.includes(id)) { 
+        selectedSeats = selectedSeats.filter(s => s !== id); 
+    } else { 
+        selectedSeats.push(id); 
+    } 
+    
+    // ----- จุดที่ต้องแก้ (FIX) -----
+    // ของเดิม: renderSeats();  <-- ผิด เพราะไม่ส่งประเภทรถไป
+    // ของใหม่: ส่ง currentTrip.type เข้าไป
+    renderSeats(currentTrip.type); 
+    // ---------------------------
+
+    updateSummary(); 
+}
 
     function updateSummary() { 
         const bar = document.getElementById('summary-bar'); 
@@ -310,9 +327,9 @@ function downloadTicketImage() {
 
 function shareToLine() {
     // 1. ดึงข้อมูลและตรวจสอบ ID ให้ตรงกับหน้าจอ
-    const customerName = document.getElementById('res-name')?.innerText || '';
-    const route        = document.getElementById('res-trip')?.innerText || '';
-    const seat  = document.getElementById('res-seats')?.innerText || '';
+    const customerName = document.getElementById('res-name')?.innerText || 'ไม่ระบุชื่อ';
+    const route        = document.getElementById('res-trip')?.innerText || 'ไม่ระบุเที่ยวรถ';
+    const seat  = document.getElementById('res-seats')?.innerText || 'ไม่มีรหัสการจอง';
     const date         = document.getElementById('res-date')?.innerText || '';
     const total         = document.getElementById('res-total')?.innerText || '';
 
@@ -466,7 +483,7 @@ container.innerHTML += `
             </div>
         </div>
 
-        ${isTooLate ? '<div class="mt-3 text-center text-[9px] text-red-400 font-medium">● กรุณาจองล่วงหน้าอย่างน้อย 6 ชั่วโมงก่อนเวลาออกเดินทาง</div>' : ''}
+        ${isTooLate ? '<div class="mt-3 text-left text-[9px] text-red-400 font-medium">● กรุณาจองล่วงหน้าอย่างน้อย 6 ชั่วโมงก่อนเวลาออกเดินทาง</div>' : ''}
     </div>`;
     }); 
 }
