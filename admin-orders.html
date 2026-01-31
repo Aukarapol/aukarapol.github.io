@@ -42,11 +42,11 @@
             </div>
 
             <div class="hidden md:flex items-center gap-4">
-                <a href="admin-orders.html" class="flex items-center gap-2 py-2 px-4 bg-orange-500 text-white rounded-lg shadow-md hover:bg-orange-600 transition-all">
+                <a href="#" class="flex items-center gap-2 py-2 px-4 bg-orange-500 text-white rounded-lg shadow-md hover:bg-orange-600 transition-all">
                     <i data-lucide="shopping-bag" class="w-4 h-4"></i>
                     <span class="text-sm font-medium">จัดการออเดอร์</span>
                 </a>
-                <a href="index.html" class="flex items-center gap-2 py-2 px-4 text-slate-600 hover:text-[#002d72] transition-all">
+                <a href="index.html" target="_blank" class="flex items-center gap-2 py-2 px-4 text-slate-600 hover:text-[#002d72] transition-all">
                     <i data-lucide="external-link" class="w-4 h-4"></i>
                     <span class="text-sm font-medium">หน้าร้านค้า</span>
                 </a>
@@ -85,166 +85,305 @@
     </div>
 </nav>
 
-    <main class="max-w-[1600px] mx-auto p-4 lg:p-8 space-y-6">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div>
-                <h1 class="text-2xl font-bold text-slate-800">Order Management</h1>
-                <p class="text-sm text-slate-500 font-medium">ระบบจัดการข้อมูลคำสั่งซื้อแบบ Real-time</p>
-            </div>
-            
-            <div class="flex gap-4">
-                <div class="bg-white px-6 py-4 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-4 flex-1 sm:flex-none">
-                    <div class="p-2 bg-blue-50 text-[#002d72] rounded-lg"><i data-lucide="package" class="w-5 h-5"></i></div>
-                    <div>
-                        <p class="text-slate-500 text-[10px] font-bold uppercase tracking-wider">Orders</p>
-                        <h3 id="stat-count" class="text-xl font-bold text-slate-800">0</h3>
-                    </div>
+<main class="max-w-[1600px] mx-auto p-4 lg:p-8 space-y-6">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+            <h1 class="text-2xl font-bold text-slate-800">Order Management</h1>
+            <p class="text-sm text-slate-500 font-medium">ระบบจัดการข้อมูลคำสั่งซื้อแบบ Real-time</p>
+        </div>
+        
+        <div class="flex gap-4">
+            <div class="bg-white px-6 py-4 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-4 flex-1 sm:flex-none">
+                <div class="p-2 bg-blue-50 text-[#002d72] rounded-lg"><i data-lucide="package" class="w-5 h-5"></i></div>
+                <div>
+                    <p class="text-slate-500 text-[10px] font-bold uppercase tracking-wider">Orders</p>
+                    <h3 id="stat-count" class="text-xl font-bold text-slate-800">0</h3>
                 </div>
-                <div class="bg-white px-6 py-4 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-4 flex-1 sm:flex-none">
-                    <div class="p-2 bg-orange-50 text-orange-600 rounded-lg"><i data-lucide="banknote" class="w-5 h-5"></i></div>
-                    <div>
-                        <p class="text-slate-500 text-[10px] font-bold uppercase tracking-wider">Revenue</p>
-                        <h3 id="stat-revenue" class="text-xl font-bold text-slate-800">฿0</h3>
-                    </div>
+            </div>
+            <div class="bg-white px-6 py-4 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-4 flex-1 sm:flex-none">
+                <div class="p-2 bg-orange-50 text-orange-600 rounded-lg"><i data-lucide="banknote" class="w-5 h-5"></i></div>
+                <div>
+                    <p class="text-slate-500 text-[10px] font-bold uppercase tracking-wider">Revenue</p>
+                    <h3 id="stat-revenue" class="text-xl font-bold text-slate-800">฿0</h3>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-            <div class="overflow-x-auto custom-scroll">
-                <table class="w-full text-left border-collapse min-w-[1000px]">
-                    <thead>
-                        <tr class="bg-slate-50 text-slate-400 text-[10px] tracking-[0.15em] font-bold uppercase border-b border-slate-100">
-                            <th class="px-6 py-4">วัน/เวลา</th>
-                            <th class="px-6 py-4">ข้อมูลลูกค้า</th>
-                            <th class="px-6 py-4">สรุปรายการ</th>
-                            <th class="px-6 py-4">ยอดรวม</th>
-                            <th class="px-6 py-4">สถานะ</th>
-                            <th class="px-6 py-4 text-center">จัดการ</th>
-                        </tr>
-                    </thead>
-                    <tbody id="order-list" class="divide-y divide-slate-50 text-sm">
-                        </tbody>
-                </table>
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="overflow-x-auto custom-scroll">
+            <table class="w-full text-left border-collapse min-w-[1000px]">
+                <thead>
+                    <tr class="bg-slate-50 text-slate-400 text-[10px] tracking-[0.15em] font-bold uppercase border-b border-slate-100">
+                        <th class="px-6 py-4">วัน/เวลา</th>
+                        <th class="px-6 py-4">ข้อมูลลูกค้า</th>
+                        <th class="px-6 py-4">ที่อยู่จัดส่ง</th> 
+                        <th class="px-6 py-4">สรุปรายการ</th>
+                        <th class="px-6 py-4">ยอดรวม</th>
+                        <th class="px-6 py-4">สถานะ</th>
+                        <th class="px-6 py-4 text-center">จัดการ</th>
+                    </tr>
+                </thead>
+                <tbody id="order-list" class="divide-y divide-slate-50 text-sm">
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="px-6 py-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+            <p class="text-xs text-slate-500 font-medium" id="pagination-info">แสดง 0 ถึง 0 จาก 0 รายการ</p>
+            <div class="flex gap-2">
+                <button onclick="changePage(-1)" id="prev-btn" class="p-2 rounded-lg border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all">
+                    <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                </button>
+                <div id="page-numbers" class="flex gap-1"></div>
+                <button onclick="changePage(1)" id="next-btn" class="p-2 rounded-lg border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all">
+                    <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                </button>
             </div>
         </div>
-    </main>
+    </div>
+</main>
 
-    <script>
-        const SB_URL = 'https://eodbsetbyryimczkhoaw.supabase.co';
-        const SB_KEY = 'sb_publishable_pWCFODdbMNdtx0_tytIXjw_jEry84HD';
-        const _supabase = supabase.createClient(SB_URL, SB_KEY);
+<script>
+    const SB_URL = 'https://eodbsetbyryimczkhoaw.supabase.co';
+    const SB_KEY = 'sb_publishable_pWCFODdbMNdtx0_tytIXjw_jEry84HD';
+    const _supabase = supabase.createClient(SB_URL, SB_KEY);
 
-        let currentOrders = [];
+    let currentOrders = [];
+    let currentPage = 1;
+    const itemsPerPage = 8;
 
-        async function fetchOrders() {
-            const list = document.getElementById('order-list');
-            const refreshIcon = document.getElementById('refresh-icon');
-            refreshIcon.classList.add('animate-spin');
+    async function fetchOrders() {
+        const list = document.getElementById('order-list');
+        const refreshIcon = document.getElementById('refresh-icon');
+        
+        refreshIcon.classList.add('animate-spin'); // เปลี่ยนเป็นหมุนเพื่อให้ดูเหมือนโหลด
+        
+        try {
+            const { data: orders, error } = await _supabase
+                .from('orders')
+                .select('*')
+                .order('created_at', { ascending: false });
+
+            if (error) throw error;
             
-            list.innerHTML = `<tr><td colspan="6" class="p-20 text-center text-slate-400"><div class="flex flex-col items-center gap-3"><div class="w-8 h-8 border-2 border-orange-500 border-t-transparent animate-spin rounded-full"></div><span class="text-xs font-bold uppercase tracking-widest">Loading...</span></div></td></tr>`;
+            currentOrders = orders;
+            
+            // อัปเดต Stats
+            const totalRevenue = orders.reduce((sum, order) => sum + (order.total_amount || 0), 0);
+            document.getElementById('stat-count').innerText = orders.length;
+            document.getElementById('stat-revenue').innerText = `฿${totalRevenue.toLocaleString()}`;
 
-            try {
-                const { data: orders, error } = await _supabase.from('orders').select('*').order('created_at', { ascending: false });
-                if (error) throw error;
-                currentOrders = orders;
+            renderTable();
 
-                list.innerHTML = '';
-                let totalRevenue = 0;
+        } catch (err) { 
+            console.error('Fetch Error:', err);
+            list.innerHTML = `<tr><td colspan="7" class="p-10 text-center text-rose-500 font-bold">เกิดข้อผิดพลาดในการดึงข้อมูล: ${err.message}</td></tr>`;
+        } finally { 
+            refreshIcon.classList.remove('animate-spin');
+        }
+    }
 
-                orders.forEach((order, index) => {
-                    totalRevenue += order.total_amount;
-                    const date = new Date(order.created_at).toLocaleString('th-TH', { 
-                        day: '2-digit', month: 'short', year: '2-digit', hour: '2-digit', minute: '2-digit' 
-                    });
-                    
-                    const itemSummary = order.items.map(i => `${i.name} (x${i.quantity})`).join(', ');
+    function renderTable() {
+        const list = document.getElementById('order-list');
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const paginatedOrders = currentOrders.slice(startIndex, endIndex);
 
-                    const statusColors = {
-                        'รอดำเนินการ': 'bg-amber-50 text-amber-600 border-amber-200',
-                        'กำลังจัดส่ง': 'bg-blue-50 text-blue-600 border-blue-200',
-                        'ส่งแล้ว': 'bg-emerald-50 text-emerald-600 border-emerald-200',
-                        'ยกเลิก': 'bg-rose-50 text-rose-600 border-rose-200'
-                    };
+        let htmlContent = ''; 
 
-                    list.innerHTML += `
-                        <tr class="hover:bg-slate-50 transition-all fade-in" style="animation-delay: ${index * 30}ms">
-                            <td class="px-6 py-4">
-                                <div class="flex flex-col">
-                                    <span class="font-bold text-slate-700">${date.split(' ')[0]}</span>
-                                    <span class="text-[10px] text-slate-400 font-medium">${date.split(' ')[1]} น.</span>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="font-bold text-slate-800">${order.customer_name}</div>
-                                <div class="text-[11px] text-slate-500 flex items-center gap-1">
-                                    <i data-lucide="phone" class="w-3 h-3"></i> ${order.customer_phone}
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="max-w-[200px] truncate text-slate-600 text-xs">${itemSummary}</div>
-                                <div class="text-[9px] text-slate-400 font-bold mt-1 uppercase">#${order.id.toString().slice(-6)}</div>
-                            </td>
-                            <td class="px-6 py-4 text-base font-bold text-slate-900">฿${order.total_amount.toLocaleString()}</td>
-                            <td class="px-6 py-4">
-                                <select onchange="updateStatus(${order.id}, this.value)" 
-                                    class="status-select text-[11px] font-bold rounded-lg px-3 py-1.5 border outline-none cursor-pointer transition-all ${statusColors[order.status] || 'bg-slate-50'}">
-                                    <option value="รอดำเนินการ" ${order.status === 'รอดำเนินการ' ? 'selected' : ''}>⏳ รอดำเนินการ</option>
-                                    <option value="กำลังจัดส่ง" ${order.status === 'กำลังจัดส่ง' ? 'selected' : ''}>🚚 กำลังจัดส่ง</option>
-                                    <option value="ส่งแล้ว" ${order.status === 'ส่งแล้ว' ? 'selected' : ''}>✅ ส่งแล้ว</option>
-                                    <option value="ยกเลิก" ${order.status === 'ยกเลิก' ? 'selected' : ''}>❌ ยกเลิก</option>
-                                </select>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="flex justify-center gap-2">
-                                    <button onclick="printReceipt(${order.id})" class="p-2 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all">
-                                        <i data-lucide="printer" class="w-4 h-4"></i>
-                                    </button>
-                                    <button onclick="deleteOrder(${order.id}, '${order.customer_name}')" class="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-all">
-                                        <i data-lucide="trash-2" class="w-4 h-4"></i>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                    `;
-                });
-
-                document.getElementById('stat-count').innerText = orders.length;
-                document.getElementById('stat-revenue').innerText = `฿${totalRevenue.toLocaleString()}`;
-                lucide.createIcons();
-            } catch (err) { console.error(err); }
-            finally { refreshIcon.classList.remove('animate-spin'); }
+        if (paginatedOrders.length === 0) {
+            list.innerHTML = `<tr><td colspan="7" class="p-20 text-center text-slate-400">ไม่พบข้อมูลออเดอร์</td></tr>`;
+            updatePaginationUI();
+            return;
         }
 
-        async function updateStatus(id, status) {
-            await _supabase.from('orders').update({ status }).eq('id', id);
+        paginatedOrders.forEach((order, index) => {
+            const oDate = new Date(order.created_at);
+            const dateStr = oDate.toLocaleDateString('th-TH', { day: '2-digit', month: '2-digit', year: 'numeric' });
+            const timeStr = oDate.toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit', hour12: false });
+            
+            const items = order.items || [];
+            const itemSummary = items.map(i => `${i.name} (x${i.quantity})`).join(', ');
+
+            const statusColors = {
+                'รอดำเนินการ': 'bg-amber-50 text-amber-600 border-amber-200',
+                'กำลังจัดส่ง': 'bg-blue-50 text-blue-600 border-blue-200',
+                'ส่งแล้ว': 'bg-emerald-50 text-emerald-600 border-emerald-200',
+                'ยกเลิก': 'bg-rose-50 text-rose-600 border-rose-200'
+            };
+
+            htmlContent += `
+                <tr class="hover:bg-slate-50 transition-all fade-in" style="animation-delay: ${index * 30}ms">
+                    <td class="px-6 py-4">
+                        <div class="flex flex-col">
+                            <span class="font-bold text-slate-700">${dateStr}</span>
+                            <span class="text-[10px] text-slate-400 font-medium">${timeStr} น.</span>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4">
+                        <div class="font-bold text-slate-800">${order.customer_name}</div>
+                        <div class="text-[11px] text-slate-500"><i data-lucide="phone" class="inline w-3 h-3"></i> ${order.customer_phone}</div>
+                    </td>
+                    <td class="px-6 py-4">
+                        <div class="max-w-[250px] text-xs text-slate-600 italic line-clamp-2">
+                            ${order.customer_address || 'ไม่มีที่อยู่'}
+                        </div>
+                    </td>
+                    <td class="px-6 py-4">
+                        <div class="max-w-[200px] truncate text-slate-600 text-xs">${itemSummary}</div>
+                        <div class="text-[9px] text-slate-400 font-bold uppercase">#${order.id.toString().slice(-6)}</div>
+                    </td>
+                    <td class="px-6 py-4 text-base font-bold text-slate-900">฿${(order.total_amount || 0).toLocaleString()}</td>
+                    <td class="px-6 py-4">
+                        <select onchange="updateStatus(${order.id}, this.value)" 
+                            class="status-select text-[11px] font-bold rounded-lg px-3 py-1.5 border transition-all ${statusColors[order.status] || 'bg-slate-50 text-slate-600'}">
+                            <option value="รอดำเนินการ" ${order.status === 'รอดำเนินการ' ? 'selected' : ''}>⏳ รอดำเนินการ</option>
+                            <option value="กำลังจัดส่ง" ${order.status === 'กำลังจัดส่ง' ? 'selected' : ''}>🚚 กำลังจัดส่ง</option>
+                            <option value="ส่งแล้ว" ${order.status === 'ส่งแล้ว' ? 'selected' : ''}>✅ ส่งแล้ว</option>
+                            <option value="ยกเลิก" ${order.status === 'ยกเลิก' ? 'selected' : ''}>❌ ยกเลิก</option>
+                        </select>
+                    </td>
+                    <td class="px-6 py-4">
+                        <div class="flex justify-center gap-2">
+                            <button onclick="printReceipt(${order.id})" class="p-2 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">
+                                <i data-lucide="printer" class="w-4 h-4"></i>
+                            </button>
+                            <button onclick="deleteOrder(${order.id}, '${order.customer_name}')" class="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors">
+                                <i data-lucide="trash-2" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>`;
+        });
+
+        list.innerHTML = htmlContent;
+        lucide.createIcons();
+        updatePaginationUI();
+    }
+
+    function updatePaginationUI() {
+        const totalItems = currentOrders.length;
+        const totalPages = Math.ceil(totalItems / itemsPerPage);
+        const startIndex = totalItems === 0 ? 0 : (currentPage - 1) * itemsPerPage + 1;
+        const endIndex = Math.min(currentPage * itemsPerPage, totalItems);
+
+        document.getElementById('pagination-info').innerText = `แสดง ${startIndex} ถึง ${endIndex} จาก ${totalItems} รายการ`;
+        
+        document.getElementById('prev-btn').disabled = currentPage === 1;
+        document.getElementById('next-btn').disabled = currentPage === totalPages || totalPages === 0;
+
+        // แสดงเลขหน้าแบบสั้นๆ
+        const pageNumbers = document.getElementById('page-numbers');
+        pageNumbers.innerHTML = '';
+        if(totalPages > 1) {
+            for (let i = 1; i <= totalPages; i++) {
+                const btn = document.createElement('button');
+                btn.innerText = i;
+                btn.className = `px-3 py-1 rounded-md text-xs font-bold transition-all ${i === currentPage ? 'bg-[#002d72] text-white' : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'}`;
+                btn.onclick = () => { currentPage = i; renderTable(); };
+                pageNumbers.appendChild(btn);
+            }
+        }
+    }
+
+    function changePage(direction) {
+        currentPage += direction;
+        renderTable();
+    }
+
+    async function updateStatus(id, status) {
+        try {
+            const { error } = await _supabase.from('orders').update({ status }).eq('id', id);
+            if (error) throw error;
+            // อัปเดตข้อมูลในตัวแปร currentOrders โดยตรงเพื่อไม่ให้หน้าเด้งกลับไปหน้า 1
+            const idx = currentOrders.findIndex(o => o.id === id);
+            if (idx !== -1) currentOrders[idx].status = status;
+            renderTable(); 
+        } catch (err) {
+            alert('ไม่สามารถอัปเดตสถานะได้: ' + err.message);
+        }
+    }
+
+    async function deleteOrder(id, name) {
+        if (!confirm(`ยืนยันการลบออเดอร์ของคุณ "${name}"? การดำเนินการนี้ไม่สามารถย้อนกลับได้`)) return;
+        try {
+            const { error } = await _supabase.from('orders').delete().eq('id', id);
+            if (error) throw error;
             fetchOrders();
+        } catch (err) {
+            alert('ไม่สามารถลบออเดอร์ได้: ' + err.message);
         }
+    }
 
-        async function deleteOrder(id, name) {
-            if (!confirm(`ยืนยันการลบออเดอร์ของ "${name}"?`)) return;
-            await _supabase.from('orders').delete().eq('id', id);
-            fetchOrders();
-        }
+    function printReceipt(orderId) {
+        const order = currentOrders.find(o => o.id === orderId);
+        if (!order) return;
+        
+        const date = new Date(order.created_at).toLocaleString('th-TH', { 
+            day: '2-digit', month: 'long', year: 'numeric', 
+            hour: '2-digit', minute: '2-digit' 
+        });
+        
+        const itemsHtml = order.items.map(item => `
+            <tr>
+                <td style="padding: 10px 0; border-bottom: 1px dashed #eee;">${item.name} (x${item.quantity})</td>
+                <td style="padding: 10px 0; text-align: right; border-bottom: 1px dashed #eee;">฿${(item.price * item.quantity).toLocaleString()}</td>
+            </tr>
+        `).join('');
 
-        function printReceipt(orderId) {
-            const order = currentOrders.find(o => o.id === orderId);
-            if (!order) return;
-            const date = new Date(order.created_at).toLocaleString('th-TH', { day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
-            const itemsHtml = order.items.map(item => `
-                <tr>
-                    <td style="padding: 10px 0; border-bottom: 1px dashed #eee;">${item.name} (x${item.quantity})</td>
-                    <td style="padding: 10px 0; text-align: right; border-bottom: 1px dashed #eee;">฿${(item.price * item.quantity).toLocaleString()}</td>
-                </tr>
-            `).join('');
+        const printWindow = window.open('', '_blank', 'width=800,height=800');
+        printWindow.document.write(`
+            <html>
+                <head>
+                    <title>ใบเสร็จรับเงิน #${order.id}</title>
+                    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+                    <style>
+                        body { font-family: 'Kanit', sans-serif; padding: 20px; color: #1e293b; line-height: 1.5; }
+                        .receipt-card { max-width: 400px; margin: auto; border: 1px solid #e2e8f0; padding: 30px; border-radius: 15px; }
+                        .header { text-align: center; border-bottom: 2px solid #002d72; padding-bottom: 15px; margin-bottom: 15px; }
+                        .header h1 { color: #002d72; margin: 0; font-size: 24px; }
+                        .info { font-size: 14px; margin-bottom: 20px; }
+                        .total { font-size: 20px; font-weight: bold; color: #002d72; display: flex; justify-content: space-between; margin-top: 20px; border-top: 2px solid #eee; pt: 10px; }
+                        table { width: 100%; border-collapse: collapse; font-size: 14px; }
+                    </style>
+                </head>
+                <body>
+                    <div class="receipt-card">
+                        <div class="header">
+                            <h1>HOMEPRO</h1>
+                            <p style="margin: 5px 0 0 0; color: #64748b;">ใบเสร็จรับเงินอิเล็กทรอนิกส์</p>
+                        </div>
+                        <div class="info">
+                            <p><strong>Order ID:</strong> #${order.id}</p>
+                            <p><strong>ลูกค้า:</strong> ${order.customer_name}</p>
+                            <p><strong>วันที่:</strong> ${date}</p>
+                        </div>
+                        <table>
+                            ${itemsHtml}
+                        </table>
+                        <div class="total">
+                            <span>ยอดรวมสุทธิ</span>
+                            <span>฿${order.total_amount.toLocaleString()}</span>
+                        </div>
+                        <p style="text-align: center; font-size: 10px; color: #94a3b8; margin-top: 30px;">ขอบคุณที่ใช้บริการ</p>
+                    </div>
+                </body>
+            </html>
+        `);
+        printWindow.document.close();
+        printWindow.onload = () => { 
+            printWindow.print(); 
+            printWindow.close(); 
+        };
+    }
 
-            const printWindow = window.open('', '_blank', 'width=800,height=800');
-            printWindow.document.write(`<html><head><title>Receipt</title><link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet"><style>body{font-family:'Kanit',sans-serif;padding:20px;color:#1e293b;}.receipt-card{max-width:400px;margin:auto;border:1px solid #e2e8f0;padding:30px;border-radius:15px;}.header{text-align:center;border-bottom:2px solid #002d72;padding-bottom:15px;margin-bottom:15px;}.total{font-size:20px;font-weight:bold;color:#002d72;display:flex;justify-content:space-between;margin-top:20px;}</style></head><body><div class="receipt-card"><div class="header"><h1>HOMEPRO</h1><p>ใบเสร็จรับเงิน</p></div><p>ID: #${order.id}</p><p>คุณ: ${order.customer_name}</p><p>วันที่: ${date}</p><table style="width:100%">${itemsHtml}</table><div class="total"><span>ยอดรวม</span><span>฿${order.total_amount.toLocaleString()}</span></div></div></body></html>`);
-            printWindow.document.close();
-            printWindow.onload = () => { printWindow.print(); printWindow.close(); };
-        }
+    // เริ่มต้นโหลดข้อมูล
+    fetchOrders();
 
-        fetchOrders();
-    </script>
+    // Auto-refresh ทุก 60 วินาที (ข้อมูลจะถูกโหลดใหม่ แต่จะยังอยู่ที่หน้าเดิมถ้าจำนวนรายการไม่เปลี่ยนมาก)
+    setInterval(fetchOrders, 60000);
+</script>
+
 </body>
 </html>
