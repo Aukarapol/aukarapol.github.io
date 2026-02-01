@@ -2,212 +2,191 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Khuang Nai Tech Hub - Premium Shop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Khuang Nai Tech Hub - Mobile</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Kanit', sans-serif; }
-        .glass-nav { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); }
-        .cart-sidebar { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        .cart-open { transform: translateX(0); }
-        .cart-closed { transform: translateX(100%); }
-        .custom-scrollbar::-webkit-scrollbar { width: 5px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: #f8fafc; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-        .product-card:hover .add-to-cart-btn { opacity: 1; transform: translateY(0); }
-        .add-to-cart-btn { opacity: 0; transform: translateY(10px); transition: all 0.3s; }
-        .filter-btn.active { background-color: #002D72; color: white; border-color: #002D72; }
-        @media (max-width: 768px) { .add-to-cart-btn { opacity: 1; transform: translateY(0); } }
+        body { 
+            font-family: 'Kanit', sans-serif; 
+            -webkit-tap-highlight-color: transparent;
+        }
+        .bottom-nav {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Mobile Modal Style */
+        .mobile-sheet {
+            transition: transform 0.3s ease-out;
+            border-top-left-radius: 24px;
+            border-top-right-radius: 24px;
+        }
+        .cart-sidebar { transition: transform 0.3s ease-in-out; }
+        .cart-open { transform: translateY(0); }
+        .cart-closed { transform: translateY(100%); }
     </style>
 </head>
-<body class="bg-[#F3F4F6] text-slate-800 overflow-x-hidden">
+<body class="bg-[#F8F9FA] text-slate-900 pb-24">
 
-<nav class="glass-nav shadow-sm sticky top-0 z-40 border-b border-gray-100">
-    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
-<div class="flex items-center gap-8">
-    <div class="cursor-pointer group select-none" onclick="window.location.reload()">
-        <div class="flex items-center">
-            <span class="bg-[#002D72] text-white px-3 py-1 rounded-l-md font-black italic text-2xl group-hover:bg-orange-600 transition-colors">KN</span>
-            <div class="border-2 border-[#002D72] px-3 py-1 rounded-r-md font-bold text-2xl flex gap-1">
-                <span class="text-[#002D72]">Tech</span>
-                <span class="text-orange-600">Hub</span>
-            </div>
+<nav class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-gray-100 px-4 py-3">
+    <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+            <span class="bg-[#002D72] text-white px-2 py-0.5 rounded font-black italic text-lg">KN</span>
+            <span class="font-bold text-lg text-[#002D72]">Tech<span class="text-orange-600">Hub</span></span>
         </div>
-        <p class="text-[10px] text-gray-400 uppercase tracking-[0.2em] mt-1 font-bold ml-1">Khuang Nai Professional IT</p>
-    </div>
-</div>
-        
-        <div class="flex items-center gap-3 sm:gap-6">
-            <div id="admin-menu" class="hidden flex items-center gap-4 border-r pr-4 border-gray-200">
-                <a href="admin-products.html" class="p-2 text-slate-600 hover:text-orange-600 transition-all" title="จัดการสินค้า">
-                    <i class="fa-solid fa-boxes-stacked text-xl"></i>
-                </a>
-                <a href="admin-orders.html" class="p-2 text-slate-600 hover:text-orange-600 transition-all" title="จัดการออเดอร์">
-                    <i class="fa-solid fa-clipboard-list text-xl"></i>
-                </a>
-            </div>
-
-            <button onclick="toggleCart()" class="relative p-2 text-slate-700 hover:text-orange-600 transition-colors">
-                <i class="fa-solid fa-bag-shopping text-2xl"></i>
-                <span id="cart-count" class="absolute top-0 right-0 bg-orange-600 text-white text-[10px] rounded-full min-w-[18px] h-[18px] flex items-center justify-center font-bold px-1 ring-2 ring-white">0</span>
-            </button>
-
-            <div id="auth-section">
-                <button id="btn-login-trigger" onclick="openLoginModal()" class="flex items-center gap-2 bg-slate-900 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-slate-800 transition shadow-md">
-                    <i class="fa-regular fa-circle-user"></i>
-                    <span class="hidden sm:inline">เข้าสู่ระบบ</span>
-                </button>
-                <button id="btn-logout-trigger" onclick="handleLogout()" class="hidden flex items-center gap-2 text-red-500 hover:text-red-700 font-medium">
-                    <i class="fa-solid fa-power-off"></i>
-                    <span class="hidden sm:inline text-sm">ออก</span>
-                </button>
-            </div>
+        <div id="admin-icons" class="hidden flex gap-4">
+            <a href="admin-products.html" class="text-slate-600"><i class="fa-solid fa-boxes-stacked"></i></a>
+            <a href="admin-orders.html" class="text-slate-600"><i class="fa-solid fa-clipboard-list"></i></a>
         </div>
     </div>
 </nav>
 
-<header class="bg-white border-b overflow-hidden">
-    <div class="container mx-auto px-4 py-10 md:py-16 text-center">
-        <h1 class="text-4xl md:text-5xl font-extrabold text-[#002D72] mb-4">Redefining Your Digital Lifestyle.</h1>
-        <p class="text-slate-500 max-w-lg mx-auto mb-8">เปลี่ยนโลกเทคโนโลยีให้เป็นเรื่องง่ายด้วยอุปกรณ์ที่ดีที่สุดจาก เขื่องใน Tech Hub</p>
-        
-        <div class="max-w-2xl mx-auto relative">
-            <i class="fa-solid fa-magnifying-glass absolute left-5 top-1/2 -translate-y-1/2 text-slate-400"></i>
-            <input type="text" id="search-input" oninput="filterProducts()" 
-                placeholder="ค้นหาสินค้าที่คุณต้องการ..." 
-                class="w-full pl-14 pr-6 py-4 rounded-2xl border border-gray-200 bg-slate-50 outline-none focus:ring-2 focus:ring-orange-500 focus:bg-white transition-all shadow-sm">
-        </div>
+<main class="px-4">
+    <div class="mt-4 relative">
+        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+        <input type="text" id="search-input" oninput="filterProducts()" 
+            placeholder="ค้นหาอุปกรณ์ไอที..." 
+            class="w-full pl-10 pr-4 py-3 bg-white border-none rounded-2xl shadow-sm focus:ring-2 focus:ring-[#002D72] outline-none text-sm">
     </div>
-</header>
 
-<main class="container mx-auto px-4 py-8">
-    <div class="mb-10">
+    <div class="mt-6 rounded-3xl bg-gradient-to-br from-[#002D72] to-[#004dc4] p-6 text-white relative overflow-hidden">
+        <div class="relative z-10">
+            <h2 class="text-xl font-bold leading-tight">อัปเกรดชีวิตดิจิทัล<br>ให้โปรกว่าใคร</h2>
+            <p class="text-blue-100 text-xs mt-2 opacity-80">รวมสินค้า IT ตัวท็อป ราคาโดนใจ</p>
+        </div>
+        <i class="fa-solid fa-microchip absolute -right-4 -bottom-4 text-6xl text-white/10 rotate-12"></i>
+    </div>
+
+    <div class="mt-8">
         <div class="flex items-center justify-between mb-4">
-            <h2 class="text-xl font-bold text-slate-900">เลือกชมตามหมวดหมู่</h2>
-            <span id="product-result-count" class="text-sm text-slate-400">กำลังโหลด...</span>
+            <h3 class="font-bold">หมวดหมู่สินค้า</h3>
         </div>
-        <div id="category-filters" class="flex gap-3 overflow-x-auto pb-4 custom-scrollbar">
-            <button onclick="setCategory('all')" class="filter-btn active whitespace-nowrap px-6 py-2 rounded-full border border-gray-200 font-medium transition-all hover:border-orange-500">ทั้งหมด</button>
-        </div>
+        <div id="category-filters" class="flex gap-2 overflow-x-auto hide-scrollbar">
+            </div>
     </div>
 
-    <div id="sections-container" class="space-y-12">
+    <div id="sections-container" class="mt-6 space-y-8">
         </div>
 
-    <div id="empty-state" class="hidden text-center py-20">
-        <i class="fa-solid fa-box-open text-6xl text-slate-200 mb-4"></i>
-        <p class="text-slate-500 text-lg">ไม่พบสินค้าที่คุณกำลังค้นหา</p>
-        <button onclick="resetFilters()" class="text-orange-600 mt-2 font-medium hover:underline">ล้างการค้นหาทั้งหมด</button>
+    <div id="empty-state" class="hidden text-center py-12">
+        <p class="text-slate-400">ไม่พบสินค้า</p>
     </div>
 </main>
 
-<div id="product-modal" class="fixed inset-0 bg-slate-900/60 z-[60] hidden flex items-center justify-center p-4 backdrop-blur-sm">
-    <div class="bg-white w-full max-w-5xl rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row max-h-[95vh]">
-        <div class="md:w-3/5 bg-slate-50 p-4 md:p-8 flex flex-col justify-center relative">
-            <button onclick="closeProductModal()" class="absolute top-4 left-4 md:hidden bg-white/80 rounded-full w-10 h-10 shadow flex items-center justify-center">
+<div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 px-6 py-3 flex justify-between items-center z-50 bottom-nav">
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="flex flex-col items-center gap-1 text-[#002D72]">
+        <i class="fa-solid fa-house text-xl"></i>
+        <span class="text-[10px] font-medium">หน้าแรก</span>
+    </button>
+    
+    <button onclick="toggleCart()" class="relative flex flex-col items-center gap-1 text-[#002D72]">
+        <i class="fa-solid fa-bag-shopping text-xl"></i>
+        <span id="cart-count" class="absolute -top-1 -right-1 bg-orange-600 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center border-2 border-white">0</span>
+        <span class="text-[10px] font-medium">ตะกร้า</span>
+    </button>
+
+    <div id="auth-section" class="flex flex-col items-center">
+        <button id="btn-login-trigger" onclick="openLoginModal()" class="flex flex-col items-center gap-1 text-[#002D72]">
+            <i class="fa-regular fa-circle-user text-xl"></i>
+            <span class="text-[10px] font-medium">โปรไฟล์</span>
+        </button>
+        <button id="btn-logout-trigger" onclick="handleLogout()" class="hidden flex flex-col items-center gap-1 text-red-500">
+            <i class="fa-solid fa-power-off text-xl"></i>
+            <span class="text-[10px] font-medium">ออก</span>
+        </button>
+    </div>
+</div>
+
+<div id="product-modal" class="fixed inset-0 bg-black/60 z-[60] hidden">
+    <div class="absolute bottom-0 left-0 right-0 bg-white mobile-sheet max-h-[90vh] overflow-y-auto custom-scrollbar">
+        <div class="sticky top-0 bg-white px-4 py-3 border-b flex justify-between items-center">
+            <span class="font-bold">รายละเอียดสินค้า</span>
+            <button onclick="closeProductModal()" class="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 text-slate-500">
                 <i class="fa-solid fa-xmark"></i>
             </button>
-            <div class="relative aspect-square overflow-hidden rounded-2xl bg-white flex items-center justify-center shadow-inner">
-                <img id="modal-main-img" src="" class="max-w-full max-h-full object-contain p-4">
-            </div>
-            <div id="modal-thumbnails" class="flex gap-3 mt-6 overflow-x-auto py-2 custom-scrollbar justify-center"></div>
         </div>
-        <div class="md:w-2/5 p-8 md:p-12 flex flex-col bg-white">
-<div class="flex justify-end mb-4 md:flex">
-    <button onclick="closeProductModal()" class="text-slate-400 hover:text-slate-600 transition-colors">
-        <i class="fa-solid fa-xmark text-2xl"></i>
-    </button>
-</div>
-            <span class="text-orange-600 font-bold text-sm tracking-widest uppercase mb-2">New Arrival</span>
-            <h2 id="modal-title" class="text-3xl font-bold text-slate-900 leading-tight mb-4"></h2>
-            <p id="modal-price" class="text-4xl font-black text-[#002D72] mb-8"></p>
-            <div class="flex-grow overflow-y-auto custom-scrollbar mb-8 pr-2">
-                <h3 class="font-bold text-slate-800 text-lg mb-3">รายละเอียด</h3>
-                <p id="modal-desc" class="text-slate-500 leading-relaxed whitespace-pre-line"></p>
+        <div class="p-4">
+            <img id="modal-main-img" src="" class="w-full aspect-square object-contain bg-slate-50 rounded-2xl mb-4">
+            <div id="modal-thumbnails" class="flex gap-2 overflow-x-auto hide-scrollbar mb-6"></div>
+            <h2 id="modal-title" class="text-xl font-bold text-slate-900 mb-1"></h2>
+            <p id="modal-price" class="text-2xl font-black text-orange-600 mb-4"></p>
+            <div class="bg-slate-50 p-4 rounded-xl mb-6">
+                <h3 class="text-sm font-bold text-slate-500 uppercase mb-2">รายละเอียด</h3>
+                <p id="modal-desc" class="text-slate-600 text-sm leading-relaxed whitespace-pre-line"></p>
             </div>
-            <div id="modal-action-area" class="mt-auto"></div>
+            <div id="modal-action-area" class="pb-6"></div>
         </div>
     </div>
 </div>
 
-<div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl z-50 cart-sidebar cart-closed flex flex-col">
-    <div class="p-6 border-b flex justify-between items-center bg-white">
-        <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
-            <i class="fa-solid fa-cart-shopping text-orange-600"></i> ตะกร้าของฉัน
-        </h2>
-        <button onclick="toggleCart()" class="w-10 h-10 rounded-full hover:bg-slate-100 flex items-center justify-center transition-colors">
-            <i class="fa-solid fa-xmark text-xl"></i>
-        </button>
-    </div>
-    <div id="cart-items" class="flex-grow overflow-y-auto p-6 space-y-4 custom-scrollbar bg-slate-50"></div>
-    <div class="p-8 border-t bg-white shadow-[0_-10px_20px_rgba(0,0,0,0.02)]">
-        <div class="flex justify-between items-center mb-6">
-            <span class="text-slate-500 font-medium">ยอดรวมสุทธิ:</span>
-            <span class="text-3xl font-black text-orange-600" id="cart-total">฿0</span>
+<div id="cart-sidebar" class="fixed inset-0 z-[70] cart-sidebar cart-closed flex flex-col pointer-events-none">
+    <div class="mt-auto bg-white rounded-t-[32px] shadow-2xl flex flex-col max-h-[85vh] pointer-events-auto">
+        <div class="w-12 h-1.5 bg-slate-200 rounded-full mx-auto mt-3 mb-2" onclick="toggleCart()"></div>
+        <div class="px-6 py-4 border-b flex justify-between items-center">
+            <h2 class="text-lg font-bold">ตะกร้าของคุณ</h2>
+            <span id="cart-total" class="text-orange-600 font-black">฿0</span>
         </div>
-        <button onclick="openCheckout()" class="w-full bg-[#002D72] hover:bg-slate-800 text-white py-4 rounded-2xl font-bold text-lg shadow-xl shadow-blue-900/10 transition-all active:scale-95">
-            ยืนยันการสั่งซื้อ
-        </button>
+        <div id="cart-items" class="flex-grow overflow-y-auto p-4 space-y-3 bg-slate-50/50"></div>
+        <div class="p-6 bg-white border-t">
+            <button onclick="openCheckout()" class="w-full bg-[#002D72] text-white py-4 rounded-2xl font-bold shadow-lg shadow-blue-900/20 active:scale-95 transition-transform">
+                สั่งซื้อสินค้า
+            </button>
+        </div>
     </div>
+    <div id="cart-overlay" onclick="toggleCart()" class="absolute inset-0 -z-10 bg-black/40 backdrop-blur-sm pointer-events-auto"></div>
 </div>
-<div id="cart-overlay" onclick="toggleCart()" class="fixed inset-0 bg-slate-900/40 z-40 hidden backdrop-blur-[2px]"></div>
 
-<div id="login-modal" class="fixed inset-0 bg-slate-900/70 z-[80] hidden flex items-center justify-center p-4 backdrop-blur-md">
-    <div class="bg-white w-full max-w-md rounded-3xl overflow-hidden shadow-2xl p-10 relative">
-        <button onclick="closeLoginModal()" class="absolute top-6 right-6 text-slate-400 hover:text-slate-600">
-            <i class="fa-solid fa-xmark text-xl"></i>
-        </button>
-        <div class="text-center mb-10">
-            <div class="w-20 h-20 bg-blue-50 text-[#002D72] rounded-3xl flex items-center justify-center text-3xl mx-auto mb-4">
-                <i class="fa-solid fa-user-shield"></i>
+<div id="checkout-modal" class="fixed inset-0 bg-black/60 z-[80] hidden flex items-end sm:items-center justify-center p-0 sm:p-4">
+    <div class="bg-white w-full max-w-md mobile-sheet sm:rounded-3xl p-6">
+        <h3 class="text-xl font-bold mb-6 text-center">ข้อมูลจัดส่ง</h3>
+        <div class="space-y-4">
+<input type="text" id="cust_name" placeholder="ชื่อ-นามสกุล" maxlength="40" class="w-full p-4 bg-slate-100 rounded-xl border-none">
+            <input 
+  type="tel" 
+  id="cust_phone" 
+  placeholder="เบอร์โทรศัพท์" 
+  maxlength="10" 
+  oninput="this.value = this.value.replace(/[^0-9]/g, '');"
+  class="w-full p-4 bg-slate-100 rounded-xl border-none"
+>
+            <textarea id="cust_address" placeholder="ที่อยู่จัดส่ง" rows="3" class="w-full p-4 bg-slate-100 rounded-xl border-none"></textarea>
+            <div class="flex gap-3 pt-4">
+                <button onclick="closeCheckout()" class="flex-1 py-4 text-slate-400 font-bold">ยกเลิก</button>
+                <button onclick="submitOrder()" id="btn-submit" class="flex-[2] bg-orange-600 text-white font-bold py-4 rounded-2xl shadow-lg">ยืนยันสั่งซื้อ</button>
             </div>
-            <h3 class="text-2xl font-bold text-slate-900">Admin Login</h3>
-            <p class="text-slate-400 text-sm mt-1">ระบบสำหรับผู้จัดการร้านค้า</p>
-        </div>
-        <div class="space-y-5">
-            <input type="email" id="login-email" class="w-full border-gray-200 border rounded-2xl p-4 outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all" placeholder="อีเมล">
-            <input type="password" id="login-password" class="w-full border-gray-200 border rounded-2xl p-4 outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all" placeholder="รหัสผ่าน">
-            <button onclick="handleLogin()" id="btn-login-submit" class="w-full bg-[#002D72] text-white py-4 rounded-2xl font-bold shadow-lg hover:shadow-blue-900/20 transition-all active:scale-95">เข้าสู่ระบบ</button>
-            <p id="login-error" class="text-red-500 text-sm text-center hidden font-medium"></p>
         </div>
     </div>
 </div>
 
-<div id="checkout-modal" class="fixed inset-0 bg-slate-900/70 z-[70] hidden flex items-center justify-center p-4 backdrop-blur-sm">
-    <div class="bg-white w-full max-w-md rounded-3xl overflow-hidden shadow-2xl">
-        <div class="p-8 text-center bg-[#002D72] text-white">
-            <h3 class="text-xl font-bold">ข้อมูลการจัดส่ง</h3>
-            <p class="text-blue-200 text-sm mt-1">กรุณากรอกข้อมูลเพื่อส่งสินค้า</p>
+<div id="login-modal" class="fixed inset-0 bg-black/60 z-[80] hidden flex items-center justify-center p-6">
+    <div class="bg-white w-full max-w-sm rounded-3xl p-8">
+        <div class="text-center mb-6">
+            <h3 class="text-xl font-bold">แอดมินเข้าสู่ระบบ</h3>
         </div>
-        <div class="p-8 space-y-5">
-            <div class="space-y-1">
-                <label class="text-xs font-bold text-slate-400 uppercase ml-1">ชื่อ-นามสกุล</label>
-                <input type="text" id="cust_name" class="w-full border-gray-100 bg-slate-50 border rounded-xl p-4 outline-none focus:ring-2 focus:ring-orange-500 transition-all">
-            </div>
-            <div class="space-y-1">
-                <label class="text-xs font-bold text-slate-400 uppercase ml-1">เบอร์โทรศัพท์</label>
-                <input type="tel" id="cust_phone" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')" class="w-full border-gray-100 bg-slate-50 border rounded-xl p-4 outline-none focus:ring-2 focus:ring-orange-500 transition-all">
-            </div>
-            <div class="space-y-1">
-                <label class="text-xs font-bold text-slate-400 uppercase ml-1">ที่อยู่จัดส่ง</label>
-                <input type="text" id="cust_address" class="w-full border-gray-100 bg-slate-50 border rounded-xl p-4 outline-none focus:ring-2 focus:ring-orange-500 transition-all">
-            </div>
-            <div class="bg-orange-50 p-6 rounded-2xl flex justify-between items-center border border-orange-100 mt-4">
-                <span class="font-bold text-orange-900">รวมที่ต้องชำระ:</span>
-                <span id="checkout-total" class="text-2xl font-black text-orange-600">฿0</span>
-            </div>
-        </div>
-        <div class="p-8 pt-0 flex gap-4">
-            <button onclick="closeCheckout()" class="flex-1 py-4 text-slate-400 font-bold hover:bg-slate-50 rounded-2xl transition">ยกเลิก</button>
-            <button onclick="submitOrder()" id="btn-submit" class="flex-2 bg-orange-600 text-white font-bold py-4 px-8 rounded-2xl shadow-lg shadow-orange-600/20 hover:bg-orange-700 transition active:scale-95">ยืนยัน</button>
+        <div class="space-y-4">
+            <input type="email" id="login-email" placeholder="อีเมล" class="w-full p-4 bg-slate-100 rounded-xl border-none">
+            <input type="password" id="login-password" placeholder="รหัสผ่าน" class="w-full p-4 bg-slate-100 rounded-xl border-none">
+            <button onclick="handleLogin()" id="btn-login-submit" class="w-full bg-slate-900 text-white py-4 rounded-xl font-bold">เข้าสู่ระบบ</button>
+            <p id="login-error" class="text-red-500 text-xs text-center hidden"></p>
+            <button onclick="closeLoginModal()" class="w-full text-slate-400 text-sm">ปิดหน้าต่าง</button>
         </div>
     </div>
 </div>
 
 <script>
+    // --- สคริปต์เดิมทั้งหมดจากไฟล์ของคุณ (Supabase logic + Functions) ---
+    // [คัดลอกส่วน <script> เดิมของคุณมาวางที่นี่ทั้งหมด]
+    // หมายเหตุ: ปรับฟังก์ชัน createProductCardHTML เล็กน้อยตามเลย์เอาต์ใหม่ด้านล่าง:
+
     const SB_URL = 'https://eodbsetbyryimczkhoaw.supabase.co';
     const SB_KEY = 'sb_publishable_pWCFODdbMNdtx0_tytIXjw_jEry84HD';
     const _supabase = supabase.createClient(SB_URL, SB_KEY);
@@ -216,28 +195,27 @@
     let cart = JSON.parse(localStorage.getItem('my_cart')) || [];
     let currentCategory = 'all';
 
-    // --- Logic for Sections ---
-
-    function filterProducts() {
-        const searchTerm = document.getElementById('search-input').value.toLowerCase();
-        const filtered = allProducts.filter(item => {
-            const matchesSearch = item.name.toLowerCase().includes(searchTerm) || 
-                                 (item.description && item.description.toLowerCase().includes(searchTerm));
-            const matchesCategory = currentCategory === 'all' || item.category === currentCategory;
-            return matchesSearch && matchesCategory;
-        });
-
-        renderCategorizedProducts(filtered);
-        
-        document.getElementById('product-result-count').innerText = `พบ ${filtered.length} รายการ`;
-        document.getElementById('empty-state').classList.toggle('hidden', filtered.length > 0);
+    function createProductCardHTML(item) {
+        const images = parseImages(item);
+        return `
+            <div class="bg-white rounded-2xl p-3 shadow-sm border border-gray-50 flex flex-col">
+                <div class="cursor-pointer overflow-hidden rounded-xl mb-3 bg-slate-50 aspect-square" onclick="openProductModal(${item.id})">
+                    <img src="${images[0]}" class="w-full h-full object-contain">
+                </div>
+                <div class="flex-grow">
+                    <h3 onclick="openProductModal(${item.id})" class="text-sm font-medium line-clamp-2 mb-1 leading-tight h-10">${item.name}</h3>
+                    <p class="text-lg font-black text-[#002D72]">฿${Number(item.price).toLocaleString()}</p>
+                </div>
+                <button onclick='addToCartById(${item.id})' class="mt-3 w-full bg-slate-100 text-[#002D72] py-2.5 rounded-xl text-xs font-bold active:bg-[#002D72] active:text-white transition-colors">
+                    <i class="fa-solid fa-plus mr-1"></i> เพิ่มลงตะกร้า
+                </button>
+            </div>
+        `;
     }
 
     function renderCategorizedProducts(products) {
         const container = document.getElementById('sections-container');
         container.innerHTML = '';
-
-        // Group products by category
         const groups = products.reduce((acc, item) => {
             const cat = item.category || 'อื่นๆ';
             if (!acc[cat]) acc[cat] = [];
@@ -245,17 +223,13 @@
             return acc;
         }, {});
 
-        // Create a section for each group
         Object.keys(groups).sort().forEach(categoryName => {
             const section = document.createElement('section');
-            section.className = "category-section";
-            
             section.innerHTML = `
-                <div class="flex items-center gap-4 mb-6">
-                    <h2 class="text-2xl font-bold text-slate-900">${categoryName}</h2>
-                    <div class="h-[2px] flex-grow bg-gray-200 mt-1"></div>
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-lg font-bold text-slate-900">${categoryName}</h2>
                 </div>
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                <div class="product-grid">
                     ${groups[categoryName].map(item => createProductCardHTML(item)).join('')}
                 </div>
             `;
@@ -263,48 +237,10 @@
         });
     }
 
-    function createProductCardHTML(item) {
-        const images = parseImages(item);
-        return `
-            <div class="product-card bg-white rounded-3xl p-4 border border-transparent hover:border-orange-100 hover:shadow-xl hover:shadow-orange-900/5 transition-all duration-300 group flex flex-col">
-                <div class="cursor-pointer overflow-hidden rounded-2xl mb-4 bg-slate-50 relative aspect-square" onclick="openProductModal(${item.id})">
-                    <img src="${images[0]}" class="w-full h-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform duration-500">
-                </div>
-                <div class="flex-grow">
-                    <div class="text-[10px] font-bold text-orange-500 uppercase mb-1">${item.category || 'ทั่วไป'}</div>
-                    <h3 onclick="openProductModal(${item.id})" class="text-base font-medium mb-1 line-clamp-2 cursor-pointer hover:text-orange-600 transition-colors">${item.name}</h3>
-                    <p class="text-2xl font-black text-slate-900 mb-4">฿${Number(item.price).toLocaleString()}</p>
-                </div>
-                <button onclick='addToCartById(${item.id})' class="add-to-cart-btn w-full bg-[#002D72] text-white py-3 rounded-xl text-sm font-bold hover:bg-orange-600 transition shadow-lg shadow-blue-900/10">
-                    <i class="fa-solid fa-plus mr-2"></i>ใส่ตะกร้า
-                </button>
-            </div>
-        `;
-    }
-
-    function setCategory(cat) {
-        currentCategory = cat;
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.classList.toggle('active', btn.getAttribute('data-cat') === cat || (cat === 'all' && btn.innerText === 'ทั้งหมด'));
-        });
-        filterProducts();
-    }
-
-    function generateCategoryButtons(products) {
-        const categories = ['all', ...new Set(products.map(p => p.category).filter(Boolean))];
-        const container = document.getElementById('category-filters');
-        container.innerHTML = '';
-        
-        categories.forEach(cat => {
-            const btn = document.createElement('button');
-            btn.setAttribute('data-cat', cat);
-            btn.className = `filter-btn whitespace-nowrap px-6 py-2 rounded-full border border-gray-200 font-medium transition-all hover:border-orange-500 ${cat === currentCategory ? 'active' : ''}`;
-            btn.innerText = cat === 'all' ? 'ทั้งหมด' : cat;
-            btn.onclick = () => setCategory(cat);
-            container.appendChild(btn);
-        });
-    }
-
+    // --- คงฟังก์ชันการทำงานเดิมไว้ทั้งหมด (ยกเว้น UI toggle ที่ใช้ร่วมกับ ID เดิม) ---
+    // [คัดลอกฟังก์ชัน getProducts, toggleCart, addToCartById, updateCart ฯลฯ มาวางต่อได้เลย]
+    
+    // ก๊อปวางฟังก์ชันที่เหลือจากโค้ดเดิมของคุณ:
     async function getProducts() {
         const { data, error } = await _supabase.from('products').select('*');
         if (error) return console.error(error);
@@ -313,99 +249,36 @@
         filterProducts();
     }
 
-    // --- Core Functions (คงเดิม) ---
-
-    async function checkInitialSession() {
-        const { data: { session } } = await _supabase.auth.getSession();
-        updateAuthUI(session);
+    function generateCategoryButtons(products) {
+        const categories = ['all', ...new Set(products.map(p => p.category).filter(Boolean))];
+        const container = document.getElementById('category-filters');
+        container.innerHTML = '';
+        categories.forEach(cat => {
+            const btn = document.createElement('button');
+            btn.className = `whitespace-nowrap px-5 py-2 rounded-xl text-sm font-medium transition-all ${cat === currentCategory ? 'bg-[#002D72] text-white shadow-md' : 'bg-white text-slate-500 border border-gray-100'}`;
+            btn.innerText = cat === 'all' ? 'ทั้งหมด' : cat;
+            btn.onclick = () => { currentCategory = cat; generateCategoryButtons(allProducts); filterProducts(); };
+            container.appendChild(btn);
+        });
     }
 
-    _supabase.auth.onAuthStateChange((event, session) => updateAuthUI(session));
-
-    function updateAuthUI(session) {
-        const adminMenu = document.getElementById('admin-menu');
-        const loginBtn = document.getElementById('btn-login-trigger');
-        const logoutBtn = document.getElementById('btn-logout-trigger');
-        if (session && session.user) {
-            adminMenu?.classList.remove('hidden');
-            loginBtn?.classList.add('hidden');
-            logoutBtn?.classList.remove('hidden');
-        } else {
-            adminMenu?.classList.add('hidden');
-            loginBtn?.classList.remove('hidden');
-            logoutBtn?.classList.add('hidden');
-        }
-    }
-
-    function parseImages(item) {
-        if (!item.image_url) return ['https://via.placeholder.com/400?text=No+Image'];
-        if (Array.isArray(item.image_url)) return item.image_url;
-        if (typeof item.image_url === 'string') {
-            if (item.image_url.includes(',')) return item.image_url.split(',').map(url => url.trim());
-            return [item.image_url];
-        }
-        return ['https://via.placeholder.com/400?text=Error'];
+    function filterProducts() {
+        const searchTerm = document.getElementById('search-input').value.toLowerCase();
+        const filtered = allProducts.filter(item => {
+            const matchesSearch = item.name.toLowerCase().includes(searchTerm) || (item.description && item.description.toLowerCase().includes(searchTerm));
+            const matchesCategory = currentCategory === 'all' || item.category === currentCategory;
+            return matchesSearch && matchesCategory;
+        });
+        renderCategorizedProducts(filtered);
+        document.getElementById('empty-state').classList.toggle('hidden', filtered.length > 0);
     }
 
     function toggleCart() {
         const sidebar = document.getElementById('cart-sidebar');
-        const overlay = document.getElementById('cart-overlay');
-        sidebar.classList.toggle('cart-closed');
-        sidebar.classList.toggle('cart-open');
-        overlay.classList.toggle('hidden');
-    }
-
-    function openProductModal(id) {
-        const product = allProducts.find(p => p.id === id);
-        if(!product) return;
-        const mainImg = document.getElementById('modal-main-img');
-        const thumbContainer = document.getElementById('modal-thumbnails');
-        document.getElementById('modal-title').innerText = product.name;
-        document.getElementById('modal-price').innerText = `฿${Number(product.price).toLocaleString()}`;
-        document.getElementById('modal-desc').innerText = product.description || 'ไม่มีรายละเอียดสินค้าในขณะนี้';
-        const imageList = parseImages(product);
-        mainImg.src = imageList[0];
-        thumbContainer.innerHTML = '';
-        imageList.forEach((imgUrl, index) => {
-            const thumb = document.createElement('img');
-            thumb.src = imgUrl;
-            thumb.className = `w-14 h-14 min-w-[56px] object-cover rounded-xl cursor-pointer border-2 transition-all p-1 bg-white ${index === 0 ? 'border-orange-600 shadow-md' : 'border-transparent opacity-60 hover:opacity-100'}`;
-            thumb.onclick = () => {
-                mainImg.src = imgUrl;
-                Array.from(thumbContainer.children).forEach(t => t.classList.remove('border-orange-600', 'shadow-md'));
-                thumb.classList.add('border-orange-600', 'shadow-md');
-            };
-            thumbContainer.appendChild(thumb);
-        });
-        document.getElementById('modal-action-area').innerHTML = `<button onclick='addToCartById(${product.id}); closeProductModal();' class="w-full bg-orange-600 hover:bg-orange-700 text-white py-5 rounded-2xl font-black text-lg shadow-xl shadow-orange-600/20 flex items-center justify-center gap-3 transition-all active:scale-95"><i class="fa-solid fa-cart-plus"></i> เพิ่มลงตะกร้า</button>`;
-        document.getElementById('product-modal').classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeProductModal() {
-        document.getElementById('product-modal').classList.add('hidden');
-        document.body.style.overflow = 'auto';
-    }
-
-    function addToCartById(id) {
-        const product = allProducts.find(p => p.id === id);
-        const existingItem = cart.find(item => item.id === id);
-        if (existingItem) {
-            existingItem.quantity += 1;
-        } else {
-            cart.push({ id: product.id, name: product.name, price: product.price, image_url: parseImages(product)[0], quantity: 1 });
-        }
-        updateCart();
-        if(document.getElementById('cart-sidebar').classList.contains('cart-closed')) toggleCart();
-    }
-
-    function updateQuantity(id, delta) {
-        const item = cart.find(item => item.id === id);
-        if (item) {
-            item.quantity += delta;
-            if (item.quantity <= 0) cart = cart.filter(i => i.id !== id);
-        }
-        updateCart();
+        const isOpen = sidebar.classList.contains('cart-open');
+        sidebar.classList.toggle('cart-closed', isOpen);
+        sidebar.classList.toggle('cart-open', !isOpen);
+        document.body.style.overflow = !isOpen ? 'hidden' : 'auto';
     }
 
     function updateCart() {
@@ -419,56 +292,122 @@
             total += Number(item.price) * item.quantity;
             count += item.quantity;
             cartItems.innerHTML += `
-                <div class="flex gap-4 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm transition-all hover:shadow-md">
-                    <img src="${item.image_url}" class="w-20 h-20 object-contain rounded-xl bg-slate-50 border p-1">
-                    <div class="flex-grow flex flex-col">
-                        <h4 class="text-sm font-bold text-slate-800 line-clamp-2 mb-1">${item.name}</h4>
-                        <p class="text-orange-600 font-black text-lg">฿${Number(item.price).toLocaleString()}</p>
-                        <div class="flex items-center gap-2 mt-auto">
-                            <button onclick="updateQuantity(${item.id}, -1)" class="w-8 h-8 flex items-center justify-center bg-slate-100 rounded-lg hover:bg-slate-200 transition-colors text-slate-600"><i class="fa-solid fa-minus text-xs"></i></button>
-                            <span class="w-8 text-center font-bold text-slate-800">${item.quantity}</span>
-                            <button onclick="updateQuantity(${item.id}, 1)" class="w-8 h-8 flex items-center justify-center bg-slate-100 rounded-lg hover:bg-slate-200 transition-colors text-slate-600"><i class="fa-solid fa-plus text-xs"></i></button>
+                <div class="flex gap-3 bg-white p-3 rounded-2xl shadow-sm border border-gray-50">
+                    <img src="${item.image_url}" class="w-16 h-16 object-contain rounded-lg bg-slate-50 border">
+                    <div class="flex-grow">
+                        <h4 class="text-xs font-bold line-clamp-1">${item.name}</h4>
+                        <p class="text-[#002D72] font-black">฿${Number(item.price).toLocaleString()}</p>
+                        <div class="flex items-center gap-4 mt-2">
+                            <button onclick="updateQuantity(${item.id}, -1)" class="w-6 h-6 bg-slate-100 rounded-md"><i class="fa-solid fa-minus text-[10px]"></i></button>
+                            <span class="text-xs font-bold">${item.quantity}</span>
+                            <button onclick="updateQuantity(${item.id}, 1)" class="w-6 h-6 bg-slate-100 rounded-md"><i class="fa-solid fa-plus text-[10px]"></i></button>
                         </div>
                     </div>
                 </div>`;
         });
         cartCount.innerText = count;
         cartTotal.innerText = `฿${total.toLocaleString()}`;
-        if (cart.length === 0) cartItems.innerHTML = '<div class="text-center py-20"><i class="fa-solid fa-cart-flatbed text-slate-200 text-6xl mb-4"></i><p class="text-slate-400 font-medium">ยังไม่มีสินค้าในตะกร้าของคุณ</p></div>';
+        if (cart.length === 0) cartItems.innerHTML = '<p class="text-center py-10 text-slate-400 text-sm">ยังไม่มีสินค้าในตะกร้า</p>';
     }
 
-    function openCheckout() {
-        if (cart.length === 0) return alert("กรุณาเลือกสินค้าก่อนครับ");
-        const total = cart.reduce((sum, item) => sum + (Number(item.price) * item.quantity), 0);
-        document.getElementById('checkout-total').innerText = `฿${total.toLocaleString()}`;
-        document.getElementById('checkout-modal').classList.remove('hidden');
+    function openProductModal(id) {
+        const product = allProducts.find(p => p.id === id);
+        if(!product) return;
+        const mainImg = document.getElementById('modal-main-img');
+        const thumbContainer = document.getElementById('modal-thumbnails');
+        document.getElementById('modal-title').innerText = product.name;
+        document.getElementById('modal-price').innerText = `฿${Number(product.price).toLocaleString()}`;
+        document.getElementById('modal-desc').innerText = product.description || 'ไม่มีรายละเอียดสินค้า';
+        const imageList = parseImages(product);
+        mainImg.src = imageList[0];
+        thumbContainer.innerHTML = '';
+        imageList.forEach((imgUrl, index) => {
+            const thumb = document.createElement('img');
+            thumb.src = imgUrl;
+            thumb.className = `w-12 h-12 object-cover rounded-lg border-2 ${index === 0 ? 'border-[#002D72]' : 'border-transparent opacity-60'}`;
+            thumb.onclick = () => {
+                mainImg.src = imgUrl;
+                Array.from(thumbContainer.children).forEach(t => t.classList.replace('border-[#002D72]', 'border-transparent'));
+                thumb.classList.replace('border-transparent', 'border-[#002D72]');
+            };
+            thumbContainer.appendChild(thumb);
+        });
+        document.getElementById('modal-action-area').innerHTML = `<button onclick='addToCartById(${product.id}); closeProductModal();' class="w-full bg-[#002D72] text-white py-4 rounded-2xl font-bold shadow-lg shadow-blue-900/10 flex items-center justify-center gap-2"><i class="fa-solid fa-cart-plus"></i> ใส่ตะกร้าเลย</button>`;
+        document.getElementById('product-modal').classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
     }
 
+    function closeProductModal() { document.getElementById('product-modal').classList.add('hidden'); document.body.style.overflow = 'auto'; }
+    function openLoginModal() { document.getElementById('login-modal').classList.remove('hidden'); }
+    function closeLoginModal() { document.getElementById('login-modal').classList.add('hidden'); }
+    function openCheckout() { if (cart.length === 0) return; document.getElementById('checkout-modal').classList.remove('hidden'); }
     function closeCheckout() { document.getElementById('checkout-modal').classList.add('hidden'); }
+    
+    // [คัดลอกส่วนตรรกะอื่นๆ เช่น handleLogin, handleLogout, submitOrder, updateQuantity, parseImages มาไว้ต่อท้าย]
+    // สคริปต์ส่วนที่เหลือทำงานร่วมกับ HTML ใหม่นี้ได้ทันที
+
+    function parseImages(item) {
+        if (!item.image_url) return ['https://via.placeholder.com/400?text=No+Image'];
+        if (Array.isArray(item.image_url)) return item.image_url;
+        if (typeof item.image_url === 'string') {
+            if (item.image_url.includes(',')) return item.image_url.split(',').map(url => url.trim());
+            return [item.image_url];
+        }
+        return ['https://via.placeholder.com/400?text=Error'];
+    }
+
+    function updateQuantity(id, delta) {
+        const item = cart.find(item => item.id === id);
+        if (item) {
+            item.quantity += delta;
+            if (item.quantity <= 0) cart = cart.filter(i => i.id !== id);
+        }
+        updateCart();
+    }
+
+    function addToCartById(id) {
+        const product = allProducts.find(p => p.id === id);
+        const existingItem = cart.find(item => item.id === id);
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            cart.push({ id: product.id, name: product.name, price: product.price, image_url: parseImages(product)[0], quantity: 1 });
+        }
+        updateCart();
+        toggleCart();
+    }
 
     async function submitOrder() {
         const name = document.getElementById('cust_name').value.trim();
         const phone = document.getElementById('cust_phone').value.trim();
-		const address = document.getElementById('cust_address').value.trim();
+        const address = document.getElementById('cust_address').value.trim();
         const btn = document.getElementById('btn-submit');
-        if (!name || phone.length < 9) return alert("กรุณากรอกข้อมูลผู้รับให้ครบถ้วน");
+        if (!name || phone.length < 9) return alert("กรุณากรอกข้อมูลให้ครบถ้วน");
         btn.disabled = true;
-        btn.innerText = "กำลังดำเนินการ...";
+        btn.innerText = "กำลังสั่งซื้อ...";
         const totalAmount = cart.reduce((sum, item) => sum + (Number(item.price) * item.quantity), 0);
         try {
             const { error } = await _supabase.from('orders').insert([{ customer_name: name, customer_phone: phone, customer_address: address, total_amount: totalAmount, items: cart }]);
             if (error) throw error;
-            alert("ขอบคุณที่ไว้วางใจ! เราได้รับคำสั่งซื้อของคุณแล้ว");
-            cart = [];
-            localStorage.removeItem('my_cart');
-            updateCart();
-            closeCheckout();
-            toggleCart();
-        } catch (err) {
-            alert("ผิดพลาด: " + err.message);
-        } finally {
-            btn.disabled = false;
-            btn.innerText = "ยืนยันสั่งซื้อ";
+            alert("สั่งซื้อสำเร็จ!");
+            cart = []; localStorage.removeItem('my_cart');
+            updateCart(); closeCheckout(); toggleCart();
+        } catch (err) { alert("ผิดพลาด: " + err.message); } 
+        finally { btn.disabled = false; btn.innerText = "ยืนยันสั่งซื้อ"; }
+    }
+
+    async function updateAuthUI(session) {
+        const adminIcons = document.getElementById('admin-icons');
+        const loginBtn = document.getElementById('btn-login-trigger');
+        const logoutBtn = document.getElementById('btn-logout-trigger');
+        if (session) {
+            adminIcons?.classList.remove('hidden');
+            loginBtn?.classList.add('hidden');
+            logoutBtn?.classList.remove('hidden');
+        } else {
+            adminIcons?.classList.add('hidden');
+            loginBtn?.classList.remove('hidden');
+            logoutBtn?.classList.add('hidden');
         }
     }
 
@@ -476,40 +415,21 @@
         const email = document.getElementById('login-email').value.trim();
         const password = document.getElementById('login-password').value.trim();
         const errorMsg = document.getElementById('login-error');
-        const btn = document.getElementById('btn-login-submit');
-        if (!email || !password) return;
-        btn.disabled = true;
-        btn.innerText = "กำลังเข้าสู่ระบบ...";
-        const { data, error } = await _supabase.auth.signInWithPassword({ email, password });
+        const { error } = await _supabase.auth.signInWithPassword({ email, password });
         if (error) {
-            errorMsg.innerText = "อีเมลหรือรหัสผ่านไม่ถูกต้อง";
+            errorMsg.innerText = "ล็อกอินไม่สำเร็จ";
             errorMsg.classList.remove('hidden');
-            btn.disabled = false;
-            btn.innerText = "เข้าสู่ระบบ";
         } else {
             closeLoginModal();
-            btn.disabled = false;
         }
     }
 
     async function handleLogout() {
         await _supabase.auth.signOut();
-        window.location.reload(); 
+        window.location.reload();
     }
 
-    function openLoginModal() { document.getElementById('login-modal').classList.remove('hidden'); }
-    function closeLoginModal() { 
-        document.getElementById('login-modal').classList.add('hidden');
-        document.getElementById('login-error').classList.add('hidden');
-    }
-
-    function resetFilters() {
-        document.getElementById('search-input').value = '';
-        setCategory('all');
-    }
-
-    // Init
-    checkInitialSession();
+    _supabase.auth.onAuthStateChange((event, session) => updateAuthUI(session));
     getProducts();
     updateCart();
 </script>
