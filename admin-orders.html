@@ -2,147 +2,115 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HomePro Admin - Management System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>OrderHub Mobile Admin</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        body { font-family: 'Kanit', sans-serif; }
-        .custom-scroll::-webkit-scrollbar { width: 6px; height: 6px; }
-        .custom-scroll::-webkit-scrollbar-track { background: transparent; }
-        .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        body { 
+            font-family: 'Kanit', sans-serif; 
+            -webkit-tap-highlight-color: transparent;
+            background-color: #f1f5f9;
+        }
+        .order-container {
+            height: calc(100vh - 240px);
+            overflow-y: auto;
+            padding-bottom: 80px;
+        }
+        .status-pill {
+            @apply px-3 py-1 rounded-full text-[10px] font-bold border;
+        }
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .animate-slide-up { animation: slideUp 0.3s ease-out forwards; }
         
-        .status-select {
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 0.5rem center;
-            background-size: 0.8rem;
+        /* Modal Styles */
+        #receipt-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
         }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .fade-in { animation: fadeIn 0.4s ease-out forwards; }
     </style>
 </head>
-<body class="bg-[#f8fafc] text-slate-900">
+<body class="text-slate-900 overflow-hidden">
 
-<nav class="bg-white text-slate-800 sticky top-0 z-50 shadow-md border-b border-slate-100">
-    <div class="max-w-[1600px] mx-auto px-4 lg:px-8">
-        <div class="flex items-center justify-between h-20">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-gradient-to-tr from-orange-400 to-orange-600 rounded-xl flex items-center justify-center shadow-lg">
-                    <i data-lucide="shield-check" class="text-white w-6 h-6"></i>
-                </div>
-                <span class="text-2xl font-bold tracking-tight text-[#002d72]">ORDER<span class="text-orange-500">HUB</span></span>
+<header class="bg-white px-5 pt-6 pb-4 border-b border-slate-200 sticky top-0 z-40">
+    <div class="flex justify-between items-center mb-4">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-orange-500 rounded-xl flex items-center justify-center shadow-lg shadow-orange-200">
+                <i data-lucide="shield-check" class="text-white w-6 h-6"></i>
             </div>
-
-            <div class="hidden md:flex items-center gap-4">
-                <a href="#" class="flex items-center gap-2 py-2 px-4 bg-orange-500 text-white rounded-lg shadow-md hover:bg-orange-600 transition-all">
-                    <i data-lucide="shopping-bag" class="w-4 h-4"></i>
-                    <span class="text-sm font-medium">จัดการออเดอร์</span>
-                </a>
-                <a href="index.html" target="_blank" class="flex items-center gap-2 py-2 px-4 text-slate-600 hover:text-[#002d72] transition-all">
-                    <i data-lucide="external-link" class="w-4 h-4"></i>
-                    <span class="text-sm font-medium">หน้าร้านค้า</span>
-                </a>
+            <div>
+                <h1 class="text-lg font-bold text-[#002d72] leading-tight">Order<span class="text-orange-500">Hub</span></h1>
+                <p class="text-[10px] text-slate-400 font-medium">ADMIN MANAGEMENT</p>
             </div>
+        </div>
+        <button onclick="fetchOrders()" class="p-2 bg-slate-100 rounded-full text-slate-600 active:scale-95 transition-colors hover:bg-slate-200">
+            <i data-lucide="refresh-cw" id="refresh-icon" class="w-5 h-5"></i>
+        </button>
+    </div>
 
-            <div class="flex items-center gap-2 sm:gap-4">
-                <button onclick="fetchOrders()" class="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 border border-slate-200 px-3 py-2 rounded-lg transition-all text-slate-700">
-                    <i data-lucide="refresh-cw" class="w-4 h-4" id="refresh-icon"></i>
-                    <span class="hidden lg:inline text-xs font-bold uppercase tracking-wider">Sync</span>
-                </button>
-                
-                <div class="flex items-center gap-3 pl-2 sm:pl-4 border-l border-slate-200">
-                    <div class="hidden sm:block text-right">
-                        <p class="text-[10px] text-slate-400 uppercase leading-none font-bold">Admin</p>
-                        <p class="text-xs font-semibold text-slate-700">Manager</p>
-                    </div>
-                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" class="w-9 h-9 rounded-full border-2 border-orange-500" alt="admin">
-                </div>
-
-                <button class="md:hidden p-2 text-slate-600 hover:bg-slate-100 rounded-lg" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
-                    <i data-lucide="menu" class="w-6 h-6"></i>
-                </button>
+    <div class="grid grid-cols-2 gap-3">
+        <div class="bg-blue-50 p-3 rounded-2xl flex items-center gap-3 border border-blue-100">
+            <div class="p-2 bg-white rounded-lg text-blue-600 shadow-sm"><i data-lucide="package" class="w-4 h-4"></i></div>
+            <div>
+                <p class="text-[9px] font-bold text-blue-400 uppercase">Orders</p>
+                <h3 id="stat-count" class="text-base font-bold text-blue-900">0</h3>
+            </div>
+        </div>
+        <div class="bg-orange-50 p-3 rounded-2xl flex items-center gap-3 border border-orange-100">
+            <div class="p-2 bg-white rounded-lg text-orange-600 shadow-sm"><i data-lucide="banknote" class="w-4 h-4"></i></div>
+            <div>
+                <p class="text-[9px] font-bold text-orange-400 uppercase">Revenue</p>
+                <h3 id="stat-revenue" class="text-base font-bold text-orange-900">฿0</h3>
             </div>
         </div>
     </div>
+</header>
 
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 p-4 space-y-3 shadow-inner">
-        <a href="#" class="flex items-center gap-3 p-3 bg-orange-50 text-orange-600 rounded-xl font-medium">
-            <i data-lucide="shopping-bag" class="w-5 h-5"></i>
-            จัดการออเดอร์
-        </a>
-        <a href="index.html" class="flex items-center gap-3 p-3 text-slate-600 hover:bg-slate-50 rounded-xl font-medium">
-            <i data-lucide="external-link" class="w-5 h-5"></i>
-            หน้าร้านค้า
-        </a>
-    </div>
-</nav>
-
-<main class="max-w-[1600px] mx-auto p-4 lg:p-8 space-y-6">
-    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-            <h1 class="text-2xl font-bold text-slate-800">Order Management</h1>
-            <p class="text-sm text-slate-500 font-medium">ระบบจัดการข้อมูลคำสั่งซื้อแบบ Real-time</p>
-        </div>
-        
-        <div class="flex gap-4">
-            <div class="bg-white px-6 py-4 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-4 flex-1 sm:flex-none">
-                <div class="p-2 bg-blue-50 text-[#002d72] rounded-lg"><i data-lucide="package" class="w-5 h-5"></i></div>
-                <div>
-                    <p class="text-slate-500 text-[10px] font-bold uppercase tracking-wider">Orders</p>
-                    <h3 id="stat-count" class="text-xl font-bold text-slate-800">0</h3>
-                </div>
-            </div>
-            <div class="bg-white px-6 py-4 rounded-2xl border border-slate-200 shadow-sm flex items-center gap-4 flex-1 sm:flex-none">
-                <div class="p-2 bg-orange-50 text-orange-600 rounded-lg"><i data-lucide="banknote" class="w-5 h-5"></i></div>
-                <div>
-                    <p class="text-slate-500 text-[10px] font-bold uppercase tracking-wider">Revenue</p>
-                    <h3 id="stat-revenue" class="text-xl font-bold text-slate-800">฿0</h3>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-        <div class="overflow-x-auto custom-scroll">
-            <table class="w-full text-left border-collapse min-w-[1000px]">
-                <thead>
-                    <tr class="bg-slate-50 text-slate-400 text-[10px] tracking-[0.15em] font-bold uppercase border-b border-slate-100">
-                        <th class="px-6 py-4">วัน/เวลา</th>
-                        <th class="px-6 py-4">ข้อมูลลูกค้า</th>
-                        <th class="px-6 py-4">ที่อยู่จัดส่ง</th> 
-                        <th class="px-6 py-4">สรุปรายการ</th>
-                        <th class="px-6 py-4">ยอดรวม</th>
-                        <th class="px-6 py-4">สถานะ</th>
-                        <th class="px-6 py-4 text-center">จัดการ</th>
-                    </tr>
-                </thead>
-                <tbody id="order-list" class="divide-y divide-slate-50 text-sm">
-                </tbody>
-            </table>
-        </div>
-        
-        <div class="px-6 py-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
-            <p class="text-xs text-slate-500 font-medium" id="pagination-info">แสดง 0 ถึง 0 จาก 0 รายการ</p>
-            <div class="flex gap-2">
-                <button onclick="changePage(-1)" id="prev-btn" class="p-2 rounded-lg border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all">
-                    <i data-lucide="chevron-left" class="w-4 h-4"></i>
-                </button>
-                <div id="page-numbers" class="flex gap-1"></div>
-                <button onclick="changePage(1)" id="next-btn" class="p-2 rounded-lg border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all">
-                    <i data-lucide="chevron-right" class="w-4 h-4"></i>
-                </button>
-            </div>
-        </div>
+<main class="order-container px-4 py-4" id="order-list">
+    <div class="flex flex-col items-center justify-center h-full text-slate-400">
+        <div class="animate-bounce mb-2"><i data-lucide="loader-2" class="w-10 h-10 animate-spin"></i></div>
+        <p>กำลังโหลดข้อมูล...</p>
     </div>
 </main>
+
+<div id="receipt-modal" onclick="closeReceipt()">
+    <div class="bg-white w-full max-w-md rounded-3xl overflow-hidden shadow-2xl animate-slide-up" onclick="event.stopPropagation()">
+        <div class="p-6 overflow-y-auto max-h-[70vh]" id="modal-content">
+            </div>
+        <div class="p-4 bg-slate-50 border-t flex gap-3">
+            <button onclick="closeReceipt()" class="flex-1 py-3 bg-slate-200 text-slate-700 rounded-xl font-bold">ปิด</button>
+            <button id="modal-print-btn" class="flex-1 py-3 bg-orange-500 text-white rounded-xl font-bold flex items-center justify-center gap-2 active:bg-orange-600">
+                <i data-lucide="printer" class="w-4 h-4"></i> พิมพ์ใบเสร็จ
+            </button>
+        </div>
+    </div>
+</div>
+
+<nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 px-6 py-3 flex justify-between items-center z-50">
+    <a href="#" class="flex flex-col items-center gap-1 text-orange-500">
+        <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+        <span class="text-[10px] font-medium">ออเดอร์</span>
+    </a>
+    <a href="index.html" class="flex flex-col items-center gap-1 text-orange-500">
+        <i data-lucide="external-link" class="w-6 h-6"></i>
+        <span class="text-[10px] font-medium">ไปที่ร้าน</span>
+    </a>
+    <div class="flex flex-col items-center gap-1 text-orange-500 relative">
+        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" class="w-7 h-7 rounded-full border border-slate-200" alt="admin">
+        <span class="text-[10px] font-medium">โปรไฟล์</span>
+    </div>
+</nav>
 
 <script>
     const SB_URL = 'https://eodbsetbyryimczkhoaw.supabase.co';
@@ -150,239 +118,249 @@
     const _supabase = supabase.createClient(SB_URL, SB_KEY);
 
     let currentOrders = [];
-    let currentPage = 1;
-    const itemsPerPage = 8;
 
     async function fetchOrders() {
         const list = document.getElementById('order-list');
-        const refreshIcon = document.getElementById('refresh-icon');
-        
-        refreshIcon.classList.add('animate-spin'); // เปลี่ยนเป็นหมุนเพื่อให้ดูเหมือนโหลด
-        
         try {
-            const { data: orders, error } = await _supabase
-                .from('orders')
-                .select('*')
-                .order('created_at', { ascending: false });
-
+            const { data, error } = await _supabase.from('orders').select('*').order('created_at', { ascending: false });
             if (error) throw error;
+            currentOrders = data;
             
-            currentOrders = orders;
-            
-            // อัปเดต Stats
-            const totalRevenue = orders.reduce((sum, order) => sum + (order.total_amount || 0), 0);
-            document.getElementById('stat-count').innerText = orders.length;
+            const totalRevenue = data.reduce((sum, o) => sum + (o.total_amount || 0), 0);
+            document.getElementById('stat-count').innerText = data.length;
             document.getElementById('stat-revenue').innerText = `฿${totalRevenue.toLocaleString()}`;
 
-            renderTable();
-
-        } catch (err) { 
-            console.error('Fetch Error:', err);
-            list.innerHTML = `<tr><td colspan="7" class="p-10 text-center text-rose-500 font-bold">เกิดข้อผิดพลาดในการดึงข้อมูล: ${err.message}</td></tr>`;
-        } finally { 
-            refreshIcon.classList.remove('animate-spin');
+            renderCards();
+        } catch (err) {
+            list.innerHTML = `<div class="p-10 text-center text-rose-500 font-bold">${err.message}</div>`;
         }
     }
 
-    function renderTable() {
+    function renderCards() {
         const list = document.getElementById('order-list');
-        const startIndex = (currentPage - 1) * itemsPerPage;
-        const endIndex = startIndex + itemsPerPage;
-        const paginatedOrders = currentOrders.slice(startIndex, endIndex);
-
-        let htmlContent = ''; 
-
-        if (paginatedOrders.length === 0) {
-            list.innerHTML = `<tr><td colspan="7" class="p-20 text-center text-slate-400">ไม่พบข้อมูลออเดอร์</td></tr>`;
-            updatePaginationUI();
+        if (currentOrders.length === 0) {
+            list.innerHTML = `<div class="p-20 text-center text-slate-400">ไม่มีข้อมูลออเดอร์</div>`;
             return;
         }
 
-        paginatedOrders.forEach((order, index) => {
-            const oDate = new Date(order.created_at);
-            const dateStr = oDate.toLocaleDateString('th-TH', { day: '2-digit', month: '2-digit', year: 'numeric' });
-            const timeStr = oDate.toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit', hour12: false });
+        const statusStyles = {
+            'รอดำเนินการ': 'bg-amber-50 text-amber-600 border-amber-100',
+            'กำลังจัดส่ง': 'bg-blue-50 text-blue-600 border-blue-100',
+            'ส่งแล้ว': 'bg-emerald-50 text-emerald-600 border-emerald-100',
+            'ยกเลิก': 'bg-rose-50 text-rose-600 border-rose-100'
+        };
+
+        list.innerHTML = currentOrders.map((order, i) => {
+            const date = new Date(order.created_at).toLocaleDateString('th-TH', { day: '2-digit', month: 'short' });
+            const time = new Date(order.created_at).toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' });
             
-            const items = order.items || [];
-            const itemSummary = items.map(i => `${i.name} (x${i.quantity})`).join(', ');
-
-            const statusColors = {
-                'รอดำเนินการ': 'bg-amber-50 text-amber-600 border-amber-200',
-                'กำลังจัดส่ง': 'bg-blue-50 text-blue-600 border-blue-200',
-                'ส่งแล้ว': 'bg-emerald-50 text-emerald-600 border-emerald-200',
-                'ยกเลิก': 'bg-rose-50 text-rose-600 border-rose-200'
-            };
-
-            htmlContent += `
-                <tr class="hover:bg-slate-50 transition-all fade-in" style="animation-delay: ${index * 30}ms">
-                    <td class="px-6 py-4">
-                        <div class="flex flex-col">
-                            <span class="font-bold text-slate-700">${dateStr}</span>
-                            <span class="text-[10px] text-slate-400 font-medium">${timeStr} น.</span>
+            return `
+                <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 mb-4 animate-slide-up" style="animation-delay: ${i * 50}ms">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="flex items-center gap-2">
+                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">#${order.id.toString().slice(-6)}</span>
+                            <span class="status-pill ${statusStyles[order.status] || ''}">${order.status}</span>
                         </div>
-                    </td>
-                    <td class="px-6 py-4">
-                        <div class="font-bold text-slate-800">${order.customer_name}</div>
-                        <div class="text-[11px] text-slate-500"><i data-lucide="phone" class="inline w-3 h-3"></i> ${order.customer_phone}</div>
-                    </td>
-                    <td class="px-6 py-4">
-                        <div class="max-w-[250px] text-xs text-slate-600 italic line-clamp-2">
-                            ${order.customer_address || 'ไม่มีที่อยู่'}
+                        <span class="text-[11px] text-slate-400 font-medium">${date} | ${time}</span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <h4 class="font-bold text-slate-800 text-sm">${order.customer_name}</h4>
+                        <p class="text-xs text-slate-500 line-clamp-1"><i data-lucide="map-pin" class="inline w-3 h-3 mr-1"></i>${order.customer_address}</p>
+                    </div>
+
+                    <div class="flex items-center justify-between pt-3 border-t border-dashed border-slate-100">
+                        <div>
+                            <p class="text-[10px] text-slate-400 font-bold">ยอดสุทธิ</p>
+                            <p class="text-lg font-bold text-orange-600">฿${(order.total_amount || 0).toLocaleString()}</p>
                         </div>
-                    </td>
-                    <td class="px-6 py-4">
-                        <div class="max-w-[200px] truncate text-slate-600 text-xs">${itemSummary}</div>
-                        <div class="text-[9px] text-slate-400 font-bold uppercase">#${order.id.toString().slice(-6)}</div>
-                    </td>
-                    <td class="px-6 py-4 text-base font-bold text-slate-900">฿${(order.total_amount || 0).toLocaleString()}</td>
-                    <td class="px-6 py-4">
-                        <select onchange="updateStatus(${order.id}, this.value)" 
-                            class="status-select text-[11px] font-bold rounded-lg px-3 py-1.5 border transition-all ${statusColors[order.status] || 'bg-slate-50 text-slate-600'}">
-                            <option value="รอดำเนินการ" ${order.status === 'รอดำเนินการ' ? 'selected' : ''}>⏳ รอดำเนินการ</option>
-                            <option value="กำลังจัดส่ง" ${order.status === 'กำลังจัดส่ง' ? 'selected' : ''}>🚚 กำลังจัดส่ง</option>
-                            <option value="ส่งแล้ว" ${order.status === 'ส่งแล้ว' ? 'selected' : ''}>✅ ส่งแล้ว</option>
-                            <option value="ยกเลิก" ${order.status === 'ยกเลิก' ? 'selected' : ''}>❌ ยกเลิก</option>
-                        </select>
-                    </td>
-                    <td class="px-6 py-4">
-                        <div class="flex justify-center gap-2">
-                            <button onclick="printReceipt(${order.id})" class="p-2 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">
-                                <i data-lucide="printer" class="w-4 h-4"></i>
+                        <div class="flex gap-2">
+                            <button onclick="openReceiptModal(${order.id})" class="p-2.5 bg-slate-50 text-slate-500 rounded-xl active:bg-blue-100 active:text-blue-600 transition-colors">
+                                <i data-lucide="printer" class="w-5 h-5"></i>
                             </button>
-                            <button onclick="deleteOrder(${order.id}, '${order.customer_name}')" class="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors">
-                                <i data-lucide="trash-2" class="w-4 h-4"></i>
+                            <div class="relative">
+                                <select onchange="updateStatus(${order.id}, this.value)" class="absolute opacity-0 w-full h-full inset-0 z-10 cursor-pointer">
+                                    <option value="" disabled selected></option>
+                                    <option value="รอดำเนินการ">รอดำเนินการ</option>
+                                    <option value="กำลังจัดส่ง">กำลังจัดส่ง</option>
+                                    <option value="ส่งแล้ว">ส่งแล้ว</option>
+                                    <option value="ยกเลิก">ยกเลิก</option>
+                                </select>
+                                <button class="p-2.5 bg-slate-50 text-slate-500 rounded-xl">
+                                    <i data-lucide="more-vertical" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+                            <button onclick="deleteOrder(${order.id}, '${order.customer_name}')" class="p-2.5 bg-rose-50 text-rose-500 rounded-xl active:bg-rose-100">
+                                <i data-lucide="trash-2" class="w-5 h-5"></i>
                             </button>
                         </div>
-                    </td>
-                </tr>`;
-        });
-
-        list.innerHTML = htmlContent;
+                    </div>
+                </div>
+            `;
+        }).join('');
         lucide.createIcons();
-        updatePaginationUI();
-    }
-
-    function updatePaginationUI() {
-        const totalItems = currentOrders.length;
-        const totalPages = Math.ceil(totalItems / itemsPerPage);
-        const startIndex = totalItems === 0 ? 0 : (currentPage - 1) * itemsPerPage + 1;
-        const endIndex = Math.min(currentPage * itemsPerPage, totalItems);
-
-        document.getElementById('pagination-info').innerText = `แสดง ${startIndex} ถึง ${endIndex} จาก ${totalItems} รายการ`;
-        
-        document.getElementById('prev-btn').disabled = currentPage === 1;
-        document.getElementById('next-btn').disabled = currentPage === totalPages || totalPages === 0;
-
-        // แสดงเลขหน้าแบบสั้นๆ
-        const pageNumbers = document.getElementById('page-numbers');
-        pageNumbers.innerHTML = '';
-        if(totalPages > 1) {
-            for (let i = 1; i <= totalPages; i++) {
-                const btn = document.createElement('button');
-                btn.innerText = i;
-                btn.className = `px-3 py-1 rounded-md text-xs font-bold transition-all ${i === currentPage ? 'bg-[#002d72] text-white' : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50'}`;
-                btn.onclick = () => { currentPage = i; renderTable(); };
-                pageNumbers.appendChild(btn);
-            }
-        }
-    }
-
-    function changePage(direction) {
-        currentPage += direction;
-        renderTable();
     }
 
     async function updateStatus(id, status) {
+        if(!status) return;
         try {
             const { error } = await _supabase.from('orders').update({ status }).eq('id', id);
             if (error) throw error;
-            // อัปเดตข้อมูลในตัวแปร currentOrders โดยตรงเพื่อไม่ให้หน้าเด้งกลับไปหน้า 1
-            const idx = currentOrders.findIndex(o => o.id === id);
-            if (idx !== -1) currentOrders[idx].status = status;
-            renderTable(); 
-        } catch (err) {
-            alert('ไม่สามารถอัปเดตสถานะได้: ' + err.message);
-        }
+            fetchOrders();
+        } catch (err) { alert(err.message); }
     }
 
     async function deleteOrder(id, name) {
-        if (!confirm(`ยืนยันการลบออเดอร์ของคุณ "${name}"? การดำเนินการนี้ไม่สามารถย้อนกลับได้`)) return;
+        if (!confirm(`ลบออเดอร์คุณ ${name}?`)) return;
         try {
-            const { error } = await _supabase.from('orders').delete().eq('id', id);
-            if (error) throw error;
+            await _supabase.from('orders').delete().eq('id', id);
             fetchOrders();
-        } catch (err) {
-            alert('ไม่สามารถลบออเดอร์ได้: ' + err.message);
-        }
+        } catch (err) { alert(err.message); }
+    }
+
+    function openReceiptModal(orderId) {
+        const order = currentOrders.find(o => o.id === orderId);
+        if (!order) return;
+
+        let items = [];
+        try {
+            items = order.items ? (typeof order.items === 'string' ? JSON.parse(order.items) : order.items) : [];
+        } catch(e) { console.error("Parse error", e); }
+
+        const itemsHtml = items.map(item => `
+            <div class="flex justify-between text-sm py-1 border-b border-slate-50">
+                <span class="text-slate-600">${item.name} x ${item.quantity}</span>
+                <span class="font-medium text-slate-800">฿${(item.price * item.quantity).toLocaleString()}</span>
+            </div>
+        `).join('');
+
+        const modalContent = `
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="receipt" class="w-8 h-8"></i>
+                </div>
+                <h2 class="text-xl font-bold text-slate-800">ใบเสร็จรับเงิน</h2>
+                <p class="text-xs text-slate-400 font-medium uppercase tracking-widest">Order Receipt</p>
+            </div>
+            
+            <div class="space-y-4">
+                <div class="bg-slate-50 p-3 rounded-xl">
+                    <div class="flex justify-between text-[11px] mb-1">
+                        <span class="text-slate-400">Order ID:</span>
+                        <span class="font-bold text-slate-700">#${order.id}</span>
+                    </div>
+                    <div class="flex justify-between text-[11px]">
+                        <span class="text-slate-400">วันที่:</span>
+                        <span class="font-bold text-slate-700">${new Date(order.created_at).toLocaleString('th-TH')}</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h5 class="text-[10px] font-bold text-slate-400 uppercase mb-2">ลูกค้า</h5>
+                    <p class="text-sm font-bold text-slate-800">${order.customer_name}</p>
+                    <p class="text-xs text-slate-500">${order.customer_address}</p>
+                </div>
+
+                <div>
+                    <h5 class="text-[10px] font-bold text-slate-400 uppercase mb-2">รายการสินค้า</h5>
+                    ${itemsHtml || '<p class="text-xs text-slate-400 italic">ไม่มีรายการ</p>'}
+                </div>
+
+                <div class="pt-4 mt-4 border-t-2 border-dashed border-slate-200">
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-slate-800">ยอดรวมทั้งสิ้น</span>
+                        <span class="text-2xl font-bold text-orange-600">฿${(order.total_amount || 0).toLocaleString()}</span>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        document.getElementById('modal-content').innerHTML = modalContent;
+        document.getElementById('receipt-modal').style.display = 'flex';
+        document.getElementById('modal-print-btn').onclick = () => printReceipt(orderId);
+        
+        lucide.createIcons();
+    }
+
+    function closeReceipt() {
+        document.getElementById('receipt-modal').style.display = 'none';
     }
 
     function printReceipt(orderId) {
         const order = currentOrders.find(o => o.id === orderId);
         if (!order) return;
-        
-        const date = new Date(order.created_at).toLocaleString('th-TH', { 
-            day: '2-digit', month: 'long', year: 'numeric', 
-            hour: '2-digit', minute: '2-digit' 
-        });
-        
-        const itemsHtml = order.items.map(item => `
-            <tr>
-                <td style="padding: 10px 0; border-bottom: 1px dashed #eee;">${item.name} (x${item.quantity})</td>
-                <td style="padding: 10px 0; text-align: right; border-bottom: 1px dashed #eee;">฿${(item.price * item.quantity).toLocaleString()}</td>
-            </tr>
-        `).join('');
 
-        const printWindow = window.open('', '_blank', 'width=800,height=800');
+        const printWindow = window.open('', '_blank', 'width=600,height=800');
+        if (!printWindow) {
+            alert('กรุณาอนุญาตให้เปิด Pop-up เพื่อพิมพ์ใบเสร็จ');
+            return;
+        }
+
+        let items = [];
+        try {
+            items = order.items ? (typeof order.items === 'string' ? JSON.parse(order.items) : order.items) : [];
+        } catch(e) { items = []; }
+
+        const itemsHtml = items.map(item => `
+            <tr>
+                <td style="padding: 5px 0;">${item.name} x ${item.quantity}</td>
+                <td style="text-align: right;">฿${(item.price * item.quantity).toLocaleString()}</td>
+            </tr>
+        `).join('') || '<tr><td colspan="2">ไม่มีรายการสินค้า</td></tr>';
+
         printWindow.document.write(`
             <html>
                 <head>
-                    <title>ใบเสร็จรับเงิน #${order.id}</title>
-                    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+                    <title>Receipt #${order.id}</title>
                     <style>
-                        body { font-family: 'Kanit', sans-serif; padding: 20px; color: #1e293b; line-height: 1.5; }
-                        .receipt-card { max-width: 400px; margin: auto; border: 1px solid #e2e8f0; padding: 30px; border-radius: 15px; }
-                        .header { text-align: center; border-bottom: 2px solid #002d72; padding-bottom: 15px; margin-bottom: 15px; }
-                        .header h1 { color: #002d72; margin: 0; font-size: 24px; }
-                        .info { font-size: 14px; margin-bottom: 20px; }
-                        .total { font-size: 20px; font-weight: bold; color: #002d72; display: flex; justify-content: space-between; margin-top: 20px; border-top: 2px solid #eee; pt: 10px; }
-                        table { width: 100%; border-collapse: collapse; font-size: 14px; }
+                        body { font-family: 'Tahoma', sans-serif; padding: 20px; color: #333; line-height: 1.4; width: 300px; margin: auto; }
+                        .header { text-align: center; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 10px; }
+                        .info { font-size: 13px; margin-bottom: 15px; }
+                        table { width: 100%; border-collapse: collapse; margin-bottom: 15px; font-size: 13px; }
+                        .total { border-top: 2px solid #333; padding-top: 10px; font-weight: bold; font-size: 16px; display: flex; justify-content: space-between; }
                     </style>
                 </head>
                 <body>
-                    <div class="receipt-card">
-                        <div class="header">
-                            <h1>HOMEPRO</h1>
-                            <p style="margin: 5px 0 0 0; color: #64748b;">ใบเสร็จรับเงินอิเล็กทรอนิกส์</p>
-                        </div>
-                        <div class="info">
-                            <p><strong>Order ID:</strong> #${order.id}</p>
-                            <p><strong>ลูกค้า:</strong> ${order.customer_name}</p>
-                            <p><strong>วันที่:</strong> ${date}</p>
-                        </div>
-                        <table>
-                            ${itemsHtml}
-                        </table>
-                        <div class="total">
-                            <span>ยอดรวมสุทธิ</span>
-                            <span>฿${order.total_amount.toLocaleString()}</span>
-                        </div>
-                        <p style="text-align: center; font-size: 10px; color: #94a3b8; margin-top: 30px;">ขอบคุณที่ใช้บริการ</p>
+                    <div class="header">
+                        <h2 style="margin:0">OrderHub</h2>
+                        <p style="margin:0; font-size:12px;">ขอบคุณที่ใช้บริการ</p>
+                    </div>
+                    <div class="info">
+                        <strong>ID:</strong> #${order.id}<br>
+                        <strong>วันที่:</strong> ${new Date(order.created_at).toLocaleString('th-TH')}<br>
+                        <strong>ลูกค้า:</strong> ${order.customer_name}
+                    </div>
+                    <table>
+                        <thead>
+                            <tr style="border-bottom: 1px solid #eee;">
+                                <th style="text-align: left;">รายการ</th>
+                                <th style="text-align: right;">ราคา</th>
+                            </tr>
+                        </thead>
+                        <tbody>${itemsHtml}</tbody>
+                    </table>
+                    <div class="total">
+                        <span>รวมทั้งสิ้น:</span>
+                        <span>฿${(order.total_amount || 0).toLocaleString()}</span>
                     </div>
                 </body>
             </html>
         `);
+
         printWindow.document.close();
-        printWindow.onload = () => { 
-            printWindow.print(); 
-            printWindow.close(); 
-        };
+        
+        // หน่วงเวลาเพื่อให้เนื้อหาโหลดสมบูรณ์ก่อนเรียกหน้าต่างพิมพ์
+        setTimeout(() => {
+            printWindow.focus();
+            printWindow.print();
+            printWindow.close();
+        }, 350);
     }
 
-    // เริ่มต้นโหลดข้อมูล
+    // Initial Load
     fetchOrders();
-
-    // Auto-refresh ทุก 60 วินาที (ข้อมูลจะถูกโหลดใหม่ แต่จะยังอยู่ที่หน้าเดิมถ้าจำนวนรายการไม่เปลี่ยนมาก)
-    setInterval(fetchOrders, 60000);
+    // Auto Refresh every 30s
+    setInterval(fetchOrders, 30000);
 </script>
 
 </body>
