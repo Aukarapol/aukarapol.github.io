@@ -136,70 +136,77 @@
         }
     }
 
-    function renderCards() {
-        const list = document.getElementById('order-list');
-        if (currentOrders.length === 0) {
-            list.innerHTML = `<div class="p-20 text-center text-slate-400">ไม่มีข้อมูลออเดอร์</div>`;
-            return;
-        }
+function renderCards() {
+    const list = document.getElementById('order-list');
+    if (currentOrders.length === 0) {
+        list.innerHTML = `<div class="p-20 text-center text-slate-400">ไม่มีข้อมูลออเดอร์</div>`;
+        return;
+    }
 
-        const statusStyles = {
-            'รอดำเนินการ': 'bg-amber-50 text-amber-600 border-amber-100',
-            'กำลังจัดส่ง': 'bg-blue-50 text-blue-600 border-blue-100',
-            'ส่งแล้ว': 'bg-emerald-50 text-emerald-600 border-emerald-100',
-            'ยกเลิก': 'bg-rose-50 text-rose-600 border-rose-100'
-        };
+    const statusStyles = {
+        'รอดำเนินการ': 'bg-amber-50 text-amber-600 border-amber-100',
+        'กำลังจัดส่ง': 'bg-blue-50 text-blue-600 border-blue-100',
+        'ส่งแล้ว': 'bg-emerald-50 text-emerald-600 border-emerald-100',
+        'ยกเลิก': 'bg-rose-50 text-rose-600 border-rose-100'
+    };
 
-        list.innerHTML = currentOrders.map((order, i) => {
-            const date = new Date(order.created_at).toLocaleDateString('th-TH', { day: '2-digit', month: 'short' });
-            const time = new Date(order.created_at).toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' });
-            
-            return `
-                <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 mb-4 animate-slide-up" style="animation-delay: ${i * 50}ms">
-                    <div class="flex justify-between items-start mb-3">
-                        <div class="flex items-center gap-2">
-                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">#${order.id.toString().slice(-6)}</span>
-                            <span class="status-pill ${statusStyles[order.status] || ''}">${order.status}</span>
-                        </div>
-                        <span class="text-[11px] text-slate-400 font-medium">${date} | ${time}</span>
+    list.innerHTML = currentOrders.map((order, i) => {
+        const date = new Date(order.created_at).toLocaleDateString('th-TH', { day: '2-digit', month: 'short' });
+        const time = new Date(order.created_at).toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' });
+        
+        return `
+            <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 mb-4 animate-slide-up" style="animation-delay: ${i * 50}ms">
+                <div class="flex justify-between items-start mb-3">
+                    <div class="flex items-center gap-2">
+                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">#${order.id.toString().slice(-6)}</span>
+                        <span class="status-pill ${statusStyles[order.status] || ''}">${order.status}</span>
                     </div>
-                    
-                    <div class="mb-3">
+                    <span class="text-[11px] text-slate-400 font-medium">${date} | ${time}</span>
+                </div>
+                
+                <div class="mb-3">
+                    <div class="flex items-center gap-2">
                         <h4 class="font-bold text-slate-800 text-sm">${order.customer_name}</h4>
-                        <p class="text-xs text-slate-500 line-clamp-1"><i data-lucide="map-pin" class="inline w-3 h-3 mr-1"></i>${order.customer_address}</p>
+                        <span class="text-[11px] text-slate-400 font-normal flex items-center">
+                            <i data-lucide="phone" class="w-2.5 h-2.5 mr-1"></i>${order.customer_phone || '-'}
+                        </span>
                     </div>
+                    <p class="text-xs text-slate-500 line-clamp-1 mt-0.5">
+                        <i data-lucide="map-pin" class="inline w-3 h-3 mr-1"></i>${order.customer_address}
+                    </p>
+                </div>
 
-                    <div class="flex items-center justify-between pt-3 border-t border-dashed border-slate-100">
-                        <div>
-                            <p class="text-[10px] text-slate-400 font-bold">ยอดสุทธิ</p>
-                            <p class="text-lg font-bold text-orange-600">฿${(order.total_amount || 0).toLocaleString()}</p>
-                        </div>
-                        <div class="flex gap-2">
-                            <button onclick="openReceiptModal(${order.id})" class="p-2.5 bg-slate-50 text-slate-500 rounded-xl active:bg-blue-100 active:text-blue-600 transition-colors">
-                                <i data-lucide="printer" class="w-5 h-5"></i>
-                            </button>
-                            <div class="relative">
-                                <select onchange="updateStatus(${order.id}, this.value)" class="absolute opacity-0 w-full h-full inset-0 z-10 cursor-pointer">
-                                    <option value="" disabled selected></option>
-                                    <option value="รอดำเนินการ">รอดำเนินการ</option>
-                                    <option value="กำลังจัดส่ง">กำลังจัดส่ง</option>
-                                    <option value="ส่งแล้ว">ส่งแล้ว</option>
-                                    <option value="ยกเลิก">ยกเลิก</option>
-                                </select>
-                                <button class="p-2.5 bg-slate-50 text-slate-500 rounded-xl">
-                                    <i data-lucide="more-vertical" class="w-5 h-5"></i>
-                                </button>
-                            </div>
-                            <button onclick="deleteOrder(${order.id}, '${order.customer_name}')" class="p-2.5 bg-rose-50 text-rose-500 rounded-xl active:bg-rose-100">
-                                <i data-lucide="trash-2" class="w-5 h-5"></i>
+                <div class="flex items-center justify-between pt-3 border-t border-dashed border-slate-100">
+                    <div>
+                        <p class="text-[10px] text-slate-400 font-bold">ยอดสุทธิ</p>
+                        <p class="text-lg font-bold text-orange-600">฿${(order.total_amount || 0).toLocaleString()}</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="openReceiptModal(${order.id})" class="p-2.5 bg-slate-50 text-slate-500 rounded-xl active:bg-blue-100 active:text-blue-600 transition-colors">
+                            <i data-lucide="printer" class="w-5 h-5"></i>
+                        </button>
+                        <div class="relative">
+                            <select onchange="updateStatus(${order.id}, this.value)" class="absolute opacity-0 w-full h-full inset-0 z-10 cursor-pointer">
+                                <option value="" disabled selected></option>
+                                <option value="รอดำเนินการ">รอดำเนินการ</option>
+                                <option value="กำลังจัดส่ง">กำลังจัดส่ง</option>
+                                <option value="ส่งแล้ว">ส่งแล้ว</option>
+                                <option value="ยกเลิก">ยกเลิก</option>
+                            </select>
+                            <button class="p-2.5 bg-slate-50 text-slate-500 rounded-xl">
+                                <i data-lucide="more-vertical" class="w-5 h-5"></i>
                             </button>
                         </div>
+                        <button onclick="deleteOrder(${order.id}, '${order.customer_name}')" class="p-2.5 bg-rose-50 text-rose-500 rounded-xl active:bg-rose-100">
+                            <i data-lucide="trash-2" class="w-5 h-5"></i>
+                        </button>
                     </div>
                 </div>
-            `;
-        }).join('');
-        lucide.createIcons();
-    }
+            </div>
+        `;
+    }).join('');
+    lucide.createIcons(); // สำคัญ: เพื่อให้ไอคอน phone แสดงผล
+}
 
     async function updateStatus(id, status) {
         if(!status) return;
