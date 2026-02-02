@@ -18,8 +18,8 @@
         }
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
         }
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
@@ -103,17 +103,17 @@
         <span class="text-[10px] font-medium">ตะกร้า</span>
     </button>
     
-    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="flex flex-col items-center gap-1 text-[#002D72]">
-        <i class="fa-solid fa-box text-xl"></i>
-        <span class="text-[10px] font-medium">คำสั่งซื้อ</span>
-    </button>
+<button onclick="openOrderHistory()" class="flex flex-col items-center gap-1 text-[#002D72]">
+    <i class="fa-solid fa-box text-xl"></i>
+    <span class="text-[10px] font-medium">คำสั่งซื้อ</span>
+</button>
 
     <div id="auth-section" class="flex flex-col items-center">
         <button id="btn-login-trigger" onclick="openLoginModal()" class="flex flex-col items-center gap-1 text-[#002D72]">
             <i class="fa-regular fa-circle-user text-xl"></i>
             <span class="text-[10px] font-medium">บัญชี</span>
         </button>
-        <button id="btn-logout-trigger" onclick="handleLogout()" class="hidden flex flex-col items-center gap-1 text-red-500">
+        <button id="btn-logout-trigger" onclick="handleLogout()" class="hidden flex flex-col items-center gap-1 text-[#002D72]">
             <i class="fa-solid fa-power-off text-xl"></i>
             <span class="text-[10px] font-medium">ออกจากระบบ</span>
         </button>
@@ -132,7 +132,7 @@
             <img id="modal-main-img" src="" class="w-full aspect-square object-contain bg-slate-50 rounded-2xl mb-4">
             <div id="modal-thumbnails" class="flex gap-2 overflow-x-auto hide-scrollbar mb-6"></div>
             <h2 id="modal-title" class="text-xl font-bold text-slate-900 mb-1"></h2>
-            <p id="modal-price" class="text-2xl font-black text-orange-600 mb-4"></p>
+            <p id="modal-price" class="text-2xl font-black text-orange-500 mb-4"></p>
             <div class="bg-slate-50 p-4 rounded-xl mb-6">
                 <h3 class="text-sm font-bold text-slate-500 uppercase mb-2">รายละเอียด</h3>
                 <p id="modal-desc" class="text-slate-600 text-sm leading-relaxed whitespace-pre-line"></p>
@@ -202,6 +202,20 @@
     </div>
 </div>
 
+<div id="order-history-modal" class="fixed inset-0 bg-black/60 z-[80] hidden flex items-center justify-center p-4 backdrop-blur-sm">
+    <div class="bg-white w-full max-w-lg rounded-3xl p-6 shadow-2xl overflow-y-auto max-h-[85vh]">
+        <div class="flex justify-between items-center mb-6 border-b pb-4">
+            <h3 class="text-xl font-bold text-[#002D72]"><i class="fa-solid fa-clock-rotate-left mr-2"></i>ประวัติการสั่งซื้อ</h3>
+            <button onclick="closeOrderHistory()" class="text-slate-400"><i class="fa-solid fa-xmark text-xl"></i></button>
+        </div>
+        
+        <div id="order-list-container" class="space-y-4">
+            <p class="text-center text-slate-400 py-8">กำลังโหลดข้อมูล...</p>
+        </div>
+    </div>
+</div>
+
+
 <script>
     const SB_URL = 'https://eodbsetbyryimczkhoaw.supabase.co';
     const SB_KEY = 'sb_publishable_pWCFODdbMNdtx0_tytIXjw_jEry84HD';
@@ -219,23 +233,45 @@
         filterProducts();
     }
 
-    function createProductCardHTML(item) {
-        const images = parseImages(item);
-        return `
-            <div class="bg-white rounded-2xl p-3 shadow-sm border border-gray-50 flex flex-col">
-                <div class="cursor-pointer overflow-hidden rounded-xl mb-3 bg-slate-50 aspect-square" onclick="openProductModal(${item.id})">
-                    <img src="${images[0]}" class="w-full h-full object-contain">
+function createProductCardHTML(item) {
+    const images = parseImages(item);
+    return `
+        <div class="group bg-white rounded-2xl border border-gray-100 flex flex-col overflow-hidden hover:shadow-xl hover:shadow-gray-200/50 transition-all duration-300 h-full relative">
+            
+            <div class="relative cursor-pointer overflow-hidden bg-gray-50 aspect-square max-h-[180px] sm:max-h-[200px] md:max-h-[220px]" 
+                 onclick="openProductModal(${item.id})">
+                <img src="${images[0]}" 
+                     class="w-full h-full object-contain p-4 transform transition-transform duration-500 group-hover:scale-110"
+                     alt="${item.name}">
+                
+                <div class="absolute top-2 left-2 bg-white/80 backdrop-blur-sm text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm text-gray-600">
+                    Hot
                 </div>
-                <div class="flex-grow">
-                    <h3 onclick="openProductModal(${item.id})" class="text-sm font-medium line-clamp-2 mb-1 leading-tight h-10">${item.name}</h3>
-                    <p class="text-lg font-black text-[#002D72]">฿${Number(item.price).toLocaleString()}</p>
-                </div>
-                <button onclick='addToCartById(${item.id})' class="mt-3 w-full bg-slate-100 text-[#002D72] py-2.5 rounded-xl text-xs font-bold active:bg-[#002D72] active:text-white transition-colors">
-                    <i class="fa-solid fa-plus mr-1"></i> เพิ่มลงตะกร้า
-                </button>
             </div>
-        `;
-    }
+
+            <div class="p-3 md:p-4 flex flex-col flex-grow">
+                <h3 onclick="openProductModal(${item.id})" 
+                    class="text-[13px] md:text-sm font-semibold text-gray-800 line-clamp-2 mb-2 leading-snug cursor-pointer group-hover:text-[#002D72] transition-colors h-9">
+                    ${item.name}
+                </h3>
+                
+                <div class="mt-auto flex items-center justify-between">
+                    <div>
+                        <span class="block text-[10px] uppercase tracking-wider text-gray-400 font-bold">ราคา</span>
+                        <p class="text-base md:text-lg font-extrabold text-orange-500">
+                            ฿${Number(item.price).toLocaleString()}
+                        </p>
+                    </div>
+
+                    <button onclick='addToCartById(${item.id})' 
+                        class="bg-[#002D72] text-white w-9 h-9 rounded-xl flex items-center justify-center shadow-lg shadow-[#002D72]/20 hover:bg-[#003d96] active:scale-90 transition-all">
+                        <i class="fa-solid fa-cart-shopping text-xs"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+}
 
     function renderCategorizedProducts(products) {
         const container = document.getElementById('sections-container');
@@ -415,6 +451,147 @@
         } catch (err) { alert("ผิดพลาด: " + err.message); } 
         finally { btn.disabled = false; btn.innerText = "ยืนยันสั่งซื้อ"; }
     }
+	
+// ฟังก์ชันเปิด Modal และดึงข้อมูล
+// ฟังก์ชันช่วยเลือกสีและข้อความตามสถานะ
+function getStatusBadge(status) {
+    // ถ้าไม่มีข้อมูล ให้เป็น 'รอดำเนินการ' ไว้ก่อน
+    const currentStatus = status || 'รอดำเนินการ';
+
+    // เช็คข้อความภาษาไทยจาก Database
+    switch (currentStatus) {
+        case 'ส่งแล้ว':
+        case 'สำเร็จ':
+            // สีเขียว
+            return `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-700 border border-green-200">
+                        <i class="fa-solid fa-check-circle mr-1"></i>${currentStatus}
+                    </span>`;
+        
+        case 'กำลังจัดส่ง':
+            // สีฟ้า/น้ำเงิน
+            return `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-700 border border-blue-200">
+                        <i class="fa-solid fa-truck-fast mr-1"></i>${currentStatus}
+                    </span>`;
+            
+        case 'ยกเลิก':
+            // สีแดง
+            return `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-red-100 text-red-700 border border-red-200">
+                        <i class="fa-solid fa-circle-xmark mr-1"></i>${currentStatus}
+                    </span>`;
+
+        case 'รอดำเนินการ':
+        default:
+            // สีเหลือง/ส้ม (สำหรับสถานะอื่นๆ หรือ รอตรวจสอบ)
+            return `<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-yellow-100 text-yellow-800 border border-yellow-200">
+                        <i class="fa-regular fa-clock mr-1"></i>${currentStatus}
+                    </span>`;
+    }
+}
+
+async function openOrderHistory() {
+    const { data: { session } } = await _supabase.auth.getSession();
+    
+    // 1. เช็ค Login
+    if (!session) {
+        alert("กรุณาเข้าสู่ระบบเพื่อดูประวัติการสั่งซื้อ");
+        openLoginModal();
+        return;
+    }
+
+    document.getElementById('order-history-modal').classList.remove('hidden');
+    const container = document.getElementById('order-list-container');
+    container.innerHTML = '<div class="text-center py-8"><i class="fa-solid fa-spinner fa-spin text-[#002D72] text-2xl"></i><p class="text-slate-400 mt-2">กำลังดึงข้อมูล...</p></div>';
+
+    try {
+        const userPhone = session.user.user_metadata.phone_number;
+        
+        if (!userPhone) {
+            container.innerHTML = '<p class="text-center text-red-500 py-8">ไม่พบข้อมูลเบอร์โทรศัพท์ในบัญชีของคุณ</p>';
+            return;
+        }
+
+        // 2. Query ข้อมูล (ดึง status มาด้วย ซึ่ง select * ดึงมาให้อยู่แล้ว)
+        const { data, error } = await _supabase
+            .from('orders')
+            .select('*')
+            .eq('customer_phone', userPhone)
+            .order('created_at', { ascending: false });
+
+        if (error) throw error;
+
+        // 3. กรณีไม่มีข้อมูล
+        if (!data || data.length === 0) {
+            container.innerHTML = `
+                <div class="text-center py-12 flex flex-col items-center">
+                    <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-basket-shopping text-2xl text-slate-400"></i>
+                    </div>
+                    <p class="text-slate-500 font-medium">ไม่มีประวัติการสั่งซื้อ</p>
+                    <p class="text-slate-400 text-xs mt-1">รายการสั่งซื้อของคุณจะปรากฏที่นี่</p>
+                </div>`;
+            return;
+        }
+
+        // 4. แสดงผลรายการ (Loop)
+        container.innerHTML = data.map(order => {
+            const date = new Date(order.created_at).toLocaleDateString('th-TH', {
+                year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'
+            });
+
+            // สร้างป้ายสถานะจากข้อมูลใน DB (ส่ง order.status ไป)
+            const statusBadge = getStatusBadge(order.status);
+
+            // แปลงรายการสินค้า (JSON) เป็น HTML
+            const itemsHtml = Array.isArray(order.items) ? order.items.map(item => `
+                <div class="flex justify-between items-center text-xs py-1 border-b border-dashed border-slate-100 last:border-0">
+                    <div class="flex items-center gap-2">
+                        <span class="w-1 h-1 rounded-full bg-slate-300"></span>
+                        <span class="text-slate-600 line-clamp-1 max-w-[150px]">${item.name}</span>
+                        <span class="text-slate-400 text-[10px]">x${item.quantity}</span>
+                    </div>
+                    <span class="font-medium text-slate-700">฿${(Number(item.price) * item.quantity).toLocaleString()}</span>
+                </div>
+            `).join('') : '<span class="text-xs text-slate-400">ไม่พบรายการสินค้า</span>';
+
+            return `
+                <div class="bg-white rounded-2xl p-4 border border-slate-100 shadow-sm mb-3 hover:shadow-md transition-all">
+                    <div class="flex justify-between items-start mb-3 pb-3 border-b border-slate-100">
+                        <div>
+                            <div class="flex items-center gap-2 mb-1.5">
+                                ${statusBadge}
+                            </div>
+                            <p class="text-[10px] text-slate-400 flex items-center gap-1">
+                                <i class="fa-regular fa-calendar"></i> ${date}
+                            </p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-[#002D72] font-black text-lg">฿${Number(order.total_amount).toLocaleString()}</p>
+                            <p class="text-[9px] text-slate-400">#${order.id.toString().slice(0, 8)}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-slate-50/50 rounded-xl p-2.5">
+                        ${itemsHtml}
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+    } catch (err) {
+        console.error(err);
+        container.innerHTML = `<div class="p-4 text-center"><p class="text-red-500 text-sm">เกิดข้อผิดพลาด: ${err.message}</p></div>`;
+    }
+}
+
+function closeOrderHistory() {
+
+    document.getElementById('order-history-modal').classList.add('hidden');
+
+}
+	
+	
+	
+	
 
     async function updateAuthUI(session) {
         const adminIcons = document.getElementById('admin-icons');
@@ -496,6 +673,9 @@
             tabRegister.classList.add('text-slate-400');
         }
     }
+	
+
+	
 
     async function handleRegister() {
         const email = document.getElementById('register-email').value.trim();
@@ -526,6 +706,11 @@
     _supabase.auth.onAuthStateChange((event, session) => updateAuthUI(session));
     getProducts();
     updateCart();
+
+	
 </script>
+
+
+
 </body>
 </html>
