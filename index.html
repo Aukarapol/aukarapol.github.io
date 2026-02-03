@@ -32,6 +32,43 @@
         .cart-sidebar { transition: transform 0.3s ease-in-out; }
         .cart-open { transform: translateY(0); }
         .cart-closed { transform: translateY(100%); }
+		
+		/* ซ่อน scrollbar สำหรับ Chrome, Safari และ Opera */
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* ซ่อน scrollbar สำหรับ IE, Edge และ Firefox */
+    .scrollbar-hide {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+    
+    /* ปรับแต่งให้ card ในสไลด์มีความสูงเท่ากัน */
+    .product-card-container {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+}
+	@keyframes bounce-subtle {
+    0%, 100% { transform: translateY(-50%) scale(1); }
+    50% { transform: translateY(-50%) scale(1.2); color: #002D72; }
+}
+
+.search-active i {
+    animation: bounce-subtle 0.5s ease;
+}
+
+#search-input {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* เมื่อโฟกัส ให้กล่องขยายขึ้นเล็กน้อยและเงาชัดขึ้น */
+#search-input:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(0, 45, 114, 0.1), 0 8px 10px -6px rgba(0, 45, 114, 0.1);
+}
+		
     </style>
 </head>
 <body class="bg-[#F8F9FA] text-slate-900 pb-24">
@@ -57,20 +94,63 @@
 </nav>
 
 <main class="px-4">
-    <div class="mt-4 relative">
-        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
-        <input type="text" id="search-input" oninput="filterProducts()" 
-            placeholder="ค้นหาอุปกรณ์ไอที..." 
-            class="w-full pl-10 pr-4 py-3 bg-white border-none rounded-2xl shadow-sm focus:ring-2 focus:ring-[#002D72] outline-none text-sm">
+<div class="mt-4 relative group" id="search-wrapper">
+    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm transition-all duration-300 group-focus-within:text-[#002D72] group-focus-within:scale-110"></i>
+    
+    <input type="text" id="search-input" 
+        oninput="handleSearch(this)" 
+        placeholder="ค้นหาสินค้าที่คุณต้องการที่นี่..."
+        class="w-full pl-11 pr-12 py-3.5 bg-white border border-slate-100 rounded-2xl shadow-sm focus:ring-2 focus:ring-[#002D72]/20 focus:border-[#002D72] outline-none text-sm placeholder:text-slate-400">
+
+    <button onclick="clearSearch()" id="clear-btn" class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-300 hover:text-red-500 hidden transition-colors">
+        <i class="fa-solid fa-circle-xmark"></i>
+    </button>
+</div>
+
+<div class="mt-6 relative overflow-hidden rounded-3xl group" id="promo-slider">
+    <div class="flex transition-transform duration-500 ease-out" id="slides-container">
+        
+        <div class="min-w-full bg-gradient-to-br from-[#002D72] to-[#004dc4] p-6 text-white relative h-[160px] flex items-center">
+            <div class="relative z-10">
+                <h2 class="text-xl font-bold leading-tight uppercase">อัปเกรดชีวิตดิจิทัล<br>ให้โปรกว่าใคร</h2>
+                <p class="text-blue-100 text-xs mt-2 opacity-80">รวมสินค้า IT ตัวท็อป ราคาโดนใจ</p>
+                <button class="mt-3 px-4 py-1.5 bg-white text-[#002D72] text-[10px] font-bold rounded-full">ช้อปเลย</button>
+            </div>
+            <i class="fa-solid fa-microchip absolute -right-4 -bottom-4 text-7xl text-white/10 rotate-12"></i>
+        </div>
+
+        <div class="min-w-full bg-gradient-to-br from-[#e63946] to-[#b22222] p-6 text-white relative h-[160px] flex items-center">
+            <div class="relative z-10">
+                <h2 class="text-xl font-bold leading-tight uppercase">New Arrivals<br>สินค้ามาใหม่สัปดาห์นี้</h2>
+                <p class="text-red-100 text-xs mt-2 opacity-80">ลดเพิ่ม 10% สำหรับสมาชิกใหม่</p>
+                <button class="mt-3 px-4 py-1.5 bg-white text-[#e63946] text-[10px] font-bold rounded-full">ดูสินค้าใหม่</button>
+            </div>
+            <i class="fa-solid fa-bolt absolute -right-2 -bottom-2 text-7xl text-white/10 -rotate-12"></i>
+        </div>
+
+        <div class="min-w-full bg-gradient-to-br from-[#f8961e] to-[#f3722c] p-6 text-white relative h-[160px] flex items-center">
+            <div class="relative z-10">
+                <h2 class="text-xl font-bold leading-tight uppercase">Flash Sale<br>ลดแรงแซงทุกดีล</h2>
+                <p class="text-orange-100 text-xs mt-2 opacity-80">เฉพาะวันนี้ 12:00 - 18:00 เท่านั้น</p>
+                <button class="mt-3 px-4 py-1.5 bg-white text-[#f3722c] text-[10px] font-bold rounded-full">จองสิทธิ์เลย</button>
+            </div>
+            <i class="fa-solid fa-fire absolute -right-4 -bottom-4 text-7xl text-white/10"></i>
+        </div>
+		
+		 <div class="min-w-full bg-gradient-to-br from-[#f8961e] to-[#f3722c] p-6 text-white relative h-[160px] flex items-center">
+            <div class="relative z-10">
+                <h2 class="text-xl font-bold leading-tight uppercase">Flash Sale<br>ลดแรงแซงทุกดีล</h2>
+                <p class="text-orange-100 text-xs mt-2 opacity-80">เฉพาะวันนี้ 10:00 - 11:00 เท่านั้น</p>
+                <button class="mt-3 px-4 py-1.5 bg-white text-[#f3722c] text-[10px] font-bold rounded-full">จองสิทธิ์เลย</button>
+            </div>
+            <i class="fa-solid fa-fire absolute -right-4 -bottom-4 text-7xl text-white/10"></i>
+        </div>
+
     </div>
 
-    <div class="mt-6 rounded-3xl bg-gradient-to-br from-[#002D72] to-[#004dc4] p-6 text-white relative overflow-hidden">
-        <div class="relative z-10">
-            <h2 class="text-xl font-bold leading-tight">อัปเกรดชีวิตดิจิทัล<br>ให้โปรกว่าใคร</h2>
-            <p class="text-blue-100 text-xs mt-2 opacity-80">รวมสินค้า IT ตัวท็อป ราคาโดนใจ</p>
+    <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5" id="promo-dots">
         </div>
-        <i class="fa-solid fa-microchip absolute -right-4 -bottom-4 text-6xl text-white/10 rotate-12"></i>
-    </div>
+</div>
 
     <div class="mt-8">
         <div class="flex items-center justify-between mb-4">
@@ -215,6 +295,82 @@
     </div>
 </div>
 
+<footer class="bg-slate-50 text-slate-600 pt-16 pb-8 mt-20 border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+            
+            <div class="space-y-4">
+                        <div class="flex items-center gap-2">
+            <span class="bg-[#002D72] text-white px-2 py-0.5 rounded font-black italic text-lg">KN</span>
+            <span class="font-bold text-lg text-[#002D72]">Tech<span class="text-orange-600">Hub</span></span>
+        </div>
+                <p class="text-sm leading-relaxed text-slate-500">
+                    แหล่งรวมสินค้า IT และอุปกรณ์ดิจิทัลครบวงจร มั่นใจในคุณภาพ พร้อมการรับประกันสินค้าและการบริการหลังการขายที่ดีเยี่ยม
+                </p>
+                <div class="flex gap-4">
+                    <a href="" class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center hover:bg-[#002D72] hover:text-white transition-all duration-300"><i class="fa-brands fa-facebook-f text-sm"></i></a>
+                    <a href="" class="w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center hover:bg-green-500 hover:text-white transition-all duration-300"><i class="fa-brands fa-line text-sm"></i></a>
+                    <a href="" class="w-8 h-8 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center hover:bg-pink-500 hover:text-white transition-all duration-300"><i class="fa-brands fa-instagram text-sm"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-slate-900 text-sm font-bold uppercase tracking-widest mb-6">บริการลูกค้า</h3>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="" class="hover:text-[#002D72] hover:translate-x-1 inline-block transition-all">วิธีสั่งซื้อสินค้า</a></li>
+                    <li><a href="" class="hover:text-[#002D72] hover:translate-x-1 inline-block transition-all">การจัดส่งสินค้า</a></li>
+                    <li><a href="" class="hover:text-[#002D72] hover:translate-x-1 inline-block transition-all">ตรวจสอบสถานะคำสั่งซื้อ</a></li>
+                    <li><a href="" class="hover:text-[#002D72] hover:translate-x-1 inline-block transition-all">การยกเลิกการสั่งซื้อ</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-slate-900 text-sm font-bold uppercase tracking-widest mb-6">นโยบายร้านค้า</h3>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="" class="hover:text-[#002D72] hover:translate-x-1 inline-block transition-all">นโยบายความเป็นส่วนตัว</a></li>
+                    <li><a href="" class="hover:text-[#002D72] hover:translate-x-1 inline-block transition-all">เงื่อนไขการรับประกัน</a></li>
+                    <li><a href="" class="hover:text-[#002D72] hover:translate-x-1 inline-block transition-all">นโยบายเปลี่ยนคืนสินค้า</a></li>
+                    <li><a href="" class="hover:text-[#002D72] hover:translate-x-1 inline-block transition-all">ข้อกำหนดและเงื่อนไข</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-slate-900 text-sm font-bold uppercase tracking-widest mb-6">ติดต่อเรา</h3>
+                <ul class="space-y-4 text-sm">
+                    <li class="flex items-start gap-3 group">
+                        <div class="w-8 h-8 rounded-lg bg-white shadow-sm flex items-center justify-center group-hover:text-[#002D72] transition-colors">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <span class="flex-1">123 ถนนไอที แขวงดิจิทัล เขตเทคโนโลยี กรุงเทพฯ 10110</span>
+                    </li>
+                    <li class="flex items-center gap-3 group">
+                        <div class="w-8 h-8 rounded-lg bg-white shadow-sm flex items-center justify-center group-hover:text-[#002D72] transition-colors">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <span>045 228 080</span>
+                    </li>
+                </ul>
+                <div class="mt-8">
+                    <p class="text-[10px] mb-3 font-bold text-slate-400 uppercase tracking-tighter">Secure Payment</p>
+                    <div class="flex gap-3 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+                        <i class="fa-brands fa-cc-visa text-2xl"></i>
+                        <i class="fa-brands fa-cc-mastercard text-2xl"></i>
+                        <i class="fa-solid fa-building-columns text-xl"></i>
+                        <i class="fa-solid fa-qrcode text-xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-slate-400">
+            <p>© 2026 <span class="text-[#002D72]">KN TECH HUB</span>. All Rights Reserved.</p>
+            <div class="flex items-center gap-6">
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-green-500 text-[10px]"></i> Security Verified</span>
+                <span class="bg-white px-3 py-1 rounded-full shadow-sm border border-slate-100">Powered by <span class="font-bold text-slate-700">Gemini AI</span></span>
+            </div>
+        </div>
+    </div>
+</footer>
 
 <script>
     const SB_URL = 'https://eodbsetbyryimczkhoaw.supabase.co';
@@ -273,29 +429,62 @@ function createProductCardHTML(item) {
     `;
 }
 
-    function renderCategorizedProducts(products) {
-        const container = document.getElementById('sections-container');
-        container.innerHTML = '';
-        const groups = products.reduce((acc, item) => {
-            const cat = item.category || 'อื่นๆ';
-            if (!acc[cat]) acc[cat] = [];
-            acc[cat].push(item);
-            return acc;
-        }, {});
+function renderCategorizedProducts(products) {
+    const container = document.getElementById('sections-container');
+    container.innerHTML = '';
+    
+    // จัดกลุ่มสินค้าตามหมวดหมู่
+    const groups = products.reduce((acc, item) => {
+        const cat = item.category || 'อื่นๆ';
+        if (!acc[cat]) acc[cat] = [];
+        acc[cat].push(item);
+        return acc;
+    }, {});
 
+    // --- เช็คเงื่อนไขการแสดงผล ---
+    if (currentCategory !== 'all') {
+        // 1. กรณีเลือกหมวดหมู่ใดหมวดหมู่หนึ่ง: แสดงแบบ Grid (ตาราง)
+        const categoryName = currentCategory;
+        const items = groups[categoryName] || [];
+        
+        const section = document.createElement('section');
+        section.innerHTML = `
+            <div class="mb-6 px-2">
+                <h2 class="text-xl font-bold text-slate-900 border-l-4 border-[#002D72] pl-3">
+                    ${categoryName} <span class="text-sm font-normal text-slate-400">(${items.length} รายการ)</span>
+                </h2>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 px-2">
+                ${items.map(item => createProductCardHTML(item)).join('')}
+            </div>
+        `;
+        container.appendChild(section);
+
+    } else {
+        // 2. กรณีเลือก 'ทั้งหมด' (หน้าแรก): แสดงแบบ Slide (สไลด์ข้างแยกตามหมวดหมู่)
         Object.keys(groups).sort().forEach(categoryName => {
             const section = document.createElement('section');
+            section.className = "mb-10";
             section.innerHTML = `
-                <div class="flex items-center justify-between mb-4">
-                    <h2 class="text-lg font-bold text-slate-900">${categoryName}</h2>
+                <div class="flex items-center justify-between mb-4 px-2">
+                    <h2 class="text-lg font-bold text-slate-900 border-l-4 border-[#002D72] pl-3">${categoryName}</h2>
+                    <button onclick="currentCategory='${categoryName}'; generateCategoryButtons(allProducts); filterProducts(); window.scrollTo(0,0);" 
+                            class="text-sm font-semibold text-[#002D72] hover:underline flex items-center gap-1">
+                        ดูทั้งหมด <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </button>
                 </div>
-                <div class="product-grid">
-                    ${groups[categoryName].map(item => createProductCardHTML(item)).join('')}
+                <div class="flex overflow-x-auto pb-4 gap-4 scrollbar-hide px-2" style="scroll-snap-type: x mandatory;">
+                    ${groups[categoryName].map(item => `
+                        <div class="min-w-[180px] sm:min-w-[220px] max-w-[220px]" style="scroll-snap-align: start;">
+                            ${createProductCardHTML(item)}
+                        </div>
+                    `).join('')}
                 </div>
             `;
             container.appendChild(section);
         });
     }
+}
 
     function generateCategoryButtons(products) {
         const categories = ['all', ...new Set(products.map(p => p.category).filter(Boolean))];
@@ -589,9 +778,6 @@ function closeOrderHistory() {
 
 }
 	
-	
-	
-	
 
     async function updateAuthUI(session) {
         const adminIcons = document.getElementById('admin-icons');
@@ -632,6 +818,33 @@ function closeOrderHistory() {
             logoutBtn?.classList.add('hidden');
         }
     }
+	
+	
+	function handleSearch(input) {
+    const wrapper = document.getElementById('search-wrapper');
+    const clearBtn = document.getElementById('clear-btn');
+    
+    // ใส่ Animation ให้ไอคอนเวลาพิมพ์
+    if (input.value.length > 0) {
+        wrapper.classList.add('search-active');
+        clearBtn.classList.remove('hidden');
+    } else {
+        wrapper.classList.remove('search-active');
+        clearBtn.classList.add('hidden');
+    }
+    
+    // เรียกฟังก์ชัน Filter เดิมของคุณ
+    filterProducts();
+}
+
+function clearSearch() {
+    const input = document.getElementById('search-input');
+    input.value = '';
+    handleSearch(input);
+    input.focus();
+}
+	
+	
 
     async function handleLogin() {
         const email = document.getElementById('login-email').value.trim();
@@ -675,7 +888,51 @@ function closeOrderHistory() {
     }
 	
 
-	
+const slidesContainer = document.getElementById('slides-container');
+const promoDots = document.getElementById('promo-dots');
+const slides = slidesContainer.children;
+let currentIndex = 0;
+const slideCount = slides.length;
+
+// สร้างจุด Pagination ตามจำนวนสไลด์
+for (let i = 0; i < slideCount; i++) {
+    const dot = document.createElement('div');
+    dot.className = `h-1.5 w-1.5 rounded-full transition-all duration-300 ${i === 0 ? 'bg-white w-4' : 'bg-white/40'}`;
+    dot.addEventListener('click', () => goToSlide(i));
+    promoDots.appendChild(dot);
+}
+
+function updateDots() {
+    Array.from(promoDots.children).forEach((dot, i) => {
+        if (i === currentIndex) {
+            dot.classList.replace('bg-white/40', 'bg-white');
+            dot.classList.add('w-4'); // ขยายจุดที่เลือกให้ยาวขึ้นแบบแอปสมัยใหม่
+        } else {
+            dot.classList.replace('bg-white', 'bg-white/40');
+            dot.classList.remove('w-4');
+        }
+    });
+}
+
+function goToSlide(index) {
+    currentIndex = index;
+    slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+    updateDots();
+}
+
+function nextSlide() {
+    currentIndex = (currentIndex + 1) % slideCount;
+    goToSlide(currentIndex);
+}
+
+// ตั้งค่า Auto Play ทุกๆ 5 วินาที
+let slideInterval = setInterval(nextSlide, 5000);
+
+// หยุดเลื่อนชั่วคราวเมื่อผู้ใช้เอาเมาส์ไปวาง (Optional)
+const promoSlider = document.getElementById('promo-slider');
+promoSlider.addEventListener('mouseenter', () => clearInterval(slideInterval));
+promoSlider.addEventListener('mouseleave', () => slideInterval = setInterval(nextSlide, 4000));
+
 
     async function handleRegister() {
         const email = document.getElementById('register-email').value.trim();
@@ -708,9 +965,7 @@ function closeOrderHistory() {
     updateCart();
 
 	
+	
 </script>
-
-
-
 </body>
 </html>
